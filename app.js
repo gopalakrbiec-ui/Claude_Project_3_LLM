@@ -5,8 +5,38 @@
 /* ── Mode toggle ── */
 let currentMode = 'layman';
 
+const MODE_LABELS = {
+  layman:     "Layman's Guide",
+  graduate:   'Graduate Mode',
+  researcher: 'Researcher Mode',
+  team:       'Team Mode',
+  startup:    'Startup Mode',
+};
+
 function setMode(mode) {
   currentMode = mode;
+
+  // Update hero title label with fade
+  const lbl = document.getElementById('modeLabel');
+  if (lbl) {
+    lbl.style.opacity = '0';
+    setTimeout(() => {
+      lbl.textContent = MODE_LABELS[mode] || mode;
+      // Swap gradient color per mode
+      const gradients = {
+        layman:     'linear-gradient(135deg,#4f46e5,#7c3aed)',
+        graduate:   'linear-gradient(135deg,#7c3aed,#0891b2)',
+        researcher: 'linear-gradient(135deg,#d97706,#dc2626)',
+        team:       'linear-gradient(135deg,#059669,#0891b2)',
+        startup:    'linear-gradient(135deg,#f97316,#ec4899)',
+      };
+      lbl.style.backgroundImage = gradients[mode] || gradients.layman;
+      lbl.style.webkitBackgroundClip = 'text';
+      lbl.style.backgroundClip = 'text';
+      lbl.style.opacity = '1';
+    }, 150);
+  }
+
   const btnLayman   = document.getElementById('btnLayman');
   const btnGrad     = document.getElementById('btnGrad');
   const btnResearch = document.getElementById('btnResearch');

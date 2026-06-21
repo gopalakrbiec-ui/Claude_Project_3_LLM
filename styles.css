@@ -77,6 +77,18 @@ body {
 
 .mode-label { font-size: .8rem; color: var(--text-muted); white-space: nowrap; }
 
+/* Dynamic mode label in hero title */
+.mode-label-hero {
+  display: inline-block;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: opacity .25s ease;
+}
+
 .mode-btn {
   border: none;
   background: transparent;
