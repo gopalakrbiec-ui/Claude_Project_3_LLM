@@ -424,6 +424,22 @@ function toggleTimeline() {
   }
 }
 
+/* ── Agentic AI toggle ── */
+function toggleAgentic() {
+  const section = document.getElementById('agentic-ai');
+  const btn = document.getElementById('btnAgentic');
+  if (!section) return;
+  const isVisible = !section.classList.contains('hidden');
+  if (isVisible) {
+    section.classList.add('hidden');
+    btn.classList.remove('active');
+  } else {
+    section.classList.remove('hidden');
+    btn.classList.add('active');
+    setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+}
+
 /* ── Future Frontier toggle ── */
 function toggleFuture() {
   const section = document.getElementById('future-frontier');
