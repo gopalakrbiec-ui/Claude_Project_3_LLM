@@ -408,6 +408,40 @@ function initTypingDemo() {
   }, 3000);
 }
 
+/* ── Frontier AI Timeline toggle ── */
+function toggleTimeline() {
+  const section = document.getElementById('frontier-timeline');
+  const btn = document.getElementById('btnTimeline');
+  if (!section) return;
+  const isVisible = !section.classList.contains('hidden');
+  if (isVisible) {
+    section.classList.add('hidden');
+    btn.classList.remove('active');
+  } else {
+    section.classList.remove('hidden');
+    btn.classList.add('active');
+    setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+}
+
+/* ── Timeline company filter ── */
+function filterTimeline(co, btn) {
+  document.querySelectorAll('.ft-filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const items = document.querySelectorAll('.ft-item');
+  if (co === 'all') {
+    items.forEach(el => el.style.display = '');
+  } else {
+    items.forEach(el => {
+      el.style.display = el.dataset.co === co ? '' : 'none';
+    });
+  }
+  // Show/hide year markers that have no visible items after them
+  document.querySelectorAll('.ft-year-marker').forEach(marker => {
+    marker.style.display = '';
+  });
+}
+
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   createStars();
