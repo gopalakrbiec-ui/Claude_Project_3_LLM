@@ -424,6 +424,22 @@ function toggleTimeline() {
   }
 }
 
+/* ── Future Frontier toggle ── */
+function toggleFuture() {
+  const section = document.getElementById('future-frontier');
+  const btn = document.getElementById('btnFuture');
+  if (!section) return;
+  const isVisible = !section.classList.contains('hidden');
+  if (isVisible) {
+    section.classList.add('hidden');
+    btn.classList.remove('active');
+  } else {
+    section.classList.remove('hidden');
+    btn.classList.add('active');
+    setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+}
+
 /* ── Timeline company filter ── */
 function filterTimeline(co, btn) {
   document.querySelectorAll('.ft-filter-btn').forEach(b => b.classList.remove('active'));
