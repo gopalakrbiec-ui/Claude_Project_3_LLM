@@ -1,0 +1,290 @@
+/* ══════════════════════════════════════════════════════
+   LLM Academy — JavaScript
+   ══════════════════════════════════════════════════════ */
+
+/* ── Mode toggle ── */
+let currentMode = 'layman';
+
+function setMode(mode) {
+  currentMode = mode;
+  const btnLayman = document.getElementById('btnLayman');
+  const btnGrad   = document.getElementById('btnGrad');
+
+  if (mode === 'layman') {
+    btnLayman.classList.add('active');
+    btnGrad.classList.remove('active');
+    document.querySelectorAll('.layman-text').forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll('.grad-text').forEach(el => el.classList.add('hidden'));
+  } else {
+    btnGrad.classList.add('active');
+    btnLayman.classList.remove('active');
+    document.querySelectorAll('.grad-text').forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll('.layman-text').forEach(el => el.classList.add('hidden'));
+  }
+
+  // Persist to sessionStorage
+  sessionStorage.setItem('llm-mode', mode);
+}
+
+/* ── Stage accordion ── */
+function toggleStage(btn) {
+  const card = btn.closest('.stage-card');
+  const body = card.querySelector('.stage-body');
+  const isOpen = body.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.stage-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.stage-toggle').forEach(t => t.classList.remove('open'));
+
+  if (!isOpen) {
+    body.classList.add('open');
+    btn.classList.add('open');
+
+    // Trigger animations inside
+    body.querySelectorAll('.bench-fill').forEach(el => {
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = '';
+    });
+    body.querySelectorAll('.loss-line').forEach(el => {
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = 'drawLine 3s ease forwards';
+    });
+  }
+}
+
+/* ── Stars ── */
+function createStars() {
+  const container = document.getElementById('stars');
+  if (!container) return;
+  const count = 150;
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top:  ${Math.random() * 100}%;
+      --d:  ${2 + Math.random() * 4}s;
+      --del:${Math.random() * 4}s;
+      --op: ${0.3 + Math.random() * 0.7};
+      width: ${1 + Math.random() * 2}px;
+      height: ${1 + Math.random() * 2}px;
+    `;
+    container.appendChild(star);
+  }
+}
+
+/* ── Neural network canvas animation ── */
+function initNeuralCanvas() {
+  const wrapper = document.getElementById('neuralCanvas');
+  if (!wrapper) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;opacity:0.25;';
+  wrapper.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  let nodes = [];
+  let connections = [];
+  let W, H;
+
+  function resize() {
+    W = canvas.width  = wrapper.offsetWidth;
+    H = canvas.height = wrapper.offsetHeight;
+    buildGraph();
+  }
+
+  function buildGraph() {
+    nodes = [];
+    connections = [];
+    const layers = [4, 6, 6, 5, 3];
+    const layerGap = W / (layers.length + 1);
+
+    layers.forEach((count, li) => {
+      const x = layerGap * (li + 1);
+      const nodeGap = H / (count + 1);
+      for (let ni = 0; ni < count; ni++) {
+        nodes.push({ x, y: nodeGap * (ni + 1), r: 4, pulse: Math.random() * Math.PI * 2 });
+      }
+    });
+
+    // Connect adjacent layers
+    let offset = 0;
+    for (let li = 0; li < layers.length - 1; li++) {
+      for (let a = 0; a < layers[li]; a++) {
+        for (let b = 0; b < layers[li + 1]; b++) {
+          connections.push({ a: offset + a, b: offset + layers[li] + b, pulse: Math.random() });
+        }
+      }
+      offset += layers[li];
+    }
+  }
+
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    frame++;
+    const t = frame / 60;
+
+    // Draw connections
+    connections.forEach(c => {
+      const na = nodes[c.a], nb = nodes[c.b];
+      const alpha = 0.05 + 0.08 * Math.sin(t * 2 + c.pulse * 10);
+      ctx.strokeStyle = `rgba(99,102,241,${alpha})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(na.x, na.y);
+      ctx.lineTo(nb.x, nb.y);
+      ctx.stroke();
+    });
+
+    // Draw signal pulses
+    if (frame % 8 === 0) {
+      connections.forEach(c => {
+        if (Math.random() < 0.02) {
+          c.activePulse = 0;
+        }
+      });
+    }
+    connections.forEach(c => {
+      if (c.activePulse !== undefined) {
+        c.activePulse += 0.04;
+        if (c.activePulse >= 1) { delete c.activePulse; return; }
+        const na = nodes[c.a], nb = nodes[c.b];
+        const px = na.x + (nb.x - na.x) * c.activePulse;
+        const py = na.y + (nb.y - na.y) * c.activePulse;
+        const grad = ctx.createRadialGradient(px, py, 0, px, py, 6);
+        grad.addColorStop(0, 'rgba(99,102,241,0.8)');
+        grad.addColorStop(1, 'rgba(99,102,241,0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(px, py, 6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    });
+
+    // Draw nodes
+    nodes.forEach(n => {
+      n.pulse += 0.03;
+      const brightness = 0.3 + 0.3 * Math.sin(n.pulse);
+      ctx.fillStyle = `rgba(99,102,241,${brightness})`;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      const glow = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 3);
+      glow.addColorStop(0, `rgba(99,102,241,${brightness * 0.5})`);
+      glow.addColorStop(1, 'rgba(99,102,241,0)');
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+}
+
+/* ── Scroll reveal ── */
+function initScrollReveal() {
+  const items = document.querySelectorAll('.stage-card, .resource-card, .roadmap-phase, .resource-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeInUp 0.5s ease both';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  items.forEach(item => {
+    item.style.opacity = '0';
+    observer.observe(item);
+  });
+}
+
+/* ── Smooth navbar hide/show on scroll ── */
+function initNavbar() {
+  let lastY = 0;
+  const nav = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > lastY && y > 120) {
+      nav.style.transform = 'translateY(-100%)';
+      nav.style.transition = 'transform 0.3s ease';
+    } else {
+      nav.style.transform = '';
+    }
+    lastY = y;
+  });
+}
+
+/* ── Add SVG gradient for loss chart ── */
+function addSvgDefs() {
+  const svgs = document.querySelectorAll('.loss-svg');
+  svgs.forEach(svg => {
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    defs.innerHTML = `
+      <linearGradient id="lossGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#6366f1"/>
+        <stop offset="100%" stop-color="#06b6d4"/>
+      </linearGradient>
+    `;
+    svg.prepend(defs);
+  });
+}
+
+/* ── Typing animation for tokenizer ── */
+function initTypingDemo() {
+  const phrases = [
+    "Hello, I love building AI systems!",
+    "The transformer architecture changed everything.",
+    "Training on trillions of tokens requires patience.",
+    "Large language models can write code and poetry."
+  ];
+  let pi = 0;
+  const inp = document.getElementById('tokenInput');
+  if (!inp) return;
+
+  const tokenColors = ['#ff6b6b','#ffa07a','#ffd700','#90ee90','#87ceeb','#dda0dd','#f0e68c','#ff8c69','#00ced1','#da70d6'];
+
+  setInterval(() => {
+    pi = (pi + 1) % phrases.length;
+    inp.textContent = phrases[pi];
+    const out = document.getElementById('tokenOutput');
+    if (!out) return;
+    out.innerHTML = '';
+    const words = phrases[pi].split(' ');
+    words.forEach((w, i) => {
+      const span = document.createElement('span');
+      span.className = 'tok';
+      span.style.setProperty('--c', tokenColors[i % tokenColors.length]);
+      span.textContent = w;
+      out.appendChild(span);
+    });
+  }, 3000);
+}
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', () => {
+  createStars();
+  initNeuralCanvas();
+  initScrollReveal();
+  initNavbar();
+  addSvgDefs();
+  initTypingDemo();
+
+  // Restore mode
+  const saved = sessionStorage.getItem('llm-mode');
+  if (saved) setMode(saved);
+
+  // Open first stage by default
+  const firstToggle = document.querySelector('.stage-toggle');
+  if (firstToggle) toggleStage(firstToggle);
+});
