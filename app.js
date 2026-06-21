@@ -72,14 +72,12 @@ function setMode(mode) {
   const navInvestor      = document.getElementById('navInvestor');
   const navFounder       = document.getElementById('navFounder');
   const navAgentMode     = document.getElementById('navAgentMode');
-  const agenticExploreSection = document.getElementById('agentic-ai');
   if (resSection)            resSection.classList.add('hidden');
   if (teamSection)           teamSection.classList.add('hidden');
   if (startupSection)        startupSection.classList.add('hidden');
   if (investorSection)       investorSection.classList.add('hidden');
   if (founderSection)        founderSection.classList.add('hidden');
   if (agentmodeSection)      agentmodeSection.classList.add('hidden');
-  if (agenticExploreSection) agenticExploreSection.classList.add('hidden');
   if (navTeam)          navTeam.classList.add('hidden');
   if (navResearch)      navResearch.classList.add('hidden');
   if (navStartup)       navStartup.classList.add('hidden');
@@ -153,9 +151,6 @@ function setMode(mode) {
     document.querySelectorAll('.agentmode-text').forEach(el => el.classList.remove('hidden'));
     if (agentmodeSection) agentmodeSection.classList.remove('hidden');
     if (navAgentMode)     navAgentMode.classList.remove('hidden');
-    // Also show the Agentic AI explore section merged into this mode
-    const agenticExplore = document.getElementById('agentic-ai');
-    if (agenticExplore) agenticExplore.classList.remove('hidden');
   }
 
   // Persist
@@ -424,73 +419,6 @@ function initTypingDemo() {
       out.appendChild(span);
     });
   }, 3000);
-}
-
-/* ── Frontier AI Timeline toggle ── */
-function toggleTimeline() {
-  const section = document.getElementById('frontier-timeline');
-  const btn = document.getElementById('btnTimeline');
-  if (!section) return;
-  const isVisible = !section.classList.contains('hidden');
-  if (isVisible) {
-    section.classList.add('hidden');
-    btn.classList.remove('active');
-  } else {
-    section.classList.remove('hidden');
-    btn.classList.add('active');
-    setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-  }
-}
-
-/* ── Agentic AI toggle ── */
-function toggleAgentic() {
-  const section = document.getElementById('agentic-ai');
-  const btn = document.getElementById('btnAgentic');
-  if (!section) return;
-  const isVisible = !section.classList.contains('hidden');
-  if (isVisible && currentMode !== 'agentmode') {
-    // Only hide if not in agentmode (where it's always shown)
-    section.classList.add('hidden');
-    btn.classList.remove('active');
-  } else if (!isVisible) {
-    section.classList.remove('hidden');
-    btn.classList.add('active');
-    setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-  }
-}
-
-/* ── Future Frontier toggle ── */
-function toggleFuture() {
-  const section = document.getElementById('future-frontier');
-  const btn = document.getElementById('btnFuture');
-  if (!section) return;
-  const isVisible = !section.classList.contains('hidden');
-  if (isVisible) {
-    section.classList.add('hidden');
-    btn.classList.remove('active');
-  } else {
-    section.classList.remove('hidden');
-    btn.classList.add('active');
-    setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-  }
-}
-
-/* ── Timeline company filter ── */
-function filterTimeline(co, btn) {
-  document.querySelectorAll('.ft-filter-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  const items = document.querySelectorAll('.ft-item');
-  if (co === 'all') {
-    items.forEach(el => el.style.display = '');
-  } else {
-    items.forEach(el => {
-      el.style.display = el.dataset.co === co ? '' : 'none';
-    });
-  }
-  // Show/hide year markers that have no visible items after them
-  document.querySelectorAll('.ft-year-marker').forEach(marker => {
-    marker.style.display = '';
-  });
 }
 
 /* ── Init ── */

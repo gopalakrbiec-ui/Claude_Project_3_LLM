@@ -5213,3 +5213,29 @@ body {
   .am-outlook-grid, .am-sf-grid { grid-template-columns: 1fr; }
   .am-evidence-item { flex-direction: column; gap: 4px; }
 }
+
+/* ══════════════════════════════════════════════════════
+   SUB-PAGE LAYOUT (frontier-timeline.html, future-frontier.html)
+   ══════════════════════════════════════════════════════ */
+.hero-sub-page {
+  min-height: auto;
+  padding-bottom: 0;
+  background: var(--bg);
+}
+
+.logo-link {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.sub-page-main {
+  padding-top: 108px; /* same as hero padding-top for two-tier navbar */
+}
+
+.sub-page-main section {
+  /* Override the hidden class default so sections show on their own pages */
+  display: block !important;
+  visibility: visible !important;
+}
