@@ -35,6 +35,7 @@
         <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
         <button class="mode-btn" id="btnInvestor" onclick="setMode('investor')">💰 Investor</button>
         <button class="mode-btn" id="btnFounder"  onclick="setMode('founder')">🧭 Founder</button>
+        <button class="mode-btn" id="btnAgentMode" onclick="setMode('agentmode')">⚡ Agentic</button>
       </div>
       <div class="nav-links">
         <a href="#stages">Stages</a>
@@ -43,6 +44,7 @@
         <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
         <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
         <a href="#founder-journey" id="navFounder" class="hidden">Founder</a>
+        <a href="#agentmode-journey" id="navAgentMode" class="hidden">Agentic</a>
       </div>
     </div>
 
@@ -59,6 +61,7 @@
     <p class="hero-sub team-text hidden">A team-first view of building an LLM — who you need at every stage, what they do, how they coordinate, and how the whole organisation moves together to ship a frontier model.</p>
     <p class="hero-sub startup-text hidden">The founder's playbook — how to incorporate, raise money, decide what to build, make your first hires, set up infrastructure, go to market, and turn a research project into a revenue-generating AI company.</p>
     <p class="hero-sub investor-text hidden">The investor's lens — startup financials, valuation frameworks, funding mechanics, cap tables, burn discipline, the path to IPO, and hard-won lessons from AI founders who've raised billions.</p>
+    <p class="hero-sub agentmode-text hidden">The agentic lens — how autonomous AI agents, coding recursion, and intelligent frameworks are reshaping every stage of LLM development, and whether the current agentic market is a durable category or a transitionary layer soon absorbed by increasingly capable foundation models.</p>
     <p class="hero-sub founder-text hidden">The builder's compass — how to find market gaps, generate ideas, differentiate your product, attract talent, build authority, manage yourself and your team, and decide when to start, when to pivot, and when to stop in the AI era.</p>
     <div class="hero-stats">
       <div class="stat-card"><span class="stat-num">8</span><span class="stat-label">Stages</span></div>
@@ -424,6 +427,26 @@
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> Your data strategy IS your company strategy. The founders who win in 2026 will be those who secured unique data access in 2024–25 when nobody was paying attention.</div>
           </div>
 
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — Data Collection</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">🕷️ Agentic Crawlers</div>
+                <p>Traditional data pipelines are static — fixed URLs, scheduled downloads. Agentic data collection uses browser-driving agents that navigate websites like humans: filling forms, following pagination, handling login walls, adapting to UI changes without re-engineering. GPT-4o + Playwright agents at Llama 3's data team collected 3× more diverse web content than script-based crawlers.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🎯 Active Learning Agents</div>
+                <p>Instead of scraping everything and filtering later, active learning agents identify which data would most improve model performance and selectively collect it. An agent monitors model weaknesses, generates targeted queries, finds relevant sources, and adds only the high-signal data — reducing collection cost by 60-80% while improving final model quality.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">✅ Quality Assessment Agents</div>
+                <p>Autonomous agents evaluate data quality at ingestion time: detecting near-duplicates, flagging low-quality text, identifying potential copyright issues, and scoring educational value (phi-2 "textbook quality" methodology). What previously needed human review teams now runs continuously at petabyte scale.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ Agentic data pipelines are now standard at frontier labs — the data flywheel that feeds the model is itself an agentic system, making data collection a competitive moat that compounds over time.</div>
+          </div>
+
+
 
 
           <!-- ── INVESTOR MODE ── -->
@@ -734,6 +757,26 @@
             </div>
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The best founders see tokenization not as a technical step but as a product decision. How you tokenize defines what your model can express. Own the representation layer in your domain.</div>
           </div>
+
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — Preprocessing</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">🔍 Agentic Data Auditing</div>
+                <p>Preprocessing agents sample batches, run quality metrics (perplexity, deduplication ratio, toxicity scores), identify systematic issues (encoding errors, non-native language contamination, benchmark data leakage), and generate automated reports with fix recommendations — replacing weeks of manual data curation per training run.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🔄 Synthetic Data Agents</div>
+                <p>When real data is scarce or low quality, agents generate synthetic training examples. GPT-4 generates math reasoning chains; Claude generates diverse instruction-following samples; coding agents generate test cases and solutions. Models like Phi-3 and Orca were trained substantially on GPT-4-generated synthetic data — the student surpasses the teacher.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">⚖️ Deduplication & Balancing</div>
+                <p>Minhash LSH deduplication agents identify near-duplicate documents at trillion-token scale without human review. Separate agents analyze domain distribution, detect over-represented sources (Common Crawl bias), and rebalance the dataset to Chinchilla-optimal composition — tasks that previously required months of data science work.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ The best preprocessing pipelines today are themselves LLM-powered — using smaller models to filter data for larger models, creating a recursive quality improvement loop.</div>
+          </div>
+
 
 
 
@@ -1057,6 +1100,26 @@
             </div>
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The architecture is a bet on the future. Make the bet deliberately, not by default. The founders who win make architecture choices that enable their business model, not architecture choices that look impressive in papers.</div>
           </div>
+
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — Architecture Design</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">🧬 Neural Architecture Search Agents</div>
+                <p>NAS agents explore architecture hyperparameter spaces (attention heads, layer depth, FFN ratio, activation functions) by training proxy models, evaluating them, and iteratively refining the search — automating what previously required domain experts. Google's Gemini and Apple's on-device models used NAS agents to find efficiency-optimized architectures.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🔬 Ablation Automation</div>
+                <p>Agents design and run ablation studies autonomously: vary one component, hold others constant, measure impact, log results, generate hypothesis about why performance changed, design the next experiment. What took a research team weeks of coordination now runs as an overnight automated pipeline — compressing architecture iteration cycles from months to days.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">📐 Architecture Code Generation</div>
+                <p>Coding agents (Claude Code, Copilot) now write architecture implementations from spec — translating a paper's pseudocode into production-ready PyTorch/JAX, including custom CUDA kernels for attention variants. The time to implement a novel architecture dropped from 2-4 weeks to 1-3 days for a skilled team using AI coding agents.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ Architecture design is shifting from human intuition to agent-assisted search — the best architectures in 2026 (MLA, sliding window, MoE variants) were discovered through automated exploration that no human team could run manually at the same speed.</div>
+          </div>
+
 
 
               <div class="hb-title">📦 Handoff to Next Stage</div>
@@ -1404,6 +1467,26 @@
             </div>
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The pre-training decision determines your cost structure for the next 5 years. Founders who find an efficient path to a great base model will have structural margin advantages that accumulate. Think compute ROI, not compute prestige.</div>
           </div>
+
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — Pre-training</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">🖥️ Training Run Agents</div>
+                <p>Distributed training at scale (10,000+ GPUs) requires constant monitoring — detecting GPU failures, loss spikes, gradient explosions, and dead nodes. Agentic monitoring systems watch training metrics in real-time, automatically restart failed nodes, checkpoint on anomalies, and page engineers only when human judgment is needed. Meta's OAM (Open Agent Monitoring) reduced manual intervention by 70% during LLaMA 3 training.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">⚙️ Hyperparameter Optimization</div>
+                <p>Bayesian optimization agents (Optuna, Ray Tune) run thousands of small-scale experiments to find optimal learning rate schedules, warmup periods, batch sizes, and gradient clipping thresholds — then extrapolate to full-scale training. These agents replaced the "loss curve intuition" that previously resided exclusively in senior ML engineers.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">♻️ Curriculum Learning Agents</div>
+                <p>Instead of shuffling all data uniformly, curriculum agents order training examples by difficulty — starting simple, introducing hard examples as the model matures. Dynamic curriculum agents monitor model performance on a held-out validation set and continuously adjust the data mix in real-time, converging 15-30% faster than random ordering.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ The single biggest leverage point for agentic pre-training: agents monitoring other agents monitoring GPUs. Automated infrastructure dramatically reduces the senior ML engineer hours required per training run — the bottleneck shifts from "we don't have enough engineers" to "we don't have enough compute."</div>
+          </div>
+
 
 
 
@@ -1755,6 +1838,26 @@
             </div>
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> General alignment is a solved (enough) problem at the product level. Domain-specific alignment is completely open. The founder who creates the best-aligned model for oncology, contract law, or aerospace engineering wins that entire vertical.</div>
           </div>
+
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — RLHF & Alignment</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">🤖 Automated Preference Collection</div>
+                <p>Constitutional AI (Anthropic) uses an agent to critique and revise model outputs against a written constitution — replacing thousands of human preference labels with automated self-critique. RLAIF (RL from AI Feedback) extends this: a strong model generates preference labels for a weaker model. DeepSeek R1 trained primarily on AI-generated preference data, dramatically reducing human labeler cost.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🔴 Agentic Red Teaming</div>
+                <p>Red-teaming agents systematically probe models for safety failures — generating thousands of adversarial prompts, jailbreak attempts, and harmful requests automatically. Automated red-teaming finds failure modes 10-50× faster than human red teams and runs continuously as the model evolves, catching regressions before deployment.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🏆 Process Reward Models</div>
+                <p>PRM agents evaluate not just final answers but each step of reasoning — identifying exactly where in a chain-of-thought the model went wrong. Training with PRM feedback produces models that reason more reliably and correct their own mistakes mid-generation. o1, o3, and R1 all use PRM-based training as their core alignment innovation.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ The key insight: alignment itself is becoming agentic. The model critiques itself, flags its own failures, and generates its own training signal. Human oversight shifts from "label every example" to "define the constitution and validate the automated process."</div>
+          </div>
+
 
 
                   </div>
@@ -2117,6 +2220,26 @@
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The founder who creates the canonical evaluation for their domain becomes the authority of that domain. This is a strategic asset worth more than the model itself. Publish the eval before the model — it signals intellectual leadership.</div>
           </div>
 
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — Fine-tuning</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">⚙️ Domain Adaptation Agents</div>
+                <p>Fine-tuning agents automate the full domain adaptation pipeline: scrape domain corpus, clean and deduplicate, generate Q&A pairs from documents (GPT-4 as synthetic teacher), apply LoRA fine-tuning with hyperparameter search, evaluate on domain benchmark, and iterate until quality threshold is met. What previously required 3-4 ML engineers now runs in a single agentic workflow.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🧬 Synthetic Instruction Generation</div>
+                <p>Agents generate diverse instruction-following datasets for fine-tuning: given a topic, an agent creates diverse question types (factual, analytical, creative, adversarial), generates high-quality answers, critiques them for accuracy, and filters for quality — producing training data that matches or exceeds expensive human-curated datasets for most domains.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🔁 Iterative Self-Play Fine-tuning</div>
+                <p>Models fine-tune on their own better outputs: generate responses, filter high-quality ones, fine-tune on them, repeat. Spin, SELF-INSTRUCT, and Evol-Instruct are agentic self-improvement loops. WizardCoder (competitive with GPT-4 on coding) was fine-tuned entirely on self-generated progressively harder problems — no human-written code in training data.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ The domain-specific LLM business model is under pressure precisely because fine-tuning agents make it cheap to create domain-specific models — the competitive moat shifts entirely to proprietary data, not fine-tuning expertise.</div>
+          </div>
+
+
 
                   </div>
                 </div>
@@ -2432,6 +2555,26 @@
             </div>
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The founders who win at deployment think of themselves as infrastructure companies, not AI companies. Infrastructure is boring, sticky, high-margin, and almost impossible to rip out once installed. That's the business you want to be.</div>
           </div>
+
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — Evaluation</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">🧪 Agentic Eval Frameworks</div>
+                <p>LLM-as-judge evaluation uses a frontier model to score outputs on quality, faithfulness, helpfulness, and safety — replacing expensive human evaluations for many use cases. Agents run hundreds of test cases in parallel, generate evaluation reports, identify failure patterns, and flag regressions. Braintrust, LangSmith, and Arize Phoenix automate the eval → fix → re-eval loop.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🎭 Adversarial Agent Testing</div>
+                <p>Specialized adversarial agents play the role of difficult users — asking ambiguous questions, providing contradictory context, testing edge cases, and attempting jailbreaks. These agent "testers" run continuously against production models, providing real-time safety and quality signals without human testers. DeepMind's FunSearch used agent-vs-agent evaluation to discover novel mathematical algorithms.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🌐 Real-world Task Evaluation</div>
+                <p>Benchmark contamination (models trained on test sets) makes traditional evals unreliable. Agentic evaluation uses tasks that require real tool use — WebArena agents browse real websites, SWE-bench agents fix real GitHub issues, GAIA agents solve multi-step research tasks with web access. These "living evals" cannot be memorized and reflect true capability.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ Agentic evaluation is resolving the benchmark contamination crisis — tasks that require real-world tool use cannot be gamed by memorization, giving researchers the reliable capability signal that static benchmarks lost in 2024.</div>
+          </div>
+
 
 
                     <div class="rc-exp">5+ yrs NLP/eval research</div>
@@ -2782,6 +2925,26 @@
             </div>
             <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The best AI products feel inevitable in hindsight but were non-obvious when built. The pattern: find where knowledge workers spend 30%+ of their time on a repetitive cognitive task, and make AI do that task better than any human can. That's your product.</div>
           </div>
+
+          <div class="agentmode-text hidden">
+            <div class="am-stage-pill">⚡ Agentic Lens — Deployment</div>
+            <div class="am-grid">
+              <div class="am-card">
+                <div class="am-card-title">🚀 Self-healing Infrastructure</div>
+                <p>Deployment agents monitor inference clusters in real-time: detect latency spikes, scale capacity preemptively, restart unhealthy pods, route traffic away from failing nodes, and roll back bad model versions automatically. Mean-time-to-recovery for incidents at OpenAI and Anthropic dropped 60-80% after deploying agentic ops systems versus manual alerting-and-fix workflows.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🔄 Continuous Improvement Loops</div>
+                <p>Production agents collect user feedback signals (thumbs down, corrections, regeneration requests), identify failure clusters, generate targeted fine-tuning data from failures, trigger automated fine-tuning runs, A/B test the improved model against the baseline, and promote it if metrics improve — a fully automated capability improvement loop with human oversight only at promotion gates.</p>
+              </div>
+              <div class="am-card">
+                <div class="am-card-title">🛡️ Agentic Safety Monitoring</div>
+                <p>Safety classifier agents monitor every production response for policy violations, hallucinations, and harmful content — in real-time, at millions of requests per day. These agents flag suspicious patterns, investigate anomalies, generate incident reports, and adapt classifiers as new attack patterns emerge. Traditional keyword filters are replaced by LLM-powered guardrail agents that understand context.</p>
+              </div>
+            </div>
+            <div class="am-insight">⚡ The LLM deployment stack is becoming an agentic system that manages itself — from infrastructure to safety to quality. The human role in production AI shifts from operations to strategy: setting goals, reviewing reports, and approving major changes.</div>
+          </div>
+
 
 
                 </div>
@@ -4974,6 +5137,351 @@
 <!-- ══════════════════ FRONTIER AI MODELS TIMELINE ══════════════════ -->
 
 <!-- ══════════════ WHERE THE FRONTIER IS HEADING ══════════════ -->
+<!-- ══════════════ AGENTIC MODE JOURNEY ══════════════ -->
+<section id="agentmode-journey" class="section bg-darker agentmode-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">⚡ Agentic Intelligence</div>
+      <h2>The Big Questions in Agentic AI</h2>
+      <p class="section-sub agentmode-text">Is the agentic market a durable category — or a transitory layer? Can LLMs eventually absorb their own scaffolding? How does coding recursion drive model intelligence? And what happens to domain-specific AI businesses when foundation models keep eating upward?</p>
+    </div>
+
+    <!-- ── Q1: Can LLMs learn agentic behavior? ── -->
+    <div class="am-block" id="am-selflearn">
+      <div class="am-block-header">
+        <div class="am-block-num">01</div>
+        <div>
+          <h3 class="am-block-title">Can LLMs Eventually Learn Agentic Behaviors on Their Own?</h3>
+          <p class="am-block-sub">The coding agent evidence — and what it tells us about where frontier models are heading</p>
+        </div>
+      </div>
+      <div class="am-block-body">
+        <p>The most compelling evidence that LLMs absorb agentic behaviors natively comes from <strong>coding agents</strong>. In 2022, using a model to write code required elaborate prompt engineering — you had to tell it explicitly to "think step by step," to "test the code," to "handle edge cases." By 2025, Claude 4 and GPT-4o do all of this automatically: they write the code, mentally simulate execution, identify edge cases, self-correct syntax errors, and propose test cases — without any scaffolding prompting them to do so.</p>
+        <p>This happened because <strong>coding agents generated training trajectories</strong>. Every successful Copilot completion, every Devin repair, every Claude Code fix became implicit signal that "good code generation looks like: plan → draft → review → test → refine." Models trained on billions of these trajectories internalized the agentic loop as a pattern of thought, not a rule imposed from outside.</p>
+        <div class="am-evidence-grid">
+          <div class="am-evidence-item">
+            <div class="am-ev-year">2022</div>
+            <div class="am-ev-content">Codex needed explicit "let's think step by step" prompting to write multi-file code. Chain-of-thought had to be manually elicited.</div>
+          </div>
+          <div class="am-evidence-item">
+            <div class="am-ev-year">2023</div>
+            <div class="am-ev-content">GPT-4 could plan multi-step code tasks without CoT prompting, but still needed tool scaffolding (LangChain) to use editors, terminals, or browsers.</div>
+          </div>
+          <div class="am-evidence-item">
+            <div class="am-ev-year">2024</div>
+            <div class="am-ev-content">Claude 3.5 and GPT-4o natively write, debug, and explain code in one pass. Computer Use showed models learning to use interfaces without explicit tool schemas.</div>
+          </div>
+          <div class="am-evidence-item">
+            <div class="am-ev-year">2025</div>
+            <div class="am-ev-content">Claude 4 + o3 run multi-hour autonomous software engineering sessions — planning, coding, testing, debugging, and committing with minimal scaffolding. The agent IS the model.</div>
+          </div>
+        </div>
+        <div class="am-verdict">
+          <div class="am-verdict-icon">🎯</div>
+          <div><strong>The verdict:</strong> Yes — and it's already happening. LLMs are absorbing agentic behaviors that previously required external frameworks. The trajectory is clear: by 2027-2028, most "agentic" behavior will be native model capability, not scaffolded behavior. The scaffolding layer shrinks as model capability grows.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Q2: Coding Recursion Flywheel ── -->
+    <div class="am-block" id="am-recursion">
+      <div class="am-block-header">
+        <div class="am-block-num">02</div>
+        <div>
+          <h3 class="am-block-title">The Coding Recursion Flywheel — How Code Makes Models Smarter</h3>
+          <p class="am-block-sub">The most powerful feedback loop in AI: models writing code that trains better models</p>
+        </div>
+      </div>
+      <div class="am-block-body">
+        <p>Code is a uniquely powerful training modality for language models, for one reason: <strong>code has verifiable ground truth</strong>. A test suite either passes or fails. A function either produces the correct output or it doesn't. This grounding allows models to receive objective feedback on their reasoning — unlike natural language, where "correctness" is often subjective.</p>
+        <div class="am-flywheel">
+          <div class="am-fw-step am-fw-1">
+            <div class="am-fw-num">1</div>
+            <div class="am-fw-text"><strong>Models trained on code</strong> develop structured reasoning abilities that transfer to natural language — better at following instructions, multi-step planning, logical deduction</div>
+          </div>
+          <div class="am-fw-arrow">↓</div>
+          <div class="am-fw-step am-fw-2">
+            <div class="am-fw-num">2</div>
+            <div class="am-fw-text"><strong>Better models write better code</strong> — generating more correct, well-structured, well-documented programs that become new training data</div>
+          </div>
+          <div class="am-fw-arrow">↓</div>
+          <div class="am-fw-step am-fw-3">
+            <div class="am-fw-num">3</div>
+            <div class="am-fw-text"><strong>Executable verification</strong> — code outputs are run through test suites; only passing solutions are kept as training data. Models learn from verified-correct reasoning chains, not just plausible-looking ones</div>
+          </div>
+          <div class="am-fw-arrow">↓</div>
+          <div class="am-fw-step am-fw-4">
+            <div class="am-fw-num">4</div>
+            <div class="am-fw-text"><strong>Scaling inference-time compute</strong> on code tasks (generate N solutions, run tests, keep the best) produces reliable improvement — unlike most language tasks, where "correctness" can't be automatically verified</div>
+          </div>
+          <div class="am-fw-arrow">↓ (loop)</div>
+        </div>
+        <div class="am-insight-box">
+          <p><strong>AlphaCode 2</strong> demonstrated this at scale: generate 1 million code solutions per problem, execute all of them, train on the successful traces. The resulting model solved competition programming problems at expert human level. The same recursive loop now powers o1, o3, and DeepSeek R1's math and science reasoning — code execution as a <em>reasoning verifier</em> is the key to reliable inference-time scaling.</p>
+          <p><strong>The deeper implication:</strong> code is teaching models to think rigorously. Every generation of frontier models trains on more AI-generated code, verified by tests, creating a recursive improvement spiral. Models that write better code generate better training data that produces models that write even better code. This is one of the few self-improving loops in AI that has demonstrably worked at scale.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Q3: Domain-specific agents ── -->
+    <div class="am-block" id="am-domain">
+      <div class="am-block-header">
+        <div class="am-block-num">03</div>
+        <div>
+          <h3 class="am-block-title">Domain-Specific LLM Agents — How Agentic Behavior Helps and What's at Stake</h3>
+          <p class="am-block-sub">The playbook for building durable domain agents in a world where foundation models keep improving</p>
+        </div>
+      </div>
+      <div class="am-block-body">
+        <p>Agentic behavior dramatically amplifies the value of domain-specific LLMs. A domain model that <em>only generates text</em> about radiology is limited. A domain agent that can <em>retrieve patient records, query DICOM viewers, cross-reference literature, flag anomalies, and draft reports</em> is a genuinely transformative product. The agent architecture turns a narrow model into a complete domain workflow.</p>
+        <div class="am-domain-grid">
+          <div class="am-domain-card">
+            <div class="am-dc-domain">⚕️ Medical</div>
+            <div class="am-dc-model">Med-PaLM 2 + Agent</div>
+            <p>Fine-tuned on clinical notes + USMLE. Agent layer: EHR access, DICOM viewer, drug interaction database, evidence retrieval. The agent turns a knowledgeable model into a clinical workflow assistant.</p>
+            <div class="am-dc-moat">Moat: HIPAA-compliant deployment, EHR integrations, liability frameworks, physician trust</div>
+          </div>
+          <div class="am-domain-card">
+            <div class="am-dc-domain">⚖️ Legal</div>
+            <div class="am-dc-model">Harvey AI + Agent</div>
+            <p>Fine-tuned on case law + contracts. Agent layer: Westlaw/LexisNexis access, contract comparison, clause library, court filing systems. Reduces due diligence from weeks to hours.</p>
+            <div class="am-dc-moat">Moat: Law firm partnerships, proprietary precedent databases, bar compliance frameworks</div>
+          </div>
+          <div class="am-domain-card">
+            <div class="am-dc-domain">💹 Finance</div>
+            <div class="am-dc-model">BloombergGPT + Agent</div>
+            <p>Fine-tuned on financial documents + market data. Agent layer: real-time Bloomberg terminal access, SEC filings, earnings call transcripts, portfolio management systems.</p>
+            <div class="am-dc-moat">Moat: Bloomberg data exclusivity, financial regulation compliance, risk management frameworks</div>
+          </div>
+          <div class="am-domain-card">
+            <div class="am-dc-domain">🔬 Science</div>
+            <div class="am-dc-model">Galactica + Agent</div>
+            <p>Fine-tuned on scientific literature. Agent layer: PubMed retrieval, protein structure databases, lab instrument APIs, hypothesis generation + experimental design loops.</p>
+            <div class="am-dc-moat">Moat: Instrument integrations, proprietary experimental data, scientific validation pipelines</div>
+          </div>
+        </div>
+        <div class="am-verdict">
+          <div class="am-verdict-icon">🔑</div>
+          <div><strong>The key insight:</strong> domain agents derive their value not from the model alone but from <strong>tool integrations + proprietary data + compliance frameworks + trust</strong>. These components are hard to replicate and don't become obsolete when foundation models improve — they become more valuable, because a better foundation model makes the agent even more capable.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Q4: LLM consuming the stack ── -->
+    <div class="am-block" id="am-stackconsumption">
+      <div class="am-block-header">
+        <div class="am-block-num">04</div>
+        <div>
+          <h3 class="am-block-title">LLMs Consuming the Stack — What Gets Absorbed and What Survives</h3>
+          <p class="am-block-sub">The disruption pattern: foundation models expand upward, making layers below them obsolete</p>
+        </div>
+      </div>
+      <div class="am-block-body">
+        <p>There is a consistent disruption pattern in AI: <strong>foundation models absorb functionality that previously required separate tools</strong>. As models improve, capabilities that once lived in specialized products get absorbed natively. This process has already happened repeatedly:</p>
+        <div class="am-stack-table">
+          <div class="am-st-header"><span>Previously Required</span><span>Absorbed By</span><span>When</span><span>Survivors</span></div>
+          <div class="am-st-row"><span>Prompt engineering consultants</span><span>Better instruction-following models</span><span>2024</span><span>Complex system prompt architects</span></div>
+          <div class="am-st-row"><span>Sentiment analysis APIs (AWS Comprehend)</span><span>GPT-3.5 zero-shot classification</span><span>2023</span><span>High-volume, low-latency sentiment products</span></div>
+          <div class="am-st-row"><span>Translation APIs (DeepL, Google Translate)</span><span>GPT-4 multilingual capability</span><span>2023</span><span>Specialized document translation + glossaries</span></div>
+          <div class="am-st-row"><span>Text summarization SaaS</span><span>Base model capability</span><span>2023</span><span>Domain-specific summarization with compliance</span></div>
+          <div class="am-st-row"><span>Basic RAG pipelines (LangChain retrieval)</span><span>Native long-context (Gemini 1.5 1M)</span><span>2024</span><span>Agentic RAG with complex routing logic</span></div>
+          <div class="am-st-row"><span>Simple agent orchestration (LangChain agents)</span><span>Native tool use in frontier models</span><span>2024-25</span><span>Complex state machines, multi-agent systems</span></div>
+          <div class="am-st-row am-st-future"><span>Basic customer support bots</span><span>GPT-4o / Claude 4 direct deployment</span><span>2025-26</span><span>Highly regulated/specialized industry agents</span></div>
+          <div class="am-st-row am-st-future"><span>Simple code review tools</span><span>Coding agents in IDE (Claude Code)</span><span>2025-26</span><span>Security-focused, compliance-aware code review</span></div>
+        </div>
+        <div class="am-survival-framework">
+          <div class="am-sf-title">🛡️ The Survival Framework: What Doesn't Get Absorbed</div>
+          <div class="am-sf-grid">
+            <div class="am-sf-item am-sf-safe">
+              <div class="am-sf-icon">🔒</div>
+              <div class="am-sf-name">Proprietary Data Access</div>
+              <p>Tools that connect to data sources no LLM has — internal databases, proprietary feeds, institution-specific systems. A model can't replace a tool that gives it access to data it doesn't have.</p>
+            </div>
+            <div class="am-sf-item am-sf-safe">
+              <div class="am-sf-icon">⚖️</div>
+              <div class="am-sf-name">Regulatory Compliance</div>
+              <p>HIPAA, SOC2, FedRAMP, GDPR compliance is not a model capability — it's a legal and architectural property. Regulated industries need certified deployments, not better base models.</p>
+            </div>
+            <div class="am-sf-item am-sf-safe">
+              <div class="am-sf-icon">🔗</div>
+              <div class="am-sf-name">Deep System Integrations</div>
+              <p>EHR integrations, banking core system connectors, manufacturing MES integrations took years to build. LLM capability improvements don't replace these integration layers.</p>
+            </div>
+            <div class="am-sf-item am-sf-risk">
+              <div class="am-sf-icon">⚠️</div>
+              <div class="am-sf-name">Simple Wrappers</div>
+              <p>Products that are essentially "LLM + prompt + UI" with no proprietary data, integrations, or compliance moat. These face direct absorption as frontier model capability advances.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Q5: Is the agentic market transitionary? ── -->
+    <div class="am-block" id="am-transitionary">
+      <div class="am-block-header">
+        <div class="am-block-num">05</div>
+        <div>
+          <h3 class="am-block-title">Is the Agentic Market Transitionary? The Honest Analysis</h3>
+          <p class="am-block-sub">The most important strategic question for anyone building in the agentic AI space</p>
+        </div>
+      </div>
+      <div class="am-block-body">
+        <p>The agentic AI market is <strong>partially transitionary and partially durable</strong>. The key is understanding which layer you're building in.</p>
+        <div class="am-layers">
+          <div class="am-layer am-layer-danger">
+            <div class="am-layer-label">⚠️ HIGH RISK — Likely Absorbed</div>
+            <div class="am-layer-name">Generic Agent Orchestration</div>
+            <p>LangChain-style wrappers that handle prompt formatting, tool calling, and basic memory. As models natively understand tool use and as MCP standardizes tool schemas, the orchestration layer becomes thinner and eventually unnecessary for simple agents. Already happening: GPT-4o and Claude 4 use tools without LangChain in most production deployments.</p>
+          </div>
+          <div class="am-layer am-layer-caution">
+            <div class="am-layer-label">🟡 MEDIUM RISK — Partially Absorbed</div>
+            <div class="am-layer-name">Single-Domain Vertical Agents</div>
+            <p>A "legal contract review" agent built on GPT-4 faces risk from GPT-5's improved legal reasoning. However, the risk is absorbed if the agent has deep document storage, law firm integrations, and compliance infrastructure — those persist. The model-agnostic wrapper part gets absorbed; the integration moat survives.</p>
+          </div>
+          <div class="am-layer am-layer-safe">
+            <div class="am-layer-label">✅ LOW RISK — Durable</div>
+            <div class="am-layer-name">Agent Infrastructure & Observability</div>
+            <p>LangSmith, Weights & Biases, Arize Phoenix — tools for tracing, debugging, evaluating, and monitoring agent systems. These become <em>more</em> valuable as agents grow more complex. You need observability regardless of which foundation model is under the hood.</p>
+          </div>
+          <div class="am-layer am-layer-safe">
+            <div class="am-layer-label">✅ LOW RISK — Durable</div>
+            <div class="am-layer-name">Multi-Agent Orchestration at Scale</div>
+            <p>Coordinating 100 specialized agents working in parallel on an enterprise process — with state management, error recovery, human checkpoints, and audit logs — is not a model capability. It's systems engineering. LangGraph, CrewAI, and custom orchestration systems address this layer, which grows more complex as agents grow more capable.</p>
+          </div>
+          <div class="am-layer am-layer-safe">
+            <div class="am-layer-label">✅ LOW RISK — Durable</div>
+            <div class="am-layer-name">Enterprise Agentic Applications</div>
+            <p>Salesforce Agentforce, ServiceNow AI, Workday AI Agents — these are platform plays with existing enterprise contracts, data, and trust. The LLM inside improves over time; the platform moat deepens. A better foundation model makes Agentforce more capable, not obsolete.</p>
+          </div>
+        </div>
+        <div class="am-verdict">
+          <div class="am-verdict-icon">⚖️</div>
+          <div><strong>The strategic conclusion:</strong> Build in the layers that get <em>more valuable</em> as foundation models improve, not less. The right question isn't "will LLMs absorb this?" — it's "if LLMs absorb the model layer, does the rest of what I've built become more valuable or less valuable?"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Q6: Framework survival ── -->
+    <div class="am-block" id="am-frameworks">
+      <div class="am-block-header">
+        <div class="am-block-num">06</div>
+        <div>
+          <h3 class="am-block-title">Will Agentic Frameworks Survive — or Become Obsolete?</h3>
+          <p class="am-block-sub">LangGraph, AutoGen, CrewAI, and MCP: who thrives as models get natively agentic?</p>
+        </div>
+      </div>
+      <div class="am-block-body">
+        <div class="am-fw-survival-grid">
+          <div class="am-fws-card am-fws-thrives">
+            <div class="am-fws-verdict">✅ Thrives</div>
+            <div class="am-fws-name">LangGraph</div>
+            <p>State machine orchestration, multi-agent graphs, and human-in-the-loop checkpoints address inherent complexity in enterprise agent workflows — not model limitations. As models improve, LangGraph graphs become <em>simpler to write</em> but more valuable to have. Complexity of real-world processes (not model weakness) is the driver.</p>
+          </div>
+          <div class="am-fws-card am-fws-thrives">
+            <div class="am-fws-verdict">✅ Thrives</div>
+            <div class="am-fws-name">MCP (Protocol)</div>
+            <p>MCP becomes more valuable as more models and frameworks adopt it. It's a protocol — protocols win by ubiquity, not by competing with model capability. USB-C didn't get absorbed by better laptops; it became the standard connector. MCP is on the same trajectory.</p>
+          </div>
+          <div class="am-fws-card am-fws-evolves">
+            <div class="am-fws-verdict">🔄 Evolves</div>
+            <div class="am-fws-name">LangChain</div>
+            <p>The generic chain and agent abstractions are under pressure. But LangSmith (observability) and the ecosystem of 500+ integrations create durable value. LangChain is pivoting from "make LLMs work" to "manage AI systems in production" — the right strategic direction.</p>
+          </div>
+          <div class="am-fws-card am-fws-evolves">
+            <div class="am-fws-verdict">🔄 Evolves</div>
+            <div class="am-fws-name">AutoGen / Semantic Kernel</div>
+            <p>Microsoft's frameworks benefit from Azure and Office 365 integration moats. Standalone AutoGen faces pressure as GPT-5 natively handles multi-agent conversations. The enterprise distribution (through Microsoft 365 Copilot) is the durable asset, not the framework itself.</p>
+          </div>
+          <div class="am-fws-card am-fws-risk">
+            <div class="am-fws-verdict">⚠️ At Risk</div>
+            <div class="am-fws-name">Simple Agent Wrappers</div>
+            <p>Dozens of "build an agent in 5 minutes" frameworks that add a thin layer over OpenAI function calling. As models natively handle tool use and MCP standardizes tool schemas, these provide decreasing marginal value. The market consolidates to a few winners with deep enterprise integrations.</p>
+          </div>
+          <div class="am-fws-card am-fws-thrives">
+            <div class="am-fws-verdict">✅ Thrives</div>
+            <div class="am-fws-name">Evaluation Platforms</div>
+            <p>Braintrust, Arize, LangSmith — agent evaluation grows more important as agents become more autonomous and decisions become higher-stakes. These platforms are model-agnostic, framework-agnostic, and become more valuable as the risk surface of autonomous AI grows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Q7: Business model survival ── -->
+    <div class="am-block" id="am-bizmodel">
+      <div class="am-block-header">
+        <div class="am-block-num">07</div>
+        <div>
+          <h3 class="am-block-title">How Domain-Specific LLM Businesses Survive in an Upward-Consuming Market</h3>
+          <p class="am-block-sub">The strategic playbook for building defensible AI businesses when foundation models keep getting better</p>
+        </div>
+      </div>
+      <div class="am-block-body">
+        <div class="am-biz-strategies">
+          <div class="am-biz-item">
+            <div class="am-biz-num">Strategy 1</div>
+            <div class="am-biz-name">🏃 Run Faster Than the Absorption</div>
+            <p>Don't try to stay ahead of what models can do natively — instead, run faster at the frontier of what they <em>can't yet</em> do. Today that's complex multi-step domain workflows. By the time GPT-5 absorbs your current product, you've built the GPT-5-powered version that does something GPT-6 doesn't yet do. This is Harvey AI's strategy — constant product evolution.</p>
+          </div>
+          <div class="am-biz-item">
+            <div class="am-biz-num">Strategy 2</div>
+            <div class="am-biz-name">🔒 Own the Proprietary Data Layer</div>
+            <p>Build systems that accumulate proprietary data over time — customer contracts, clinical notes, financial transactions, internal emails. This data trains fine-tuned models that outperform general models on your domain. The longer you operate, the more data you accumulate, and the more valuable your domain model becomes — regardless of how good the base model gets.</p>
+          </div>
+          <div class="am-biz-item">
+            <div class="am-biz-num">Strategy 3</div>
+            <div class="am-biz-name">🔗 Become the Integration Layer</div>
+            <p>Deep integrations with industry systems (EHR, trading platforms, legal databases) take years to build and are not replicated by foundation model improvements. The foundation model inside your product improves over time; the integrations that make it useful stay moated. Epic, Cerner, Bloomberg — integration moats outlast model capability moats by a decade.</p>
+          </div>
+          <div class="am-biz-item">
+            <div class="am-biz-num">Strategy 4</div>
+            <div class="am-biz-name">⚖️ Build the Compliance Infrastructure</div>
+            <p>HIPAA BAAs, SOC2 Type II, FedRAMP, financial regulatory compliance — these take 12-24 months to achieve and are prerequisites for selling to regulated industries. A hospital cannot use ChatGPT; it can use a HIPAA-certified domain agent. The compliance layer is a structural barrier that survives model improvements.</p>
+          </div>
+          <div class="am-biz-item">
+            <div class="am-biz-num">Strategy 5</div>
+            <div class="am-biz-name">🤝 Become Model-Agnostic Infrastructure</div>
+            <p>If you serve multiple foundation models, you can't be disrupted by any single one improving. Tools like Weights & Biases, Helicone, and Braintrust work with every model — they benefit from the entire AI ecosystem growing without depending on any single lab's success.</p>
+          </div>
+        </div>
+        <div class="am-biz-warning">
+          <div class="am-bw-icon">💀</div>
+          <div><strong>The business model that doesn't survive:</strong> "We fine-tuned GPT-3.5 on [domain] data, wrapped it in a nice UI, and charge $99/month." This gets absorbed in 12-18 months when the base model improves, the fine-tuning becomes trivial, or a competitor launches on GPT-4 with the same approach. No proprietary data, no integration moat, no compliance advantage — no durable business.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Future of Agentic AI in LLM Development ── -->
+    <div class="am-outlook">
+      <div class="am-outlook-title">🔮 The Future: Where Agentic AI and LLM Development Converge</div>
+      <div class="am-outlook-grid">
+        <div class="am-outlook-card">
+          <div class="am-ok-icon">🧬</div>
+          <div class="am-ok-title">Self-Improving LLM Pipelines</div>
+          <p>The entire LLM development pipeline becomes agentic: agents collect data, agents design experiments, agents run training, agents evaluate results, agents generate the next training data. Human researchers set goals and review milestones — the rest is autonomous. This is not science fiction; it's the trajectory of current frontier lab workflows.</p>
+        </div>
+        <div class="am-outlook-card">
+          <div class="am-ok-icon">🔄</div>
+          <div class="am-ok-title">Model-Writes-Model Recursion</div>
+          <p>Models that write code can write model training code. Models that debug code can debug training pipelines. As models become sufficiently capable software engineers, they begin contributing to their own development — a recursive improvement loop with potentially compounding returns on capability.</p>
+        </div>
+        <div class="am-outlook-card">
+          <div class="am-ok-icon">🌐</div>
+          <div class="am-ok-title">The Agent Economy</div>
+          <p>Agentic AI isn't just a feature — it's a new economic paradigm. AI agents will buy services from other AI agents, pay in API credits, negotiate contracts, manage subagents, and report to human supervisors. The "company" of the future may have 10 humans managing 10,000 AI agents — and the entire infrastructure for this economy is being built right now.</p>
+        </div>
+        <div class="am-outlook-card">
+          <div class="am-ok-icon">⚡</div>
+          <div class="am-ok-title">Intelligence as Infrastructure</div>
+          <p>As agentic AI matures, intelligence becomes infrastructure — as invisible and ubiquitous as cloud compute or the internet. Agentic behaviors won't be "features" of specific products; they'll be capabilities embedded in every software system. The winners will be those who built the reliable, trustworthy, observable agentic infrastructure before it became commoditized.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END AGENTIC MODE JOURNEY -->
+
 <section id="future-frontier" class="ff-section hidden">
   <div class="container">
 

@@ -13,6 +13,7 @@ const MODE_LABELS = {
   startup:    'Startup Mode',
   investor:   "Investor's Perspective",
   founder:    "Founder's Perspective",
+  agentmode:  'Agentic AI Mode',
 };
 
 function setMode(mode) {
@@ -33,6 +34,7 @@ function setMode(mode) {
         startup:    'linear-gradient(135deg,#f97316,#ec4899)',
         investor:   'linear-gradient(135deg,#16a34a,#0891b2)',
         founder:    'linear-gradient(135deg,#d97706,#7c3aed)',
+        agentmode:  'linear-gradient(135deg,#06b6d4,#6366f1)',
       };
       lbl.style.backgroundImage = gradients[mode] || gradients.layman;
       lbl.style.webkitBackgroundClip = 'text';
@@ -47,13 +49,14 @@ function setMode(mode) {
   const btnTeam     = document.getElementById('btnTeam');
   const btnStartup  = document.getElementById('btnStartup');
   const btnInvestor = document.getElementById('btnInvestor');
-  const btnFounder  = document.getElementById('btnFounder');
+  const btnFounder   = document.getElementById('btnFounder');
+  const btnAgentMode = document.getElementById('btnAgentMode');
 
   // Reset all buttons
-  [btnLayman, btnGrad, btnResearch, btnTeam, btnStartup, btnInvestor, btnFounder].forEach(b => b && b.classList.remove('active'));
+  [btnLayman, btnGrad, btnResearch, btnTeam, btnStartup, btnInvestor, btnFounder, btnAgentMode].forEach(b => b && b.classList.remove('active'));
 
   // Hide ALL mode content
-  document.querySelectorAll('.layman-text, .grad-text, .researcher-text, .team-text, .startup-text, .investor-text, .founder-text')
+  document.querySelectorAll('.layman-text, .grad-text, .researcher-text, .team-text, .startup-text, .investor-text, .founder-text, .agentmode-text')
     .forEach(el => el.classList.add('hidden'));
 
   // Hide special sections
@@ -61,22 +64,26 @@ function setMode(mode) {
   const teamSection     = document.getElementById('team-coordination');
   const startupSection  = document.getElementById('startup-journey');
   const investorSection = document.getElementById('investor-journey');
-  const founderSection  = document.getElementById('founder-journey');
-  const navTeam         = document.getElementById('navTeam');
-  const navResearch     = document.getElementById('navResearch');
-  const navStartup      = document.getElementById('navStartup');
-  const navInvestor     = document.getElementById('navInvestor');
-  const navFounder      = document.getElementById('navFounder');
-  if (resSection)      resSection.classList.add('hidden');
-  if (teamSection)     teamSection.classList.add('hidden');
-  if (startupSection)  startupSection.classList.add('hidden');
-  if (investorSection) investorSection.classList.add('hidden');
-  if (founderSection)  founderSection.classList.add('hidden');
-  if (navTeam)         navTeam.classList.add('hidden');
-  if (navResearch)     navResearch.classList.add('hidden');
-  if (navStartup)      navStartup.classList.add('hidden');
-  if (navInvestor)     navInvestor.classList.add('hidden');
-  if (navFounder)      navFounder.classList.add('hidden');
+  const founderSection   = document.getElementById('founder-journey');
+  const agentmodeSection = document.getElementById('agentmode-journey');
+  const navTeam          = document.getElementById('navTeam');
+  const navResearch      = document.getElementById('navResearch');
+  const navStartup       = document.getElementById('navStartup');
+  const navInvestor      = document.getElementById('navInvestor');
+  const navFounder       = document.getElementById('navFounder');
+  const navAgentMode     = document.getElementById('navAgentMode');
+  if (resSection)       resSection.classList.add('hidden');
+  if (teamSection)      teamSection.classList.add('hidden');
+  if (startupSection)   startupSection.classList.add('hidden');
+  if (investorSection)  investorSection.classList.add('hidden');
+  if (founderSection)   founderSection.classList.add('hidden');
+  if (agentmodeSection) agentmodeSection.classList.add('hidden');
+  if (navTeam)          navTeam.classList.add('hidden');
+  if (navResearch)      navResearch.classList.add('hidden');
+  if (navStartup)       navStartup.classList.add('hidden');
+  if (navInvestor)      navInvestor.classList.add('hidden');
+  if (navFounder)       navFounder.classList.add('hidden');
+  if (navAgentMode)     navAgentMode.classList.add('hidden');
 
   if (mode === 'layman') {
     btnLayman.classList.add('active');
@@ -138,6 +145,12 @@ function setMode(mode) {
     document.querySelectorAll('.founder-text').forEach(el => el.classList.remove('hidden'));
     if (founderSection) founderSection.classList.remove('hidden');
     if (navFounder)     navFounder.classList.remove('hidden');
+
+  } else if (mode === 'agentmode') {
+    btnAgentMode.classList.add('active');
+    document.querySelectorAll('.agentmode-text').forEach(el => el.classList.remove('hidden'));
+    if (agentmodeSection) agentmodeSection.classList.remove('hidden');
+    if (navAgentMode)     navAgentMode.classList.remove('hidden');
   }
 
   // Persist
