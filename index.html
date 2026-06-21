@@ -20,12 +20,14 @@
       <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
       <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
       <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
+      <button class="mode-btn" id="btnInvestor" onclick="setMode('investor')">💰 Investor</button>
     </div>
     <div class="nav-links">
       <a href="#stages">Stages</a>
       <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
       <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
       <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
+      <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
     </div>
   </nav>
 
@@ -39,6 +41,7 @@
     <p class="hero-sub researcher-text hidden">A research-oriented map of the LLM landscape — foundational papers, open problems, current frontiers, and the directions shaping the next generation of language models.</p>
     <p class="hero-sub team-text hidden">A team-first view of building an LLM — who you need at every stage, what they do, how they coordinate, and how the whole organisation moves together to ship a frontier model.</p>
     <p class="hero-sub startup-text hidden">The founder's playbook — how to incorporate, raise money, decide what to build, make your first hires, set up infrastructure, go to market, and turn a research project into a revenue-generating AI company.</p>
+    <p class="hero-sub investor-text hidden">The investor's lens — startup financials, valuation frameworks, funding mechanics, cap tables, burn discipline, the path to IPO, and hard-won lessons from AI founders who've raised billions.</p>
     <div class="hero-stats">
       <div class="stat-card"><span class="stat-num">8</span><span class="stat-label">Stages</span></div>
       <div class="stat-card"><span class="stat-num">2–5</span><span class="stat-label">Years</span></div>
@@ -321,6 +324,103 @@
             </div>
           </div>
 
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Data Collection</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 Cost Structure</h5>
+                <ul>
+                  <li>DIY web crawler team + infra: <strong>$200K–$800K</strong></li>
+                  <li>Licensing curated corpus: <strong>$10K–$500K/yr</strong></li>
+                  <li>Synthetic data (API costs): <strong>$5K–$100K</strong></li>
+                  <li>Human annotation labor: <strong>$50K–$2M</strong></li>
+                  <li>Storage &amp; compute for preprocessing: <strong>$20K–$200K</strong></li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>🏰 What Makes a Data Moat</h5>
+                <ul>
+                  <li>Proprietary real-world data (clinical records, legal docs, code repos)</li>
+                  <li>Exclusive licensing agreements with data owners</li>
+                  <li>Continuously updated live data pipelines</li>
+                  <li>Domain-specific annotation by subject matter experts</li>
+                  <li>Data flywheels: user interactions improve the model which attracts more users</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-red">
+                <h5>🚩 Investor Red Flags</h5>
+                <ul>
+                  <li>Unlicensed scraping of copyrighted content (NYT lawsuit risk)</li>
+                  <li>No data provenance or lineage tracking</li>
+                  <li>100% dependency on one data supplier</li>
+                  <li>PII in training data without consent mechanisms</li>
+                  <li>No data audit trail for regulatory compliance</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>🔍 Due Diligence Questions</h5>
+                <ul>
+                  <li>What licenses cover your training data?</li>
+                  <li>Can a competitor replicate your dataset in 12 months?</li>
+                  <li>What's your cost per million clean tokens?</li>
+                  <li>How do you handle data that goes stale?</li>
+                  <li>What's your GDPR/CCPA compliance posture?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Data is the highest-leverage asset in AI. A company with 10x better data and 1x the model will beat a company with 1x data and 10x the model. Prioritize data defensibility over model novelty at early stages.</div>
+          </div>
+
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Data Collection</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>CapEx Reality</h5>
+                <ul>
+                  <li>Total data stage cost: <strong>$200K–$2M</strong> depending on proprietary vs open-source mix</li>
+                  <li>DIY web crawl: $500K–$2M (team + storage + bandwidth)</li>
+                  <li>Open-source only path: $50K–$200K (engineering time, cloud storage)</li>
+                  <li>Domain-specific licensing (medical, legal, financial): $100K–$1M/year</li>
+                  <li>Key metric investors track: <strong>tokens per dollar</strong> — efficiency of data acquisition</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Data Moat Assessment</h5>
+                <ul>
+                  <li>Proprietary data = durable competitive advantage — hardest thing for competitors to replicate</li>
+                  <li>Exclusive data licensing agreements: how long? Renewal terms? Exclusivity clauses?</li>
+                  <li>Synthetic data: can LLMs generate training data indefinitely? Quality ceiling unknown</li>
+                  <li>Data partnerships (e.g., Reddit–OpenAI $60M/yr deal) are increasingly valuable IP</li>
+                  <li>Ask: will this data still be differentiating in 3 years, or will it commoditize?</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Red Flags for Investors</h5>
+                <ul>
+                  <li>Unlicensed scraping with no legal review — one NYT-style lawsuit can kill the company</li>
+                  <li>No data provenance documentation — impossible to defend in court or due diligence</li>
+                  <li>100% reliance on Common Crawl — no proprietary data = no defensible moat</li>
+                  <li>PII in training data — GDPR/CCPA liability; EU AI Act compliance issues</li>
+                  <li>Single-source dependency — if that source changes terms, training pipeline breaks</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Due Diligence Questions</h5>
+                <ul>
+                  <li>How defensible is your data? Can a competitor replicate it in 12 months?</li>
+                  <li>What is your long-term data licensing cost trajectory?</li>
+                  <li>Do you have a data governance framework and legal sign-off?</li>
+                  <li>What percentage of training data is proprietary vs public?</li>
+                  <li>What's your data refresh strategy as knowledge cutoffs become competitive?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> The best AI companies own data others can't access. A proprietary data moat compounds over time — every new customer interaction feeds the training loop, widening the gap from competitors who rely on static public datasets.</div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -519,6 +619,82 @@
                 <div class="su-tip">💡 <strong>Founder tip:</strong> Spending engineering time here is opportunity cost from pre-training. Adopt and adapt — validate your choice with fertility stats in a day, then move on.</div>
               </div>
             </div>
+          </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Tokenization</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 Cost &amp; Investment Reality</h5>
+                <ul>
+                  <li>One-time engineering cost: <strong>$5K–$50K</strong></li>
+                  <li>Usually 1–2 senior engineers for 2–4 weeks</li>
+                  <li>Lowest CapEx stage in the entire pipeline</li>
+                  <li>Open-source tokenizers (tiktoken, SentencePiece) = near-zero cost</li>
+                  <li>Custom tokenizer: only justified for niche language domains</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>💎 Underestimated Value Driver</h5>
+                <ul>
+                  <li>Tokenizer quality directly impacts model efficiency and quality</li>
+                  <li>Multilingual tokenizer coverage = bigger addressable market (TAM)</li>
+                  <li>Code-optimized tokenizers unlock developer market ($50B+ TAM)</li>
+                  <li>Better tokenization = shorter sequences = lower inference cost = better margins</li>
+                  <li>Tokenizer IP can be separately licensed in enterprise deals</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>🔍 Investor Signals to Watch</h5>
+                <ul>
+                  <li>Does the company measure and optimize fertility rate?</li>
+                  <li>Do they benchmark tokenization speed at inference scale?</li>
+                  <li>Have they thought about tokenizer upgrades without breaking existing APIs?</li>
+                  <li>Is tokenizer versioning part of their model governance?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Tokenization is low-cost but high-impact. A 10% improvement in tokenizer efficiency at 1B tokens/day of inference translates to millions in annual compute savings. Ask founders if they've measured this.</div>
+          </div>
+
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Tokenization</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>Cost Profile</h5>
+                <ul>
+                  <li>Total tokenization spend: typically <strong>$5K–$50K</strong> — the cheapest stage</li>
+                  <li>Reusing open-source tokenizers: near-zero cost beyond 1–2 weeks of engineering</li>
+                  <li>Custom domain tokenizer (medical codes, genomics): $10K–$50K in compute + time</li>
+                  <li>Corpus tokenization at 15T tokens: ~$5K–$30K in cloud compute</li>
+                  <li>Often overlooked in due diligence — but decisions here lock in for years</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>TAM Implications</h5>
+                <ul>
+                  <li>Multilingual tokenizer coverage = access to non-English markets = bigger TAM</li>
+                  <li>Poor CJK/Arabic tokenization: 3–5× more tokens per character → 3–5× higher inference cost for those users</li>
+                  <li>Tokenizer fertility directly affects cost per query in non-Latin scripts</li>
+                  <li>European AI regulation (EU AI Act) increasingly scrutinizes multilingual fairness</li>
+                  <li>Ask: does the tokenizer support the company's international expansion roadmap?</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Quality Signal</h5>
+                <ul>
+                  <li>Tokenizer quality silently affects every downstream capability and revenue metric</li>
+                  <li>Poor number tokenization → poor arithmetic → reduced enterprise use cases</li>
+                  <li>Sub-optimal vocabulary size → longer sequences → higher inference cost → lower margins</li>
+                  <li>Red flag: team that hasn't measured "fertility" metrics across target domains</li>
+                  <li>Green flag: team that A/B tested 3+ tokenizer configs and can explain the choice</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Tokenizer decisions made in week two of a startup are still costing (or saving) money three years later on every inference request. A 20% improvement in tokenization efficiency compounds across billions of API calls — it's one of the highest-leverage, lowest-cost decisions in the entire stack.</div>
           </div>
 
         </div>
@@ -721,6 +897,54 @@
               </div>
             </div>
             <div class="handoff-box">
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Model Architecture</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 R&amp;D Burn Rate</h5>
+                <ul>
+                  <li>Research team salaries: <strong>$1M–$5M/yr</strong> (5–10 PhDs)</li>
+                  <li>Ablation experiments (small compute): <strong>$100K–$500K</strong></li>
+                  <li>Architecture search &amp; prototyping: <strong>$200K–$1M</strong></li>
+                  <li>No product revenue during this phase — pure R&amp;D burn</li>
+                  <li>Investors fund this as a bet on the team's technical taste</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>🏆 IP &amp; Competitive Moat</h5>
+                <ul>
+                  <li>Novel architecture = patentable (e.g., Mixture of Experts, Flash Attention)</li>
+                  <li>Efficiency gains → lower inference cost → higher gross margin</li>
+                  <li>Architecture choices compound: hard to change after pre-training</li>
+                  <li>SSMs (Mamba), sparse attention, sub-quadratic methods = cost moats</li>
+                  <li>Published architecture papers attract top researcher talent</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-red">
+                <h5>🚩 Risk Flags</h5>
+                <ul>
+                  <li>Team stuck in research mode — won't ship a product</li>
+                  <li>Architecture too novel = longer de-risking timeline</li>
+                  <li>No ablation evidence that novel design actually helps</li>
+                  <li>Overfitting to one benchmark that doesn't reflect product use</li>
+                  <li>Key researcher departure = architecture knowledge risk</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>🔍 Due Diligence Questions</h5>
+                <ul>
+                  <li>What's your FLOPs/parameter efficiency vs GPT-4/LLaMA-3?</li>
+                  <li>Can your architecture scale to 100B+ parameters without redesign?</li>
+                  <li>What hardware does your architecture optimize for?</li>
+                  <li>How long until you have a working prototype at small scale?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Architecture is where technical founders often over-invest. The best architectures are often the simplest. Anthropic and OpenAI both use transformer variants, not exotic designs. Bet on the team's judgment, not novelty for its own sake.</div>
+          </div>
+
               <div class="hb-title">📦 Handoff to Next Stage</div>
               <div class="hb-content">Delivers: model code (GitHub repo, reviewed & tested), architecture design doc, hyperparameter starting points, MFU benchmarks on small scale → <strong>Pre-Training team</strong></div>
             </div>
@@ -758,6 +982,54 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Model Architecture</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>R&D Burn Rate</h5>
+                <ul>
+                  <li>Architecture R&D team cost: <strong>$500K–$3M/year</strong> in researcher salaries alone</li>
+                  <li>Ablation experiments at 1B scale: $10K–$100K per round of experiments</li>
+                  <li>Principal Researcher comp: $350K–$600K cash + equity — single biggest salary line</li>
+                  <li>At seed stage, architecture is often 60–80% of total headcount cost</li>
+                  <li>Efficiency signal: how quickly does the team converge on a design? Months of drift = concern</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>IP & Patentability</h5>
+                <ul>
+                  <li>Novel architectural elements = patentable IP — ask for IP audit in diligence</li>
+                  <li>MoE routing algorithms, attention variants, positional encoding methods — all patentable</li>
+                  <li>Open-source base models (LLaMA, Mistral) limit freedom-to-operate claims</li>
+                  <li>Check: does the team have a clear IP ownership agreement for all researchers?</li>
+                  <li>Academic spinouts: ensure IP was properly assigned from university to company</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Team Execution Risk</h5>
+                <ul>
+                  <li>Key risk: team gets stuck in research mode and never ships</li>
+                  <li>Green flag: can point to a shipped model checkpoint that validated a decision</li>
+                  <li>Red flag: 6+ months of architecture debate with no ablation results</li>
+                  <li>Check team's publication record vs shipping record — different skills</li>
+                  <li>Ask: what architecture decision did you make and then reverse, and why?</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Architectural Moat</h5>
+                <ul>
+                  <li>Is the architecture genuinely novel, or just assembled from existing papers?</li>
+                  <li>Efficiency advantage: a 2× better MFU = 2× cheaper training at scale</li>
+                  <li>MoE architecture: higher parameter count, lower compute cost = strong margin profile</li>
+                  <li>Long-context innovations: 1M-token context unlocks new enterprise use cases</li>
+                  <li>Competitor replication timeline: can Google replicate your architecture in 6 months?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Architectural novelty is the hardest thing to evaluate in an AI investment but one of the most valuable. A team that designed Mixtral's MoE routing or DeepSeek's Multi-head Latent Attention has compounding technical capital — those insights speed every future training run.</div>
           </div>
 
         </div>
@@ -938,6 +1210,55 @@
                 </div>
               </div>
 
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Pre-training</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 The CapEx Reality</h5>
+                <ul>
+                  <li>1B param model on 50B tokens: <strong>~$50K–$200K</strong></li>
+                  <li>7B param model on 1T tokens: <strong>~$500K–$2M</strong></li>
+                  <li>70B param model on 2T tokens: <strong>~$5M–$20M</strong></li>
+                  <li>GPT-4 scale (est.): <strong>$50M–$150M</strong></li>
+                  <li>Frontier models (Gemini Ultra, Claude 3): <strong>$100M–$500M+</strong></li>
+                </ul>
+              </div>
+              <div class="inv-card inv-red">
+                <h5>⚠️ Investor Scrutiny Points</h5>
+                <ul>
+                  <li>Compute cost is the single biggest risk item on the cap table</li>
+                  <li>Cost per FLOP declining ~2.5x/yr — timing the training run matters</li>
+                  <li>Training failures (loss spikes, divergence) = wasted capital</li>
+                  <li>No early stopping metrics = burning money blind</li>
+                  <li>Cloud vs owned hardware: cloud flexibility vs long-term margin</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>💡 Efficiency = Competitive Advantage</h5>
+                <ul>
+                  <li>Chinchilla-optimal training = best model for your compute budget</li>
+                  <li>MFU (Model FLOP Utilization) &gt;50% = excellent engineering</li>
+                  <li>Distributed training expertise is rare and highly valuable</li>
+                  <li>Mistral trained GPT-3-class models for 100x less — this is the moat</li>
+                  <li>Compute efficiency directly translates to gross margin at inference</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>🔍 Key Investor Metrics</h5>
+                <ul>
+                  <li>Cost per trillion tokens trained</li>
+                  <li>GPU utilization rate during training runs</li>
+                  <li>Loss curve trajectory vs published baselines</li>
+                  <li>Estimated inference cost per 1M tokens post-training</li>
+                  <li>Time-to-first-model: how long from funding to working model?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Pre-training is the biggest single capital allocation decision a frontier AI startup makes. A successful $20M training run creates an asset worth 10–100x more. A failed run loses it all. Investors should ask: what are your failure modes and how do you detect them early?</div>
+          </div>
+
+
               <div class="role-card">
                 <div class="rc-top">
                   <div class="rc-avatar">🔬</div>
@@ -1022,6 +1343,54 @@
                 <div class="su-tip">💡 <strong>Founder tip:</strong> Negotiate hard. Cloud providers want anchor AI customers. OpenAI's Azure deal, Anthropic's AWS deal — both included significant compute credits as part of strategic investment.</div>
               </div>
             </div>
+          </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Pre-Training</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>The Biggest CapEx Item</h5>
+                <ul>
+                  <li>Pre-training is the <strong>single largest capital expenditure</strong>: $5M–$500M+</li>
+                  <li>GPT-3 equivalent: ~$4.6M. GPT-4 estimated: $50M–$100M. Gemini Ultra: $100M+</li>
+                  <li>H100 cluster (1,024 GPUs): ~$40K/day in cloud compute = $1.2M/month</li>
+                  <li>Every percentage point of MFU improvement = direct cost reduction at scale</li>
+                  <li>Budget rule of thumb: allocate 40–60% of total raise to compute at seed/Series A</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Compute Efficiency Scrutiny</h5>
+                <ul>
+                  <li>Investors track <strong>FLOPs per dollar</strong> — compares teams' resource efficiency</li>
+                  <li>MFU (Model FLOP Utilization) target: 35–50% on H100s; &lt;30% = engineering problem</li>
+                  <li>DeepSeek-V2 trained a $600M-equivalent model for ~$6M via MoE efficiency</li>
+                  <li>Cloud vs owned hardware: at $50M+/year compute spend, owned H100s pay back in 18 months</li>
+                  <li>Compute partnerships (Microsoft→OpenAI, Google→Anthropic) = strategic investments</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Gross Margin Foundation</h5>
+                <ul>
+                  <li>Pre-training cost per token becomes the foundation of long-term gross margin</li>
+                  <li>More efficient training = lower amortized cost per inference = better unit economics</li>
+                  <li>One-time cost, amortized over model lifetime (12–36 months of serving)</li>
+                  <li>Model refresh cycles: every 12–18 months for frontier labs = recurring CapEx</li>
+                  <li>Investor question: what is your amortized compute cost per 1M inference tokens?</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Key Due Diligence Questions</h5>
+                <ul>
+                  <li>What is your compute cost per token at 7B, 70B, and 400B scale?</li>
+                  <li>What is your MFU, and how does it compare to published benchmarks?</li>
+                  <li>Do you have a compute partnership or are you purely on-demand cloud dependent?</li>
+                  <li>What happens if H100 prices rise 50%? Is your business model still viable?</li>
+                  <li>How often will you need to retrain, and what is the expected cost of each run?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Pre-training is where capital intensity determines who can compete. Labs that train more efficiently — higher MFU, better data quality, smarter architectures — will have structurally lower costs and thus higher gross margins than peers spending the same money. This stage is where the moat is built or isn't.</div>
           </div>
 
         </div>
@@ -1164,6 +1533,55 @@
                     <div class="rc-title">Annotation Manager</div>
                     <div class="rc-count">1 – 3 people</div>
                     <div class="rc-exp">3+ yrs data annotation ops</div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Alignment &amp; RLHF</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 Cost Breakdown</h5>
+                <ul>
+                  <li>Human annotation for preference data: <strong>$200K–$2M</strong></li>
+                  <li>Annotation platforms (Scale AI, Surge HQ): <strong>$5–$50/hr per annotator</strong></li>
+                  <li>SFT compute: <strong>10–50x cheaper</strong> than pre-training</li>
+                  <li>RLHF reward model training: <strong>$50K–$500K</strong></li>
+                  <li>Red-teaming &amp; safety testing: <strong>$100K–$1M</strong></li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>🛡️ Safety = Strategic Moat</h5>
+                <ul>
+                  <li>EU AI Act compliance is mandatory for EU market (effective 2025)</li>
+                  <li>Enterprise customers pay 2–3x premium for safety-certified models</li>
+                  <li>Anthropic's Constitutional AI is patented and defensible</li>
+                  <li>Safety reputation enables government contracts ($100M+ deals)</li>
+                  <li>Investor ESG frameworks now require AI safety documentation</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>📈 Business Impact of Alignment</h5>
+                <ul>
+                  <li>Aligned model → better user experience → higher NPS → lower churn</li>
+                  <li>Lower hallucination rate → enterprise trust → larger deal sizes</li>
+                  <li>Safety failures = brand damage + potential regulatory action</li>
+                  <li>DPO (Direct Preference Optimization) reduces RLHF cost by ~80%</li>
+                  <li>Instruction-tuned models command 5–10x API price premium</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-red">
+                <h5>🚩 Red Flags</h5>
+                <ul>
+                  <li>No safety testing before deployment = regulatory liability</li>
+                  <li>Annotation done by offshore teams with no quality control</li>
+                  <li>RLHF gaming: model learns to look aligned without being aligned</li>
+                  <li>No adversarial testing (red-teaming) process</li>
+                  <li>"Safety later" mentality — hard to retrofit at scale</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Alignment is where OpenAI differentiates ChatGPT from GPT-3. The base model is a commodity; the aligned product is the business. Ask founders: what's your RLHF data strategy and how do you measure alignment quality beyond MMLU scores?</div>
+          </div>
+
                   </div>
                 </div>
                 <div class="rc-section"><div class="rc-label">Responsibilities</div>
@@ -1249,6 +1667,54 @@
                 <div class="su-tip">💡 <strong>Founder tip:</strong> Alpaca (Stanford) spent $500 on GPT-3 API calls to generate 52K instruction pairs and produced a model that shocked the research community. Your first SFT can be remarkably cheap.</div>
               </div>
             </div>
+          </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Fine-Tuning / Alignment (SFT)</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>Cost Structure</h5>
+                <ul>
+                  <li>Total SFT stage cost: <strong>$500K–$5M</strong> (annotation-heavy or DPO-lean)</li>
+                  <li>Synthetic SFT data (GPT-4 API): $500–$5,000 for 50K instruction pairs</li>
+                  <li>Domain expert annotation (physicians, lawyers): $20K–$200K per domain vertical</li>
+                  <li>SFT compute on 70B model: $10K–$50K depending on duration and dataset size</li>
+                  <li>Ongoing: SFT is iterative — expect 3–6 monthly cycles to keep product quality improving</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Safety as Regulatory Moat</h5>
+                <ul>
+                  <li>EU AI Act Annex III: high-risk AI systems require demonstrable alignment quality</li>
+                  <li>Enterprise buyers in regulated sectors (healthcare, finance, legal) pay 2–5× premium for certified safe models</li>
+                  <li>Safety certification (SOC2, ISO 42001) is becoming table stakes for Fortune 500 deals</li>
+                  <li>NIST AI RMF compliance: documented alignment process = government contract eligibility</li>
+                  <li>Ask: has the company engaged with METR or ARC Evals for third-party safety assessment?</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Alignment Quality = Product Quality</h5>
+                <ul>
+                  <li>Alignment quality is what users actually experience — it drives NPS and retention</li>
+                  <li>Poor alignment = higher churn, more support tickets, slower enterprise sales cycles</li>
+                  <li>Best-in-class SFT data curation is a durable differentiator (hard to replicate quickly)</li>
+                  <li>Proprietary preference data (from production user feedback) compounds over time</li>
+                  <li>Metric to track: model win rate vs GPT-4 on customer-specific tasks, not generic benchmarks</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Investor Question: Moat or Speed Bump?</h5>
+                <ul>
+                  <li>Does alignment make the product defensible (enterprise trust) or just slow you down?</li>
+                  <li>OpenAI's answer: RLHF is what made ChatGPT viral — alignment IS the product</li>
+                  <li>Anthropic's answer: Constitutional AI reduces human label cost 10× = efficiency moat</li>
+                  <li>Check: is the alignment process documented and reproducible, or dependent on one person?</li>
+                  <li>Red flag: team treats safety as a checkbox rather than a product quality investment</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> The best-aligned models command premium pricing. Anthropic's Claude charges 3–5× more than commodity models partly on safety reputation. Alignment investment at this stage is not a tax — it is the product differentiation that justifies the pricing that justifies the margins.</div>
           </div>
 
         </div>
@@ -1403,6 +1869,55 @@
                     <div class="rc-title">Annotation Operations Lead</div>
                     <div class="rc-count">2 – 5 people</div>
                     <div class="rc-exp">4+ yrs annotation ops</div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Evaluation &amp; Benchmarking</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 Cost &amp; ROI</h5>
+                <ul>
+                  <li>Benchmark compute cost: <strong>$1K–$50K</strong> per evaluation suite</li>
+                  <li>Human evaluation studies: <strong>$20K–$200K</strong></li>
+                  <li>Third-party safety audits (required for EU AI Act): <strong>$50K–$500K</strong></li>
+                  <li>Continuous eval infrastructure (CI/CD for models): <strong>$10K–$100K/yr</strong></li>
+                  <li>Highest ROI stage: small cost, massive credibility signal</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>📢 Evals as Sales Collateral</h5>
+                <ul>
+                  <li>MMLU, HumanEval, MATH scores drive enterprise procurement decisions</li>
+                  <li>#1 on Chatbot Arena = free viral marketing worth $10M+</li>
+                  <li>Published eval papers attract researcher talent and citations</li>
+                  <li>Reproducible evals = team credibility with technical investors</li>
+                  <li>Custom domain evals = proof of fit for enterprise verticals</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>🔍 Investor Due Diligence</h5>
+                <ul>
+                  <li>Are evals run on held-out test sets with no contamination?</li>
+                  <li>Does the team have an independent eval party (not self-graded)?</li>
+                  <li>What's the benchmark correlation to actual user satisfaction?</li>
+                  <li>Can you show eval improvement across model versions?</li>
+                  <li>Do evals cover safety, bias, and robustness — not just capability?</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-red">
+                <h5>🚩 Benchmark Gaming Red Flags</h5>
+                <ul>
+                  <li>Training data contamination of benchmark test sets</li>
+                  <li>Cherry-picking benchmarks where model performs well</li>
+                  <li>No human evaluation — only automated metrics</li>
+                  <li>Evaluation only on English — ignores global market</li>
+                  <li>Evals not reproducible by third parties</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Evals are the model's report card — and the market's trust signal. A company that publishes rigorous, reproducible evals earns trust from enterprise buyers and technical investors alike. Ask: would your evals survive a third-party audit?</div>
+          </div>
+
                   </div>
                 </div>
                 <div class="rc-section"><div class="rc-label">Responsibilities</div>
@@ -1488,6 +2003,54 @@
                 <div class="su-tip">💡 <strong>Founder tip:</strong> Zephyr-7B (HuggingFace) used DPO on publicly available preference data and matched ChatGPT-3.5 on MT-Bench. Total compute cost: ~$10K. The gap between frontier labs and smart startups is closing fast on RLHF.</div>
               </div>
             </div>
+          </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — RLHF / Evaluation</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>Cost & Timeline</h5>
+                <ul>
+                  <li>RLHF total cost range: <strong>$500K–$5M</strong> per major iteration</li>
+                  <li>PPO pipeline (full): $500K–$5M including annotator costs and compute</li>
+                  <li>DPO on open preference datasets: $2K–$20K compute — dramatic cost reduction</li>
+                  <li>RLAIF (Claude/GPT-4 as judge): $5K–$30K per round — 10× cheaper than human raters</li>
+                  <li>Scale AI human preference collection: $0.50–$2.00 per comparison pair</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Eval = Proof of PMF</h5>
+                <ul>
+                  <li>Benchmark scores are the clearest external proof of product-market fit</li>
+                  <li>Chatbot Arena ELO ranking: the closest thing to unbiased market signal for AI models</li>
+                  <li>Mistral 7B's MMLU benchmark result directly caused a $100M Series A term sheet</li>
+                  <li>Custom vertical benchmarks (LegalBench, MedQA) are durable sales tools with enterprise buyers</li>
+                  <li>Investor signal: <strong>reproducible evals = trustworthy team</strong> — published methodology matters</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Benchmark Scores as Sales Collateral</h5>
+                <ul>
+                  <li>MMLU &gt;80% = credible model for enterprise knowledge tasks</li>
+                  <li>HumanEval &gt;70% = competitive coding assistant</li>
+                  <li>Chatbot Arena top-10 position = $1M+/month in inbound leads (no marketing spend)</li>
+                  <li>Third-party safety audits (METR, ARC Evals): add $50K–$150K but unlock regulated sectors</li>
+                  <li>Ask: does the team track eval regressions on every checkpoint? Automated eval CI = maturity signal</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Red &amp; Green Flags</h5>
+                <ul>
+                  <li>Green flag: team runs the same eval suite on competitor models and can contextualize their position</li>
+                  <li>Green flag: custom evals designed for their specific vertical customer use case</li>
+                  <li>Red flag: cherry-picked benchmarks where competitors weren't tested fairly</li>
+                  <li>Red flag: no reproducibility — "we ran it once" is not a result</li>
+                  <li>Red flag: no safety evaluation before enterprise customer conversations</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> The team that runs rigorous, reproducible evaluations is the team that can be trusted to iterate systematically toward product-market fit. Sloppy evals predict sloppy product development. Benchmark discipline is a proxy for engineering culture.</div>
           </div>
 
         </div>
@@ -1596,6 +2159,55 @@
                   <div class="rc-meta">
                     <div class="rc-title">Evaluation Lead</div>
                     <div class="rc-count">1 person</div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Inference &amp; Deployment</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 Ongoing OpEx (The Gross Margin Problem)</h5>
+                <ul>
+                  <li>GPU H100 cluster ($1M+/node): <strong>$2–$8/hr per node</strong></li>
+                  <li>Cost to serve 1M tokens (GPT-4 scale): <strong>~$0.03–$0.12</strong></li>
+                  <li>OpenAI charges ~$0.03/1K output tokens → gross margin ~40–60%</li>
+                  <li>Quantized/distilled models reduce serving cost by 4–8x</li>
+                  <li>Inference is the largest recurring cost line in the P&amp;L</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>💡 Efficiency = Margin Expansion</h5>
+                <ul>
+                  <li>Flash Attention → 3x throughput → 3x margin improvement</li>
+                  <li>Speculative decoding → 2–3x latency reduction</li>
+                  <li>INT8/INT4 quantization → 4x cost reduction</li>
+                  <li>Batch inference → amortize fixed GPU costs across requests</li>
+                  <li>Dedicated hardware (custom ASICs) → 10x long-term cost reduction</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>📈 Key Investor Metrics</h5>
+                <ul>
+                  <li><strong>Gross Margin %</strong>: target &gt;50% at scale (OpenAI: ~40%)</li>
+                  <li><strong>Tokens/second/GPU</strong>: throughput efficiency</li>
+                  <li><strong>P50/P99 latency</strong>: time to first token, total latency</li>
+                  <li><strong>Cost per 1M tokens</strong>: trajectory should decline 50%/yr</li>
+                  <li><strong>Uptime SLA</strong>: enterprise requires 99.9%+</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-red">
+                <h5>🚩 Infrastructure Red Flags</h5>
+                <ul>
+                  <li>Gross margin below 30% — unsustainable at scale</li>
+                  <li>Single cloud dependency (AWS outage = company outage)</li>
+                  <li>No auto-scaling — pays for GPUs 24/7 even at low traffic</li>
+                  <li>GPU cost growing faster than revenue</li>
+                  <li>No cost monitoring per customer/endpoint</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Inference economics determine the long-term business model. A company with 60% gross margins can invest in R&amp;D and win; one with 20% margins is a compute reseller with no future. The best AI companies are obsessed with inference efficiency.</div>
+          </div>
+
                     <div class="rc-exp">5+ yrs NLP/eval research</div>
                   </div>
                 </div>
@@ -1681,6 +2293,44 @@
                 <div class="su-tip">💡 <strong>Founder tip:</strong> Write your model card before your launch. Investors, enterprise customers, and press all read it. A well-written model card with honest capability/limitation disclosures builds more trust than inflated claims.</div>
               </div>
             </div>
+          </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Evaluation &amp; Benchmarking</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>Direct Cost (Low but High Value)</h5>
+                <ul>
+                  <li>Eval infrastructure cost: <strong>$20K–$200K</strong> — one of the cheapest stages</li>
+                  <li>lm-evaluation-harness (open source): ~$500 in compute per full benchmark run</li>
+                  <li>LMSYS Chatbot Arena submission: free (community-run); priceless marketing value</li>
+                  <li>Third-party safety audit (METR, ARC Evals): $30K–$150K but unlocks regulated markets</li>
+                  <li>Custom eval development: 1 engineer × 1 month = ~$20K — very high ROI</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Eval = Proof of PMF</h5>
+                <ul>
+                  <li>Reproducible benchmark scores are the closest thing to product-market fit proof in AI</li>
+                  <li>Chatbot Arena top-10 = inbound developer traffic that replaces $500K/yr in marketing</li>
+                  <li>Mistral 7B's MMLU results (Sept 2023) closed a €385M Series A in &lt;60 days</li>
+                  <li>Custom vertical benchmarks (LegalBench, MedQA, FinanceBench) own the sales narrative</li>
+                  <li>Ask: can they describe their eval methodology and defend every number?</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Safety Evals as Market Unlocks</h5>
+                <ul>
+                  <li>EU AI Act Article 9 risk management requires documented safety evaluation</li>
+                  <li>US DoD AI Ethics Principles: model card + safety eval required for government contracts</li>
+                  <li>Fortune 500 security reviews: red-team report is now standard in enterprise procurement</li>
+                  <li>Healthcare (HIPAA) + finance (FINRA) sectors: safety audit unlocks $1M+ contract sizes</li>
+                  <li>Safety eval investment at this stage returns 10–50× in enterprise deal velocity</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> A team that maintains rigorous, reproducible evaluations on every checkpoint is a team that can iterate systematically. Benchmark discipline is a proxy for engineering culture — and engineering culture predicts whether the next model will be better or just different.</div>
           </div>
 
         </div>
@@ -1824,6 +2474,55 @@
                     <div class="rc-count">2 – 4 people</div>
                     <div class="rc-exp">5+ yrs backend engineering</div>
                   </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Product &amp; Go-to-Market</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>📊 Revenue Metrics That Matter</h5>
+                <ul>
+                  <li><strong>ARR (Annual Recurring Revenue)</strong>: target $1M (seed), $10M (Series A), $50M (Series B)</li>
+                  <li><strong>NRR (Net Revenue Retention)</strong>: &gt;120% = world-class (customers expand usage)</li>
+                  <li><strong>CAC Payback Period</strong>: target &lt;12 months for SMB, &lt;18 months for enterprise</li>
+                  <li><strong>Gross Margin</strong>: 50–70% for API, 70–85% for SaaS layer on top</li>
+                  <li><strong>Magic Number</strong>: net new ARR / S&amp;M spend — target &gt;0.75</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-green">
+                <h5>💡 GTM Moats</h5>
+                <ul>
+                  <li>Developer community → organic distribution (HuggingFace model)</li>
+                  <li>Enterprise integration depth → high switching costs</li>
+                  <li>API ecosystem → third-party plugins compound the moat</li>
+                  <li>Brand trust in regulated industries (healthcare, finance, legal)</li>
+                  <li>Usage-based pricing aligns incentives: grow with your customers</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>📈 Unit Economics Progression</h5>
+                <ul>
+                  <li><strong>Pre-product</strong>: Burn only, no revenue</li>
+                  <li><strong>Early traction</strong>: $10K–$50K MRR, negative unit economics</li>
+                  <li><strong>Product-market fit</strong>: $100K+ MRR, gross margin positive</li>
+                  <li><strong>Scale</strong>: $1M+ MRR, clear path to profitability</li>
+                  <li><strong>Mature</strong>: $10M+ MRR, 60%+ GM, positive EBITDA</li>
+                </ul>
+              </div>
+              <div class="inv-card inv-red">
+                <h5>🚩 Commercialization Red Flags</h5>
+                <ul>
+                  <li>High gross revenue but poor net revenue retention (&lt;90%)</li>
+                  <li>All revenue from one customer (&gt;20% concentration risk)</li>
+                  <li>Long sales cycles (&gt;9 months) with no self-serve funnel</li>
+                  <li>No product-led growth element — 100% sales-led is expensive</li>
+                  <li>Pricing not tied to value — charging per seat not per outcome</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Revenue is vanity, NRR is sanity, cash is reality. An AI company with 130%+ NRR is a compounding machine — existing customers grow faster than churn. This single metric predicts long-term success more reliably than ARR growth rate.</div>
+          </div>
+
                 </div>
                 <div class="rc-section"><div class="rc-label">Responsibilities</div>
                   <ul><li>Build REST/gRPC API gateway with authentication & rate limiting</li><li>Implement request queueing, load balancing across inference nodes</li><li>Build usage metering & billing integration</li><li>Set up safety filter layer (pre/post-processing guardrails)</li></ul>
@@ -1909,6 +2608,54 @@
                 <div class="su-tip">💡 <strong>Founder tip:</strong> Together.ai, Anyscale, and Replicate all started as inference-only companies serving other people's open-source models. You don't need to train to generate revenue — but training gives you a moat.</div>
               </div>
             </div>
+          </div>
+
+          <!-- ── INVESTOR MODE ── -->
+          <div class="investor-text hidden">
+            <div class="inv-stage-pill">💰 Investor Lens — Inference &amp; Deployment</div>
+            <div class="inv-grid">
+              <div class="inv-card">
+                <h5>Biggest Ongoing OpEx</h5>
+                <ul>
+                  <li>Inference is the <strong>largest recurring cost</strong> in an AI company's P&amp;L after people</li>
+                  <li>H100 node (8× GPUs): $14K–$35K/month depending on cloud provider</li>
+                  <li>OpenAI reportedly spends $700K/day on inference at peak load</li>
+                  <li>GPU costs eat gross margin — efficiency is survival at scale</li>
+                  <li>Industry average gross margin target: 70–85% at scale; &lt;50% = serious concern</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Key Metrics Investors Track</h5>
+                <ul>
+                  <li><strong>TTFT</strong> (Time to First Token): &lt;500ms for consumer; &lt;200ms for real-time apps</li>
+                  <li><strong>Throughput</strong>: tokens/second per GPU — measures serving efficiency</li>
+                  <li><strong>Cost per token</strong>: amortized serving cost vs revenue per token = gross margin</li>
+                  <li><strong>Latency P99</strong>: tail latency matters for enterprise SLAs</li>
+                  <li><strong>GPU utilization</strong>: &gt;70% means efficient; &lt;40% means you're burning money on idle capacity</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Efficiency = Profit</h5>
+                <ul>
+                  <li>vLLM vs naive serving: 24× throughput improvement = 24× more revenue per GPU</li>
+                  <li>Speculative decoding: 2–3× latency reduction with no accuracy loss</li>
+                  <li>INT4 quantization: 4× memory reduction = 4× more model instances per GPU</li>
+                  <li>Mistral's sliding window attention: 4× faster inference at long context = cost moat</li>
+                  <li>Every 10% efficiency improvement at $10M/month GPU spend = $1M/month in EBITDA</li>
+                </ul>
+              </div>
+              <div class="inv-card">
+                <h5>Gross Margin Trajectory</h5>
+                <ul>
+                  <li>Gross margin trajectory is the single most important financial metric at Series B+</li>
+                  <li>Year 1: 20–40% GM (high GPU cost, low utilization, scale-up costs)</li>
+                  <li>Year 2: 50–65% GM (utilization improves, efficiency gains kick in)</li>
+                  <li>Year 3+: 70–85% GM (scale benefits, model amortization, efficiency compounding)</li>
+                  <li>Investor question: what specific engineering investments will drive GM from X% to Y%?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="inv-insight">💡 <strong>Investor insight:</strong> Inference efficiency is the new hardware advantage. The team that achieves 2× better cost-per-token than competitors can undercut on price AND earn better margins simultaneously — a rare combination that drives both growth rate and unit economics toward the public market benchmark of 70%+ gross margin.</div>
           </div>
 
         </div>
@@ -2359,6 +3106,573 @@
           <div class="ft-icon">🚀</div>
           <div class="ft-title">Speed Wins in AI</div>
           <div class="ft-body">The AI landscape changes faster than any sector in history. Mistral went from founding to $6B valuation in 12 months. Cursor went from 0 to $9B in 2 years. The window for any given opportunity is shorter than in traditional software. Bias heavily toward action over deliberation.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ INVESTOR JOURNEY (Investor mode only) ════════ -->
+<section id="investor-journey" class="section bg-darker investor-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge investor-badge">💰 Investor Playbook</div>
+      <h2>The AI Investment Landscape</h2>
+      <p class="section-sub">Startup financials, valuation frameworks, funding mechanics, cap tables, burn discipline, the hard realities of raising money, and lessons from founders who've built billion-dollar AI companies</p>
+    </div>
+
+    <!-- ── 1. FINANCIAL REALITY ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">01</div>
+        <div>
+          <div class="ij-title">The Financial Reality of an AI Startup</div>
+          <div class="ij-sub">The numbers investors actually look at — and what they mean</div>
+        </div>
+      </div>
+      <div class="fin-overview">
+        <div class="fin-stages">
+          <div class="fin-stage">
+            <div class="finstage-label">Pre-seed</div>
+            <div class="finstage-burn">$30K–$80K/mo</div>
+            <div class="finstage-note">Team of 2–4, mostly salaries</div>
+          </div>
+          <div class="fin-stage">
+            <div class="finstage-label">Seed</div>
+            <div class="finstage-burn">$100K–$300K/mo</div>
+            <div class="finstage-note">Team of 8–15 + first compute costs</div>
+          </div>
+          <div class="fin-stage fin-highlighted">
+            <div class="finstage-label">Series A</div>
+            <div class="finstage-burn">$500K–$1.5M/mo</div>
+            <div class="finstage-note">Training runs begin, 20–40 people</div>
+          </div>
+          <div class="fin-stage">
+            <div class="finstage-label">Series B</div>
+            <div class="finstage-burn">$2M–$6M/mo</div>
+            <div class="finstage-note">Frontier model training, 50–150 people</div>
+          </div>
+        </div>
+        <div class="fin-ratios">
+          <div class="fin-ratio-title">Key Ratios Investors Track</div>
+          <div class="fin-ratio-grid">
+            <div class="fr-item">
+              <div class="fr-metric">Runway</div>
+              <div class="fr-value">18+ mo</div>
+              <div class="fr-note">Minimum comfortable buffer; raise at 18 mo remaining</div>
+            </div>
+            <div class="fr-item">
+              <div class="fr-metric">Gross Margin</div>
+              <div class="fr-value">50–70%</div>
+              <div class="fr-note">At scale; early stage often negative due to GPU costs</div>
+            </div>
+            <div class="fr-item">
+              <div class="fr-metric">Burn Multiple</div>
+              <div class="fr-value">&lt;1.5x</div>
+              <div class="fr-note">Net burn ÷ net new ARR; lower = more efficient growth</div>
+            </div>
+            <div class="fr-item">
+              <div class="fr-metric">Rule of 40</div>
+              <div class="fr-value">40%+</div>
+              <div class="fr-note">Revenue growth % + profit margin % ≥ 40 = healthy SaaS</div>
+            </div>
+            <div class="fr-item">
+              <div class="fr-metric">NRR</div>
+              <div class="fr-value">120%+</div>
+              <div class="fr-note">Net Revenue Retention; world-class AI companies hit 130%+</div>
+            </div>
+            <div class="fr-item">
+              <div class="fr-metric">CAC Payback</div>
+              <div class="fr-value">&lt;18 mo</div>
+              <div class="fr-note">Months to recover customer acquisition cost from gross profit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inv-insight">💡 <strong>The balance sheet in plain English:</strong> Assets = cash in bank + GPU hardware + IP/models. Liabilities = deferred enterprise contracts + venture debt. Equity = what investors paid in minus all losses accumulated. Early AI startups have massive negative retained earnings — normal and expected.</div>
+    </div>
+
+    <!-- ── 2. FUNDING STAGES & VALUATION ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">02</div>
+        <div>
+          <div class="ij-title">Funding Stages &amp; How Valuations Are Set</div>
+          <div class="ij-sub">From first angel cheque to IPO — what investors pay, what they get, and how the math works</div>
+        </div>
+      </div>
+      <div class="val-stages">
+        <div class="vs-stage">
+          <div class="vs-round">Pre-seed</div>
+          <div class="vs-amount">$250K – $2M</div>
+          <div class="vs-valuation">$2M – $8M pre-money</div>
+          <div class="vs-from">Friends, angels, accelerators (YC, Antler)</div>
+          <div class="vs-use">Proof of concept, founding team formation, early data</div>
+        </div>
+        <div class="vs-stage">
+          <div class="vs-round">Seed</div>
+          <div class="vs-amount">$2M – $8M</div>
+          <div class="vs-valuation">$8M – $30M pre-money</div>
+          <div class="vs-from">Angels, micro-VCs, super-angels</div>
+          <div class="vs-use">First training runs, core team hires (ML leads + eng)</div>
+        </div>
+        <div class="vs-stage vs-highlighted">
+          <div class="vs-round">Series A</div>
+          <div class="vs-amount">$10M – $30M</div>
+          <div class="vs-valuation">$40M – $150M pre-money</div>
+          <div class="vs-from">Tier-2/3 VCs (Coatue, NEA, Spark Capital)</div>
+          <div class="vs-use">Product launch, first enterprise customers, full model training</div>
+        </div>
+        <div class="vs-stage vs-highlighted">
+          <div class="vs-round">Series B</div>
+          <div class="vs-amount">$30M – $100M</div>
+          <div class="vs-valuation">$150M – $600M pre-money</div>
+          <div class="vs-from">Top-tier VCs (Sequoia, a16z, Khosla, Lightspeed)</div>
+          <div class="vs-use">Scale GTM, frontier model training, international expansion</div>
+        </div>
+        <div class="vs-stage">
+          <div class="vs-round">Series C+</div>
+          <div class="vs-amount">$100M – $500M+</div>
+          <div class="vs-valuation">$500M – $5B+ pre-money</div>
+          <div class="vs-from">Growth equity (Tiger Global, General Atlantic), sovereign funds</div>
+          <div class="vs-use">Hyperscale infrastructure, geographic expansion, M&amp;A</div>
+        </div>
+        <div class="vs-stage">
+          <div class="vs-round">IPO / Late</div>
+          <div class="vs-amount">Depends on ARR</div>
+          <div class="vs-valuation">10–30x forward ARR</div>
+          <div class="vs-from">Public markets</div>
+          <div class="vs-use">Liquidity for early investors/employees, brand credibility, M&amp;A currency</div>
+        </div>
+      </div>
+      <div class="valuation-methods">
+        <div class="vm-title">How Investors Calculate Valuation</div>
+        <div class="vm-grid">
+          <div class="vm-card">
+            <div class="vm-method">ARR Multiple</div>
+            <div class="vm-formula">Valuation = ARR × 10–30x</div>
+            <div class="vm-note">Most common for SaaS AI. AI infrastructure commands premium multiples vs. traditional SaaS (5–10x).</div>
+          </div>
+          <div class="vm-card">
+            <div class="vm-method">Comparable Transactions</div>
+            <div class="vm-formula">Look at recent deals: Anthropic ($18B), Mistral ($6B), Cohere ($5B)</div>
+            <div class="vm-note">Investors anchor to comparable deals at similar stages and traction levels.</div>
+          </div>
+          <div class="vm-card">
+            <div class="vm-method">Team &amp; Technology Premium</div>
+            <div class="vm-formula">Ex-OpenAI/DeepMind founders: +50–200% valuation premium</div>
+            <div class="vm-note">At pre-revenue stage, team pedigree and technical moat drive valuation more than any financial model.</div>
+          </div>
+          <div class="vm-card">
+            <div class="vm-method">Strategic Value</div>
+            <div class="vm-formula">Microsoft → OpenAI: $13B for distribution + exclusivity</div>
+            <div class="vm-note">Corporate investors (Google, Microsoft, Amazon) pay above-market for strategic access, not pure financial return.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3. HOW INVESTORS DECIDE ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">03</div>
+        <div>
+          <div class="ij-title">How Investors Actually Make Decisions</div>
+          <div class="ij-sub">The framework top VCs use when evaluating an AI startup</div>
+        </div>
+      </div>
+      <div class="decision-matrix">
+        <div class="dm-row dm-header">
+          <div class="dm-cell">Criterion</div>
+          <div class="dm-cell">What Investors Look For</div>
+          <div class="dm-cell">Green Signal</div>
+          <div class="dm-cell">Red Flag</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell dm-criterion">Why Now?</div>
+          <div class="dm-cell">Market timing — what changed to make this possible today?</div>
+          <div class="dm-cell dm-green">Compute costs dropped 100x in 5 years</div>
+          <div class="dm-cell dm-red">Could have been built 3 years ago</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell dm-criterion">Team</div>
+          <div class="dm-cell">Frontier research experience, startup track record, coachability</div>
+          <div class="dm-cell dm-green">Ex-OpenAI/DeepMind, published papers, shipped products</div>
+          <div class="dm-cell dm-red">All PhDs, no one who has shipped at scale</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell dm-criterion">Technical Moat</div>
+          <div class="dm-cell">What can't be copied in 12 months with $10M?</div>
+          <div class="dm-cell dm-green">Proprietary data + unique training recipe + efficiency</div>
+          <div class="dm-cell dm-red">Fine-tuned open-source model with no differentiation</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell dm-criterion">Market Size</div>
+          <div class="dm-cell">TAM must support a $1B+ company outcome</div>
+          <div class="dm-cell dm-green">AI infrastructure: $500B+ TAM, growing 40%/yr</div>
+          <div class="dm-cell dm-red">Single niche vertical with $50M TAM</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell dm-criterion">Business Model</div>
+          <div class="dm-cell">Clear path to recurring revenue and 50%+ gross margins</div>
+          <div class="dm-cell dm-green">API + Enterprise SaaS with usage-based expansion</div>
+          <div class="dm-cell dm-red">One-time project fees with no recurring element</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell dm-criterion">Competition</div>
+          <div class="dm-cell">Can OpenAI/Google just build this with 10 engineers?</div>
+          <div class="dm-cell dm-green">Domain expertise + data that Big Tech doesn't have</div>
+          <div class="dm-cell dm-red">OpenAI already has a competing product</div>
+        </div>
+        <div class="dm-row">
+          <div class="dm-cell dm-criterion">Traction</div>
+          <div class="dm-cell">Evidence of real demand — paying customers, LOIs, waitlists</div>
+          <div class="dm-cell dm-green">$500K ARR with 3 enterprise pilot customers</div>
+          <div class="dm-cell dm-red">10,000 users but no one has paid anything</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 4. TYPES OF INVESTORS ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">04</div>
+        <div>
+          <div class="ij-title">Types of Investors — Who Funds AI Companies</div>
+          <div class="ij-sub">Each investor type has different motivations, timelines, and value-add beyond the cheque</div>
+        </div>
+      </div>
+      <div class="investor-types">
+        <div class="it-type">
+          <div class="it-type-icon">👼</div>
+          <div class="it-type-name">Angel Investors</div>
+          <div class="it-type-check">$25K – $500K</div>
+          <div class="it-type-pros">Fast decisions (days not months); often successful founders themselves; no board seat; willing to bet on early team</div>
+          <div class="it-type-cons">Limited follow-on capacity; can't lead large rounds; may not have AI domain expertise</div>
+          <div class="it-type-example">Examples: Elad Gil, Naval Ravikant, AI-focused angels from ex-Google/OpenAI</div>
+        </div>
+        <div class="it-type">
+          <div class="it-type-icon">🏦</div>
+          <div class="it-type-name">Micro-VCs</div>
+          <div class="it-type-check">$500K – $3M</div>
+          <div class="it-type-pros">Thesis-driven and specialized; deep AI network; help with first hires; founder-friendly terms</div>
+          <div class="it-type-cons">Small funds limit follow-on; may dilute in later rounds; less brand recognition for customers</div>
+          <div class="it-type-example">Examples: AIX Ventures, Gradient Ventures (Google), Conviction Capital</div>
+        </div>
+        <div class="it-type it-type-highlight">
+          <div class="it-type-icon">🚀</div>
+          <div class="it-type-name">Tier-1 VCs</div>
+          <div class="it-type-check">$10M – $150M</div>
+          <div class="it-type-pros">Brand credibility; massive networks; IPO experience; portfolio intros; deep pockets for follow-on</div>
+          <div class="it-type-cons">Longer diligence (2–4 months); board control expectations; portfolio conflicts possible</div>
+          <div class="it-type-example">Examples: Sequoia, a16z (invested in Character.ai), Khosla Ventures, Lightspeed</div>
+        </div>
+        <div class="it-type it-type-highlight">
+          <div class="it-type-icon">🏢</div>
+          <div class="it-type-name">Strategic / Corporate</div>
+          <div class="it-type-check">$25M – $13B</div>
+          <div class="it-type-pros">Compute credits + infrastructure access; distribution partnerships; customer intros; patient capital</div>
+          <div class="it-type-cons">May restrict you to their ecosystem; slower M&amp;A decisions; potential conflict of interest</div>
+          <div class="it-type-example">Microsoft → OpenAI ($13B), Google → Anthropic ($2B+), Amazon → Anthropic ($4B)</div>
+        </div>
+        <div class="it-type">
+          <div class="it-type-icon">🌍</div>
+          <div class="it-type-name">Sovereign Wealth Funds</div>
+          <div class="it-type-check">$100M – $1B+</div>
+          <div class="it-type-pros">Very patient capital (10–20 yr horizon); massive cheque sizes; no board interference; national AI strategy alignment</div>
+          <div class="it-type-cons">Complex geopolitical considerations; long diligence; limited operational expertise</div>
+          <div class="it-type-example">Saudi Aramco Ventures, MGX (UAE), Mubadala, GIC (Singapore)</div>
+        </div>
+        <div class="it-type">
+          <div class="it-type-icon">🎓</div>
+          <div class="it-type-name">Grants &amp; Non-dilutive</div>
+          <div class="it-type-check">$100K – $10M</div>
+          <div class="it-type-pros">No equity given up; validates technical credibility; SBIR/STTR can fund safety AI research; NSF/DARPA for frontier research</div>
+          <div class="it-type-cons">Slow (6–18 months to receive); heavy reporting requirements; output IP restrictions</div>
+          <div class="it-type-example">NSF SBIR, DARPA, DoE AI programs, NIH for healthcare AI, EU Horizon grants</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 5. HARD REALITIES ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">05</div>
+        <div>
+          <div class="ij-title">The Hard Realities of Raising Money</div>
+          <div class="ij-sub">What no one tells you before you start — the brutal honest math of fundraising</div>
+        </div>
+      </div>
+      <div class="hard-truths">
+        <div class="ht-truth">
+          <div class="ht-truth-icon">📉</div>
+          <div class="ht-truth-text">
+            <strong>Top VCs fund &lt;1% of deals they see.</strong> Sequoia sees 3,000+ companies per year and funds ~15–20. That's a 0.5% acceptance rate. Getting to a first meeting is itself an achievement.
+          </div>
+        </div>
+        <div class="ht-truth">
+          <div class="ht-truth-icon">⏰</div>
+          <div class="ht-truth-text">
+            <strong>Average time to close a round: 6–9 months.</strong> Fundraising is a full-time job. During a raise, CEOs spend 60–80% of their time on investor meetings instead of building the company — a real opportunity cost.
+          </div>
+        </div>
+        <div class="ht-truth">
+          <div class="ht-truth-icon">📊</div>
+          <div class="ht-truth-text">
+            <strong>Dilution is cumulative and brutal.</strong> If you raise 5 rounds and give up 20% each time, you own 32% of the company you started. After a typical VC-backed path to IPO, founders often own 5–15%.
+          </div>
+        </div>
+        <div class="ht-truth">
+          <div class="ht-truth-icon">⬇️</div>
+          <div class="ht-truth-text">
+            <strong>Down rounds destroy morale and cap tables.</strong> Stability AI raised at a $1B valuation in 2022, then faced reported financial difficulties in 2024. A down round (raising at lower valuation) creates preference stack problems and demoralizes employees.
+          </div>
+        </div>
+        <div class="ht-truth">
+          <div class="ht-truth-icon">🌉</div>
+          <div class="ht-truth-text">
+            <strong>Bridge rounds are a warning signal, not a solution.</strong> A bridge round (short-term debt/equity to extend runway) buys time but doesn't fix the underlying problem. Investors in bridge rounds often demand punitive terms (2x liquidation preference).
+          </div>
+        </div>
+        <div class="ht-truth">
+          <div class="ht-truth-icon">🔒</div>
+          <div class="ht-truth-text">
+            <strong>Board seats mean losing control decisions.</strong> After a Series B, founders typically control 2 of 5 board seats. Major decisions (selling the company, firing the CEO, approving budgets over $X) require board approval. Investor-friendly terms accumulate.
+          </div>
+        </div>
+        <div class="ht-truth">
+          <div class="ht-truth-icon">💀</div>
+          <div class="ht-truth-text">
+            <strong>90% of AI startups fail — often not from bad technology.</strong> Most fail from running out of money, not from a bad model. The #1 cause of startup death: too slow to find product-market fit before the runway ends. Technical excellence without business sense is fatal.
+          </div>
+        </div>
+        <div class="ht-truth">
+          <div class="ht-truth-icon">🤐</div>
+          <div class="ht-truth-text">
+            <strong>"No" often means "not yet."</strong> 73% of investors who passed on Airbnb's seed round reportedly wish they hadn't. Most VCs that passed on OpenAI's Series A are deeply regretful. Keep relationship-building even with investors who decline.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 6. HACKS & TIPS FOR RAISING ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">06</div>
+        <div>
+          <div class="ij-title">Hacks &amp; Tips for Raising Capital</div>
+          <div class="ij-sub">Tactics that actually work — from founders who've raised $10M to $10B</div>
+        </div>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card tip-gold">
+          <div class="tip-icon">🤝</div>
+          <div class="tip-title">Warm Intros Convert 7x Better</div>
+          <div class="tip-body">Cold emails to VCs have &lt;5% response rates. Warm intros from portfolio founders convert 7x better. Build your investor network before you need it — attend conferences, publish technical work, be generous with advice to other founders.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📊</div>
+          <div class="tip-title">Lead With Traction, Not Vision</div>
+          <div class="tip-body">Revenue beats slides every time. Even $10K MRR is compelling at seed stage. Three enterprise pilots with signed LOIs beat 50 slides of market analysis. Show real evidence of demand, not theoretical TAM.</div>
+        </div>
+        <div class="tip-card tip-gold">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">Create Competitive FOMO</div>
+          <div class="tip-body">Run a tight process: start conversations with 30+ investors simultaneously, set a hard deadline for term sheets ("we're closing in 3 weeks"), share that you have competitive interest. FOMO closes rounds faster than any pitch deck.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔢</div>
+          <div class="tip-title">Know Your Numbers Cold</div>
+          <div class="tip-body">Investors ask: "What's your burn rate?" "What's your 18-month runway?" "What are your unit economics?" "What does $10M of Series A get us?" If you hesitate, you lose. Rehearse financial answers until instant.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📖</div>
+          <div class="tip-title">The Pitch Narrative Arc</div>
+          <div class="tip-body">Best pitches follow: (1) The world is changing → (2) We have a unique insight → (3) Our solution captures it → (4) Here's proof it works → (5) This is the team to do it → (6) We need $X to reach $Y milestone. Never lead with the product.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📁</div>
+          <div class="tip-title">Data Room Checklist</div>
+          <div class="tip-body">Have ready before any meeting: cap table (with all instruments), last 12 months P&amp;L, model card / technical overview, customer contracts + NDA, reference customer list, team bios + LinkedIn, IP assignment agreements, incorporation docs.</div>
+        </div>
+        <div class="tip-card tip-gold">
+          <div class="tip-icon">🎯</div>
+          <div class="tip-title">Target Right-Fit Investors</div>
+          <div class="tip-body">A no from Sequoia means nothing if they don't invest at your stage. Research: What stage do they lead? What check sizes? Do they have competing portfolio companies? Have they invested in AI before? 20 right-fit investors &gt; 200 wrong ones.</div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⚖️</div>
+          <div class="tip-title">Negotiate Terms, Not Just Valuation</div>
+          <div class="tip-body">Valuation matters less than: pro-rata rights (can you invest in future rounds?), board composition, liquidation preference (1x non-participating is founder-friendly; 2x participating is not), and anti-dilution provisions. Get a startup lawyer on day one.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 7. CAP TABLE & MANAGING MONEY ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">07</div>
+        <div>
+          <div class="ij-title">Cap Tables, Equity &amp; Managing Cash</div>
+          <div class="ij-sub">Who owns what, how dilution compounds, and the financial discipline that keeps companies alive</div>
+        </div>
+      </div>
+      <div class="captable-section">
+        <div class="ct-visual-title">Typical AI Startup Cap Table — Post Series B</div>
+        <div class="ct-visual">
+          <div class="ctv-item">
+            <div class="ctv-bar" style="--pct:42%"></div>
+            <div class="ctv-label">Founders</div>
+            <div class="ctv-pct">42%</div>
+          </div>
+          <div class="ctv-item">
+            <div class="ctv-bar ctv-investors" style="--pct:38%"></div>
+            <div class="ctv-label">Investors</div>
+            <div class="ctv-pct">38%</div>
+          </div>
+          <div class="ctv-item">
+            <div class="ctv-bar ctv-esop" style="--pct:15%"></div>
+            <div class="ctv-label">ESOP Pool</div>
+            <div class="ctv-pct">15%</div>
+          </div>
+          <div class="ctv-item">
+            <div class="ctv-bar ctv-advisor" style="--pct:5%"></div>
+            <div class="ctv-label">Advisors</div>
+            <div class="ctv-pct">5%</div>
+          </div>
+        </div>
+      </div>
+      <div class="money-rules">
+        <div class="mr-title">The Rules of Financial Discipline</div>
+        <div class="mr-grid">
+          <div class="mr-card mr-critical">
+            <div class="mr-icon">🔴</div>
+            <div class="mr-rule">18-Month Runway Rule</div>
+            <div class="mr-body">Always raise your next round when you have 18 months of runway remaining. Not 6 months (desperation pricing). Not 24 months (leaving dilution money on the table). 18 months is the Goldilocks zone.</div>
+          </div>
+          <div class="mr-card">
+            <div class="mr-icon">📊</div>
+            <div class="mr-rule">Monthly Financial Cadence</div>
+            <div class="mr-body">Send investor updates every month: actual vs. budget P&amp;L, cash runway, key metrics (ARR, MRR, burn), top 3 wins, top 3 risks, and specific asks. Investors who feel informed write bigger follow-on cheques.</div>
+          </div>
+          <div class="mr-card">
+            <div class="mr-icon">💼</div>
+            <div class="mr-rule">When to Hire a CFO</div>
+            <div class="mr-body">Hire a fractional CFO at Series A ($10M+ raised). Hire a full-time VP Finance at Series B ($30M+ raised). Before that, use accounting software (QuickBooks, Pilot.com) plus a good startup accountant. Don't let financial oversight slip.</div>
+          </div>
+          <div class="mr-card mr-critical">
+            <div class="mr-icon">⚠️</div>
+            <div class="mr-rule">Burn Discipline is Survival</div>
+            <div class="mr-body">Most AI startups die from running out of money before they find product-market fit — not from bad technology. A company that extends runway by 6 months through cost cuts has that much more time to find the insight that changes everything.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 8. PATH TO IPO & EXIT ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">08</div>
+        <div>
+          <div class="ij-title">Path to IPO &amp; Exit Strategies</div>
+          <div class="ij-sub">When and how the biggest AI companies go public — and what the alternatives look like</div>
+        </div>
+      </div>
+      <div class="exit-paths">
+        <div class="ep-card ep-ipo">
+          <div class="ep-type">🏛️ IPO</div>
+          <div class="ep-when">When: $100M+ ARR, &gt;50% gross margin, path to profitability</div>
+          <div class="ep-pros">
+            <strong>Pros:</strong> Maximum valuation, liquidity for all shareholders, M&amp;A currency, brand prestige, talent attraction
+          </div>
+          <div class="ep-cons">
+            <strong>Cons:</strong> 6–12 month process, $10M+ in legal/banking fees, public scrutiny of finances, quarterly earnings pressure, lock-up period (6 months where insiders can't sell)
+          </div>
+          <div class="ep-example">Examples: No pure AI LLM companies have IPO'd yet (as of 2025). CoreWeave IPO'd in 2025 as AI infra play.</div>
+        </div>
+        <div class="ep-card">
+          <div class="ep-type">🤝 Strategic Acquisition</div>
+          <div class="ep-when">When: Strong technology + team, acquirer needs AI capability fast</div>
+          <div class="ep-pros">
+            <strong>Pros:</strong> Certainty of outcome, fast close (3–6 months), immediate liquidity, distribution from acquirer
+          </div>
+          <div class="ep-cons">
+            <strong>Cons:</strong> Often below peak valuation, culture clash risk, earn-out provisions, losing independence
+          </div>
+          <div class="ep-example">Inflection AI → Microsoft ($650M talent acquisition), Adept → Amazon, Character.ai → Google ($2.7B acqui-hire)</div>
+        </div>
+        <div class="ep-card">
+          <div class="ep-type">📈 Secondary Sales</div>
+          <div class="ep-when">When: Employees and early investors need liquidity before IPO</div>
+          <div class="ep-pros">
+            <strong>Pros:</strong> Employees can monetize equity without IPO; no dilution if buying from existing shareholders
+          </div>
+          <div class="ep-cons">
+            <strong>Cons:</strong> Complex to arrange; requires company permission; pricing is opaque; not available to all employees
+          </div>
+          <div class="ep-example">Platforms: Forge Global, Carta, Hiive. OpenAI employees sold shares at $86B+ valuation pre-IPO.</div>
+        </div>
+      </div>
+      <div class="public-metrics">
+        <div class="pm-title">What Public Markets Look For in AI Companies</div>
+        <div class="pm-grid">
+          <div class="pm-item"><span class="pm-metric">Rule of 40</span><span class="pm-val">40%+</span><span class="pm-note">Growth % + profit margin % — the SaaS health check</span></div>
+          <div class="pm-item"><span class="pm-metric">NRR</span><span class="pm-val">120%+</span><span class="pm-note">Existing customers expand revenue faster than churn</span></div>
+          <div class="pm-item"><span class="pm-metric">Gross Margin</span><span class="pm-val">60–75%</span><span class="pm-note">At scale — early AI companies are often 40–50%</span></div>
+          <div class="pm-item"><span class="pm-metric">Revenue Multiple</span><span class="pm-val">10–30x</span><span class="pm-note">Forward ARR — AI premium over traditional SaaS (5–8x)</span></div>
+          <div class="pm-item"><span class="pm-metric">Magic Number</span><span class="pm-val">&gt;0.75</span><span class="pm-note">GTM efficiency: new ARR generated per $ of S&amp;M spend</span></div>
+          <div class="pm-item"><span class="pm-metric">Free Cash Flow</span><span class="pm-val">Positive</span><span class="pm-note">Post-IPO investors expect FCF positive within 2–3 years</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 9. FOUNDER LESSONS ── -->
+    <div class="ij-block">
+      <div class="ij-block-header">
+        <div class="ij-num">09</div>
+        <div>
+          <div class="ij-title">Founder Lessons on Money &amp; Investment</div>
+          <div class="ij-sub">What the people who built the world's most valuable AI companies learned the hard way</div>
+        </div>
+      </div>
+      <div class="founder-lessons">
+        <div class="fl-card fl-featured">
+          <div class="fl-founder">Sam Altman</div>
+          <div class="fl-role">CEO, OpenAI — raised $13B from Microsoft, $6.6B in 2024</div>
+          <div class="fl-lesson">"Compute is the oil of the AI era. Whoever controls the most compute at the best cost will win. We secured our compute supply chain before worrying about revenue. Most startups get this backwards."</div>
+          <div class="fl-takeaway">💡 Secure your compute supply chain early — it's your production capacity.</div>
+        </div>
+        <div class="fl-card fl-featured">
+          <div class="fl-founder">Dario Amodei</div>
+          <div class="fl-role">CEO, Anthropic — raised $7.3B+ from Google, Amazon, Spark Capital</div>
+          <div class="fl-lesson">"Safety isn't a cost center — it's what lets us raise at 30x revenue and command premium enterprise pricing. Constitutional AI isn't just ethics, it's our business model."</div>
+          <div class="fl-takeaway">💡 Safety and alignment are a business moat, not just a moral obligation.</div>
+        </div>
+        <div class="fl-card">
+          <div class="fl-founder">Arthur Mensch</div>
+          <div class="fl-role">CEO, Mistral AI — raised €1.05B at €6B valuation in 18 months</div>
+          <div class="fl-lesson">"We trained a model comparable to GPT-4 for a fraction of the cost by being obsessively efficient. Efficiency is a business model. Investors funded our second model before the first launched — credibility from technical output, not sales."</div>
+          <div class="fl-takeaway">💡 Technical efficiency is a fundraising story. Publish your results and let the work speak.</div>
+        </div>
+        <div class="fl-card fl-warning">
+          <div class="fl-founder">Emad Mostaque</div>
+          <div class="fl-role">Founder, Stability AI — raised $101M, stepped down amid financial pressure 2024</div>
+          <div class="fl-lesson">"We moved incredibly fast and created extraordinary technology — but growth without financial discipline catches up with you. Revenue has to follow model capability. You can't indefinitely raise on potential."</div>
+          <div class="fl-takeaway">⚠️ Cautionary tale: even groundbreaking technology fails without business fundamentals.</div>
+        </div>
+        <div class="fl-card">
+          <div class="fl-founder">Clement Delangue</div>
+          <div class="fl-role">CEO, Hugging Face — raised $395M at $4.5B valuation</div>
+          <div class="fl-lesson">"Our entire GTM is community. We gave away the platform for free, built the open-source AI ecosystem, and enterprises came to us with their wallets open. Community is distribution that no amount of sales spend can replicate."</div>
+          <div class="fl-takeaway">💡 Open-source community is a $0-CAC distribution channel worth hundreds of millions.</div>
+        </div>
+        <div class="fl-card">
+          <div class="fl-founder">Reid Hoffman</div>
+          <div class="fl-role">Co-founder LinkedIn / Partner Greylock — invested in OpenAI, Inflection, others</div>
+          <div class="fl-lesson">"In AI, the capital requirements have compressed the normal VC timeline. Your Series A is someone else's seed round. Founders need to think bigger and move faster than any previous era of software. And calibrate: in AI, 'fast' means 6-month model cycles, not 2-year product cycles."</div>
+          <div class="fl-takeaway">💡 AI timelines are compressed. What took 4 years in SaaS takes 18 months in AI.</div>
         </div>
       </div>
     </div>
