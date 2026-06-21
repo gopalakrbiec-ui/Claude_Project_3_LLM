@@ -14,9 +14,10 @@
   <nav class="navbar">
     <div class="logo">🧠 LLM Academy</div>
     <div class="mode-toggle">
-      <span class="mode-label">Explanation Mode:</span>
+      <span class="mode-label">Mode:</span>
       <button class="mode-btn active" id="btnLayman" onclick="setMode('layman')">🙋 Layman</button>
       <button class="mode-btn" id="btnGrad" onclick="setMode('graduate')">🎓 Graduate</button>
+      <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
     </div>
     <div class="nav-links">
       <a href="#overview">Overview</a>
@@ -33,6 +34,7 @@
     </h1>
     <p class="hero-sub layman-text">Everything you need to know to build your own AI brain — no jargon, just clear steps.</p>
     <p class="hero-sub grad-text hidden">A comprehensive technical roadmap covering data pipelines, transformer architectures, distributed training, RLHF, and production deployment.</p>
+    <p class="hero-sub researcher-text hidden">A research-oriented map of the LLM landscape — foundational papers, open problems, current frontiers, and the directions shaping the next generation of language models.</p>
     <div class="hero-stats">
       <div class="stat-card"><span class="stat-num">8</span><span class="stat-label">Stages</span></div>
       <div class="stat-card"><span class="stat-num">2–5</span><span class="stat-label">Years</span></div>
@@ -88,6 +90,14 @@
           Self-attention mechanisms allow the model to capture long-range dependencies,
           while scale (parameters × data × compute) drives emergent capabilities.
         </p>
+        <p class="researcher-text hidden">
+          The LLM paradigm rests on the <strong>neural scaling hypothesis</strong> (Kaplan et al., 2020;
+          Hoffmann et al., 2022): loss decreases predictably as a power law with compute, parameters,
+          and data. <em>Emergent capabilities</em> (Wei et al., 2022) appear discontinuously at scale,
+          challenging smooth extrapolation. Open questions: Are emergent abilities real or a measurement
+          artifact? What is the theoretical basis of in-context learning? Can we build capable models
+          without internet-scale data?
+        </p>
         <div class="info-chips">
           <span class="chip">📚 Trained on text</span>
           <span class="chip">🔢 Billions of numbers</span>
@@ -107,6 +117,7 @@
       <h2>8 Stages to Build an LLM</h2>
       <p class="section-sub layman-text">Think of it like building a city — each stage builds on the last.</p>
       <p class="section-sub grad-text hidden">Each stage corresponds to a critical ML engineering milestone with distinct compute, data, and human resource requirements.</p>
+      <p class="section-sub researcher-text hidden">Each stage is a research frontier — hover over the paper timelines to trace how each idea evolved and where the open problems lie.</p>
     </div>
 
     <!-- STAGE 1 -->
@@ -158,24 +169,62 @@
             (perplexity-based), PII redaction, language detection, and document scoring.
             The Datatrove or Apache Spark pipelines are typical at scale.
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Foundational Paper Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2019</span><span class="pt-paper">C4 — Raffel et al. "Exploring the Limits of Transfer Learning" — introduced quality-filtered Common Crawl; colossal-clean-crawled-corpus</span></div>
+                <div class="pt-item"><span class="pt-year">2020</span><span class="pt-paper">The Pile — Gao et al. (EleutherAI) — 825GB diverse, high-quality text; first major open research corpus</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">ROOTS / BLOOM — BigScience — multilingual 1.6TB corpus; pioneered data governance & PII filtering at scale</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">RedPajama-1T / Dolma (AI2) — first fully open LLaMA-style training corpora; reproducible pipelines</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">FineWeb-Edu (HuggingFace) — LLM-based quality scoring; 15T tokens; showed educational content quality >> quantity</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">Phi-3 / Nemotron — Synthetic data pipelines; "textbook quality" data generation with LLMs</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Synthetic data scaling — can LLM-generated data replace web crawls? (Phi series, Nemotron-4)</li>
+                  <li>Data mixing laws — Ye et al. showed domain mixture affects loss beyond scale</li>
+                  <li>Data attribution — which training examples cause which behaviors? (TRAK, influence functions)</li>
+                  <li>Decontamination — detecting benchmark leakage in pretraining corpora</li>
+                  <li>Multimodal corpora — interleaved image-text (LAION-5B, OBELICS)</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>Can we train frontier models entirely on synthetic data? At what scale does quality collapse?</li>
+                  <li>Optimal data curriculum — should data ordering matter? Evidence is mixed.</li>
+                  <li>Continuous web ingestion — training on a live stream without catastrophic forgetting</li>
+                  <li>Legal & ethical data sourcing — post-NYT lawsuit era, how do labs license training data?</li>
+                  <li>Low-resource languages — most corpora are English-centric; multilingual coverage gaps</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="details-grid">
             <div class="detail-item">
               <div class="detail-icon">📦</div>
               <div class="detail-label">Data Volume</div>
               <div class="detail-val layman-text">Hundreds of billions of words (think 10 million books)</div>
               <div class="detail-val grad-text hidden">1–10 TB tokens; GPT-3 used 300B tokens, LLaMA-3 used 15T tokens</div>
+              <div class="detail-val researcher-text hidden">GPT-3: 300B tokens | LLaMA-3: 15T tokens | FineWeb: 15T tokens | Chinchilla optimal: ~20 tokens/param</div>
             </div>
             <div class="detail-item">
               <div class="detail-icon">🧹</div>
               <div class="detail-label">Cleaning Steps</div>
               <div class="detail-val layman-text">Remove duplicates, fix spelling, filter bad content</div>
               <div class="detail-val grad-text hidden">Dedup, quality scoring, toxic content filtering, near-dedup via LSH</div>
+              <div class="detail-val researcher-text hidden">MinHashLSH dedup (Lee et al. 2022 showed 20% dedup → 1% perplexity gain); fastText language ID; perplexity-based quality filter trained on Wikipedia</div>
             </div>
             <div class="detail-item">
               <div class="detail-icon">⚙️</div>
               <div class="detail-label">Tools</div>
               <div class="detail-val layman-text">Custom scripts & pipelines</div>
               <div class="detail-val grad-text hidden">Apache Spark, Datatrove, fastText, MinHashLSH, BLOOM filters</div>
+              <div class="detail-val researcher-text hidden">Datatrove (HuggingFace), dolma-toolkit (AI2), CCNet (Meta), text-dedup; all open-source</div>
             </div>
           </div>
         </div>
@@ -225,18 +274,53 @@
             Vocabulary size trades off between sequence length (larger vocab = shorter
             sequences) and embedding table memory. GPT-4 uses cl100k_base (100,277 tokens).
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Foundational Paper Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2012</span><span class="pt-paper">WordPiece — Schuster & Nakamura (Google) — subword tokenization for Japanese/Korean; later adopted in BERT</span></div>
+                <div class="pt-item"><span class="pt-year">2016</span><span class="pt-paper">BPE for NMT — Sennrich et al. — adapted compression algorithm for NLP; became the dominant method</span></div>
+                <div class="pt-item"><span class="pt-year">2018</span><span class="pt-paper">SentencePiece — Kudo & Richardson (Google) — language-agnostic, trains directly on raw text; used in LLaMA</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">tiktoken (OpenAI) — efficient BPE implementation; cl100k_base for GPT-4; byte-level fallback</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">MEGABYTE — Yu et al. (Meta) — tokenizer-free, operates directly on raw bytes with hierarchical model</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">BLT (Byte Latent Transformer) — Meta — dynamic byte patching; matches BPE performance without fixed vocab</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Tokenizer-free models — BLT shows byte-level can match subword; cheaper inference for non-Latin scripts</li>
+                  <li>Tokenization bias — BPE encodes numbers digit-by-digit; hurts arithmetic; studied by Nogueira et al.</li>
+                  <li>Vocabulary transfer — can you extend a tokenizer post-hoc? Critical for multilingual adaptation</li>
+                  <li>Morphologically-aware tokenization for low-resource languages</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>Is the tokenizer a bottleneck? Can end-to-end learned tokenization outperform BPE?</li>
+                  <li>Optimal vocabulary size as a function of model scale — no principled theory yet</li>
+                  <li>Tokenization for multimodal — unified discrete tokenizers for text, image, audio (e.g., VQVAE)</li>
+                  <li>Can removing tokenization unlock better reasoning? (byte models see individual digits)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="details-grid">
             <div class="detail-item">
               <div class="detail-icon">🔤</div>
               <div class="detail-label">Vocabulary Size</div>
               <div class="detail-val layman-text">50,000–100,000 unique token types</div>
               <div class="detail-val grad-text hidden">GPT-2: 50,257 | LLaMA: 32,000 | GPT-4: 100,277</div>
+              <div class="detail-val researcher-text hidden">Vocab size ∝ sqrt(corpus size) heuristic; Zouhar et al. 2023 showed optimal vocab minimizes total FLOPs; fertility (tokens/word) matters for non-English</div>
             </div>
             <div class="detail-item">
               <div class="detail-icon">📐</div>
               <div class="detail-label">Algorithm</div>
               <div class="detail-val layman-text">A smart compression algorithm that finds common word pieces</div>
               <div class="detail-val grad-text hidden">BPE (GPT series), WordPiece (BERT), Unigram LM (SentencePiece)</div>
+              <div class="detail-val researcher-text hidden">BPE: greedy frequency merging — deterministic but sub-optimal; Unigram LM: probabilistic, allows stochastic sampling; BLT: content-aware dynamic patching</div>
             </div>
           </div>
         </div>
@@ -298,6 +382,43 @@
             Key design choices: RoPE vs ALiBi positional encodings, GQA vs MHA,
             RMSNorm vs LayerNorm, context length, and MoE vs dense FFN.
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Architecture Evolution Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2017</span><span class="pt-paper">Attention Is All You Need — Vaswani et al. (Google) — transformer architecture; multi-head attention; positional encoding; still the backbone today</span></div>
+                <div class="pt-item"><span class="pt-year">2018</span><span class="pt-paper">GPT-1 — Radford et al. (OpenAI) — decoder-only transformer for generative LM; 117M params; introduced the pretraining paradigm</span></div>
+                <div class="pt-item"><span class="pt-year">2020</span><span class="pt-paper">GPT-3 — Brown et al. — 175B params; showed in-context learning; few-shot prompting without gradient updates</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">PaLM — Chowdhery et al. (Google) — 540B; Pathways system; SwiGLU FFN; parallel attention+FFN; MQA</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">FlashAttention — Dao et al. — IO-aware exact attention; 2–4× speedup; enabled longer contexts economically</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">LLaMA-2 — Touvron et al. (Meta) — GQA, RoPE, SwiGLU; open weights; became the research community's reference model</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">Mamba — Gu & Dao — Selective State Space Model (SSM); linear complexity; competitive with transformers on many tasks</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">Jamba (AI21), Zamba — hybrid transformer+Mamba architectures; best of both worlds</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Sub-quadratic attention — linear attention (RetNet, RWKV), SSMs (Mamba-2), hybrid models</li>
+                  <li>Long context — LLaMA-3.1 1M tokens via RoPE scaling; YaRN, LongLoRA, LongRoPE</li>
+                  <li>Mixture-of-Experts (MoE) — Mixtral 8×7B, DeepSeek-MoE; 8 experts, route 2 per token; 4× efficiency</li>
+                  <li>Multimodal architectures — LLaVA, Gemini, Flamingo; visual/audio token integration</li>
+                  <li>Architecture search — scaling laws for layer depth vs width (Hu et al. 2024)</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>Can SSMs (Mamba) match transformers at scale? Evidence so far mixed at 70B+</li>
+                  <li>Truly unbounded context — current long-context is still approximate or expensive</li>
+                  <li>Weight sharing and modularity — can we reuse sub-networks across tasks?</li>
+                  <li>Mechanistic understanding — what do attention heads actually compute? (Elhage et al., circuits work)</li>
+                  <li>Post-transformer architectures — is attention the right inductive bias for reasoning?</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="arch-specs">
             <table class="spec-table">
               <tr><th>Model Size</th><th>Layers</th><th>Heads</th><th>Hidden Dim</th><th>Parameters</th></tr>
@@ -364,24 +485,62 @@
             or FSDP are standard frameworks. Chinchilla scaling laws guide
             optimal token/parameter ratios (≈20 tokens per parameter).
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Scaling & Training Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2020</span><span class="pt-paper">Scaling Laws — Kaplan et al. (OpenAI) — power law relationships: L ∝ N⁻⁰·⁰⁷⁶, L ∝ D⁻⁰·⁰⁹⁵; guided GPT-3 design</span></div>
+                <div class="pt-item"><span class="pt-year">2021</span><span class="pt-paper">Megatron-LM v2 — Narayanan et al. — 3D parallelism (tensor+pipeline+data); trained 1T params; enabled modern scale</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">Chinchilla — Hoffmann et al. (DeepMind) — revised scaling laws; optimal: equal scaling of params & tokens; invalidated GPT-3 training ratio</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">DeepSpeed ZeRO-3 — Rajbhandari et al. (Microsoft) — shards optimizer states/gradients/params; 10× memory reduction</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">LLaMA — Touvron et al. — trained 65B on 1.4T tokens (over-trained vs Chinchilla); showed inference-optimal ≠ training-optimal</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">MuP (Maximal Update Parameterization) — Yang et al. — hyperparameter transfer across scales; tune at small scale, apply at large scale</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Over-training vs Chinchilla-optimal — LLaMA showed inference-optimal models need more tokens than Chinchilla suggests</li>
+                  <li>Curriculum learning — does data ordering matter? Blevins et al. showed domain ordering helps math/code</li>
+                  <li>Continual pretraining — adding new knowledge post-training without catastrophic forgetting (DARE, TIES merging)</li>
+                  <li>Training instabilities — loss spikes at scale; μP helps but doesn't eliminate; relationship to learning rate warmup</li>
+                  <li>Compute-optimal frontier — DeepSeek-V2 showed MoE changes the Pareto frontier significantly</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>Do scaling laws hold past 10²⁸ FLOPs? Extrapolation is uncertain; wall may exist</li>
+                  <li>Alternative training objectives beyond next-token prediction — masked diffusion, MDLM</li>
+                  <li>Online/streaming training on live data without full retraining</li>
+                  <li>Hardware-aware architecture co-design — training cost depends heavily on memory bandwidth</li>
+                  <li>Understanding loss spikes — no consensus on cause; critical for reliable long runs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="details-grid">
             <div class="detail-item">
               <div class="detail-icon">⚡</div>
               <div class="detail-label">Compute Required</div>
               <div class="detail-val layman-text">Thousands of special AI chips running for months</div>
               <div class="detail-val grad-text hidden">GPT-3: ~3.14×10²³ FLOPs; LLaMA-3 70B: ~6×10²⁴ FLOPs on 16K H100s</div>
+              <div class="detail-val researcher-text hidden">C = 6ND (Kaplan); GPT-3: 3.14e23 FLOPs; LLaMA-3 405B: ~3.8e25 FLOPs; MFU typically 35–45% on H100s</div>
             </div>
             <div class="detail-item">
               <div class="detail-icon">💸</div>
               <div class="detail-label">Cloud Cost</div>
               <div class="detail-val layman-text">$1M for small models, $100M+ for GPT-4 scale</div>
               <div class="detail-val grad-text hidden">~$4.6M for GPT-3; $40–100M estimated for GPT-4; H100 at ~$2–3/hr/GPU</div>
+              <div class="detail-val researcher-text hidden">Cost = FLOPs / (GPU_FLOPs × MFU) × GPU_price; H100 SXM: 989 TFLOP/s BF16; spot ~$2.5/hr; reserved ~$3.5/hr</div>
             </div>
             <div class="detail-item">
               <div class="detail-icon">🛠️</div>
               <div class="detail-label">Key Challenges</div>
               <div class="detail-val layman-text">Crashes, out-of-memory errors, monitoring runs 24/7</div>
               <div class="detail-val grad-text hidden">Loss spikes, NaN gradients, hardware failures, checkpoint management, MFU optimization</div>
+              <div class="detail-val researcher-text hidden">Loss divergence (gradient clipping, warmup critical); MTBF of H100 clusters ~days; pipeline bubbles reduce MFU; activation checkpointing vs recompute tradeoff</div>
             </div>
           </div>
         </div>
@@ -441,18 +600,54 @@
             alternatives: LoRA/QLoRA adapt only a small adapter matrix (r=8–64),
             reducing trainable params by 99%+ while retaining most of the base model's knowledge.
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Instruction Tuning & PEFT Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2021</span><span class="pt-paper">FLAN — Wei et al. (Google) — instruction tuning on 60+ NLP tasks; showed fine-tuning on task descriptions improves zero-shot generalization</span></div>
+                <div class="pt-item"><span class="pt-year">2021</span><span class="pt-paper">LoRA — Hu et al. (Microsoft) — low-rank adaptation; freeze base model, train two small matrices (A,B); r×d params instead of d²</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">InstructGPT — Ouyang et al. (OpenAI) — SFT on 13K human-written examples → RLHF; showed alignment via imitation + feedback</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">Alpaca / Self-Instruct — Wang et al. — LLM-generated instruction data (52K examples from text-davinci-003); opened low-cost SFT era</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">QLoRA — Dettmers et al. — 4-bit quantized base + BF16 LoRA adapters; fine-tune 65B on a single 48GB GPU</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">LIMA — Zhou et al. (Meta) — 1000 carefully curated examples ≈ 52K random examples; "less is more" for alignment</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Synthetic SFT data at scale — Magpie, Nemotron-4 generate millions of instruction pairs autonomously</li>
+                  <li>Data quality vs quantity — LIMA showed 1K curated examples can rival much larger datasets</li>
+                  <li>Multimodal SFT — LLaVA-style visual instruction tuning; video, audio extensions</li>
+                  <li>Code SFT — CodeLLaMA, DeepSeekCoder; code data improves general reasoning</li>
+                  <li>Continual SFT — adding new skills without forgetting previous ones (catastrophic forgetting)</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>What makes SFT data "high quality"? No principled definition; IFD score, perplexity filtering are proxies</li>
+                  <li>Self-play fine-tuning — can models improve by generating and self-evaluating their own examples?</li>
+                  <li>Merge of SFT adapters — model merging (TIES, DARE) to combine domain experts without full retraining</li>
+                  <li>When does SFT hurt? Evidence of "alignment tax" on some capabilities; tradeoffs not fully understood</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="details-grid">
             <div class="detail-item">
               <div class="detail-icon">📋</div>
               <div class="detail-label">Data Needed</div>
               <div class="detail-val layman-text">10,000–100,000 human-written Q&A examples</div>
               <div class="detail-val grad-text hidden">10K–500K instruction pairs; quality > quantity; InstructGPT used ~13K samples</div>
+              <div class="detail-val researcher-text hidden">LIMA: 1K examples; InstructGPT: ~13K; Alpaca: 52K (synthetic); Tulu-2: 326K mixed; quality >> quantity (Zhou et al. 2023)</div>
             </div>
             <div class="detail-item">
               <div class="detail-icon">🔧</div>
               <div class="detail-label">Efficient Methods</div>
               <div class="detail-val layman-text">Smart shortcuts that are 100× cheaper but almost as good</div>
               <div class="detail-val grad-text hidden">LoRA, QLoRA, prefix tuning, prompt tuning — adapters on frozen base weights</div>
+              <div class="detail-val researcher-text hidden">LoRA rank r: 8–256; higher rank = more capacity but more params; DoRA (Liu 2024) improves on LoRA by decomposing magnitude/direction; GaLore reduces optimizer memory</div>
             </div>
           </div>
         </div>
@@ -505,18 +700,56 @@
             the separate RM and optimizes preferences directly. GRPO (DeepSeek),
             RLAIF (Constitutional AI), and SimPO are further refinements.
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Alignment & RLHF Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2017</span><span class="pt-paper">Learning from Human Preferences — Christiano et al. (OpenAI) — original RLHF on Atari; foundation of the modern approach</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">InstructGPT — Ouyang et al. (OpenAI) — RLHF on language models at scale; humans preferred InstructGPT 175B over GPT-3 175B</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">Constitutional AI — Bai et al. (Anthropic) — RLAIF; LLM critiques its own outputs using a "constitution"; reduces human annotation</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">DPO — Rafailov et al. (Stanford) — implicit reward; optimizes Bradley-Terry loss directly on policy; no separate RM or PPO</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">GRPO — Shao et al. (DeepSeek) — Group Relative Policy Optimization; removes value model; used in DeepSeek-R1 reasoning model</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">Process Reward Models — Lightman et al. (OpenAI) — reward at each reasoning step, not just final answer; enables o1-style thinking</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">SimPO — Meng et al. — reference-free DPO variant; length-normalized; simpler and competitive</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Process Reward Models (PRMs) — step-level credit assignment for reasoning; ORM vs PRM debate</li>
+                  <li>RLVR (RL from Verifiable Rewards) — DeepSeek-R1; train on math/code with ground-truth reward; no human labels</li>
+                  <li>Scalable oversight — can weak supervisors guide stronger models? (Burns et al., Superalignment team)</li>
+                  <li>Reward hacking — models overfit reward model; goodhart's law at scale; Coste et al. 2023</li>
+                  <li>Constitutional AI scaling — RLAIF can reduce human label cost by 10×; Claude's approach</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>Weak-to-strong generalization — can GPT-4 be supervised by GPT-2-level labels? (OpenAI Superalignment)</li>
+                  <li>Debate as alignment — AI models debate; humans judge; can this scale where human evaluation fails?</li>
+                  <li>Value alignment vs capability — are safety and capability actually in conflict?</li>
+                  <li>Multi-objective alignment — helpfulness, harmlessness, honesty are often in tension; formal treatment lacking</li>
+                  <li>Self-improvement loops — can models improve alignment through self-play without human labels?</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="details-grid">
             <div class="detail-item">
               <div class="detail-icon">👥</div>
               <div class="detail-label">Human Raters</div>
               <div class="detail-val layman-text">Thousands of people comparing AI responses daily</div>
               <div class="detail-val grad-text hidden">20–1000 annotators; inter-annotator agreement is critical; ~100K–1M preference pairs</div>
+              <div class="detail-val researcher-text hidden">Inter-annotator agreement (Cohen's κ) typically 0.5–0.7; cultural bias in ratings; Ouyang et al. found ~30K preference comparisons sufficient for initial InstructGPT RM</div>
             </div>
             <div class="detail-item">
               <div class="detail-icon">🧮</div>
               <div class="detail-label">Algorithms</div>
               <div class="detail-val layman-text">Game theory-based teaching that rewards good behavior</div>
               <div class="detail-val grad-text hidden">PPO (Proximal Policy Optimization), DPO, GRPO, SimPO, RLAIF, Constitutional AI</div>
+              <div class="detail-val researcher-text hidden">PPO: on-policy, stable but slow; DPO: off-policy, simple, popular; GRPO: no critic network, lower memory; SimPO: no reference model, length normalization prevents verbosity bias</div>
             </div>
           </div>
         </div>
@@ -576,6 +809,40 @@
             Red-teaming for safety: adversarial prompts, jailbreaks, bias audits,
             and Constitutional AI evaluations. Eleuther's lm-evaluation-harness is standard.
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Evaluation Methodology Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2021</span><span class="pt-paper">BIG-Bench — Srivastava et al. (204 authors) — 204 tasks beyond current capabilities; first collaborative benchmark effort at scale</span></div>
+                <div class="pt-item"><span class="pt-year">2021</span><span class="pt-paper">MMLU — Hendrycks et al. — 57 subjects from elementary to professional level; became the standard knowledge benchmark</span></div>
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">HELM — Liang et al. (Stanford) — holistic evaluation: accuracy + calibration + robustness + fairness + efficiency</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">MT-Bench / Chatbot Arena — Zheng et al. (LMSYS) — GPT-4 as judge; ELO ratings via human A/B comparisons; became community standard</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">GPQA — Rein et al. — PhD-level science questions even experts get 65%; tests genuine knowledge vs pattern matching</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">SWE-Bench — Jimenez et al. — real GitHub issues; tests agent-level code editing capability; harder than HumanEval</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Benchmark contamination — MMLU, GSM8K likely in pretraining data; inflated scores; decontamination methods active area</li>
+                  <li>LLM-as-judge — GPT-4 judge has positional bias, verbosity bias, self-enhancement bias (Zheng et al.)</li>
+                  <li>Agent evaluation — SWE-Bench, WebArena, OSWorld test real task completion, not just QA</li>
+                  <li>Capability elicitation — can we reliably surface all of a model's capabilities? Chain-of-thought, few-shot changes scores significantly</li>
+                  <li>Safety red-teaming — automated red-teaming (Perez et al.), StrongREJECT for jailbreak evaluation</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>Evaluation-proof benchmarks — can we create benchmarks that can't be contaminated? Dynamic, generated-at-eval-time problems</li>
+                  <li>Real-world task evaluation — browsing, coding, research assistance; how to standardize?</li>
+                  <li>Behavioral consistency — does the model behave the same when deployed vs evaluated?</li>
+                  <li>Interpretability as evaluation — mechanistic understanding of capabilities vs black-box measurement</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -632,6 +899,40 @@
             For production: rate limiting, safety filters, streaming tokens,
             observability (latency, TTFT, TPS metrics), and cost per token optimization.
           </p>
+          <div class="researcher-text hidden">
+            <div class="paper-timeline">
+              <div class="pt-title">📜 Inference Systems Timeline</div>
+              <div class="pt-items">
+                <div class="pt-item"><span class="pt-year">2022</span><span class="pt-paper">FlashAttention — Dao et al. (Stanford) — fused CUDA kernel; IO-aware; 2–4× speedup; enabled 10K+ context training</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">Speculative Decoding — Chen et al. (Google) / Leviathan et al. — small draft model proposes tokens; large model verifies in parallel; 2–3× speedup</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">vLLM / PagedAttention — Kwon et al. (UC Berkeley) — virtual memory for KV cache; near-zero KV fragmentation; 24× throughput</span></div>
+                <div class="pt-item"><span class="pt-year">2023</span><span class="pt-paper">AWQ — Lin et al. (MIT) — activation-aware weight quantization; INT4 with minimal accuracy loss; hardware-friendly</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">FlashAttention-3 — Shah et al. — asynchronous overlapping of compute and memory on H100; 1.5–2.0× over FA-2</span></div>
+                <div class="pt-item"><span class="pt-year">2024</span><span class="pt-paper">SGLang — Zheng et al. — structured generation language; radix attention for KV reuse across requests; 5× throughput</span></div>
+              </div>
+            </div>
+            <div class="research-grid">
+              <div class="rg-card current">
+                <div class="rg-label">🔬 Active Research (2024–25)</div>
+                <ul>
+                  <li>Speculative decoding variants — Medusa (multi-head), Eagle (autoregressive draft), SpecInfer; 3–5× practical speedups</li>
+                  <li>KV cache compression — StreamingLLM (attention sinks), SnapKV, PyramidKV; compress KV without accuracy loss</li>
+                  <li>Edge deployment — MLC-LLM, llama.cpp run 7B on phones; Apple Neural Engine, Qualcomm AI; quantization to 2-4 bits</li>
+                  <li>Disaggregated serving — separate prefill and decode across machines (Splitwise, Mooncake)</li>
+                  <li>Multi-model serving — heterogeneous clusters; routing queries to right-sized models</li>
+                </ul>
+              </div>
+              <div class="rg-card future">
+                <div class="rg-label">🚀 Open Research Directions</div>
+                <ul>
+                  <li>Hardware-software co-design — Groq, Tenstorrent, Cerebras custom chips; will they displace H100s?</li>
+                  <li>Continuous batching at scale — dynamic sequence lengths; optimal scheduling is an open problem</li>
+                  <li>Neuromorphic approaches — Intel Loihi, IBM NorthPole; spike-based inference could be 100× more efficient</li>
+                  <li>Memory bandwidth wall — LLM inference is memory-bound; DRAM bandwidth limits scale; HBM4, CXL solutions emerging</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -949,6 +1250,192 @@
   </div>
 </section>
 
+<!-- ═══════════════════════ RESEARCH LANDSCAPE (Researcher mode only) ════ -->
+<section id="research-landscape" class="section bg-dark researcher-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge research-badge">🔬 Research Frontier</div>
+      <h2>The Research Landscape</h2>
+      <p class="section-sub">What's solved, what's open, where to focus your PhD or research career</p>
+    </div>
+
+    <!-- Open Problems -->
+    <div class="rl-block">
+      <h3 class="rl-title">🧩 Grand Open Problems in LLM Research</h3>
+      <div class="open-problems-grid">
+        <div class="op-card op-hard">
+          <div class="op-icon">🎯</div>
+          <div class="op-name">True Reasoning</div>
+          <div class="op-desc">Can LLMs genuinely reason, or is it sophisticated pattern matching? Failure on novel logical forms (Winogrande variants, ARC-Challenge) suggests current limits. Chain-of-thought helps but doesn't solve compositionality. Key papers: Dziri et al. 2023 "Faith and Fate", Bubeck et al. 2023 "Sparks of AGI".</div>
+          <div class="op-status">Status: <span class="status-open">Deeply open</span></div>
+        </div>
+        <div class="op-card op-active">
+          <div class="op-icon">🔄</div>
+          <div class="op-name">Continual Learning</div>
+          <div class="op-desc">LLMs forget old knowledge when trained on new data (catastrophic forgetting). Current solutions: replay buffers, EWC, LoRA mixing — all partial. No clean solution at scale. Active area: DARE, TIES merging, gradient projection methods.</div>
+          <div class="op-status">Status: <span class="status-active">Active area</span></div>
+        </div>
+        <div class="op-card op-hard">
+          <div class="op-icon">🕵️</div>
+          <div class="op-name">Interpretability</div>
+          <div class="op-desc">We cannot explain why models produce specific outputs. Mechanistic interpretability (Anthropic's circuits work, superposition hypothesis) is making progress at toy scale. Scaling to production models is unsolved. Critical for safety and trust.</div>
+          <div class="op-status">Status: <span class="status-open">Early stage</span></div>
+        </div>
+        <div class="op-card op-active">
+          <div class="op-icon">📏</div>
+          <div class="op-name">Reliable Calibration</div>
+          <div class="op-desc">Models express false confidence. RLHF makes calibration worse (Kadavath et al. 2022). Temperature scaling helps at small scale. At deployment scale, models confidently hallucinate. Key work: "Language Models (Mostly) Know What They Know".</div>
+          <div class="op-status">Status: <span class="status-active">Partially solved</span></div>
+        </div>
+        <div class="op-card op-hard">
+          <div class="op-icon">⚖️</div>
+          <div class="op-name">Scalable Alignment</div>
+          <div class="op-desc">Current RLHF requires human labels that may not scale to superhuman capabilities. Debate, amplification, scalable oversight are theoretical proposals. Superalignment team at OpenAI, MIRI, ARC working on this. No solution validated at scale.</div>
+          <div class="op-status">Status: <span class="status-open">Unsolved</span></div>
+        </div>
+        <div class="op-card op-emerging">
+          <div class="op-icon">🌐</div>
+          <div class="op-name">Long-Horizon Agency</div>
+          <div class="op-desc">Agents that can plan and execute tasks over many steps (SWE-Bench requires 50+ steps). Current models fail on tasks requiring persistent memory, error recovery, and goal-directed planning. ReAct, Reflexion, AutoGPT are starting points, not solutions.</div>
+          <div class="op-status">Status: <span class="status-emerging">Emerging</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Labs -->
+    <div class="rl-block">
+      <h3 class="rl-title">🏛️ Key Research Labs & Their Focus Areas</h3>
+      <div class="labs-grid">
+        <div class="lab-card">
+          <div class="lab-name">OpenAI</div>
+          <div class="lab-focus">Scaling, RLHF, reasoning (o1/o3), multimodal, alignment</div>
+          <div class="lab-papers">Key: GPT-4, InstructGPT, Scaling Laws, DALL-E, Whisper, Superalignment</div>
+          <div class="lab-open">🔒 Mostly closed; technical reports public</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-name">Anthropic</div>
+          <div class="lab-focus">Constitutional AI, interpretability, long-context, safety</div>
+          <div class="lab-papers">Key: Claude series, Constitutional AI, Toy Models of Superposition, Scaling Monosemanticity</div>
+          <div class="lab-open">🔒 Closed weights; alignment research published</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-name">DeepMind / Google</div>
+          <div class="lab-focus">Chinchilla scaling, MoE, Gemini, AlphaCode, long-context</div>
+          <div class="lab-papers">Key: Chinchilla, Flamingo, PaLM, Gemini, AlphaCode, GraphCast</div>
+          <div class="lab-open">🔒 Closed; extensive publications</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-name">Meta AI (FAIR)</div>
+          <div class="lab-focus">Open weights (LLaMA), multimodal, efficiency, world models</div>
+          <div class="lab-papers">Key: LLaMA 1/2/3, OPT, NLLB, ImageBind, Segment Anything</div>
+          <div class="lab-open">✅ Open weights (LLaMA); code released</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-name">Stanford / UC Berkeley</div>
+          <div class="lab-focus">Efficient fine-tuning, evaluation, systems (vLLM), alignment theory</div>
+          <div class="lab-papers">Key: LoRA, Alpaca, DPO, HELM, FlashAttention, vLLM, Mistral collaboration</div>
+          <div class="lab-open">✅ Fully open; active student research community</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-name">EleutherAI / AI2</div>
+          <div class="lab-focus">Open research, reproducibility, evaluation harness, data</div>
+          <div class="lab-papers">Key: The Pile, GPT-Neo/J/NeoX, lm-evaluation-harness, Dolma, OLMo</div>
+          <div class="lab-open">✅ Fully open; community-driven</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paper Reading List -->
+    <div class="rl-block">
+      <h3 class="rl-title">📚 Essential Paper Reading List for LLM Researchers</h3>
+      <div class="reading-tabs">
+        <button class="rtab active" onclick="showReading('foundations')">Foundations</button>
+        <button class="rtab" onclick="showReading('scale')">Scaling</button>
+        <button class="rtab" onclick="showReading('alignment')">Alignment</button>
+        <button class="rtab" onclick="showReading('efficiency')">Efficiency</button>
+        <button class="rtab" onclick="showReading('frontier')">2024–25 Frontier</button>
+      </div>
+      <div class="reading-content" id="rc-foundations">
+        <div class="paper-entry"><span class="pe-year">2017</span><div class="pe-info"><div class="pe-title">Attention Is All You Need — Vaswani et al.</div><div class="pe-why">The transformer paper. Must read. Every LLM traces back to this.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2018</span><div class="pe-info"><div class="pe-title">GPT-1: Improving Language Understanding by Generative Pre-Training — Radford et al.</div><div class="pe-why">Established the pretraining paradigm. Surprisingly short and readable.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2018</span><div class="pe-info"><div class="pe-title">BERT — Devlin et al.</div><div class="pe-why">Encoder-only counterpart; MLM objective; contextualized embeddings. Understand to appreciate GPT's differences.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2020</span><div class="pe-info"><div class="pe-title">Language Models are Few-Shot Learners (GPT-3) — Brown et al.</div><div class="pe-why">In-context learning discovery. The paper that changed the field's trajectory.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2022</span><div class="pe-info"><div class="pe-title">Chain-of-Thought Prompting — Wei et al. (Google)</div><div class="pe-why">Step-by-step reasoning emerges at scale. Showed prompting strategy matters enormously.</div></div></div>
+      </div>
+      <div class="reading-content hidden" id="rc-scale">
+        <div class="paper-entry"><span class="pe-year">2020</span><div class="pe-info"><div class="pe-title">Scaling Laws for Neural Language Models — Kaplan et al.</div><div class="pe-why">Power law relationships across compute, data, parameters. Foundation for budgeting any training run.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2022</span><div class="pe-info"><div class="pe-title">Training Compute-Optimal LLMs (Chinchilla) — Hoffmann et al.</div><div class="pe-why">Revised Kaplan's laws; showed GPT-3 was undertrained. Changed how every lab thinks about training budgets.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2022</span><div class="pe-info"><div class="pe-title">Emergent Abilities of LLMs — Wei et al.</div><div class="pe-why">Capabilities appear suddenly at scale thresholds. Controversial: Schaeffer et al. 2023 argue it's a measurement artifact.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2023</span><div class="pe-info"><div class="pe-title">LLaMA: Open Foundation LLMs — Touvron et al.</div><div class="pe-why">Over-trained small models beat large ones at inference. Changed community's focus to inference-optimal training.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2024</span><div class="pe-info"><div class="pe-title">DeepSeek-V2 — DeepSeek AI</div><div class="pe-why">MoE + MLA attention; showed non-dense architectures shift the scaling Pareto frontier significantly.</div></div></div>
+      </div>
+      <div class="reading-content hidden" id="rc-alignment">
+        <div class="paper-entry"><span class="pe-year">2022</span><div class="pe-info"><div class="pe-title">Training Language Models to Follow Instructions (InstructGPT) — Ouyang et al.</div><div class="pe-why">The RLHF paper that made ChatGPT possible. SFT + RM + PPO pipeline spelled out clearly.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2022</span><div class="pe-info"><div class="pe-title">Constitutional AI — Bai et al. (Anthropic)</div><div class="pe-why">RLAIF: use AI feedback instead of human labels. First practical alternative to expensive human annotation.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2023</span><div class="pe-info"><div class="pe-title">Direct Preference Optimization (DPO) — Rafailov et al.</div><div class="pe-why">Showed RLHF's PPO loop is unnecessary; optimize preference directly on the LM loss. Now widely adopted.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2023</span><div class="pe-info"><div class="pe-title">Weak-to-Strong Generalization — Burns et al. (OpenAI)</div><div class="pe-why">Can a GPT-2 supervisor elicit GPT-4 capabilities? Preliminary "yes" — critical for scalable oversight.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2024</span><div class="pe-info"><div class="pe-title">DeepSeek-R1 — DeepSeek AI</div><div class="pe-why">RLVR on verifiable rewards (math, code) without SFT. Group Relative Policy Optimization (GRPO). Reproduces o1-style reasoning.</div></div></div>
+      </div>
+      <div class="reading-content hidden" id="rc-efficiency">
+        <div class="paper-entry"><span class="pe-year">2021</span><div class="pe-info"><div class="pe-title">LoRA — Hu et al. (Microsoft)</div><div class="pe-why">Low-rank adaptation. Trains 0.1% of parameters; near-full fine-tune quality. Used everywhere.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2022</span><div class="pe-info"><div class="pe-title">FlashAttention — Dao et al. (Stanford)</div><div class="pe-why">Tiling + kernel fusion for exact attention. 2–4× faster, 10× less memory. Necessary reading for systems work.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2023</span><div class="pe-info"><div class="pe-title">QLoRA — Dettmers et al.</div><div class="pe-why">4-bit quantized base + 16-bit adapter. Fine-tune 65B on a single 48GB GPU. Democratized alignment research.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2023</span><div class="pe-info"><div class="pe-title">PagedAttention / vLLM — Kwon et al. (UC Berkeley)</div><div class="pe-why">Virtual memory for KV cache; 24× throughput improvement. Now the default serving framework.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2024</span><div class="pe-info"><div class="pe-title">GaLore — Zhao et al.</div><div class="pe-why">Gradient Low-Rank Projection; reduces optimizer memory 65%; enables pre-training on consumer hardware.</div></div></div>
+      </div>
+      <div class="reading-content hidden" id="rc-frontier">
+        <div class="paper-entry"><span class="pe-year">2024</span><div class="pe-info"><div class="pe-title">Mamba-2 — Dao & Gu (Princeton/CMU)</div><div class="pe-why">SSM with structured state space duality; bridges SSMs and attention theoretically; competes with transformers on long-context.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2024</span><div class="pe-info"><div class="pe-title">Byte Latent Transformer (BLT) — Meta</div><div class="pe-why">Tokenizer-free LLM; dynamic byte patching; matches BPE performance; better on rare words and code.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2024</span><div class="pe-info"><div class="pe-title">Scaling LLM Test-Time Compute — Snell et al. (Berkeley)</div><div class="pe-why">More inference compute can substitute for more training compute; process reward models key; basis for o1/o3 approach.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2025</span><div class="pe-info"><div class="pe-title">DeepSeek-R1 — DeepSeek AI</div><div class="pe-why">Pure RL from verifiable rewards; emergent chain-of-thought without SFT bootstrapping; publicly available weights.</div></div></div>
+        <div class="paper-entry"><span class="pe-year">2025</span><div class="pe-info"><div class="pe-title">Gemini 2.0 / Claude 3.7 / GPT-4o (technical reports)</div><div class="pe-why">Current frontier; study architecture choices, training insights, and safety approaches disclosed in each report.</div></div></div>
+      </div>
+    </div>
+
+    <!-- Career paths -->
+    <div class="rl-block">
+      <h3 class="rl-title">🧭 Research Entry Points — Where to Start</h3>
+      <div class="entry-paths">
+        <div class="ep-card">
+          <div class="ep-icon">🎓</div>
+          <div class="ep-title">PhD / Postdoc Entry</div>
+          <div class="ep-steps">
+            <div class="ep-step">1. Master the transformer from scratch (Karpathy nanoGPT)</div>
+            <div class="ep-step">2. Reproduce 1 landmark result (DPO, LoRA, speculative decoding)</div>
+            <div class="ep-step">3. Find one underexplored sub-problem in the area you reproduced</div>
+            <div class="ep-step">4. Submit to ICLR / NeurIPS / ICML / ACL with a clear contribution</div>
+            <div class="ep-step">5. Open-source your code and engage with the community (Twitter/X, Discord)</div>
+          </div>
+        </div>
+        <div class="ep-card">
+          <div class="ep-icon">🔭</div>
+          <div class="ep-title">Highest-Leverage Research Areas (2025)</div>
+          <div class="ep-steps">
+            <div class="ep-step">📌 Test-time compute scaling — still very early; process reward models, search methods</div>
+            <div class="ep-step">📌 Interpretability — Anthropic's circuits work; mechanistic understanding of transformers</div>
+            <div class="ep-step">📌 Data quality & synthetic data — what makes data good? No principled theory</div>
+            <div class="ep-step">📌 Long-context reasoning — 1M tokens possible; comprehension at scale unsolved</div>
+            <div class="ep-step">📌 Multi-agent systems — LLMs as collaborating agents; evaluation, training, coordination</div>
+            <div class="ep-step">📌 LLM theory — why does in-context learning work? What are transformers computing?</div>
+          </div>
+        </div>
+        <div class="ep-card">
+          <div class="ep-icon">🛠️</div>
+          <div class="ep-title">Systems / ML Engineering Research</div>
+          <div class="ep-steps">
+            <div class="ep-step">📌 Inference optimization — speculative decoding variants, KV cache compression</div>
+            <div class="ep-step">📌 Distributed training — new parallelism strategies for post-H100 hardware</div>
+            <div class="ep-step">📌 Quantization theory — why does INT4 work so well? Theoretical grounding lacking</div>
+            <div class="ep-step">📌 Memory-efficient training — GaLore successors; gradient compression</div>
+            <div class="ep-step">📌 Hardware co-design — custom silicon for attention-free or MoE architectures</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
 <footer class="footer">
   <div class="container">
@@ -971,6 +1458,7 @@
         <ul>
           <li>🙋 Layman — No jargon, clear analogies</li>
           <li>🎓 Graduate — Technical depth, papers, code</li>
+          <li>🔬 Researcher — Papers, open problems, frontiers</li>
         </ul>
       </div>
     </div>

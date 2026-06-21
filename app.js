@@ -7,23 +7,55 @@ let currentMode = 'layman';
 
 function setMode(mode) {
   currentMode = mode;
-  const btnLayman = document.getElementById('btnLayman');
-  const btnGrad   = document.getElementById('btnGrad');
+  const btnLayman   = document.getElementById('btnLayman');
+  const btnGrad     = document.getElementById('btnGrad');
+  const btnResearch = document.getElementById('btnResearch');
+
+  // Reset all buttons
+  [btnLayman, btnGrad, btnResearch].forEach(b => b && b.classList.remove('active'));
+
+  // Hide all mode-specific content
+  document.querySelectorAll('.layman-text, .grad-text, .researcher-text').forEach(el => el.classList.add('hidden'));
+
+  // Show researcher-only section
+  const resSection = document.getElementById('research-landscape');
 
   if (mode === 'layman') {
     btnLayman.classList.add('active');
-    btnGrad.classList.remove('active');
     document.querySelectorAll('.layman-text').forEach(el => el.classList.remove('hidden'));
-    document.querySelectorAll('.grad-text').forEach(el => el.classList.add('hidden'));
-  } else {
+    if (resSection) resSection.classList.add('hidden');
+  } else if (mode === 'graduate') {
     btnGrad.classList.add('active');
-    btnLayman.classList.remove('active');
     document.querySelectorAll('.grad-text').forEach(el => el.classList.remove('hidden'));
-    document.querySelectorAll('.layman-text').forEach(el => el.classList.add('hidden'));
+    if (resSection) resSection.classList.add('hidden');
+  } else if (mode === 'researcher') {
+    btnResearch.classList.add('active');
+    document.querySelectorAll('.researcher-text').forEach(el => el.classList.remove('hidden'));
+    if (resSection) resSection.classList.remove('hidden');
+    // Also keep grad-text visible in researcher mode for baseline context
+    document.querySelectorAll('.grad-text').forEach(el => el.classList.remove('hidden'));
+    // Animate paper timelines
+    setTimeout(() => {
+      document.querySelectorAll('.pt-item').forEach((el, i) => {
+        el.style.animationDelay = `${i * 0.06}s`;
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = '';
+      });
+    }, 50);
   }
 
   // Persist to sessionStorage
   sessionStorage.setItem('llm-mode', mode);
+}
+
+/* ── Reading tabs ── */
+function showReading(tab) {
+  document.querySelectorAll('.reading-content').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('.rtab').forEach(el => el.classList.remove('active'));
+  const content = document.getElementById(`rc-${tab}`);
+  if (content) content.classList.remove('hidden');
+  event.target.classList.add('active');
 }
 
 /* ── Stage accordion ── */
