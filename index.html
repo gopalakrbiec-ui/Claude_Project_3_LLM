@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Your Own LLM — From Zero to GPT</title>
+  <title>FrontierLLM Academy — Build a GPT from Scratch</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
 <header class="hero">
   <div class="stars" id="stars"></div>
   <nav class="navbar">
-    <div class="logo">🧠 LLM Academy</div>
+    <div class="logo">🚀 FrontierLLM Academy</div>
     <div class="mode-toggle">
       <span class="mode-label">Mode:</span>
       <button class="mode-btn active" id="btnLayman"   onclick="setMode('layman')">🙋 Layman</button>
@@ -22,10 +22,7 @@
       <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
     </div>
     <div class="nav-links">
-      <a href="#overview">Overview</a>
       <a href="#stages">Stages</a>
-      <a href="#resources">Resources</a>
-      <a href="#roadmap">Roadmap</a>
       <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
       <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
       <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
@@ -48,73 +45,11 @@
       <div class="stat-card"><span class="stat-num">$1M+</span><span class="stat-label">Budget</span></div>
       <div class="stat-card"><span class="stat-num">10–50</span><span class="stat-label">People</span></div>
     </div>
-    <a href="#overview" class="cta-btn">Start Learning ↓</a>
+    <a href="#stages" class="cta-btn">Start Learning ↓</a>
   </div>
 
   <div class="neural-anim" id="neuralCanvas"></div>
 </header>
-
-<!-- ═══════════════════════════════ OVERVIEW ═══════════════════════════ -->
-<section id="overview" class="section bg-dark">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-badge">🗺️ Big Picture</div>
-      <h2>What is an LLM?</h2>
-    </div>
-    <div class="two-col">
-      <div class="overview-visual">
-        <div class="brain-container">
-          <div class="brain-pulse">
-            <div class="brain-ring r1"></div>
-            <div class="brain-ring r2"></div>
-            <div class="brain-ring r3"></div>
-            <div class="brain-center">🧠</div>
-          </div>
-          <div class="input-tokens">
-            <span class="token t1">Hello</span>
-            <span class="token t2">world</span>
-            <span class="token t3">AI</span>
-            <span class="arrow-in">→</span>
-          </div>
-          <div class="output-tokens">
-            <span class="arrow-out">→</span>
-            <span class="token t4">is</span>
-            <span class="token t5">awesome</span>
-            <span class="token t6">!</span>
-          </div>
-        </div>
-      </div>
-      <div class="overview-text">
-        <p class="layman-text">
-          An LLM (Large Language Model) is like a <strong>super-smart autocomplete</strong>.
-          It reads billions of sentences, learns patterns in language, and then predicts
-          what word comes next — over and over — until it can write essays, answer questions,
-          write code, and hold conversations.
-        </p>
-        <p class="grad-text hidden">
-          An LLM is a neural network — typically a <strong>decoder-only transformer</strong> —
-          trained on next-token prediction via cross-entropy loss over a massive corpus.
-          Self-attention mechanisms allow the model to capture long-range dependencies,
-          while scale (parameters × data × compute) drives emergent capabilities.
-        </p>
-        <p class="researcher-text hidden">
-          The LLM paradigm rests on the <strong>neural scaling hypothesis</strong> (Kaplan et al., 2020;
-          Hoffmann et al., 2022): loss decreases predictably as a power law with compute, parameters,
-          and data. <em>Emergent capabilities</em> (Wei et al., 2022) appear discontinuously at scale,
-          challenging smooth extrapolation. Open questions: Are emergent abilities real or a measurement
-          artifact? What is the theoretical basis of in-context learning? Can we build capable models
-          without internet-scale data?
-        </p>
-        <div class="info-chips">
-          <span class="chip">📚 Trained on text</span>
-          <span class="chip">🔢 Billions of numbers</span>
-          <span class="chip">🔁 Predicts next word</span>
-          <span class="chip">⚡ GPU-powered</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════ STAGES ══════════════════════════════ -->
 <section id="stages" class="section bg-darker">
@@ -1983,316 +1918,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ RESOURCES ════════════════════════════ -->
-<section id="resources" class="section bg-dark">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-badge">📋 Requirements</div>
-      <h2>What You'll Actually Need</h2>
-    </div>
-
-    <div class="resources-grid">
-      <!-- Team -->
-      <div class="resource-card">
-        <div class="rc-icon">👥</div>
-        <h3>Team Structure</h3>
-        <div class="team-chart">
-          <div class="team-role">
-            <div class="role-bar" style="--w:100%"></div>
-            <span class="role-name">ML Researchers</span>
-            <span class="role-count">3–8</span>
-          </div>
-          <div class="team-role">
-            <div class="role-bar" style="--w:80%"></div>
-            <span class="role-name">ML Engineers</span>
-            <span class="role-count">5–15</span>
-          </div>
-          <div class="team-role">
-            <div class="role-bar" style="--w:60%"></div>
-            <span class="role-name">Data Engineers</span>
-            <span class="role-count">3–8</span>
-          </div>
-          <div class="team-role">
-            <div class="role-bar" style="--w:50%"></div>
-            <span class="role-name">Infra/DevOps</span>
-            <span class="role-count">2–6</span>
-          </div>
-          <div class="team-role">
-            <div class="role-bar" style="--w:40%"></div>
-            <span class="role-name">Safety/Eval</span>
-            <span class="role-count">2–5</span>
-          </div>
-          <div class="team-role">
-            <div class="role-bar" style="--w:30%"></div>
-            <span class="role-name">Human Annotators</span>
-            <span class="role-count">20–1000</span>
-          </div>
-        </div>
-        <p class="layman-text rc-note">Think of it like making a movie — you need directors, technical crew, editors, and extras.</p>
-        <p class="grad-text rc-note hidden">Minimum viable team: 2 researchers + 3 engineers + 1 data engineer. GPT-4 team: 100s of people across OpenAI.</p>
-      </div>
-
-      <!-- Time -->
-      <div class="resource-card">
-        <div class="rc-icon">⏰</div>
-        <h3>Time Breakdown</h3>
-        <div class="time-timeline">
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-label">Month 1–3</div>
-            <div class="tl-task">Data collection & preprocessing</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-label">Month 4–5</div>
-            <div class="tl-task">Architecture design & tokenizer</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-label">Month 6–18</div>
-            <div class="tl-task">Pre-training (the long grind)</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-label">Month 19–21</div>
-            <div class="tl-task">SFT + RLHF alignment</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-label">Month 22–24</div>
-            <div class="tl-task">Evaluation & deployment</div>
-          </div>
-        </div>
-        <div class="total-time">Total: <strong>1.5 – 5 years</strong> (GPT-4 style)</div>
-      </div>
-
-      <!-- Prerequisites -->
-      <div class="resource-card">
-        <div class="rc-icon">📚</div>
-        <h3>Prerequisites</h3>
-        <div class="prereq-list">
-          <div class="prereq-item essential">
-            <span class="prereq-badge">Essential</span>
-            <ul>
-              <li class="layman-text">Strong math (especially statistics)</li>
-              <li class="layman-text">Python programming</li>
-              <li class="layman-text">Basic machine learning concepts</li>
-              <li class="grad-text hidden">Linear algebra, calculus, probability theory</li>
-              <li class="grad-text hidden">PyTorch / JAX proficiency</li>
-              <li class="grad-text hidden">Backpropagation & optimization theory</li>
-            </ul>
-          </div>
-          <div class="prereq-item recommended">
-            <span class="prereq-badge">Recommended</span>
-            <ul>
-              <li class="layman-text">Cloud computing experience</li>
-              <li class="layman-text">Understanding of neural networks</li>
-              <li class="grad-text hidden">Distributed systems & CUDA programming</li>
-              <li class="grad-text hidden">Transformer paper familiarity</li>
-              <li class="grad-text hidden">HPC cluster management</li>
-            </ul>
-          </div>
-          <div class="prereq-item nice">
-            <span class="prereq-badge">Nice to Have</span>
-            <ul>
-              <li class="layman-text">Experience with large datasets</li>
-              <li class="grad-text hidden">Megatron-LM / DeepSpeed experience</li>
-              <li class="grad-text hidden">RL/RLHF familiarity</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Financial -->
-      <div class="resource-card full-width">
-        <div class="rc-icon">💰</div>
-        <h3>Financial Requirements</h3>
-        <div class="cost-tiers">
-          <div class="cost-tier hobby">
-            <div class="ct-label">🏠 Hobbyist</div>
-            <div class="ct-budget">$0 – $5K</div>
-            <div class="ct-what">
-              <p class="layman-text">Fine-tune an existing open-source model (like LLaMA) on your laptop or Google Colab. Not building from scratch, but learning all the key concepts.</p>
-              <p class="grad-text hidden">QLoRA fine-tuning on consumer GPU (RTX 4090, 24GB VRAM). Use Hugging Face PEFT. Suitable for domain-specific SFT on LLaMA-3 8B.</p>
-            </div>
-            <div class="ct-resources">1 GPU · 1 person · weeks</div>
-          </div>
-          <div class="cost-tier startup">
-            <div class="ct-label">🚀 Startup</div>
-            <div class="ct-budget">$100K – $5M</div>
-            <div class="ct-what">
-              <p class="layman-text">Build a small-to-medium model (like GPT-2 size) from scratch, or fine-tune a larger open model extensively. Can serve real users.</p>
-              <p class="grad-text hidden">Pre-train a 1B–7B parameter model on ~100B tokens. Rent A100/H100 clusters on AWS/GCP/Lambda. Sufficient for specialized vertical LLMs.</p>
-            </div>
-            <div class="ct-resources">8–64 GPUs · 5–15 people · 6–12 months</div>
-          </div>
-          <div class="cost-tier company">
-            <div class="ct-label">🏢 Company</div>
-            <div class="ct-budget">$10M – $500M</div>
-            <div class="ct-what">
-              <p class="layman-text">Build a full GPT-3/4 competitor with billions of parameters, trained on trillions of words, with full safety testing and deployment infrastructure.</p>
-              <p class="grad-text hidden">70B–700B parameter model, 1–15T tokens, 1K–16K H100 GPUs, 6–18 month runs, full RLHF pipeline, red-teaming, and multi-region inference clusters.</p>
-            </div>
-            <div class="ct-resources">1000s of GPUs · 50–500 people · 2–5 years</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ ROADMAP ══════════════════════════════ -->
-<section id="roadmap" class="section bg-darker">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-badge">🗓️ Your Path</div>
-      <h2>Learning Roadmap to Build an LLM</h2>
-    </div>
-
-    <div class="roadmap-container">
-      <div class="roadmap-phase">
-        <div class="phase-num">Phase 1</div>
-        <div class="phase-title">Foundations (3–6 months)</div>
-        <div class="phase-items">
-          <div class="roadmap-item">
-            <div class="ri-icon">📐</div>
-            <div class="ri-content">
-              <div class="ri-title layman-text">Learn the Math Basics</div>
-              <div class="ri-title grad-text hidden">Linear Algebra, Calculus, Probability</div>
-              <div class="ri-sub layman-text">Khan Academy, 3Blue1Brown videos</div>
-              <div class="ri-sub grad-text hidden">Gilbert Strang's LA, Bishop's PRML</div>
-            </div>
-          </div>
-          <div class="roadmap-item">
-            <div class="ri-icon">🐍</div>
-            <div class="ri-content">
-              <div class="ri-title layman-text">Learn Python & Basic ML</div>
-              <div class="ri-title grad-text hidden">Python, NumPy, PyTorch, Autograd</div>
-              <div class="ri-sub layman-text">fast.ai Practical Deep Learning course</div>
-              <div class="ri-sub grad-text hidden">fast.ai + Karpathy's micrograd/makemore</div>
-            </div>
-          </div>
-          <div class="roadmap-item">
-            <div class="ri-icon">🧠</div>
-            <div class="ri-content">
-              <div class="ri-title layman-text">Understand Neural Networks</div>
-              <div class="ri-title grad-text hidden">Backprop, Optimizers, Regularization</div>
-              <div class="ri-sub layman-text">Andrej Karpathy's Neural Networks: Zero to Hero</div>
-              <div class="ri-sub grad-text hidden">Karpathy's nanoGPT + d2l.ai</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="roadmap-arrow">→</div>
-
-      <div class="roadmap-phase">
-        <div class="phase-num">Phase 2</div>
-        <div class="phase-title">Transformers (3–6 months)</div>
-        <div class="phase-items">
-          <div class="roadmap-item">
-            <div class="ri-icon">📄</div>
-            <div class="ri-content">
-              <div class="ri-title">Read "Attention Is All You Need"</div>
-              <div class="ri-sub layman-text">The 2017 paper that started everything</div>
-              <div class="ri-sub grad-text hidden">Vaswani et al. 2017; implement from scratch</div>
-            </div>
-          </div>
-          <div class="roadmap-item">
-            <div class="ri-icon">⌨️</div>
-            <div class="ri-content">
-              <div class="ri-title">Build a GPT from Scratch</div>
-              <div class="ri-sub layman-text">Follow Karpathy's nanoGPT tutorial</div>
-              <div class="ri-sub grad-text hidden">Implement BPE, attention, training loop in PyTorch</div>
-            </div>
-          </div>
-          <div class="roadmap-item">
-            <div class="ri-icon">🤗</div>
-            <div class="ri-content">
-              <div class="ri-title">Hugging Face Ecosystem</div>
-              <div class="ri-sub layman-text">Learn to use open-source models</div>
-              <div class="ri-sub grad-text hidden">transformers, datasets, PEFT, TRL libraries</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="roadmap-arrow">→</div>
-
-      <div class="roadmap-phase">
-        <div class="phase-num">Phase 3</div>
-        <div class="phase-title">Scale Up (6–12 months)</div>
-        <div class="phase-items">
-          <div class="roadmap-item">
-            <div class="ri-icon">🖥️</div>
-            <div class="ri-content">
-              <div class="ri-title layman-text">Multi-GPU Training</div>
-              <div class="ri-title grad-text hidden">Distributed Training Frameworks</div>
-              <div class="ri-sub layman-text">Learn to train on multiple powerful computers</div>
-              <div class="ri-sub grad-text hidden">PyTorch FSDP, DeepSpeed ZeRO, Megatron-LM</div>
-            </div>
-          </div>
-          <div class="roadmap-item">
-            <div class="ri-icon">🎯</div>
-            <div class="ri-content">
-              <div class="ri-title">Fine-tuning & RLHF</div>
-              <div class="ri-sub layman-text">Teach your model to be a good assistant</div>
-              <div class="ri-sub grad-text hidden">SFT + DPO/PPO with TRL; reward modeling</div>
-            </div>
-          </div>
-          <div class="roadmap-item">
-            <div class="ri-icon">🚀</div>
-            <div class="ri-content">
-              <div class="ri-title">Deployment & Inference</div>
-              <div class="ri-sub layman-text">Put your model online for others to use</div>
-              <div class="ri-sub grad-text hidden">vLLM, quantization, speculative decoding</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Key Resources -->
-    <div class="key-resources">
-      <h3>📖 Essential Learning Resources</h3>
-      <div class="resource-links">
-        <div class="resource-link">
-          <div class="rl-icon">🎬</div>
-          <div class="rl-info">
-            <div class="rl-title">Andrej Karpathy — Neural Networks: Zero to Hero</div>
-            <div class="rl-desc layman-text">Best free video series for beginners — builds everything from scratch</div>
-            <div class="rl-desc grad-text hidden">Covers micrograd → makemore → nanoGPT — essential foundation</div>
-          </div>
-        </div>
-        <div class="resource-link">
-          <div class="rl-icon">📚</div>
-          <div class="rl-info">
-            <div class="rl-title">Dive into Deep Learning (d2l.ai)</div>
-            <div class="rl-desc layman-text">Free online book with runnable code examples</div>
-            <div class="rl-desc grad-text hidden">Rigorous textbook with PyTorch/MXNet implementations of all key concepts</div>
-          </div>
-        </div>
-        <div class="resource-link">
-          <div class="rl-icon">🤗</div>
-          <div class="rl-info">
-            <div class="rl-title">Hugging Face Course</div>
-            <div class="rl-desc layman-text">Hands-on course using the industry-standard AI tools</div>
-            <div class="rl-desc grad-text hidden">Practical NLP with transformers, datasets, fine-tuning — free and comprehensive</div>
-          </div>
-        </div>
-        <div class="resource-link">
-          <div class="rl-icon">📄</div>
-          <div class="rl-info">
-            <div class="rl-title">Key Papers: GPT-3, InstructGPT, LLaMA, Chinchilla</div>
-            <div class="rl-desc layman-text">The scientific papers that define how modern AI is built</div>
-            <div class="rl-desc grad-text hidden">Brown et al. 2020, Ouyang et al. 2022, Touvron et al. 2023, Hoffmann et al. 2022</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══════════════════════ STARTUP JOURNEY (Startup mode only) ════════ -->
 <section id="startup-journey" class="section bg-darker startup-section hidden">
   <div class="container">
@@ -3171,16 +2796,16 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <div class="footer-logo">🧠 LLM Academy</div>
+        <div class="footer-logo">🚀 FrontierLLM Academy</div>
         <p>Making AI education accessible to everyone — from curious beginners to seasoned engineers.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#overview">What is an LLM?</a></li>
           <li><a href="#stages">8 Stages</a></li>
-          <li><a href="#resources">Resources & Cost</a></li>
-          <li><a href="#roadmap">Learning Roadmap</a></li>
+          <li><a href="#startup-journey">Startup Journey</a></li>
+          <li><a href="#team-coordination">Team Coordination</a></li>
+          <li><a href="#research-landscape">Research Landscape</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -3190,6 +2815,7 @@
           <li>🎓 Graduate — Technical depth, papers, code</li>
           <li>🔬 Researcher — Papers, open problems, frontiers</li>
           <li>👥 Team — Roles, responsibilities, coordination</li>
+          <li>🏢 Startup — Funding, strategy, GTM</li>
         </ul>
       </div>
     </div>
