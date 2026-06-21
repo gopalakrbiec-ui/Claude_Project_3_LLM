@@ -12,27 +12,39 @@
 <header class="hero">
   <div class="stars" id="stars"></div>
   <nav class="navbar">
-    <div class="logo">🚀 FrontierLLM Academy</div>
-    <div class="mode-toggle">
-      <span class="mode-label">Mode:</span>
-      <button class="mode-btn active" id="btnLayman"   onclick="setMode('layman')">🙋 Layman</button>
-      <button class="mode-btn" id="btnGrad"     onclick="setMode('graduate')">🎓 Graduate</button>
-      <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
-      <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
-      <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
-      <button class="mode-btn" id="btnInvestor" onclick="setMode('investor')">💰 Investor</button>
-      <button class="mode-btn" id="btnFounder"  onclick="setMode('founder')">🧭 Founder</button>
+
+    <!-- ── Top bar: logo + panel nav ── -->
+    <div class="navbar-top">
+      <div class="logo">🚀 FrontierLLM Academy</div>
+      <div class="navbar-panels">
+        <span class="navbar-panels-label">Explore:</span>
+        <button class="panel-btn" id="btnTimeline" onclick="toggleTimeline()">🗺️ FrontierAI Timeline</button>
+        <button class="panel-btn" id="btnFuture"   onclick="toggleFuture()">🔮 Future Frontier</button>
+      </div>
     </div>
-    <div class="nav-links">
-      <a href="#stages">Stages</a>
-      <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
-      <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
-      <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
-      <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
-      <a href="#founder-journey" id="navFounder" class="hidden">Founder</a>
-      <button class="timeline-nav-btn" id="btnTimeline" onclick="toggleTimeline()">🗺️ FrontierAI Timeline</button>
-      <button class="timeline-nav-btn" id="btnFuture" onclick="toggleFuture()">🔮 Future Frontier</button>
+
+    <!-- ── Bottom bar: learning modes + section anchors ── -->
+    <div class="navbar-bottom">
+      <div class="mode-toggle">
+        <span class="mode-label">Learning Mode:</span>
+        <button class="mode-btn active" id="btnLayman"   onclick="setMode('layman')">🙋 Layman</button>
+        <button class="mode-btn" id="btnGrad"     onclick="setMode('graduate')">🎓 Graduate</button>
+        <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
+        <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
+        <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
+        <button class="mode-btn" id="btnInvestor" onclick="setMode('investor')">💰 Investor</button>
+        <button class="mode-btn" id="btnFounder"  onclick="setMode('founder')">🧭 Founder</button>
+      </div>
+      <div class="nav-links">
+        <a href="#stages">Stages</a>
+        <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
+        <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
+        <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
+        <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
+        <a href="#founder-journey" id="navFounder" class="hidden">Founder</a>
+      </div>
     </div>
+
   </nav>
 
   <div class="hero-content">
