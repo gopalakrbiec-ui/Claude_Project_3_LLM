@@ -10,34 +10,55 @@ function setMode(mode) {
   const btnLayman   = document.getElementById('btnLayman');
   const btnGrad     = document.getElementById('btnGrad');
   const btnResearch = document.getElementById('btnResearch');
+  const btnTeam     = document.getElementById('btnTeam');
 
   // Reset all buttons
-  [btnLayman, btnGrad, btnResearch].forEach(b => b && b.classList.remove('active'));
+  [btnLayman, btnGrad, btnResearch, btnTeam].forEach(b => b && b.classList.remove('active'));
 
-  // Hide all mode-specific content
-  document.querySelectorAll('.layman-text, .grad-text, .researcher-text').forEach(el => el.classList.add('hidden'));
+  // Hide ALL mode content
+  document.querySelectorAll('.layman-text, .grad-text, .researcher-text, .team-text')
+    .forEach(el => el.classList.add('hidden'));
 
-  // Show researcher-only section
-  const resSection = document.getElementById('research-landscape');
+  // Hide special sections
+  const resSection  = document.getElementById('research-landscape');
+  const teamSection = document.getElementById('team-coordination');
+  const navTeam     = document.getElementById('navTeam');
+  const navResearch = document.getElementById('navResearch');
+  if (resSection)  resSection.classList.add('hidden');
+  if (teamSection) teamSection.classList.add('hidden');
+  if (navTeam)     navTeam.classList.add('hidden');
+  if (navResearch) navResearch.classList.add('hidden');
 
   if (mode === 'layman') {
     btnLayman.classList.add('active');
     document.querySelectorAll('.layman-text').forEach(el => el.classList.remove('hidden'));
-    if (resSection) resSection.classList.add('hidden');
+
   } else if (mode === 'graduate') {
     btnGrad.classList.add('active');
     document.querySelectorAll('.grad-text').forEach(el => el.classList.remove('hidden'));
-    if (resSection) resSection.classList.add('hidden');
+
   } else if (mode === 'researcher') {
     btnResearch.classList.add('active');
-    document.querySelectorAll('.researcher-text').forEach(el => el.classList.remove('hidden'));
-    if (resSection) resSection.classList.remove('hidden');
-    // Also keep grad-text visible in researcher mode for baseline context
-    document.querySelectorAll('.grad-text').forEach(el => el.classList.remove('hidden'));
-    // Animate paper timelines
+    document.querySelectorAll('.researcher-text, .grad-text').forEach(el => el.classList.remove('hidden'));
+    if (resSection)  resSection.classList.remove('hidden');
+    if (navResearch) navResearch.classList.remove('hidden');
+    // Re-trigger paper timeline animations
     setTimeout(() => {
-      document.querySelectorAll('.pt-item').forEach((el, i) => {
-        el.style.animationDelay = `${i * 0.06}s`;
+      document.querySelectorAll('.pt-item').forEach(el => {
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = '';
+      });
+    }, 50);
+
+  } else if (mode === 'team') {
+    btnTeam.classList.add('active');
+    document.querySelectorAll('.team-text').forEach(el => el.classList.remove('hidden'));
+    if (teamSection) teamSection.classList.remove('hidden');
+    if (navTeam)     navTeam.classList.remove('hidden');
+    // Re-trigger gantt bar animations
+    setTimeout(() => {
+      document.querySelectorAll('.gantt-bar').forEach(el => {
         el.style.animation = 'none';
         void el.offsetWidth;
         el.style.animation = '';
@@ -45,7 +66,7 @@ function setMode(mode) {
     }, 50);
   }
 
-  // Persist to sessionStorage
+  // Persist
   sessionStorage.setItem('llm-mode', mode);
 }
 

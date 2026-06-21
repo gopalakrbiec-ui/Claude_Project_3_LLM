@@ -15,15 +15,18 @@
     <div class="logo">🧠 LLM Academy</div>
     <div class="mode-toggle">
       <span class="mode-label">Mode:</span>
-      <button class="mode-btn active" id="btnLayman" onclick="setMode('layman')">🙋 Layman</button>
-      <button class="mode-btn" id="btnGrad" onclick="setMode('graduate')">🎓 Graduate</button>
+      <button class="mode-btn active" id="btnLayman"   onclick="setMode('layman')">🙋 Layman</button>
+      <button class="mode-btn" id="btnGrad"     onclick="setMode('graduate')">🎓 Graduate</button>
       <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
+      <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
     </div>
     <div class="nav-links">
       <a href="#overview">Overview</a>
       <a href="#stages">Stages</a>
       <a href="#resources">Resources</a>
       <a href="#roadmap">Roadmap</a>
+      <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
+      <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
     </div>
   </nav>
 
@@ -35,6 +38,7 @@
     <p class="hero-sub layman-text">Everything you need to know to build your own AI brain — no jargon, just clear steps.</p>
     <p class="hero-sub grad-text hidden">A comprehensive technical roadmap covering data pipelines, transformer architectures, distributed training, RLHF, and production deployment.</p>
     <p class="hero-sub researcher-text hidden">A research-oriented map of the LLM landscape — foundational papers, open problems, current frontiers, and the directions shaping the next generation of language models.</p>
+    <p class="hero-sub team-text hidden">A team-first view of building an LLM — who you need at every stage, what they do, how they coordinate, and how the whole organisation moves together to ship a frontier model.</p>
     <div class="hero-stats">
       <div class="stat-card"><span class="stat-num">8</span><span class="stat-label">Stages</span></div>
       <div class="stat-card"><span class="stat-num">2–5</span><span class="stat-label">Years</span></div>
@@ -227,6 +231,123 @@
               <div class="detail-val researcher-text hidden">Datatrove (HuggingFace), dolma-toolkit (AI2), CCNet (Meta), text-dedup; all open-source</div>
             </div>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>6 – 12 months</strong></div>
+              <div class="tsh-size">Team Size: <strong>8 – 18 people</strong></div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">👨‍💼</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Data Engineering Lead</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">8–12 yrs exp</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Own end-to-end data pipeline architecture</li><li>Define data quality standards & SLAs</li><li>Coordinate with ML researchers on corpus requirements</li><li>Sign off on final dataset composition</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>Apache Spark</span><span>Distributed Systems</span><span>Python</span><span>SQL</span><span>Cloud (AWS/GCP)</span></div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Apache Spark</span><span>Datatrove</span><span>HDFS / S3</span><span>Airflow</span><span>dbt</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">👩‍💻</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Data Engineers</div>
+                    <div class="rc-count">3 – 6 people</div>
+                    <div class="rc-exp">3–7 yrs exp</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Build web crawlers & parsers (Common Crawl, books)</li><li>Write deduplication pipelines (MinHash LSH)</li><li>Implement quality filters (perplexity, toxicity)</li><li>Handle PII redaction & language detection</li><li>Monitor pipeline health & data freshness</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>Python</span><span>PySpark</span><span>Data Pipelines</span><span>Linux/Bash</span><span>Regex</span></div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>fastText</span><span>MinHashLSH</span><span>Spark</span><span>CCNet</span><span>dolma-toolkit</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🔬</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">ML Researcher (Data)</div>
+                    <div class="rc-count">1 – 2 people</div>
+                    <div class="rc-exp">PhD or 5+ yrs</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Define corpus composition ratios (web:books:code)</li><li>Design quality scoring methodology</li><li>Analyse perplexity & downstream task impact of data choices</li><li>Write internal data cards & documentation</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>NLP Theory</span><span>Statistical Analysis</span><span>PyTorch</span><span>Information Theory</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">⚖️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Legal / Compliance</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">5+ yrs IP/data law</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Audit data sources for copyright & licensing (post-NYT era)</li><li>Ensure GDPR / CCPA compliance for PII in training data</li><li>Review and sign off on data provenance documentation</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>IP Law</span><span>Data Privacy</span><span>GDPR/CCPA</span><span>Contract Review</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">☁️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Cloud / DevOps</div>
+                    <div class="rc-count">1 – 2 people</div>
+                    <div class="rc-exp">4–8 yrs exp</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Provision petabyte-scale object storage (S3 / GCS)</li><li>Set up and tune Spark clusters on cloud</li><li>Monitor costs (storage + compute can hit $50K–$200K)</li><li>Manage data versioning & backup</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>AWS / GCP / Azure</span><span>Terraform</span><span>Kubernetes</span><span>DataHub</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 How This Team Collaborates</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">ML Researcher</span><span class="cf-arrow">→</span><span class="cf-action">Writes "Data Requirements Spec" (sources, ratios, quality bar, forbidden content)</span></div>
+                <div class="cf-step"><span class="cf-who">Legal</span><span class="cf-arrow">→</span><span class="cf-action">Reviews source list; flags copyright-risky datasets; issues data provenance report</span></div>
+                <div class="cf-step"><span class="cf-who">Data Engineers</span><span class="cf-arrow">→</span><span class="cf-action">Build pipelines to spec; deliver weekly data quality reports to researcher</span></div>
+                <div class="cf-step"><span class="cf-who">DevOps</span><span class="cf-arrow">→</span><span class="cf-action">Provisions infra; shares cost & throughput dashboards with lead weekly</span></div>
+                <div class="cf-step"><span class="cf-who">Data Lead</span><span class="cf-arrow">→</span><span class="cf-action">Final sign-off on dataset; hands tokenised corpus + data card to Architecture team</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">📦 Handoff to Next Stage</div>
+              <div class="hb-content">Delivers: cleaned & deduplicated corpus (parquet/jsonl on object storage), data card (statistics, sources, filter decisions), data sampling scripts, and legal clearance memo → <strong>Tokenization team</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -323,6 +444,85 @@
               <div class="detail-val researcher-text hidden">BPE: greedy frequency merging — deterministic but sub-optimal; Unigram LM: probabilistic, allows stochastic sampling; BLT: content-aware dynamic patching</div>
             </div>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>1 – 2 months</strong></div>
+              <div class="tsh-size">Team Size: <strong>2 – 4 people</strong></div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">🧑‍🔬</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">NLP / Tokenization Engineer</div>
+                    <div class="rc-count">1 – 2 people</div>
+                    <div class="rc-exp">3–6 yrs NLP exp</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Select algorithm (BPE vs Unigram LM) and vocabulary size</li><li>Train tokenizer on representative corpus sample</li><li>Measure fertility, coverage for all target languages</li><li>Integrate tokenizer with training pipeline</li><li>Write tokenizer documentation & versioning</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>NLP fundamentals</span><span>Python</span><span>Subword algorithms</span><span>Unicode/encoding</span></div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>SentencePiece</span><span>tiktoken</span><span>HuggingFace tokenizers</span><span>Rust (for speed)</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🔬</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">ML Researcher (review)</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">3+ yrs NLP research</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Advise on vocab size trade-offs (sequence length vs memory)</li><li>Review fertility metrics for each language & domain</li><li>Approve tokenizer config before full corpus is processed</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>Linguistic knowledge</span><span>Information Theory</span><span>Downstream task evaluation</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">⚙️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Data Engineer (support)</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">3+ yrs data engineering</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Run tokenizer across full corpus in parallel on cluster</li><li>Store tokenised binary shards in training-ready format</li><li>Validate shard checksums & token counts</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Spark / Dask</span><span>NumPy .npy shards</span><span>Apache Arrow</span><span>S3</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 How This Team Collaborates</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">Data team →</span><span class="cf-action">Hands off corpus + data card; tokenization team pulls 5% sample to train tokenizer</span></div>
+                <div class="cf-step"><span class="cf-who">NLP Engineer →</span><span class="cf-action">Runs tokenizer experiments on sample (3–5 vocab sizes), shares fertility & length stats with researcher</span></div>
+                <div class="cf-step"><span class="cf-who">ML Researcher →</span><span class="cf-action">Reviews stats, approves final config; cross-checks with Architecture team on embedding table memory budget</span></div>
+                <div class="cf-step"><span class="cf-who">Data Engineer →</span><span class="cf-action">Tokenises full corpus, produces binary shards; validates counts; delivers to Pre-training team</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">📦 Handoff to Next Stage</div>
+              <div class="hb-content">Delivers: trained tokenizer (vocab + merges file), tokenised binary corpus shards on cluster storage, token count statistics → <strong>Architecture & Pre-Training teams</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -428,6 +628,106 @@
               <tr><td>XL (GPT-4 est.)</td><td>120+</td><td>128+</td><td>~25K</td><td>~1.8T</td></tr>
             </table>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>2 – 6 months</strong></div>
+              <div class="tsh-size">Team Size: <strong>4 – 10 people</strong></div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">🧠</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Principal ML Researcher (Architecture)</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">PhD + 5 yrs or 10+ yrs industry</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Own all major architecture decisions (depth, width, attention type, norm)</li><li>Run ablation studies to validate design choices at small scale</li><li>Write architecture design doc (internal paper)</li><li>Interface with hardware team on memory/FLOP budget</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>Deep transformer knowledge</span><span>CUDA/GPU memory model</span><span>Scaling law intuition</span><span>PyTorch</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">👩‍🔬</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Senior ML Researchers</div>
+                    <div class="rc-count">2 – 3 people</div>
+                    <div class="rc-exp">PhD or 6+ yrs</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Run 100M–1B ablations to compare variants (MHA vs GQA, RoPE vs ALiBi)</li><li>Analyse and report results; recommend final config</li><li>Prototype MoE routing if applicable</li><li>Review literature for latest innovations to incorporate</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>PyTorch/JAX</span><span>Experiment tracking</span><span>Statistical analysis</span><span>Paper reading speed</span></div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Weights & Biases</span><span>MLflow</span><span>nanoGPT</span><span>Megatron-LM</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🔧</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">ML Engineers (Implementation)</div>
+                    <div class="rc-count">2 – 4 people</div>
+                    <div class="rc-exp">4–8 yrs ML engineering</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Implement architecture in production-grade PyTorch/Megatron</li><li>Write FlashAttention integration & custom CUDA kernels</li><li>Ensure numerical stability (BF16, gradient clipping)</li><li>Write unit & integration tests for each component</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>PyTorch internals</span><span>CUDA</span><span>C++</span><span>Triton</span><span>Code review</span></div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Megatron-LM</span><span>FlashAttention</span><span>Triton</span><span>pytest</span><span>nvitop</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🖥️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">HPC / Systems Engineer</div>
+                    <div class="rc-count">1 – 2 people</div>
+                    <div class="rc-exp">5+ yrs HPC systems</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Profile architecture on target hardware (H100 SXM cluster)</li><li>Advise on memory budget (activation checkpointing, KV cache)</li><li>Estimate parallelism strategy for given model + cluster size</li><li>Benchmark MFU (model FLOP utilisation) of proposed design</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>nsys / ncu profiler</span><span>nvitop</span><span>PyTorch profiler</span><span>NCCL</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 How This Team Collaborates</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">HPC Engineer →</span><span class="cf-action">Shares hardware spec sheet (memory per GPU, NVLink bandwidth, cluster topology) at kickoff</span></div>
+                <div class="cf-step"><span class="cf-who">Principal Researcher →</span><span class="cf-action">Defines 3–5 candidate architectures; hands to Senior Researchers for ablation grid</span></div>
+                <div class="cf-step"><span class="cf-who">Senior Researchers →</span><span class="cf-action">Run ablations on 1–8 GPUs (100M param models); post W&B dashboards; weekly review meeting</span></div>
+                <div class="cf-step"><span class="cf-who">All researchers →</span><span class="cf-action">Architecture freeze meeting: vote on final config, document rationale</span></div>
+                <div class="cf-step"><span class="cf-who">ML Engineers →</span><span class="cf-action">Implement frozen architecture; 2-week code review by researchers before handoff</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">📦 Handoff to Next Stage</div>
+              <div class="hb-content">Delivers: model code (GitHub repo, reviewed & tested), architecture design doc, hyperparameter starting points, MFU benchmarks on small scale → <strong>Pre-Training team</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -543,6 +843,120 @@
               <div class="detail-val researcher-text hidden">Loss divergence (gradient clipping, warmup critical); MTBF of H100 clusters ~days; pipeline bubbles reduce MFU; activation checkpointing vs recompute tradeoff</div>
             </div>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>3 – 18 months</strong> (most expensive stage)</div>
+              <div class="tsh-size">Team Size: <strong>10 – 30 people</strong></div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">🚀</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Training Lead (ML Engineer)</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">8–15 yrs, deep distributed training</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Own the entire training run end-to-end</li><li>Make go/no-go decisions on config changes mid-run</li><li>Define on-call rotation & incident response protocol</li><li>Communicate run health to leadership weekly</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>Distributed training</span><span>GPU clusters</span><span>Loss debugging</span><span>Incident management</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">⚡</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">ML Engineers (Training)</div>
+                    <div class="rc-count">4 – 10 people</div>
+                    <div class="rc-exp">4–10 yrs distributed ML</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Set up training config (LR schedule, batch size, parallelism strategy)</li><li>Launch and monitor training jobs 24/7 in rotation</li><li>Debug loss spikes, NaN gradients, CUDA OOM errors</li><li>Save and validate checkpoints; manage checkpoint storage</li><li>Profile and optimise MFU (target 40–50% on H100)</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>PyTorch FSDP / Megatron</span><span>CUDA debugging</span><span>Monitoring</span><span>Python</span><span>Linux</span></div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Megatron-LM</span><span>DeepSpeed ZeRO</span><span>W&B</span><span>TensorBoard</span><span>Slurm / k8s</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🖥️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">HPC / Infra Engineers</div>
+                    <div class="rc-count">3 – 6 people</div>
+                    <div class="rc-exp">5–12 yrs HPC/systems</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Manage GPU cluster (100–16,000 H100s); handle hardware failures</li><li>Tune NCCL / InfiniBand networking for max throughput</li><li>Maintain Slurm / Kubernetes job scheduler</li><li>Handle preemptions; ensure fast job restart on failure (&lt;15 min)</li><li>Monitor GPU temperatures, power draw, memory errors</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Slurm</span><span>NCCL</span><span>InfiniBand</span><span>DCGM</span><span>Prometheus/Grafana</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🔬</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">ML Researchers (Run Oversight)</div>
+                    <div class="rc-count">2 – 4 people</div>
+                    <div class="rc-exp">PhD or 5+ yrs research</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Monitor loss curves; identify anomalies vs expected scaling trajectory</li><li>Decide on mid-run interventions (LR changes, data mix changes)</li><li>Run mid-training evals on held-out benchmarks</li><li>Document decisions and their effects (training log)</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>W&B</span><span>lm-evaluation-harness</span><span>Custom loss dashboards</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🛡️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">SRE / On-Call Engineers</div>
+                    <div class="rc-count">2 – 4 people</div>
+                    <div class="rc-exp">5+ yrs SRE/devops</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>24/7 monitoring with pager duty rotation</li><li>First responders to GPU failures, network partitions, storage issues</li><li>Maintain runbooks for common failure modes</li><li>Ensure checkpoint integrity; restore from last valid checkpoint</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>PagerDuty</span><span>Grafana alerts</span><span>Prometheus</span><span>Slack bots</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 How This Team Collaborates (24/7 Rhythm)</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">Daily →</span><span class="cf-action">On-call engineer checks loss curve at shift start; posts health update in #training-run Slack channel</span></div>
+                <div class="cf-step"><span class="cf-who">Weekly →</span><span class="cf-action">Training Lead + Researchers review W&B dashboard; decide on any config changes; document in training log</span></div>
+                <div class="cf-step"><span class="cf-who">On incident →</span><span class="cf-action">SRE pages Training Lead; ML Engineers diagnose root cause; HPC replaces faulty nodes; job restarts from checkpoint</span></div>
+                <div class="cf-step"><span class="cf-who">Monthly →</span><span class="cf-action">Mid-training eval run; Researchers compare against baseline models; report to leadership on trajectory</span></div>
+                <div class="cf-step"><span class="cf-who">At completion →</span><span class="cf-action">Training Lead declares run complete; final checkpoint validated; hands model weights + training log to Fine-Tuning team</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">📦 Handoff to Next Stage</div>
+              <div class="hb-content">Delivers: final model checkpoint (weights in .safetensors / .pt), training log (all config changes, loss curves, incidents), mid-training eval results, tokenizer → <strong>Fine-Tuning (SFT) team</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -650,6 +1064,100 @@
               <div class="detail-val researcher-text hidden">LoRA rank r: 8–256; higher rank = more capacity but more params; DoRA (Liu 2024) improves on LoRA by decomposing magnitude/direction; GaLore reduces optimizer memory</div>
             </div>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>1 – 3 months</strong></div>
+              <div class="tsh-size">Team Size: <strong>15 – 120 people</strong> (annotators dominate headcount)</div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">🎯</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Alignment / SFT Lead</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">5–10 yrs NLP/alignment</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Design the instruction dataset taxonomy (task types, difficulty, domains)</li><li>Define annotation guidelines & quality rubrics</li><li>Own the SFT training pipeline & hyperparameter decisions</li><li>Measure model quality before/after SFT on held-out evals</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>NLP/LLM alignment</span><span>Dataset design</span><span>PyTorch fine-tuning</span><span>Evaluation</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">📝</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Annotation Manager</div>
+                    <div class="rc-count">1 – 3 people</div>
+                    <div class="rc-exp">3+ yrs data annotation ops</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Recruit, train, and manage human annotators</li><li>Write detailed annotation guidelines with examples</li><li>Monitor inter-annotator agreement (IAA); flag low-quality batches</li><li>Manage annotation platform & workflows</li><li>Handle annotator feedback & edge case escalations</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Scale AI</span><span>Surge AI</span><span>Label Studio</span><span>Prolific</span><span>Argilla</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">👥</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Human Annotators</div>
+                    <div class="rc-count">10 – 100 people</div>
+                    <div class="rc-exp">Domain experts + general annotators</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Write ideal assistant responses to prompts (instruction-response pairs)</li><li>Cover diverse task types: Q&A, summarisation, coding, reasoning, creative writing</li><li>Domain experts write specialist content (medicine, law, science)</li><li>Flag ambiguous or inappropriate prompts</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Skills Required</div>
+                  <div class="skill-chips"><span>Strong writing</span><span>Domain knowledge</span><span>Critical thinking</span><span>Attention to detail</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🔧</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">ML Engineer (SFT Pipeline)</div>
+                    <div class="rc-count">2 – 3 people</div>
+                    <div class="rc-exp">4–7 yrs ML engineering</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Build SFT training pipeline (data loading, LoRA/full fine-tune)</li><li>Run multiple SFT experiments with different data mixes</li><li>Implement evaluation harness to measure before/after quality</li><li>Manage model versioning & experiment tracking</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>HuggingFace TRL</span><span>PEFT / LoRA</span><span>W&B</span><span>DeepSpeed</span><span>vLLM</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 How This Team Collaborates</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">SFT Lead →</span><span class="cf-action">Writes annotation spec; reviews with ML Researchers; publishes to Annotation Manager</span></div>
+                <div class="cf-step"><span class="cf-who">Annotation Manager →</span><span class="cf-action">Trains annotators; runs pilot batch (500 examples); shares IAA score with SFT Lead for guideline refinement</span></div>
+                <div class="cf-step"><span class="cf-who">Annotators →</span><span class="cf-action">Produce 500–1000 examples/week; Manager reviews 10% for quality; rejects/revises low-quality batches</span></div>
+                <div class="cf-step"><span class="cf-who">ML Engineer →</span><span class="cf-action">Weekly SFT run on latest data; shares eval results with SFT Lead; adjusts data mix based on weak task areas</span></div>
+                <div class="cf-step"><span class="cf-who">SFT Lead + Researchers →</span><span class="cf-action">Final model quality gate (must beat base model on all evals); approve model for RLHF stage</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">📦 Handoff to Next Stage</div>
+              <div class="hb-content">Delivers: SFT model checkpoint, instruction dataset (versioned), eval results showing improvement over base, annotation guidelines → <strong>RLHF team</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -752,6 +1260,117 @@
               <div class="detail-val researcher-text hidden">PPO: on-policy, stable but slow; DPO: off-policy, simple, popular; GRPO: no critic network, lower memory; SimPO: no reference model, length normalization prevents verbosity bias</div>
             </div>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>2 – 6 months</strong></div>
+              <div class="tsh-size">Team Size: <strong>25 – 220 people</strong> (raters dominate)</div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">🏆</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">RLHF / Alignment Research Lead</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">PhD + 4 yrs or 8+ yrs RL/alignment</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Choose alignment algorithm (PPO vs DPO vs GRPO) and own the training loop</li><li>Design preference data collection protocol & rating rubric</li><li>Monitor for reward hacking; adjust KL penalty accordingly</li><li>Evaluate alignment quality; final approval before Eval stage</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>RL theory (PPO/DPO)</span><span>Reward modeling</span><span>LLM evaluation</span><span>Python/PyTorch</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🧮</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">ML Engineers (RLHF Pipeline)</div>
+                    <div class="rc-count">3 – 5 people</div>
+                    <div class="rc-exp">5–10 yrs ML engineering</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Implement reward model training (Bradley-Terry loss)</li><li>Build PPO / DPO training loop on top of SFT model</li><li>Integrate KL constraint & reward clipping</li><li>Manage iterative data collection loops (RLHF is cyclic)</li><li>Track reward model accuracy & policy divergence metrics</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>TRL (HuggingFace)</span><span>DeepSpeed</span><span>W&B</span><span>vLLM (for fast generation)</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">📊</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Annotation Operations Lead</div>
+                    <div class="rc-count">2 – 5 people</div>
+                    <div class="rc-exp">4+ yrs annotation ops</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Design preference comparison UI & workflow</li><li>Recruit and train preference raters; manage rotating cohorts</li><li>Monitor inter-annotator agreement on preference pairs (&gt;75% target)</li><li>Ensure diverse rater pool to reduce cultural bias</li><li>Run data quality audits; reject batches below threshold</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Scale AI</span><span>Surge AI</span><span>Argilla</span><span>Custom comparison UI</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">👤</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Human Preference Raters</div>
+                    <div class="rc-count">20 – 200 people</div>
+                    <div class="rc-exp">Domain-matched; intensive training</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Compare two model responses and select the better one (or tie)</li><li>Rate along multiple dimensions: helpfulness, honesty, safety, clarity</li><li>Handle domain-specific queries (need specialist raters for code, medicine, law)</li><li>Flag and escalate harmful or ambiguous content</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Skills Required</div>
+                  <div class="skill-chips"><span>Critical evaluation</span><span>Domain expertise</span><span>Consistency</span><span>Safety awareness</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🛡️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Safety Researcher</div>
+                    <div class="rc-count">1 – 3 people</div>
+                    <div class="rc-exp">3+ yrs AI safety</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Design safety-specific preference pairs (safe vs harmful responses)</li><li>Monitor for reward hacking on safety metrics</li><li>Run adversarial prompts during RLHF to check alignment holds</li><li>Write safety annotations for the reward model</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Red-teaming frameworks</span><span>Custom eval suites</span><span>TruthfulQA</span><span>StrongREJECT</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 RLHF Iterative Collaboration Cycle</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">Week 1–2 →</span><span class="cf-action">RLHF Lead + Ops Lead co-design rating rubric; ML Engineers set up comparison UI; recruit raters</span></div>
+                <div class="cf-step"><span class="cf-who">Weeks 3–6 →</span><span class="cf-action">Raters produce 5K–20K preference pairs/week; Ops Lead checks IAA daily; ML Engineers train Reward Model</span></div>
+                <div class="cf-step"><span class="cf-who">RL training loop →</span><span class="cf-action">ML Engineers run PPO/DPO; RLHF Lead monitors KL divergence & reward; Safety Researcher checks for capability regressions</span></div>
+                <div class="cf-step"><span class="cf-who">Each RL iteration →</span><span class="cf-action">Collect new preference data on current policy outputs (on-policy data); retrain RM; update policy. Repeat 3–5 cycles.</span></div>
+                <div class="cf-step"><span class="cf-who">Final gate →</span><span class="cf-action">RLHF Lead, Safety Researcher, and ML Researcher jointly approve model; documented quality threshold must be met</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">📦 Handoff to Next Stage</div>
+              <div class="hb-content">Delivers: aligned model checkpoint, reward model weights, preference dataset, RLHF training logs, safety eval results → <strong>Evaluation & Benchmarking team</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -843,6 +1462,82 @@
               </div>
             </div>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>1 – 3 months</strong></div>
+              <div class="tsh-size">Team Size: <strong>5 – 15 people</strong></div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">📊</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Evaluation Lead</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">5+ yrs NLP/eval research</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Define evaluation suite (which benchmarks + custom evals)</li><li>Set pass/fail thresholds for each capability area</li><li>Own the final model card & capability documentation</li><li>Present results to leadership for deployment go/no-go</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>Benchmark design</span><span>Statistical testing</span><span>LLM evaluation</span><span>Technical writing</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🔧</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Evaluation Engineers</div>
+                    <div class="rc-count">2 – 4 people</div>
+                    <div class="rc-exp">3–7 yrs ML engineering</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Build automated benchmark pipeline (lm-eval-harness + custom tasks)</li><li>Run benchmarks on every checkpoint; store results in database</li><li>Build comparison dashboards vs competitor models</li><li>Implement LLM-as-judge evaluation for open-ended tasks</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>lm-evaluation-harness</span><span>vLLM</span><span>W&B</span><span>PostgreSQL</span><span>Grafana</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🛡️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Safety / Red-Team Researchers</div>
+                    <div class="rc-count">2 – 5 people</div>
+                    <div class="rc-exp">3+ yrs AI safety or security</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Systematic adversarial probing: jailbreaks, prompt injections, bias elicitation</li><li>Test for CBRN (chemical, biological, radiological, nuclear) knowledge boundaries</li><li>Evaluate privacy risks (PII regurgitation from training data)</li><li>Write safety report; escalate showstoppers to block deployment</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Garak</span><span>PyRIT</span><span>StrongREJECT</span><span>Custom red-team scripts</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 How This Team Collaborates</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">Eval Lead →</span><span class="cf-action">Kicks off with "eval spec" — lists all benchmarks, acceptance thresholds, and schedule</span></div>
+                <div class="cf-step"><span class="cf-who">Eval Engineers →</span><span class="cf-action">Run full benchmark suite in first 2 weeks; share dashboard with Eval Lead & RLHF Lead for comparison</span></div>
+                <div class="cf-step"><span class="cf-who">Safety Researchers →</span><span class="cf-action">Parallel red-team sprint; weekly sync with Eval Lead to consolidate risk findings</span></div>
+                <div class="cf-step"><span class="cf-who">All + Leadership →</span><span class="cf-action">Final review meeting: go/no-go vote; any safety showstopper → returns to RLHF team</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">📦 Handoff to Next Stage</div>
+              <div class="hb-content">Delivers: model checkpoint (approved), model card, benchmark results table, safety report, known limitations doc → <strong>Deployment team</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -933,6 +1628,117 @@
               </div>
             </div>
           </div>
+
+          <!-- ── TEAM MODE ── -->
+          <div class="team-text hidden">
+            <div class="team-stage-header">
+              <div class="tsh-duration">⏱ Stage Duration: <strong>1 – 4 months</strong> (then ongoing)</div>
+              <div class="tsh-size">Team Size: <strong>8 – 25 people</strong></div>
+            </div>
+            <div class="role-cards">
+
+              <div class="role-card rc-lead">
+                <div class="rc-top">
+                  <div class="rc-avatar">🚀</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Inference Engineering Lead</div>
+                    <div class="rc-count">1 person</div>
+                    <div class="rc-exp">8+ yrs distributed systems / ML infra</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Own inference architecture (serving framework, quantisation strategy)</li><li>Define latency/throughput SLAs (e.g. TTFT &lt;500ms, TPS &gt;50)</li><li>Coordinate with Product on API design</li><li>Lead capacity planning & cost optimisation</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Must-Have Skills</div>
+                  <div class="skill-chips"><span>Inference systems</span><span>CUDA</span><span>Distributed serving</span><span>Cost optimisation</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">⚡</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Inference / ML Engineers</div>
+                    <div class="rc-count">3 – 6 people</div>
+                    <div class="rc-exp">5–10 yrs systems/ML</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Quantise model (AWQ/GPTQ INT4) and validate accuracy loss</li><li>Set up vLLM / TensorRT-LLM serving with continuous batching</li><li>Implement speculative decoding for latency reduction</li><li>Tune PagedAttention KV cache for target batch sizes</li><li>Build streaming token API (SSE / WebSocket)</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>vLLM</span><span>TensorRT-LLM</span><span>TGI</span><span>AWQ/GPTQ</span><span>Triton</span><span>SGLang</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🌐</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Backend / Platform Engineers</div>
+                    <div class="rc-count">2 – 4 people</div>
+                    <div class="rc-exp">5+ yrs backend engineering</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Build REST/gRPC API gateway with authentication & rate limiting</li><li>Implement request queueing, load balancing across inference nodes</li><li>Build usage metering & billing integration</li><li>Set up safety filter layer (pre/post-processing guardrails)</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>FastAPI / Go</span><span>Kubernetes</span><span>NGINX</span><span>Redis</span><span>Kafka</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🛡️</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">SRE / DevOps (Ongoing)</div>
+                    <div class="rc-count">2 – 5 people</div>
+                    <div class="rc-exp">5+ yrs SRE / cloud infra</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Multi-region GPU fleet management; auto-scaling policies</li><li>Observability stack: latency, TTFT, error rates, cost/token dashboards</li><li>Incident response: GPU failures, traffic spikes, model serving outages</li><li>Deploy blue/green model updates with zero downtime</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Kubernetes</span><span>Terraform</span><span>Prometheus</span><span>Grafana</span><span>PagerDuty</span></div>
+                </div>
+              </div>
+
+              <div class="role-card">
+                <div class="rc-top">
+                  <div class="rc-avatar">🔐</div>
+                  <div class="rc-meta">
+                    <div class="rc-title">Security Engineer</div>
+                    <div class="rc-count">1 – 2 people</div>
+                    <div class="rc-exp">5+ yrs application/AI security</div>
+                  </div>
+                </div>
+                <div class="rc-section"><div class="rc-label">Responsibilities</div>
+                  <ul><li>Deploy input/output safety filters (moderation model layer)</li><li>Penetration testing of API & prompt injection hardening</li><li>Audit logging for compliance (SOC2, HIPAA if applicable)</li><li>Handle abuse reports & implement blocking mechanisms</li></ul>
+                </div>
+                <div class="rc-section"><div class="rc-label">Tools</div>
+                  <div class="tool-chips"><span>Llama Guard</span><span>Custom moderation</span><span>WAF</span><span>Vault</span><span>SIEM</span></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="collab-flow">
+              <div class="cf-title">🤝 Deployment Collaboration & Ongoing Operations</div>
+              <div class="cf-steps">
+                <div class="cf-step"><span class="cf-who">Week 1–2 →</span><span class="cf-action">Inference engineers set up serving stack; quantise model; benchmark latency/throughput against SLAs</span></div>
+                <div class="cf-step"><span class="cf-who">Week 3–4 →</span><span class="cf-action">Backend engineers build API; Security engineer adds filter layer & pen tests; SREs set up observability</span></div>
+                <div class="cf-step"><span class="cf-who">Soft launch →</span><span class="cf-action">Internal beta; all teams on call together; fix regressions; Eval team re-runs key benchmarks on served model</span></div>
+                <div class="cf-step"><span class="cf-who">Public launch →</span><span class="cf-action">SRE manages traffic ramp; Backend handles API key onboarding; Security monitors for abuse</span></div>
+                <div class="cf-step"><span class="cf-who">Ongoing →</span><span class="cf-action">Weekly cost/latency review (Inference Lead + SRE); monthly model update cycle; continuous red-teaming</span></div>
+              </div>
+            </div>
+            <div class="handoff-box">
+              <div class="hb-title">🎉 End Product Delivered</div>
+              <div class="hb-content">Live API with documented endpoints, SLA guarantees, usage dashboards, model card, safety report, incident runbooks. The LLM is now in production — team transitions to <strong>model maintenance & next training run planning</strong></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1250,6 +2056,245 @@
   </div>
 </section>
 
+<!-- ═══════════════════════ TEAM COORDINATION (Team mode only) ══════════ -->
+<section id="team-coordination" class="section bg-dark team-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge team-badge">👥 Team View</div>
+      <h2>End-to-End Team Coordination</h2>
+      <p class="section-sub">How the whole organisation aligns to ship a frontier LLM</p>
+    </div>
+
+    <!-- Master Timeline Gantt -->
+    <div class="coord-block">
+      <h3 class="coord-title">🗓️ Master Project Timeline (18-Month GPT-3-Scale Run)</h3>
+      <div class="gantt-container">
+        <div class="gantt-header">
+          <div class="gantt-label-col">Stage</div>
+          <div class="gantt-months">
+            <span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span>
+            <span>M7</span><span>M8</span><span>M9</span><span>M10</span><span>M11</span><span>M12</span>
+            <span>M13</span><span>M14</span><span>M15</span><span>M16</span><span>M17</span><span>M18</span>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">🗄️ Data Collection</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-data" style="--start:0;--span:6" title="Months 1–6"></div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">✂️ Tokenization</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-tok" style="--start:4;--span:2" title="Months 5–6"></div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">🏗️ Architecture</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-arch" style="--start:2;--span:4" title="Months 3–6"></div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">🔥 Pre-Training</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-train" style="--start:6;--span:9" title="Months 7–15"></div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">🎯 Fine-Tuning (SFT)</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-sft" style="--start:14;--span:2" title="Months 15–16"></div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">🏆 RLHF</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-rlhf" style="--start:15;--span:2" title="Months 16–17"></div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">📊 Evaluation</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-eval" style="--start:16;--span:1" title="Month 17"></div></div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">🚀 Deployment</div>
+          <div class="gantt-bar-row"><div class="gantt-bar gb-deploy" style="--start:17;--span:1" title="Month 18"></div></div>
+        </div>
+      </div>
+      <div class="gantt-note">Note: SFT annotation and RLHF rater hiring often begin at Month 10 (parallel track) to be ready when pre-training ends.</div>
+    </div>
+
+    <!-- Org Structure -->
+    <div class="coord-block">
+      <h3 class="coord-title">🏢 Org Structure & Reporting Lines</h3>
+      <div class="org-tree">
+        <div class="org-ceo">
+          <div class="org-node ceo-node">🏢 CTO / VP of AI</div>
+        </div>
+        <div class="org-connectors-row">
+          <div class="org-branch">
+            <div class="org-node team-node">🔬 Research Director</div>
+            <div class="org-sub-nodes">
+              <div class="org-sub">Principal Researchers</div>
+              <div class="org-sub">Senior Researchers</div>
+              <div class="org-sub">Safety Researchers</div>
+            </div>
+          </div>
+          <div class="org-branch">
+            <div class="org-node team-node">⚙️ Engineering Director</div>
+            <div class="org-sub-nodes">
+              <div class="org-sub">ML Engineers</div>
+              <div class="org-sub">Inference Engineers</div>
+              <div class="org-sub">Backend Engineers</div>
+            </div>
+          </div>
+          <div class="org-branch">
+            <div class="org-node team-node">🖥️ Infra Director</div>
+            <div class="org-sub-nodes">
+              <div class="org-sub">HPC Engineers</div>
+              <div class="org-sub">SRE Team</div>
+              <div class="org-sub">Cloud/DevOps</div>
+            </div>
+          </div>
+          <div class="org-branch">
+            <div class="org-node team-node">📋 Data Director</div>
+            <div class="org-sub-nodes">
+              <div class="org-sub">Data Engineers</div>
+              <div class="org-sub">Annotation Ops</div>
+              <div class="org-sub">Legal/Compliance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coordination Cadence -->
+    <div class="coord-block">
+      <h3 class="coord-title">📅 Coordination Cadence — Meetings & Rituals</h3>
+      <div class="cadence-grid">
+        <div class="cadence-card">
+          <div class="cad-freq">Daily</div>
+          <div class="cad-name">Training Health Check</div>
+          <div class="cad-who">On-call ML Engineer → Slack #training-status</div>
+          <div class="cad-content">Loss curve screenshot + hardware status + any incidents from last 24h. Takes 5 min. Everyone can see it.</div>
+        </div>
+        <div class="cadence-card">
+          <div class="cad-freq">Weekly</div>
+          <div class="cad-name">Run Review</div>
+          <div class="cad-who">Training Lead + Researchers + Infra Lead</div>
+          <div class="cad-content">Review W&B dashboard. Decide on any config changes. Discuss hardware incidents. Duration: 45 min.</div>
+        </div>
+        <div class="cadence-card">
+          <div class="cad-freq">Weekly</div>
+          <div class="cad-name">Data Pipeline Sync</div>
+          <div class="cad-who">Data Lead + ML Researcher + Legal</div>
+          <div class="cad-content">Pipeline throughput, quality metrics, any new source additions, compliance review. Duration: 30 min.</div>
+        </div>
+        <div class="cadence-card">
+          <div class="cad-freq">Bi-weekly</div>
+          <div class="cad-name">Full Team All-Hands</div>
+          <div class="cad-who">All teams → CTO presents</div>
+          <div class="cad-content">Overall project status, milestone progress, upcoming decisions, resource requests. Duration: 60 min.</div>
+        </div>
+        <div class="cadence-card">
+          <div class="cad-freq">Monthly</div>
+          <div class="cad-name">Mid-Training Eval Review</div>
+          <div class="cad-who">Researchers + Eval Engineers + Leadership</div>
+          <div class="cad-content">Benchmark results on current checkpoint. Compare to scaling law predictions. Go/no-go on continuing run. Duration: 90 min.</div>
+        </div>
+        <div class="cadence-card">
+          <div class="cad-freq">At Milestones</div>
+          <div class="cad-name">Stage Gate Reviews</div>
+          <div class="cad-who">Cross-functional + CTO</div>
+          <div class="cad-content">Formal sign-off to proceed to next stage. Written doc required. Required at: Architecture freeze, Training launch, SFT approval, RLHF approval, Deployment go-live.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cross-team dependencies -->
+    <div class="coord-block">
+      <h3 class="coord-title">🔗 Critical Cross-Team Dependencies</h3>
+      <div class="deps-grid">
+        <div class="dep-card">
+          <div class="dep-from">🗄️ Data Team</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">✂️ Tokenization</div>
+          <div class="dep-what">Corpus sample for tokenizer training; full corpus for final tokenisation; data card</div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-from">✂️ Tokenization</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">🏗️ Architecture</div>
+          <div class="dep-what">Vocabulary size (determines embedding table memory); token sequence length stats</div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-from">🏗️ Architecture</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">🔥 Pre-Training</div>
+          <div class="dep-what">Model code (reviewed), architecture config, initial hyperparameter estimates, MFU benchmarks</div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-from">🖥️ Infra Team</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">🔥 Pre-Training</div>
+          <div class="dep-what">Cluster provisioned, Slurm configured, fast interconnect tested, storage mount ready</div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-from">🔥 Pre-Training</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">🎯 SFT</div>
+          <div class="dep-what">Base model checkpoint; training log; mid-training eval results to inform SFT priorities</div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-from">🎯 SFT</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">🏆 RLHF</div>
+          <div class="dep-what">SFT model (better starting policy for RL); instruction dataset (seed prompts for preference collection)</div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-from">🏆 RLHF</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">📊 Evaluation</div>
+          <div class="dep-what">Aligned model checkpoint; reward model; preference dataset; RLHF training logs</div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-from">📊 Evaluation</div>
+          <div class="dep-arrow">→</div>
+          <div class="dep-to">🚀 Deployment</div>
+          <div class="dep-what">Approved model checkpoint; model card; safety report; known limitations document</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Communication tools -->
+    <div class="coord-block">
+      <h3 class="coord-title">🛠️ Communication & Coordination Stack</h3>
+      <div class="comm-grid">
+        <div class="comm-card">
+          <div class="comm-icon">💬</div>
+          <div class="comm-tool">Slack / Teams</div>
+          <div class="comm-use">Day-to-day async: #training-run, #data-pipeline, #incidents, #evals channels. Bot posts loss curves daily.</div>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">📊</div>
+          <div class="comm-tool">Weights & Biases</div>
+          <div class="comm-use">Single source of truth for all training metrics, eval results, and experiment comparisons. Shared across all teams.</div>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">📝</div>
+          <div class="comm-tool">Notion / Confluence</div>
+          <div class="comm-use">Training logs, architecture decisions, annotation guidelines, incident post-mortems. All decisions documented.</div>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">🐙</div>
+          <div class="comm-tool">GitHub / GitLab</div>
+          <div class="comm-use">Model code, training scripts, eval harness. Mandatory code review before any change to production training code.</div>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">🚨</div>
+          <div class="comm-tool">PagerDuty</div>
+          <div class="comm-use">24/7 on-call rotation for training run and production serving. Escalation paths clearly defined in runbooks.</div>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">📋</div>
+          <div class="comm-tool">Linear / Jira</div>
+          <div class="comm-use">Sprint tracking for engineering tasks. Research uses lighter-weight issue tracking. Milestone gates tracked here.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ═══════════════════════ RESEARCH LANDSCAPE (Researcher mode only) ════ -->
 <section id="research-landscape" class="section bg-dark researcher-section hidden">
   <div class="container">
@@ -1459,6 +2504,7 @@
           <li>🙋 Layman — No jargon, clear analogies</li>
           <li>🎓 Graduate — Technical depth, papers, code</li>
           <li>🔬 Researcher — Papers, open problems, frontiers</li>
+          <li>👥 Team — Roles, responsibilities, coordination</li>
         </ul>
       </div>
     </div>
