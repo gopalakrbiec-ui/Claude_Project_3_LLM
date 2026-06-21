@@ -21,6 +21,7 @@
       <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
       <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
       <button class="mode-btn" id="btnInvestor" onclick="setMode('investor')">💰 Investor</button>
+      <button class="mode-btn" id="btnFounder"  onclick="setMode('founder')">🧭 Founder</button>
     </div>
     <div class="nav-links">
       <a href="#stages">Stages</a>
@@ -28,6 +29,7 @@
       <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
       <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
       <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
+      <a href="#founder-journey" id="navFounder" class="hidden">Founder</a>
     </div>
   </nav>
 
@@ -42,6 +44,7 @@
     <p class="hero-sub team-text hidden">A team-first view of building an LLM — who you need at every stage, what they do, how they coordinate, and how the whole organisation moves together to ship a frontier model.</p>
     <p class="hero-sub startup-text hidden">The founder's playbook — how to incorporate, raise money, decide what to build, make your first hires, set up infrastructure, go to market, and turn a research project into a revenue-generating AI company.</p>
     <p class="hero-sub investor-text hidden">The investor's lens — startup financials, valuation frameworks, funding mechanics, cap tables, burn discipline, the path to IPO, and hard-won lessons from AI founders who've raised billions.</p>
+    <p class="hero-sub founder-text hidden">The builder's compass — how to find market gaps, generate ideas, differentiate your product, attract talent, build authority, manage yourself and your team, and decide when to start, when to pivot, and when to stop in the AI era.</p>
     <div class="hero-stats">
       <div class="stat-card"><span class="stat-num">8</span><span class="stat-label">Stages</span></div>
       <div class="stat-card"><span class="stat-num">2–5</span><span class="stat-label">Years</span></div>
@@ -372,6 +375,41 @@
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Data is the highest-leverage asset in AI. A company with 10x better data and 1x the model will beat a company with 1x data and 10x the model. Prioritize data defensibility over model novelty at early stages.</div>
           </div>
 
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Data Collection</div>
+            <div class="fnd-grid">
+              <div class="fnd-card">
+                <h5>🔍 Gaps Nobody Is Filling</h5>
+                <ul>
+                  <li><strong>Non-English web data</strong> — 50+ languages have near-zero high-quality training corpora. The next frontier model for Swahili, Tamil, or Tagalog is open for the taking.</li>
+                  <li><strong>Multimodal real-world data</strong> — sensor data, industrial IoT streams, agricultural telemetry. Completely untapped for LLM training.</li>
+                  <li><strong>Long-context professional documents</strong> — legal case law, medical research, engineering specs. No one has done this at scale.</li>
+                  <li><strong>Procedural how-to data</strong> — step-by-step workflows, technical manuals, repair guides. Massive demand, almost no good training sets.</li>
+                </ul>
+              </div>
+              <div class="fnd-card fnd-gold">
+                <h5>💡 Differentiation Strategy</h5>
+                <ul>
+                  <li><strong>Own a vertical's data.</strong> If you exclusively license clinical trial data from 500 hospitals, no one can replicate your medical LLM without that partnership.</li>
+                  <li><strong>Build the data flywheel early.</strong> Every user interaction is training data. Design your product to generate the data your next model needs.</li>
+                  <li><strong>Data quality over quantity.</strong> Phi-3 by Microsoft outperformed models 5x its size using curated "textbook quality" data. This is the arbitrage.</li>
+                  <li><strong>Synthetic data generation.</strong> Use GPT-4 to bootstrap training data for your niche — few startups are doing this systematically yet.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🚀 Founder Action</h5>
+                <ul>
+                  <li>Before writing a line of code, spend 3 months interviewing 50 domain experts about their data pain points</li>
+                  <li>Sign your first data partnership agreement before raising a single dollar</li>
+                  <li>Build a data advisory board with 3–5 domain expert insiders who can open doors</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> Your data strategy IS your company strategy. The founders who win in 2026 will be those who secured unique data access in 2024–25 when nobody was paying attention.</div>
+          </div>
+
+
 
           <!-- ── INVESTOR MODE ── -->
           <div class="investor-text hidden">
@@ -657,6 +695,31 @@
             </div>
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Tokenization is low-cost but high-impact. A 10% improvement in tokenizer efficiency at 1B tokens/day of inference translates to millions in annual compute savings. Ask founders if they've measured this.</div>
           </div>
+
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Tokenization</div>
+            <div class="fnd-grid">
+              <div class="fnd-card fnd-gold">
+                <h5>💡 Unseen Opportunity</h5>
+                <ul>
+                  <li><strong>Domain-specific tokenizers</strong> for code, math, chemistry, genomics — current tokenizers handle these poorly. A tokenizer optimized for SMILES notation (chemistry) is 40% more efficient than tiktoken.</li>
+                  <li><strong>Lossless compression as a moat</strong> — better tokenization = shorter sequences = 30% cheaper inference = pricing power over OpenAI.</li>
+                  <li><strong>Multilingual-first tokenizer</strong> for ASEAN, African, or Middle Eastern languages — still near-zero competition in 2025.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🔍 Founder Strategy</h5>
+                <ul>
+                  <li>Don't build a general-purpose tokenizer — you can't out-resource OpenAI. Own a specific domain where their tokenizer is provably worse.</li>
+                  <li>Publish your tokenizer as open-source to build credibility and community before monetizing. Hugging Face won by giving away the tools.</li>
+                  <li>Benchmark your tokenizer against tiktoken on your domain and publish the numbers — this is your credibility in the research community.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The best founders see tokenization not as a technical step but as a product decision. How you tokenize defines what your model can express. Own the representation layer in your domain.</div>
+          </div>
+
 
 
           <!-- ── INVESTOR MODE ── -->
@@ -944,6 +1007,42 @@
             </div>
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Architecture is where technical founders often over-invest. The best architectures are often the simplest. Anthropic and OpenAI both use transformer variants, not exotic designs. Bet on the team's judgment, not novelty for its own sake.</div>
           </div>
+
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Architecture</div>
+            <div class="fnd-grid">
+              <div class="fnd-card fnd-gold">
+                <h5>🔮 Architecture Bets Nobody Is Making (2025–26)</h5>
+                <ul>
+                  <li><strong>Hybrid SSM-Transformer models</strong> (Mamba + attention) — 10x better on long contexts, but very few startups are commercializing this.</li>
+                  <li><strong>On-device / edge LLMs</strong> — sub-1B parameter models that run on phones. Apple Silicon + Qualcomm NPUs make this suddenly feasible. Massive untapped market.</li>
+                  <li><strong>Mixture-of-Experts for verticals</strong> — domain-specific expert routing. No one has done MoE for healthcare or legal specifically.</li>
+                  <li><strong>Neuromorphic / energy-efficient architectures</strong> — as data center power becomes the bottleneck, efficiency architectures will be worth billions.</li>
+                  <li><strong>Multimodal architectures for industrial IoT</strong> — text + sensor + video for manufacturing. No frontier lab is focused here.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🧭 When to Be Bold, When to Be Boring</h5>
+                <ul>
+                  <li><strong>Be bold</strong> on architecture when you have a unique insight backed by early experimental evidence.</li>
+                  <li><strong>Be boring</strong> (use transformers) when you need to ship a product in 12 months and can't afford 18 months of architecture research.</li>
+                  <li>The graveyard of AI startups is full of companies that spent 2 years on novel architecture and ran out of money before shipping.</li>
+                  <li>Publish architecture papers early — this builds credibility, attracts researchers, and is free marketing.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🚀 Differentiation Framework</h5>
+                <ul>
+                  <li>Can OpenAI replicate your architecture bet in 6 months? If yes, find a different bet.</li>
+                  <li>Does your architecture unlock a use case that's currently impossible? That's a defensible moat.</li>
+                  <li>Is there a PhD who published the key paper you're building on? Hire them. They're your technical credibility.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The architecture is a bet on the future. Make the bet deliberately, not by default. The founders who win make architecture choices that enable their business model, not architecture choices that look impressive in papers.</div>
+          </div>
+
 
               <div class="hb-title">📦 Handoff to Next Stage</div>
               <div class="hb-content">Delivers: model code (GitHub repo, reviewed & tested), architecture design doc, hyperparameter starting points, MFU benchmarks on small scale → <strong>Pre-Training team</strong></div>
@@ -1257,6 +1356,40 @@
             </div>
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Pre-training is the biggest single capital allocation decision a frontier AI startup makes. A successful $20M training run creates an asset worth 10–100x more. A failed run loses it all. Investors should ask: what are your failure modes and how do you detect them early?</div>
           </div>
+
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Pre-training</div>
+            <div class="fnd-grid">
+              <div class="fnd-card fnd-gold">
+                <h5>💡 The Efficiency Arbitrage</h5>
+                <ul>
+                  <li><strong>Mistral trained a GPT-4-class model for $5M</strong> that cost OpenAI $100M+. The gap was engineering efficiency and Chinchilla-optimal training. This opportunity exists in every domain.</li>
+                  <li><strong>Continual pre-training</strong> on domain data costs 10–100x less than training from scratch. Startups that find the right base model and adapt it will win verticals against general-purpose labs.</li>
+                  <li><strong>Data curation &gt; data volume.</strong> The Phi-3 mini (3.8B params) outperformed GPT-3.5 on most benchmarks using curated textbooks. Founders who understand this compound their advantage.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🎯 Founder Decision Framework</h5>
+                <ul>
+                  <li><strong>Train from scratch only if:</strong> you have truly unique data that no base model has seen, you have $10M+ compute budget, and you have ex-frontier lab training engineers on the team.</li>
+                  <li><strong>Fine-tune instead if:</strong> your domain is well-represented in existing base models, you have &lt;$2M compute budget, or your timeline is &lt;12 months to product.</li>
+                  <li><strong>Never start a training run</strong> without a loss monitoring system, automatic checkpoint saving, and a clear abort criterion. Failed training runs kill startups.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🧠 What Nobody Tells Founders</h5>
+                <ul>
+                  <li>Your first training run will fail. Budget for 2–3 iterations.</li>
+                  <li>Hire one "training infrastructure" engineer before anything else — they save you millions in wasted compute.</li>
+                  <li>The moment your loss curve diverges is the most stressful day of a founder's life. Have your abort/restart protocol written before you start.</li>
+                  <li>Publish your training recipe as a paper — it costs nothing and attracts the best engineers to your team.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The pre-training decision determines your cost structure for the next 5 years. Founders who find an efficient path to a great base model will have structural margin advantages that accumulate. Think compute ROI, not compute prestige.</div>
+          </div>
+
 
 
               <div class="role-card">
@@ -1581,6 +1714,33 @@
             </div>
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Alignment is where OpenAI differentiates ChatGPT from GPT-3. The base model is a commodity; the aligned product is the business. Ask founders: what's your RLHF data strategy and how do you measure alignment quality beyond MMLU scores?</div>
           </div>
+
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Alignment &amp; RLHF</div>
+            <div class="fnd-grid">
+              <div class="fnd-card fnd-gold">
+                <h5>💡 The Alignment Opportunity Founders Miss</h5>
+                <ul>
+                  <li><strong>Domain-aligned models outperform general aligned models</strong> in every enterprise vertical. A legally-aligned model that understands privilege and confidentiality is worth 10x a generic assistant to a law firm.</li>
+                  <li><strong>Alignment for safety-critical domains</strong> (medical, aviation, nuclear) is almost completely unaddressed. Regulatory moat + premium pricing + near-zero competition = founder opportunity of the decade.</li>
+                  <li><strong>Cultural alignment</strong> — models that genuinely understand cultural nuance for MENA, East Asia, or South Asia markets. Western-aligned models fail badly here.</li>
+                  <li><strong>Constitution AI for your domain</strong> — write your own constitutional principles for your vertical. This is defensible IP that general-purpose labs can't easily replicate.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🧭 Founder Strategy</h5>
+                <ul>
+                  <li>Don't compete with OpenAI on general alignment. You can't out-resource them. Own alignment for a specific professional domain.</li>
+                  <li>Your best alignment data comes from your domain experts — hire 3 senior domain practitioners to review outputs before any annotation team.</li>
+                  <li>Alignment = product quality. Every 10% improvement in alignment translates to lower churn and higher NPS. Measure it like a product metric, not a research metric.</li>
+                  <li>Build an internal red-team of 5–10 people in your domain who adversarially test your model weekly. This is your early warning system.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> General alignment is a solved (enough) problem at the product level. Domain-specific alignment is completely open. The founder who creates the best-aligned model for oncology, contract law, or aerospace engineering wins that entire vertical.</div>
+          </div>
+
 
                   </div>
                 </div>
@@ -1918,6 +2078,31 @@
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Evals are the model's report card — and the market's trust signal. A company that publishes rigorous, reproducible evals earns trust from enterprise buyers and technical investors alike. Ask: would your evals survive a third-party audit?</div>
           </div>
 
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Evaluation</div>
+            <div class="fnd-grid">
+              <div class="fnd-card fnd-gold">
+                <h5>💡 Own the Benchmark in Your Domain</h5>
+                <ul>
+                  <li><strong>Create the eval, own the narrative.</strong> Whoever defines what "good" means in a domain sets the standard everyone else chases. HumanEval defined code quality; who defines legal reasoning quality? Medical diagnostic quality? That's open.</li>
+                  <li><strong>Publish a domain-specific benchmark</strong> as a research paper. This positions you as the authority, attracts researchers, generates citations, and creates the scorecard buyers use when choosing between vendors.</li>
+                  <li><strong>Leaderboards are free marketing.</strong> If you run the leaderboard for clinical LLMs, you're the center of the ecosystem. Every competitor has to engage with you on your terms.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🧭 Founder Differentiation</h5>
+                <ul>
+                  <li>Your eval framework should measure what your customers actually care about, not academic benchmarks. Talk to 20 customers and ask: "What would convince you this model is good enough to trust with real work?"</li>
+                  <li>Build a public eval dashboard your customers can use to verify your claims themselves. Radical transparency builds enterprise trust faster than any sales deck.</li>
+                  <li>Evaluate failure modes, not just capabilities. Enterprise buyers care more about "when does it fail?" than "what's your MMLU score?"</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The founder who creates the canonical evaluation for their domain becomes the authority of that domain. This is a strategic asset worth more than the model itself. Publish the eval before the model — it signals intellectual leadership.</div>
+          </div>
+
+
                   </div>
                 </div>
                 <div class="rc-section"><div class="rc-label">Responsibilities</div>
@@ -2207,6 +2392,32 @@
             </div>
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Inference economics determine the long-term business model. A company with 60% gross margins can invest in R&amp;D and win; one with 20% margins is a compute reseller with no future. The best AI companies are obsessed with inference efficiency.</div>
           </div>
+
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Inference &amp; Deployment</div>
+            <div class="fnd-grid">
+              <div class="fnd-card fnd-gold">
+                <h5>💡 Infrastructure as the Moat</h5>
+                <ul>
+                  <li><strong>On-premise deployment</strong> is the unaddressed enterprise need. 80% of Fortune 500 companies cannot send sensitive data to OpenAI's cloud due to compliance requirements. The winner of enterprise AI deployment will sell the server rack, not the API.</li>
+                  <li><strong>Inference optimization as a service</strong> — startups like Anyscale and Fireworks have shown that inference efficiency IS a business model. 3x cheaper inference than OpenAI with the same quality = massive GTM.</li>
+                  <li><strong>Edge deployment for regulated industries</strong> — air-gapped networks in defense, healthcare, financial services. This market is $50B+ and barely anyone is addressing it with LLMs.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🧭 Founder Operations</h5>
+                <ul>
+                  <li>Set up cost monitoring per customer before you have customers. Knowing your cost per request at the unit level prevents the "growth kills profitability" trap that destroyed many early AI startups.</li>
+                  <li>Build latency SLAs into your contracts from day one — this forces engineering discipline and becomes a marketing differentiator.</li>
+                  <li>Your inference infrastructure is your production floor. Treat GPU downtime like a factory outage, not a software bug. Build your incident response process before your first enterprise customer.</li>
+                  <li>Auto-scaling saves founders from the worst kind of failure: a viral moment that crashes your servers and kills momentum right when you had it.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The founders who win at deployment think of themselves as infrastructure companies, not AI companies. Infrastructure is boring, sticky, high-margin, and almost impossible to rip out once installed. That's the business you want to be.</div>
+          </div>
+
 
                     <div class="rc-exp">5+ yrs NLP/eval research</div>
                   </div>
@@ -2522,6 +2733,41 @@
             </div>
             <div class="inv-insight">💡 <strong>Investor insight:</strong> Revenue is vanity, NRR is sanity, cash is reality. An AI company with 130%+ NRR is a compounding machine — existing customers grow faster than churn. This single metric predicts long-term success more reliably than ARR growth rate.</div>
           </div>
+
+          <!-- ── FOUNDER MODE ── -->
+          <div class="founder-text hidden">
+            <div class="fnd-stage-pill">🧭 Founder Lens — Product &amp; GTM</div>
+            <div class="fnd-grid">
+              <div class="fnd-card fnd-gold">
+                <h5>💡 Distribution Is the Moat (Not the Model)</h5>
+                <ul>
+                  <li><strong>The model is a commodity; the distribution is the business.</strong> OpenAI won not because GPT-4 is infinitely better than competitors, but because they had 100M users generating preference data and network effects before any competitor shipped.</li>
+                  <li><strong>Embed inside existing workflows.</strong> Cursor won over GitHub Copilot by being inside VSCode. Harvey AI won over generic LLMs by being inside the legal document workflow. Find where your users already live and embed there.</li>
+                  <li><strong>Open-source the model, monetize the deployment.</strong> HuggingFace, Mistral, Meta with LLaMA — open models create community and distribution. Charge for the managed service, the enterprise features, the compliance layer.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🧭 Finding Your First 10 Customers</h5>
+                <ul>
+                  <li>Your first 10 customers should be people you can call directly. No marketing, no sales team — just founder-led sales to people you know or people who know your work.</li>
+                  <li>Charge from day one. Free pilots create no urgency to evaluate. A $5K/month commitment forces real evaluation and real feedback.</li>
+                  <li>One design partner who co-creates the product with you is worth 1,000 users who try and churn. Find that design partner before you build anything.</li>
+                  <li>Your NPS score from your first 10 customers predicts your long-term NRR better than any projection model.</li>
+                </ul>
+              </div>
+              <div class="fnd-card">
+                <h5>🚀 2026 GTM Opportunities</h5>
+                <ul>
+                  <li>AI agents that complete multi-step professional workflows end-to-end — not copilots, full autonomous agents</li>
+                  <li>Vertical SaaS replacement with AI at the core — replace Salesforce for SMBs with an AI-native CRM</li>
+                  <li>AI for non-English markets — localized models + localized GTM in MENA, Southeast Asia, LatAm</li>
+                  <li>Compliance-first AI for regulated industries — HIPAA, SOC2, FedRAMP AI products</li>
+                </ul>
+              </div>
+            </div>
+            <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The best AI products feel inevitable in hindsight but were non-obvious when built. The pattern: find where knowledge workers spend 30%+ of their time on a repetitive cognitive task, and make AI do that task better than any human can. That's your product.</div>
+          </div>
+
 
                 </div>
                 <div class="rc-section"><div class="rc-label">Responsibilities</div>
@@ -3673,6 +3919,608 @@
           <div class="fl-role">Co-founder LinkedIn / Partner Greylock — invested in OpenAI, Inflection, others</div>
           <div class="fl-lesson">"In AI, the capital requirements have compressed the normal VC timeline. Your Series A is someone else's seed round. Founders need to think bigger and move faster than any previous era of software. And calibrate: in AI, 'fast' means 6-month model cycles, not 2-year product cycles."</div>
           <div class="fl-takeaway">💡 AI timelines are compressed. What took 4 years in SaaS takes 18 months in AI.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOUNDER JOURNEY (Founder mode only) ════════ -->
+<section id="founder-journey" class="section bg-darker founder-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge founder-badge">🧭 Founder's Compass</div>
+      <h2>The Founder's Perspective</h2>
+      <p class="section-sub">Finding gaps, building conviction, attracting talent, managing yourself and others — everything the great AI founders learned that isn't in any textbook</p>
+    </div>
+
+    <!-- ── 1. FINDING THE GAP ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">01</div>
+        <div>
+          <div class="fj-title">Finding the Gap — Ideas Nobody Is Talking About</div>
+          <div class="fj-sub">The most valuable opportunities in 2025–26 AI are hiding in plain sight</div>
+        </div>
+      </div>
+      <div class="gap-grid">
+        <div class="gap-card gap-hot">
+          <div class="gap-heat">🔥 Hot but Undercrowded</div>
+          <div class="gap-title">Domain-Specific Reasoning Models</div>
+          <div class="gap-body">Legal reasoning, medical diagnosis, financial analysis — models that don't just generate text but reason through multi-step professional decisions with verifiable logic chains. No frontier lab is prioritizing this.</div>
+          <div class="gap-why">Why now: o3/o1-style reasoning + domain data = 10x better than GPT-4 on professional tasks</div>
+        </div>
+        <div class="gap-card gap-hot">
+          <div class="gap-heat">🔥 Hot but Undercrowded</div>
+          <div class="gap-title">Agentic Workflow Automation</div>
+          <div class="gap-body">Not copilots — fully autonomous agents that complete 10-step professional workflows end-to-end without human confirmation. The RPA market ($13B) is ready to be rebuilt on LLMs.</div>
+          <div class="gap-why">Why now: tool-use APIs + long context + reliability thresholds crossed in 2024–25</div>
+        </div>
+        <div class="gap-card gap-cold">
+          <div class="gap-heat">❄️ Cold but Massive</div>
+          <div class="gap-title">Non-English Frontier Models</div>
+          <div class="gap-body">3.5 billion people speak no English. Arabic, Hindi, Swahili, Tagalog, and 40+ other languages have essentially zero high-quality frontier models. This is the biggest untapped market in AI.</div>
+          <div class="gap-why">Market size: the next billion AI users will not speak English</div>
+        </div>
+        <div class="gap-card gap-cold">
+          <div class="gap-heat">❄️ Cold but Massive</div>
+          <div class="gap-title">AI for Physical World Data</div>
+          <div class="gap-body">Sensor data, industrial IoT, satellite imagery, seismic data, agricultural telemetry — none of these are in LLM training sets. Foundation models for physical-world data are 3–5 years behind text LLMs.</div>
+          <div class="gap-why">Who wins: the company that trains the "GPT-4 of sensor data"</div>
+        </div>
+        <div class="gap-card gap-hidden">
+          <div class="gap-heat">👁️ Hidden Gems</div>
+          <div class="gap-title">On-Premise Enterprise AI</div>
+          <div class="gap-body">80% of Fortune 500 data never leaves their firewall for compliance reasons. The on-premise LLM market is $20B+ and almost no startup is seriously pursuing it. Sell the box, not the API.</div>
+          <div class="gap-why">One $5M enterprise on-premise contract = 10x better economics than 50 API customers</div>
+        </div>
+        <div class="gap-card gap-hidden">
+          <div class="gap-heat">👁️ Hidden Gems</div>
+          <div class="gap-title">AI-Native Vertical SaaS</div>
+          <div class="gap-body">Replacing entire legacy SaaS products (not adding AI to them) with AI-native alternatives. An AI-native EHR that eliminates 90% of documentation burden is a $100B opportunity. Harvey AI is doing this for legal.</div>
+          <div class="gap-why">The incumbents are too slow to self-cannibalize. The window is 2024–2027.</div>
+        </div>
+      </div>
+      <div class="gap-method">
+        <div class="gm-title">How to Find Your Gap — The 3-Filter Framework</div>
+        <div class="gm-filters">
+          <div class="gm-filter">
+            <div class="gm-num">1</div>
+            <div class="gm-name">Pain Filter</div>
+            <div class="gm-desc">Find a specific person (not a market) who spends 30%+ of their working day on a cognitive task that feels repetitive, frustrating, and beneath their expertise. That task is your product.</div>
+          </div>
+          <div class="gm-filter">
+            <div class="gm-num">2</div>
+            <div class="gm-name">Timing Filter</div>
+            <div class="gm-desc">Could this have been built 3 years ago? If yes, ask why it wasn't and whether that barrier still exists. The best opportunities couldn't have been built until very recently — but can be built now.</div>
+          </div>
+          <div class="gm-filter">
+            <div class="gm-num">3</div>
+            <div class="gm-name">Defensibility Filter</div>
+            <div class="gm-desc">If OpenAI dedicated 10 engineers to this for 6 months, could they replicate your advantage? If yes, it's not a startup idea — it's a feature. Find the thing they can't or won't build.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2. IS 2026 THE RIGHT TIME? ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">02</div>
+        <div>
+          <div class="fj-title">Is 2026 the Right Time to Start a Frontier Model Company?</div>
+          <div class="fj-sub">An honest answer — and the real opportunities if frontier isn't your path</div>
+        </div>
+      </div>
+      <div class="timing-verdict">
+        <div class="tv-card tv-no">
+          <div class="tv-verdict">❌ Probably Not for Frontier Models</div>
+          <div class="tv-reasons">
+            <div class="tv-reason">
+              <strong>Capital requirements have exploded.</strong> In 2020, $10M could train a competitive model. In 2026, frontier training runs cost $50M–$500M+. The barrier has grown 50x in 5 years.
+            </div>
+            <div class="tv-reason">
+              <strong>The incumbents have entrenched moats.</strong> OpenAI has 300M+ users generating preference data daily. Anthropic has $7B+ in compute contracts. Google has TPU infrastructure that took 10 years to build. These are not replicable.
+            </div>
+            <div class="tv-reason">
+              <strong>Talent consolidation.</strong> 70% of frontier ML researchers work at 5 companies. Recruiting 10 frontier researchers for a new lab in 2026 requires a compelling story and $50M+ in compensation packages.
+            </div>
+          </div>
+        </div>
+        <div class="tv-card tv-yes">
+          <div class="tv-verdict">✅ Yes — If You Focus on These</div>
+          <div class="tv-areas">
+            <div class="tv-area">
+              <div class="tv-area-name">🏥 Vertical AI</div>
+              <div class="tv-area-desc">Healthcare, legal, finance, construction — specialized models that outperform GPT-4 in one domain. This doesn't require frontier compute.</div>
+            </div>
+            <div class="tv-area">
+              <div class="tv-area-name">🔧 AI Infrastructure</div>
+              <div class="tv-area-desc">Inference optimization, fine-tuning platforms, evals-as-a-service, observability for AI — the "picks and shovels" of the AI gold rush. Every AI company is a potential customer.</div>
+            </div>
+            <div class="tv-area">
+              <div class="tv-area-name">🤖 AI Agents</div>
+              <div class="tv-area-desc">Autonomous agents for specific professional workflows. The agent stack (planning, memory, tool use, verification) is almost entirely unbuilt. This is where GPT-2 was in 2019.</div>
+            </div>
+            <div class="tv-area">
+              <div class="tv-area-name">🌍 Non-English AI</div>
+              <div class="tv-area-desc">Build the best LLM for Arabic, Hindi, Portuguese, or Swahili. The TAM is 2–3 billion potential users. The competition is near-zero. This is a 2019-equivalent opportunity.</div>
+            </div>
+            <div class="tv-area">
+              <div class="tv-area-name">🏭 AI for Physical World</div>
+              <div class="tv-area-desc">Robotics, manufacturing, agriculture, energy — domains where AI is 10 years behind language models. Embodied AI, process control, predictive maintenance.</div>
+            </div>
+            <div class="tv-area">
+              <div class="tv-area-name">🛡️ AI Safety & Governance</div>
+              <div class="tv-area-desc">Evals, red-teaming, interpretability tools, compliance platforms, AI audit software. Every AI deployment creates demand for this. Regulatory tailwinds incoming.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3. BUILDING YOUR STRATEGY ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">03</div>
+        <div>
+          <div class="fj-title">Building Your Strategy Around the Idea</div>
+          <div class="fj-sub">From insight to company — the strategic decisions that determine everything</div>
+        </div>
+      </div>
+      <div class="strategy-steps">
+        <div class="ss-step">
+          <div class="ss-num">1</div>
+          <div class="ss-content">
+            <div class="ss-title">Start With One Customer, Not One Market</div>
+            <div class="ss-body">Name a specific person at a specific company who will pay you $5,000/month on day one. If you can't name them, your strategy is too abstract. The customer who exists beats the market that might exist.</div>
+          </div>
+        </div>
+        <div class="ss-step">
+          <div class="ss-num">2</div>
+          <div class="ss-content">
+            <div class="ss-title">Define Your "Why Us, Why Now, Why This"</div>
+            <div class="ss-body">Write a single paragraph that explains why your team is uniquely suited to solve this problem, why this specific moment makes it possible, and why this specific approach is better than alternatives. If you can't write it clearly, you haven't figured out your strategy yet.</div>
+          </div>
+        </div>
+        <div class="ss-step">
+          <div class="ss-num">3</div>
+          <div class="ss-content">
+            <div class="ss-title">Choose Your Sequencing</div>
+            <div class="ss-body">Land and expand beats boil the ocean. Win one hospital system before going after all of healthcare. Win one law firm before going after all of legal. Depth of penetration in one segment creates the proof points needed to expand.</div>
+          </div>
+        </div>
+        <div class="ss-step">
+          <div class="ss-num">4</div>
+          <div class="ss-content">
+            <div class="ss-title">Build Your Unfair Advantage Stack</div>
+            <div class="ss-body">Layer three defensible assets: (1) proprietary data that competitors can't easily get, (2) technical differentiation built on that data, (3) customer relationships and switching costs built on that technology. Each layer amplifies the others.</div>
+          </div>
+        </div>
+        <div class="ss-step">
+          <div class="ss-num">5</div>
+          <div class="ss-content">
+            <div class="ss-title">Set Your 18-Month Milestones</div>
+            <div class="ss-body">Fundraising, hiring, product, and revenue milestones for the next 18 months — specific enough that you'll know in real-time if you're on track. The company that hits milestones on time builds investor trust; the one that misses them dies quietly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 4. ATTRACTING TALENT ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">04</div>
+        <div>
+          <div class="fj-title">Attracting Talent — Getting Great People to Believe in You</div>
+          <div class="fj-sub">The hardest part of building an AI company in 2026 is not the model — it's the team</div>
+        </div>
+      </div>
+      <div class="talent-grid">
+        <div class="talent-card talent-primary">
+          <div class="talent-icon">🧲</div>
+          <div class="talent-title">Mission &gt; Money (for the first 10)</div>
+          <div class="talent-body">Your first 10 hires won't join for the salary — they'll join because they believe in what you're building and want to be part of something important. If you can't articulate why this matters beyond revenue, you can't recruit A-players early.</div>
+        </div>
+        <div class="talent-card">
+          <div class="talent-icon">📄</div>
+          <div class="talent-title">Publish Technical Work First</div>
+          <div class="talent-body">The fastest way to recruit top researchers is to publish work they respect before you recruit. A paper on arXiv with 500 citations is better than a recruiter with a $50K placement fee. Show the work; the talent follows.</div>
+        </div>
+        <div class="talent-card talent-primary">
+          <div class="talent-icon">🏆</div>
+          <div class="talent-title">Hire for Trajectory, Not Resume</div>
+          <div class="talent-body">The best early hires are people on a steep upward curve — 2nd author at a top lab, not 15th author at OpenAI. Find the researchers who are about to break out and give them the opportunity to lead rather than follow.</div>
+        </div>
+        <div class="talent-card">
+          <div class="talent-icon">💰</div>
+          <div class="talent-title">Equity as Partnership, Not Compensation</div>
+          <div class="talent-body">Frame equity as co-ownership, not a lottery ticket. Show them the dilution math, the cap table, the realistic outcomes. Founders who are transparent about equity mechanics build more trust than those who hand out vague promises.</div>
+        </div>
+        <div class="talent-card">
+          <div class="talent-icon">🌐</div>
+          <div class="talent-title">Build in Public to Attract in Private</div>
+          <div class="talent-body">Tweet about your technical progress. Post on LinkedIn about what you're building and why. Give talks at conferences before you have a product. The best candidates are passive — they need to discover you, not respond to a cold InMail.</div>
+        </div>
+        <div class="talent-card">
+          <div class="talent-icon">🤝</div>
+          <div class="talent-title">The Referral Network Is Everything</div>
+          <div class="talent-body">In AI, the best engineers know each other. Your 3rd hire refers your 4th, who refers your 5th. Treat every early hire as a recruiting node. Ask every candidate: "Who's the best engineer you've worked with who might be available?"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 5. FOUNDER RULES & BEHAVIOURS ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">05</div>
+        <div>
+          <div class="fj-title">Founder Rules, Behaviours &amp; Mental Models</div>
+          <div class="fj-sub">The operating principles that separate founders who build lasting companies from those who don't</div>
+        </div>
+      </div>
+      <div class="rules-grid">
+        <div class="rule-card rule-gold">
+          <div class="rule-icon">⚡</div>
+          <div class="rule-title">Speed is a Strategy</div>
+          <div class="rule-body">In AI, being 6 months faster than a competitor is not just an advantage — it's existential. Every decision that can be made today should be made today. Perfect is the enemy of shipped.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon">🎯</div>
+          <div class="rule-title">Say No to Almost Everything</div>
+          <div class="rule-body">Every partnership, conference, advisory board, and feature request is a no by default. Your most scarce resource is focus. The best founders say no to 95% of opportunities so they can say yes fully to the 5% that matters.</div>
+        </div>
+        <div class="rule-card rule-gold">
+          <div class="rule-icon">📣</div>
+          <div class="rule-title">Communicate Obsessively</div>
+          <div class="rule-body">Overcommunicate context, strategy, and priorities to your team. The #1 cause of founder-team misalignment is information asymmetry. Every team member should know the 3 most important things happening this week.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon">🧪</div>
+          <div class="rule-title">Be Hypothesis-Driven</div>
+          <div class="rule-body">Treat every major decision as an experiment with a clear hypothesis, test, and success metric. "We believe X is true. We'll know in 30 days because we'll measure Y." This turns uncertainty into data.</div>
+        </div>
+        <div class="rule-card rule-gold">
+          <div class="rule-icon">👂</div>
+          <div class="rule-title">Listen More Than You Talk</div>
+          <div class="rule-body">In customer meetings, aim for 70% listening and 30% talking. In investor meetings, flip it. In team meetings, calibrate to what the conversation needs. The founder who listens well is rare — and much more effective.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon">💪</div>
+          <div class="rule-title">Protect Your Energy</div>
+          <div class="rule-body">A startup is a marathon disguised as a sprint. Sleep 7–8 hours. Exercise 4x/week. Take one full day off per week. The CEO who burns out in year one is replaced; the one who builds sustainable capacity runs the company for 10 years.</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon">🪞</div>
+          <div class="rule-title">Radical Self-Awareness</div>
+          <div class="rule-body">Know your blind spots. Get a coach. Ask your team for honest feedback quarterly. The founder who thinks they have no weaknesses is the most dangerous person in the company.</div>
+        </div>
+        <div class="rule-card rule-gold">
+          <div class="rule-icon">🔄</div>
+          <div class="rule-title">Embrace Being Wrong</div>
+          <div class="rule-body">You will be wrong about your market, your product, and your team multiple times. The skill isn't being right — it's updating fast when you're wrong. Founders who can't change their minds die slowly with their original assumptions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 6. PUBLIC PERSONA & AUTHORITY ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">06</div>
+        <div>
+          <div class="fj-title">Public Persona, Positioning &amp; Taking Authority</div>
+          <div class="fj-sub">In the AI era, the founder's brand IS the company's brand — especially at the start</div>
+        </div>
+      </div>
+      <div class="persona-grid">
+        <div class="persona-card persona-primary">
+          <div class="persona-icon">🎤</div>
+          <div class="persona-title">Become the Voice of Your Domain</div>
+          <div class="persona-body">Pick one problem in your space and talk about it constantly, publicly, and with more depth than anyone else. Not your company — the problem. When people think of that problem, they think of you. Then you announce the solution: your product.</div>
+          <div class="persona-examples">
+            <strong>Examples:</strong> Andrew Ng on AI education, Andrej Karpathy on LLM internals, Sam Altman on AI safety and acceleration — each owns a narrative position that predates and outlasts any single product.
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-icon">✍️</div>
+          <div class="persona-title">Write to Build Authority</div>
+          <div class="persona-body">One deeply researched long-form essay per month. Post on LinkedIn, Substack, and arXiv where relevant. Writing that teaches something new creates compounding credibility — a blog post from 2021 still generates inbound in 2026.</div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-icon">🐦</div>
+          <div class="persona-title">Social Media as Recruiting &amp; Sales</div>
+          <div class="persona-body">X/Twitter in AI is uniquely high-signal. The best ML researchers, investors, and enterprise buyers read it daily. Post technical insights, share honest opinions, and engage in technical debates. Follower count is a lagging indicator — quality of your content is leading.</div>
+        </div>
+        <div class="persona-card persona-primary">
+          <div class="persona-icon">🏛️</div>
+          <div class="persona-title">Position the Company, Then the Product</div>
+          <div class="persona-body">Category design beats product marketing. Don't position your product against competitors — position your company as the creator of a new category. "We're not a better chatbot; we're the first AI that actually understands clinical workflows." Own the category before you own the market.</div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-icon">🤝</div>
+          <div class="persona-title">Strategic Public Relationships</div>
+          <div class="persona-body">Be visible at 3 conferences per year — not more. Prioritize quality of relationship over quantity of appearances. One deep conversation with a future design partner at NeurIPS is worth 20 panel appearances at generic tech conferences.</div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-icon">🎯</div>
+          <div class="persona-title">Own a Contrarian Point of View</div>
+          <div class="persona-body">Safe, mainstream opinions are forgettable. The founders who build audiences have specific, well-reasoned, contrarian views on the future. "I believe LLMs will replace 40% of knowledge worker tasks by 2028 — here's why, with specifics." Conviction is magnetic.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 7. WHEN TO START & STOP ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">07</div>
+        <div>
+          <div class="fj-title">When to Start, When to Pivot, When to Stop</div>
+          <div class="fj-sub">The decisions that require the most courage — and the clearest frameworks</div>
+        </div>
+      </div>
+      <div class="decision-cards">
+        <div class="dc-card dc-start">
+          <div class="dc-type">🟢 When to Start</div>
+          <ul>
+            <li>You've found a problem you'd work on for 10 years regardless of outcome</li>
+            <li>You've talked to 20+ potential customers who say "I would pay for this today"</li>
+            <li>You have (or can hire) the specific domain + technical combination needed — and no one else does</li>
+            <li>The technology required now exists and didn't 18 months ago</li>
+            <li>You have 18+ months of personal financial runway or are prepared to raise immediately</li>
+            <li>You've tried to talk yourself out of it for 6 months and can't stop thinking about it</li>
+          </ul>
+        </div>
+        <div class="dc-card dc-pivot">
+          <div class="dc-type">🟡 When to Pivot</div>
+          <ul>
+            <li>You've been selling for 6 months and fewer than 3 people have paid you anything</li>
+            <li>Your NPS score from existing users is below 30 consistently</li>
+            <li>A competitor shipped your product better 3 months after you started</li>
+            <li>Your team is working hard but nobody is excited about the product anymore</li>
+            <li>You're building features but not solving the core pain point that prompted you to start</li>
+            <li>You have adjacent data/technology that solves a problem 10x better than your current product</li>
+          </ul>
+        </div>
+        <div class="dc-card dc-stop">
+          <div class="dc-type">🔴 When to Stop</div>
+          <ul>
+            <li>You have less than 3 months of runway and no realistic path to raise or reach profitability</li>
+            <li>Your co-founders have irreconcilable disagreements about strategy or values</li>
+            <li>You've pivoted 3+ times and still have no paying customers after 2 years</li>
+            <li>The market shifted and your core assumption is now provably wrong (not "hard" — wrong)</li>
+            <li>A strategic acquirer offers to give your team and technology a better home</li>
+            <li>You've lost conviction in the mission and are just going through the motions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fnd-insight">🧭 <strong>Founder principle:</strong> The decision to stop is often the hardest and most underrated founder skill. The best founders know the difference between a bad week and a broken company. Pivoting too early kills companies; stopping too late kills careers. Use the framework, trust your gut, and talk to mentors who have no stake in your continuation.</div>
+    </div>
+
+    <!-- ── 8. DAILY HABITS & STAYING UPDATED ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">08</div>
+        <div>
+          <div class="fj-title">Daily Knowledge Habits — Staying Ahead of a Fast Market</div>
+          <div class="fj-sub">AI moves at a pace where being 3 months behind feels like 3 years. Here's how the best founders stay current</div>
+        </div>
+      </div>
+      <div class="habit-grid">
+        <div class="habit-card habit-daily">
+          <div class="habit-freq">Daily (30 min)</div>
+          <div class="habit-title">Morning Intelligence Routine</div>
+          <div class="habit-sources">
+            <div class="habit-source"><strong>arXiv cs.AI/cs.CL</strong> — scan abstracts of new papers before 9am; read 1–2 full papers per week</div>
+            <div class="habit-source"><strong>X/Twitter AI community</strong> — follow @karpathy, @sama, @ylecun, @goodfellow, @fchollet, @emollick, @GaryMarcus for diverse signal</div>
+            <div class="habit-source"><strong>The Rundown AI</strong> and <strong>Import AI</strong> newsletters — curated daily summaries, no noise</div>
+            <div class="habit-source"><strong>Hugging Face Papers</strong> — most important papers highlighted daily by the community</div>
+          </div>
+        </div>
+        <div class="habit-card habit-weekly">
+          <div class="habit-freq">Weekly (2–3 hrs)</div>
+          <div class="habit-title">Deep Learning Ritual</div>
+          <div class="habit-sources">
+            <div class="habit-source"><strong>Latent Space Podcast</strong> — technical interviews with frontier researchers and practitioners</div>
+            <div class="habit-source"><strong>Lex Fridman Podcast</strong> — long-form founder/researcher conversations</div>
+            <div class="habit-source"><strong>TWIML AI Podcast</strong> — machine learning research breakdowns</div>
+            <div class="habit-source"><strong>Ben Evans Newsletter</strong> — macro AI strategy and business model analysis</div>
+            <div class="habit-source"><strong>One benchmark review</strong> — look at the LMSYS Chatbot Arena leaderboard weekly to track model improvements</div>
+          </div>
+        </div>
+        <div class="habit-card habit-monthly">
+          <div class="habit-freq">Monthly</div>
+          <div class="habit-title">Strategic Recalibration</div>
+          <div class="habit-sources">
+            <div class="habit-source"><strong>Read one book</strong> by or about a founder/CEO you admire. Not AI books — leadership, psychology, history. Build a multi-domain mental model.</div>
+            <div class="habit-source"><strong>AI Safety research digest</strong> — Anthropic, DeepMind, and ARC Evals publish monthly. Regulatory changes here affect your business model.</div>
+            <div class="habit-source"><strong>Competitor analysis sprint</strong> — 2 hours reviewing competitor products, pricing, and messaging changes. What changed? Why?</div>
+            <div class="habit-source"><strong>Customer success review</strong> — listen to 5 customer calls. The market tells you its needs; most founders stop listening after product-market fit.</div>
+          </div>
+        </div>
+      </div>
+      <div class="availability-box">
+        <div class="av-title">Making Yourself Available — Without Losing Your Sanity</div>
+        <div class="av-grid">
+          <div class="av-item">
+            <div class="av-icon">📧</div>
+            <div class="av-text"><strong>Email:</strong> Respond to first-time inbound from researchers, potential customers, and thoughtful community members within 24 hours. Nothing builds reputation faster than being responsive when you don't have to be.</div>
+          </div>
+          <div class="av-item">
+            <div class="av-icon">🗓️</div>
+            <div class="av-text"><strong>Office Hours:</strong> 2 hours per week publicly available — open calendar link for 30-min slots. This surfaces talent, customer pain, and partnership opportunities you'd never find otherwise.</div>
+          </div>
+          <div class="av-item">
+            <div class="av-icon">🛑</div>
+            <div class="av-text"><strong>Protect Focus Blocks:</strong> Block 9am–1pm daily as no-meeting deep work. The founder who is always in meetings stops being a founder and becomes a coordinator. Guard your thinking time ferociously.</div>
+          </div>
+          <div class="av-item">
+            <div class="av-icon">🤝</div>
+            <div class="av-text"><strong>Peer founder network:</strong> Build a group of 5–8 non-competing founders at similar stages. Meet monthly. This is your board of directors for personal decisions — honest advice from people with skin in the game.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 9. DELEGATION & PEOPLE MANAGEMENT ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">09</div>
+        <div>
+          <div class="fj-title">Delegation, Managing People &amp; Stakeholders</div>
+          <div class="fj-sub">The transition from builder to leader is the hardest thing most technical founders face</div>
+        </div>
+      </div>
+      <div class="mgmt-grid">
+        <div class="mgmt-card mgmt-primary">
+          <div class="mgmt-icon">🔄</div>
+          <div class="mgmt-title">The Delegation Ladder</div>
+          <div class="mgmt-body">
+            <div class="dl-level"><span class="dl-badge">Level 1</span> "Here's exactly what to do and how to do it" — use for week one of any role</div>
+            <div class="dl-level"><span class="dl-badge">Level 2</span> "Here's the outcome I need; you decide how" — use after 30 days of demonstrated competence</div>
+            <div class="dl-level"><span class="dl-badge">Level 3</span> "Here's the area you own; update me weekly on your top priorities" — use with senior hires after 90 days</div>
+            <div class="dl-level"><span class="dl-badge dl-gold">Level 4</span> "Here's the mission; you have full autonomy; I'll support when you need it" — use with your best people on their best work</div>
+          </div>
+        </div>
+        <div class="mgmt-card">
+          <div class="mgmt-icon">💼</div>
+          <div class="mgmt-title">Managing Investors</div>
+          <div class="mgmt-body">Send monthly updates — always. Include: metrics (good and bad), highlights, lowlights, and specific asks. Investors who feel informed become advocates; investors who feel surprised become adversaries. Never hide bad news — they'll find out, and the trust damage is permanent.</div>
+        </div>
+        <div class="mgmt-card">
+          <div class="mgmt-icon">📊</div>
+          <div class="mgmt-title">Managing the Board</div>
+          <div class="mgmt-body">Run board meetings like a CEO, not a student presenting to professors. You set the agenda. You decide what decisions need board input. You come with recommendations, not open questions. Board members respect founders who lead their boards — and worry about those who don't.</div>
+        </div>
+        <div class="mgmt-card mgmt-primary">
+          <div class="mgmt-icon">👥</div>
+          <div class="mgmt-title">Managing Your Team Through Growth</div>
+          <div class="mgmt-body">
+            <div class="dl-level"><span class="dl-badge">1–10 people:</span> Know every person deeply; weekly 1:1s; flat hierarchy; founder directly involved in all key decisions</div>
+            <div class="dl-level"><span class="dl-badge">10–50 people:</span> Build management layer; monthly company all-hands; OKRs or similar goal framework; formal performance reviews</div>
+            <div class="dl-level"><span class="dl-badge">50–200 people:</span> VP layer required; culture deliberate not emergent; promotion criteria written; values documented and enforced</div>
+            <div class="dl-level"><span class="dl-badge dl-gold">200+ people:</span> You are now primarily a culture and strategy leader. Hire a COO. Your job is clarity of mission, not operational excellence.</div>
+          </div>
+        </div>
+        <div class="mgmt-card">
+          <div class="mgmt-icon">💸</div>
+          <div class="mgmt-title">Managing Shareholders</div>
+          <div class="mgmt-body">Cap table hygiene from day one: use Carta, standardize SAFE/equity terms, keep the cap table clean. A messy cap table with undocumented side deals kills M&A and IPO processes. Every angel investor who feels ignored becomes a potential complication in a future deal.</div>
+        </div>
+        <div class="mgmt-card">
+          <div class="mgmt-icon">⚡</div>
+          <div class="mgmt-title">Firing Quickly, Hiring Slowly</div>
+          <div class="mgmt-body">The worst management mistake founders make is keeping underperformers too long out of loyalty or discomfort. A high performer's respect for the organization evaporates when they see underperformance tolerated. Fire fast, fire kind, and do it yourself — never delegate the first termination.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 10. MANAGING SUCCESS & FAILURE ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">10</div>
+        <div>
+          <div class="fj-title">Managing Success, Failure &amp; Your Own Psychology</div>
+          <div class="fj-sub">The inner game of founding — what nobody prepares you for</div>
+        </div>
+      </div>
+      <div class="psych-grid">
+        <div class="psych-card psych-warning">
+          <div class="psych-icon">⚠️</div>
+          <div class="psych-title">Success Is the Harder Test</div>
+          <div class="psych-body">Most founders are prepared for failure. Few are prepared for rapid success. Hypergrowth creates: hiring mistakes (speed over fit), culture dilution (can't onboard 10 people/month without culture decay), founder ego (early success is often luck misattributed to genius), and the trap of optimizing for looking successful rather than being successful.</div>
+        </div>
+        <div class="psych-card">
+          <div class="psych-icon">🔁</div>
+          <div class="psych-title">The Failure Recovery Protocol</div>
+          <div class="psych-body">
+            <div class="dl-level">1. Give yourself 24–48 hours to feel it fully. Don't suppress.</div>
+            <div class="dl-level">2. Write a specific post-mortem: what happened, why, what was within your control, what wasn't.</div>
+            <div class="dl-level">3. Share it with your board and team. Transparency builds trust in adversity.</div>
+            <div class="dl-level">4. Identify the single most important change to prevent recurrence.</div>
+            <div class="dl-level">5. Move. The best founders process fast, decide fast, and don't ruminate.</div>
+          </div>
+        </div>
+        <div class="psych-card psych-warning">
+          <div class="psych-icon">🪤</div>
+          <div class="psych-title">The Imposter Syndrome Trap</div>
+          <div class="psych-body">Almost every founder feels like a fraud at some point — usually right before a breakthrough. The founder interviewing for a $50M investment feels less capable than the executive they're pitching. This is normal. The antidote isn't confidence — it's evidence. Keep a "wins file" of real evidence that your approach is working. Read it on bad days.</div>
+        </div>
+        <div class="psych-card">
+          <div class="psych-icon">🧘</div>
+          <div class="psych-title">Sustainable Founder Psychology</div>
+          <div class="psych-body">Sam Altman, Dario Amodei, and Jensen Huang all talk about the importance of equanimity — the ability to feel the lows without letting them define the trajectory. Meditation, journaling, therapy, and a trusted personal board (not business advisors) are operational tools, not optional luxuries. The startup is a 10-year project. Plan your psychology accordingly.</div>
+        </div>
+        <div class="psych-card">
+          <div class="psych-icon">📊</div>
+          <div class="psych-title">Separate Identity from Outcome</div>
+          <div class="psych-body">Your company failing is not you failing. Your product not shipping on time is not your worth as a person. The founders who survive the emotional rollercoaster have separated their self-worth from their company's metrics. Practice this deliberately. Your value to the world is not your ARR.</div>
+        </div>
+        <div class="psych-card psych-gold">
+          <div class="psych-icon">🌱</div>
+          <div class="psych-title">The Long Game</div>
+          <div class="psych-body">OpenAI was founded in 2015 and ChatGPT launched in 2022 — 7 years. Anthropic raised its first round in 2021 and became a household name in 2023 — 2 years. The timelines in AI can be compressed by breakthrough moments you can't predict. The founder who is still building in year 5 has an enormous advantage over the one who burned out in year 2.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 11. LESSONS FROM GREAT FOUNDERS & CEOs ── -->
+    <div class="fj-block">
+      <div class="fj-block-header">
+        <div class="fj-num">11</div>
+        <div>
+          <div class="fj-title">Lessons from the Greatest Founders &amp; CEOs in AI</div>
+          <div class="fj-sub">What they actually learned — beyond the official narrative</div>
+        </div>
+      </div>
+      <div class="ceo-lessons">
+        <div class="cl-card cl-featured">
+          <div class="cl-person">Jensen Huang</div>
+          <div class="cl-role">CEO, NVIDIA — turned a gaming GPU company into the backbone of the AI revolution ($3T market cap)</div>
+          <div class="cl-lesson">"I always knew the destination. I didn't always know the path. The company I kept describing — a company that would be essential to the future of computing — I kept that vision constant even when the product pivoted completely from gaming to data centers to AI. The strategy changed. The destination didn't."</div>
+          <div class="cl-key">🔑 Constant destination, flexible path. Revisit your product strategy quarterly; revisit your mission never.</div>
+        </div>
+        <div class="cl-card cl-featured">
+          <div class="cl-person">Sam Altman</div>
+          <div class="cl-role">CEO, OpenAI — went from YC president to leading the most important technology company of the decade</div>
+          <div class="cl-lesson">"The thing that separates the best founders is their ability to recruit. It's the highest-leverage thing you can do. I've seen $10M rounds and $100M rounds — the biggest predictor of success is whether the founder can convince extraordinary people to bet their careers on them."</div>
+          <div class="cl-key">🔑 Recruiting is your most important job until you have 50 people. Then it's still your most important job.</div>
+        </div>
+        <div class="cl-card">
+          <div class="cl-person">Dario Amodei</div>
+          <div class="cl-role">CEO, Anthropic — left OpenAI to build an AI safety-first frontier lab</div>
+          <div class="cl-lesson">"We made a bet: if powerful AI is coming regardless, it's better to have safety-focused labs at the frontier than to cede that ground to labs less focused on safety. This is a deeply uncomfortable position — we're building the thing we're also trying to make safe. But we think it's better than the alternative."</div>
+          <div class="cl-key">🔑 Mission-driven companies attract mission-driven talent and investors. Articulate your why clearly and live it visibly.</div>
+        </div>
+        <div class="cl-card">
+          <div class="cl-person">Arthur Mensch</div>
+          <div class="cl-role">CEO, Mistral AI — raised €1.05B in 18 months by publishing world-class models with minimal resources</div>
+          <div class="cl-lesson">"We published Mistral 7B before we had funding for the next model. We published the weights openly. We had no product yet. But that one release told every investor everything they needed to know about our team's capabilities. Let the work speak first."</div>
+          <div class="cl-key">🔑 Technical credibility is your most powerful fundraising asset. Create it in public before you need it in private.</div>
+        </div>
+        <div class="cl-card">
+          <div class="cl-person">Andrej Karpathy</div>
+          <div class="cl-role">Ex-Tesla AI Director, Ex-OpenAI — the most influential AI educator and practitioner of his generation</div>
+          <div class="cl-lesson">"The best way to understand AI systems is to build them from scratch, even tiny versions. You can't really reason about something you haven't built. The CEO who has trained a small neural network makes better decisions than the one who has only read about them."</div>
+          <div class="cl-key">🔑 Stay technical enough to know when you're being bullshitted. Founders who lose this instinct become dependent on intermediaries.</div>
+        </div>
+        <div class="cl-card">
+          <div class="cl-person">Fei-Fei Li</div>
+          <div class="cl-role">Co-director, Stanford HAI; Co-founder, World Labs — the scientist who catalyzed modern AI with ImageNet</div>
+          <div class="cl-lesson">"ImageNet took us 3 years and $1M to build, and no one thought it would matter. The most important contributions often look unimportant from the inside. Build infrastructure for the field, not just for your product. Infrastructure builders become indispensable."</div>
+          <div class="cl-key">🔑 Building shared infrastructure (datasets, benchmarks, tools) creates goodwill, citations, and authority that money can't buy.</div>
+        </div>
+        <div class="cl-card cl-warning">
+          <div class="cl-person">Emad Mostaque</div>
+          <div class="cl-role">Founder, Stability AI — cautionary tale and genuine pioneer</div>
+          <div class="cl-lesson">"We moved faster than anyone. We democratized AI art, image generation, and open-source AI models. But we didn't build a business model that matched our ambition. Technical achievement without financial sustainability is a beautiful machine that runs out of fuel."</div>
+          <div class="cl-key">⚠️ Build revenue discipline in parallel with technical ambition. A brilliant product that can't sustain itself helps no one.</div>
+        </div>
+        <div class="cl-card">
+          <div class="cl-person">Clement Delangue</div>
+          <div class="cl-role">CEO, Hugging Face — built the GitHub of AI by giving everything away for free</div>
+          <div class="cl-lesson">"Our business model was counterintuitive: give away the platform, give away the models, give away the tools — then charge enterprises for the managed service, the compliance, and the support. Community is the moat. Community is the distribution. Community is the company."</div>
+          <div class="cl-key">🔑 Developer communities are the most durable competitive moats in software. Build them before you need them to sell.</div>
         </div>
       </div>
     </div>
