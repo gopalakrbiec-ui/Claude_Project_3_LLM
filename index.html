@@ -39,6 +39,7 @@
       <div class="nav-links">
         <a href="#stages">Stages</a>
         <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
+        <a href="#graduate-roadmap" id="navGrad" class="hidden">Roadmap</a>
         <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
         <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
         <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
@@ -4945,6 +4946,662 @@
 </section>
 
 <!-- ═══════════════════════ RESEARCH LANDSCAPE (Researcher mode only) ════ -->
+<!-- ══════════════ GRADUATE LEARNING ROADMAP ══════════════ -->
+<section id="graduate-roadmap" class="section bg-darker grad-roadmap-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge grad-badge">🎓 Graduate Roadmap</div>
+      <h2>Learning Roadmap to Build an LLM</h2>
+      <p class="section-sub">A structured, opinionated sequence of resources — from linear algebra to production-grade LLM systems. Each phase lists the best books, courses, papers, and code repos.</p>
+    </div>
+
+    <!-- ── Phase timeline strip ── -->
+    <div class="gr-phase-strip">
+      <a href="#gr-p1" class="gr-phase-pill">01 Math &amp; CS</a>
+      <div class="gr-strip-arrow">→</div>
+      <a href="#gr-p2" class="gr-phase-pill">02 ML Foundations</a>
+      <div class="gr-strip-arrow">→</div>
+      <a href="#gr-p3" class="gr-phase-pill">03 Deep Learning</a>
+      <div class="gr-strip-arrow">→</div>
+      <a href="#gr-p4" class="gr-phase-pill">04 NLP &amp; Transformers</a>
+      <div class="gr-strip-arrow">→</div>
+      <a href="#gr-p5" class="gr-phase-pill">05 LLM Architecture</a>
+      <div class="gr-strip-arrow">→</div>
+      <a href="#gr-p6" class="gr-phase-pill">06 Training at Scale</a>
+      <div class="gr-strip-arrow">→</div>
+      <a href="#gr-p7" class="gr-phase-pill">07 Alignment &amp; RLHF</a>
+      <div class="gr-strip-arrow">→</div>
+      <a href="#gr-p8" class="gr-phase-pill">08 Deploy &amp; Serve</a>
+    </div>
+
+    <!-- ── PHASE 1: Math & CS ── -->
+    <div class="gr-phase" id="gr-p1">
+      <div class="gr-phase-header gr-color-1">
+        <div class="gr-phase-num">01</div>
+        <div>
+          <div class="gr-phase-title">Mathematics &amp; CS Foundations</div>
+          <div class="gr-phase-sub">8–12 weeks · Prerequisites for everything below</div>
+        </div>
+        <div class="gr-phase-icon">📐</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">You can't meaningfully implement or debug a transformer without linear algebra (attention is matrix multiplication), calculus (backprop is the chain rule), and probability (language models are probability distributions). Don't skip this — it pays compound interest across every subsequent phase.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📚 Books</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Mathematics for Machine Learning</div>
+                <div class="gr-res-author">Deisenroth, Faisal, Ong — Cambridge University Press (free PDF)</div>
+                <div class="gr-res-why">Covers linear algebra, multivariate calculus, and probability as used in ML. Best starting point.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Linear Algebra Done Right</div>
+                <div class="gr-res-author">Sheldon Axler — Springer</div>
+                <div class="gr-res-why">Conceptual, proof-based. Builds the intuition behind matrix operations rather than just mechanics.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Probability Theory: The Logic of Science</div>
+                <div class="gr-res-author">E.T. Jaynes — Cambridge</div>
+                <div class="gr-res-why">Deep probabilistic reasoning — critical for understanding loss functions, sampling, and uncertainty.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Courses</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Linear Algebra — Gilbert Strang (MIT 18.06)</div>
+                <div class="gr-res-author">MIT OpenCourseWare · Free</div>
+                <div class="gr-res-why">The gold standard. Strang's geometric intuition for eigenvectors, SVD, and matrix factorizations is unmatched.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Essence of Linear Algebra</div>
+                <div class="gr-res-author">3Blue1Brown · YouTube · Free</div>
+                <div class="gr-res-why">Best visual intuition for vectors, transformations, and eigendecomposition. Watch before or alongside Strang.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Statistics 110: Probability</div>
+                <div class="gr-res-author">Joe Blitzstein, Harvard · YouTube · Free</div>
+                <div class="gr-res-why">Rigorous probability with excellent examples. Covers distributions, Bayes, conditional probability.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">💻 Code Practice</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">numpy: Linear Algebra from Scratch</div>
+                <div class="gr-res-author">numpy.org docs + exercises</div>
+                <div class="gr-res-why">Implement matrix multiply, SVD, eigendecomposition, softmax from scratch in NumPy before using PyTorch.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">The Matrix Calculus You Need for Deep Learning</div>
+                <div class="gr-res-author">Parr &amp; Howard · arXiv:1802.01528</div>
+                <div class="gr-res-why">The single best reference for Jacobians and the chain rule as used in backpropagation. Bookmark permanently.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 2: ML Foundations ── -->
+    <div class="gr-phase" id="gr-p2">
+      <div class="gr-phase-header gr-color-2">
+        <div class="gr-phase-num">02</div>
+        <div>
+          <div class="gr-phase-title">Machine Learning Foundations</div>
+          <div class="gr-phase-sub">6–10 weeks · Classical ML before deep learning</div>
+        </div>
+        <div class="gr-phase-icon">🧮</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">Understanding gradient descent, regularization, generalization theory, and the bias-variance tradeoff builds the mental model that makes deep learning concepts obvious rather than mysterious. LLM researchers who skipped this phase struggle to diagnose training failures.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📚 Books</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Pattern Recognition and Machine Learning</div>
+                <div class="gr-res-author">Christopher Bishop — Springer (free PDF)</div>
+                <div class="gr-res-why">The definitive Bayesian ML textbook. Probability distributions, graphical models, and variational inference all appear later in LLM work.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">The Elements of Statistical Learning</div>
+                <div class="gr-res-author">Hastie, Tibshirani, Friedman — Stanford (free PDF)</div>
+                <div class="gr-res-why">Rigorous treatment of statistical theory behind ML. Regularization, ensemble methods, cross-validation.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Courses</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">CS229: Machine Learning</div>
+                <div class="gr-res-author">Andrew Ng, Stanford · Coursera or YouTube · Free audit</div>
+                <div class="gr-res-why">The foundational ML course. Linear models, SVMs, neural nets, EM algorithm. Still the best structured intro.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Practical Deep Learning for Coders</div>
+                <div class="gr-res-author">fast.ai · fast.ai/courses · Free</div>
+                <div class="gr-res-why">Top-down approach — train models first, then understand why. Excellent complement to bottom-up courses.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">💻 Projects</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Implement linear regression, logistic regression, and MLP in pure NumPy</div>
+                <div class="gr-res-author">Self-project · ~2 weeks</div>
+                <div class="gr-res-why">The backprop implementation in NumPy is the best preparation for understanding PyTorch autograd internals.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">sklearn documentation + source code</div>
+                <div class="gr-res-author">scikit-learn.org</div>
+                <div class="gr-res-why">Reading sklearn source reveals how professional ML code is structured: fit/transform APIs, pipelines, cross-validation.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 3: Deep Learning ── -->
+    <div class="gr-phase" id="gr-p3">
+      <div class="gr-phase-header gr-color-3">
+        <div class="gr-phase-num">03</div>
+        <div>
+          <div class="gr-phase-title">Deep Learning — From Backprop to CNNs</div>
+          <div class="gr-phase-sub">6–8 weeks · Neural network fundamentals and PyTorch mastery</div>
+        </div>
+        <div class="gr-phase-icon">🧠</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">Deep learning is the substrate on which LLMs run. You need fluency with PyTorch, understand initialization, normalization, and activation functions, and be able to implement and debug custom neural network layers. CNNs and RNNs illuminate the design choices that made transformers necessary.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📚 Books</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Deep Learning</div>
+                <div class="gr-res-author">Goodfellow, Bengio, Courville — MIT Press (free online)</div>
+                <div class="gr-res-why">The canonical textbook. Chapter 6 (MLPs), Chapter 8 (optimization), Chapter 9 (CNNs) are essential reads.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Dive into Deep Learning (d2l.ai)</div>
+                <div class="gr-res-author">Aston Zhang et al. — d2l.ai · Free interactive book</div>
+                <div class="gr-res-why">Best hands-on deep learning book with runnable code in every chapter. Covers everything from linear models to attention.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Courses</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Neural Networks: Zero to Hero</div>
+                <div class="gr-res-author">Andrej Karpathy · YouTube · Free</div>
+                <div class="gr-res-why">Builds a GPT from scratch starting from backprop. The single best course for LLM builders. Do every exercise.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Deep Learning Specialization</div>
+                <div class="gr-res-author">Andrew Ng · Coursera · ~$50/month</div>
+                <div class="gr-res-why">Thorough coverage of deep learning concepts with structured assignments. Excellent for systematic learners.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">CS231n: CNNs for Visual Recognition</div>
+                <div class="gr-res-author">Stanford · cs231n.stanford.edu · Free</div>
+                <div class="gr-res-why">The backprop assignments are legendary. Assignment 2 (BatchNorm, Dropout) builds intuition crucial for LLMs.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">💻 Code</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">micrograd</div>
+                <div class="gr-res-author">github.com/karpathy/micrograd</div>
+                <div class="gr-res-why">237-line autograd engine. Implementing this gives complete understanding of how PyTorch/JAX compute gradients.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">PyTorch Official Tutorials</div>
+                <div class="gr-res-author">pytorch.org/tutorials</div>
+                <div class="gr-res-why">Learn custom Dataset, DataLoader, nn.Module, autograd, and the training loop pattern used in every LLM codebase.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 4: NLP & Transformers ── -->
+    <div class="gr-phase" id="gr-p4">
+      <div class="gr-phase-header gr-color-4">
+        <div class="gr-phase-num">04</div>
+        <div>
+          <div class="gr-phase-title">NLP Fundamentals &amp; The Transformer</div>
+          <div class="gr-phase-sub">4–6 weeks · From word embeddings to self-attention</div>
+        </div>
+        <div class="gr-phase-icon">📝</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">Word2Vec, GloVe, RNNs, and seq2seq are not just historical curiosities — they explain why transformers were designed the way they were. Reading the original "Attention Is All You Need" paper after understanding RNNs reveals each design choice as a specific solution to a specific limitation.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📚 Books &amp; Guides</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Speech and Language Processing (3rd ed.)</div>
+                <div class="gr-res-author">Jurafsky &amp; Martin · web.stanford.edu/~jurafsky/slp3 · Free draft</div>
+                <div class="gr-res-why">The NLP bible. Tokenization, n-grams, language models, neural NLP — comprehensive and freely updated.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Natural Language Processing with Transformers</div>
+                <div class="gr-res-author">Tunstall, von Werra, Wolf — O'Reilly (HuggingFace book)</div>
+                <div class="gr-res-why">Practical guide to using HuggingFace transformers. Best bridge from theory to working code.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📄 Foundational Papers</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Attention Is All You Need</div>
+                <div class="gr-res-author">Vaswani et al. (2017) · arXiv:1706.03762</div>
+                <div class="gr-res-why">The paper that started everything. Read it 3 times — once for the idea, once for the math, once for the implementation details.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">BERT: Pre-training of Deep Bidirectional Transformers</div>
+                <div class="gr-res-author">Devlin et al. (2018) · arXiv:1810.04805</div>
+                <div class="gr-res-why">MLM pre-training and the encoder-only paradigm. Essential for understanding what GPT improved on.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Language Models are Few-Shot Learners (GPT-3)</div>
+                <div class="gr-res-author">Brown et al. (2020) · arXiv:2005.14165</div>
+                <div class="gr-res-why">Defines in-context learning, few-shot prompting, and scaling laws. The paper that made LLMs mainstream.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Courses</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">CS224N: NLP with Deep Learning</div>
+                <div class="gr-res-author">Stanford · cs224n.stanford.edu · Free videos + assignments</div>
+                <div class="gr-res-why">The definitive NLP course. Covers word vectors, RNNs, attention, and transformers with rigorous assignments.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">The Illustrated Transformer</div>
+                <div class="gr-res-author">Jay Alammar · jalammar.github.io · Free</div>
+                <div class="gr-res-why">The best visual walkthrough of multi-head attention, positional encoding, and the encoder-decoder stack.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 5: LLM Architecture ── -->
+    <div class="gr-phase" id="gr-p5">
+      <div class="gr-phase-header gr-color-5">
+        <div class="gr-phase-num">05</div>
+        <div>
+          <div class="gr-phase-title">LLM Architecture Deep Dive</div>
+          <div class="gr-phase-sub">4–6 weeks · GPT internals, tokenizers, and modern variants</div>
+        </div>
+        <div class="gr-phase-icon">🏗️</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">Reading papers and watching lectures about transformers is not the same as implementing one from scratch. This phase is about building a GPT that trains, understanding every hyperparameter, and tracing every forward pass from token IDs to logits. Karpathy's nanoGPT is the right vehicle.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">💻 Essential Repos</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">nanoGPT</div>
+                <div class="gr-res-author">github.com/karpathy/nanoGPT</div>
+                <div class="gr-res-why">~300 lines of PyTorch implementing a complete GPT. Train on Shakespeare. Read every line. The best LLM learning artifact that exists.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">llm.c</div>
+                <div class="gr-res-author">github.com/karpathy/llm.c</div>
+                <div class="gr-res-why">GPT-2 training in pure C/CUDA. Reading this teaches you what PyTorch abstracts away — memory layout, CUDA kernels, attention math.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">litgpt</div>
+                <div class="gr-res-author">github.com/Lightning-AI/litgpt</div>
+                <div class="gr-res-why">Production-quality implementations of LLaMA, Gemma, Mistral, Phi. Study the config system and model variants.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📄 Architecture Papers</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">LLaMA: Open and Efficient Foundation LMs</div>
+                <div class="gr-res-author">Touvron et al. (2023) · arXiv:2302.13971</div>
+                <div class="gr-res-why">RoPE, SwiGLU, RMSNorm — the modern transformer recipe. Every open LLM since uses these components.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">FlashAttention: Fast and Memory-Efficient Attention</div>
+                <div class="gr-res-author">Dao et al. (2022) · arXiv:2205.14135</div>
+                <div class="gr-res-why">Tiling-based IO-aware attention. Understanding this is necessary for anyone training or serving LLMs.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Mixtral of Experts</div>
+                <div class="gr-res-author">Jiang et al. (2024) · arXiv:2401.04088</div>
+                <div class="gr-res-why">Sparse MoE architecture that matches dense 70B performance at 13B active parameters. The frontier architecture.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Tiktoken / SentencePiece internals</div>
+                <div class="gr-res-author">github.com/openai/tiktoken + google/sentencepiece</div>
+                <div class="gr-res-why">Implement BPE from scratch — tokenizer choice affects model vocabulary size, multilingual capability, and training efficiency.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Deep Dives</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Let's build GPT — from scratch, in code</div>
+                <div class="gr-res-author">Andrej Karpathy · YouTube · Free</div>
+                <div class="gr-res-why">2-hour video building nanoGPT live. Watch it twice — once following along, once reading the repo source.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">LLM Visualization</div>
+                <div class="gr-res-author">bbycroft.net/llm · Free interactive tool</div>
+                <div class="gr-res-why">Animated, interactive walkthrough of every step in GPT-2's forward pass. Invaluable for visual learners.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 6: Training at Scale ── -->
+    <div class="gr-phase" id="gr-p6">
+      <div class="gr-phase-header gr-color-6">
+        <div class="gr-phase-num">06</div>
+        <div>
+          <div class="gr-phase-title">Pre-training &amp; Training at Scale</div>
+          <div class="gr-phase-sub">4–6 weeks · Data pipelines, distributed training, and compute</div>
+        </div>
+        <div class="gr-phase-icon">⚡</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">Training a GPT-2-size model on a single GPU is very different from training a 70B model on 1,000 GPUs. This phase covers the systems engineering of distributed training — data parallelism, model parallelism, gradient checkpointing, and how scaling laws should drive your architecture decisions.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📄 Must-Read Papers</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Scaling Laws for Neural Language Models</div>
+                <div class="gr-res-author">Kaplan et al., OpenAI (2020) · arXiv:2001.08361</div>
+                <div class="gr-res-why">The original scaling laws. Power-law relationships between compute, data, and model size. Foundation for all training budget decisions.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Training Compute-Optimal LLMs (Chinchilla)</div>
+                <div class="gr-res-author">Hoffmann et al., DeepMind (2022) · arXiv:2203.15556</div>
+                <div class="gr-res-why">Revised scaling laws showing models were undertrained. Changed how every lab allocates compute. Essential reading.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Megatron-LM: Training Multi-Billion Parameter LMs</div>
+                <div class="gr-res-author">Shoeybi et al., NVIDIA (2019) · arXiv:1909.08053</div>
+                <div class="gr-res-why">Tensor parallelism for transformers. How to split a transformer layer across multiple GPUs.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">The Pile: An 800GB Dataset of Diverse Text</div>
+                <div class="gr-res-author">Gao et al., EleutherAI (2020) · arXiv:2101.00027</div>
+                <div class="gr-res-why">Data diversity matters. The Pile showed that domain mixture dramatically affects downstream task performance.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">💻 Tools &amp; Repos</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Megatron-LM</div>
+                <div class="gr-res-author">github.com/NVIDIA/Megatron-LM</div>
+                <div class="gr-res-why">The production framework behind GPT-3, Turing-NLG, and most NVIDIA-trained models. Study the parallelism configs.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">DeepSpeed</div>
+                <div class="gr-res-author">github.com/microsoft/DeepSpeed</div>
+                <div class="gr-res-why">ZeRO optimizer reduces memory footprint by 8x. Used in almost every large-scale training run. Understand ZeRO-1/2/3.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Datatrove</div>
+                <div class="gr-res-author">github.com/huggingface/datatrove</div>
+                <div class="gr-res-why">HuggingFace's data pipeline for LLM pre-training. Dedup, quality filtering, format conversion at petabyte scale.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Weights &amp; Biases (wandb)</div>
+                <div class="gr-res-author">wandb.ai · Free tier available</div>
+                <div class="gr-res-why">Essential for tracking loss curves, gradient norms, and learning rate schedules across training runs. Industry standard.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Courses &amp; Guides</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">PyTorch Distributed Training Guide</div>
+                <div class="gr-res-author">pytorch.org/tutorials/distributed · Free</div>
+                <div class="gr-res-why">DDP, FSDP, pipeline parallelism — official tutorials with working code. Start with DDP before moving to FSDP.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Hugging Face Course — Chapter on Training</div>
+                <div class="gr-res-author">huggingface.co/learn · Free</div>
+                <div class="gr-res-why">Accelerate library, mixed precision, gradient checkpointing. Bridges academic concepts with practical HuggingFace tooling.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 7: Alignment & RLHF ── -->
+    <div class="gr-phase" id="gr-p7">
+      <div class="gr-phase-header gr-color-7">
+        <div class="gr-phase-num">07</div>
+        <div>
+          <div class="gr-phase-title">Fine-tuning, RLHF &amp; Alignment</div>
+          <div class="gr-phase-sub">4–6 weeks · Instruction tuning, preference learning, and safety</div>
+        </div>
+        <div class="gr-phase-icon">🎯</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">A pre-trained LLM is a next-token predictor, not an assistant. Fine-tuning, RLHF, and alignment techniques transform a raw language model into something useful and safe. This is where the difference between GPT-2 and ChatGPT lives — and where most applied LLM work happens today.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📄 Key Papers</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Training Language Models to Follow Instructions (InstructGPT)</div>
+                <div class="gr-res-author">Ouyang et al., OpenAI (2022) · arXiv:2203.02155</div>
+                <div class="gr-res-why">The RLHF paper. SFT → reward model → PPO fine-tuning. The blueprint for ChatGPT and every instruction-tuned model.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Direct Preference Optimization (DPO)</div>
+                <div class="gr-res-author">Rafailov et al. (2023) · arXiv:2305.18290</div>
+                <div class="gr-res-why">Eliminates the reward model and PPO — aligns with preferences using simple classification loss. Now the most widely used alignment technique.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Constitutional AI: Harmlessness from AI Feedback</div>
+                <div class="gr-res-author">Bai et al., Anthropic (2022) · arXiv:2212.08073</div>
+                <div class="gr-res-why">RLAIF — using AI feedback instead of human labels. Scalable alignment that doesn't require labeler armies.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">LoRA: Low-Rank Adaptation of Large Language Models</div>
+                <div class="gr-res-author">Hu et al. (2021) · arXiv:2106.09685</div>
+                <div class="gr-res-why">Fine-tune a 7B model on one GPU by freezing weights and training low-rank adapter matrices. Essential for applied work.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">💻 Tools</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">TRL (Transformer Reinforcement Learning)</div>
+                <div class="gr-res-author">github.com/huggingface/trl</div>
+                <div class="gr-res-why">HuggingFace's library for SFT, reward modeling, PPO, and DPO. The standard toolkit for alignment work.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Axolotl</div>
+                <div class="gr-res-author">github.com/axolotl-ai-cloud/axolotl</div>
+                <div class="gr-res-why">Config-driven fine-tuning — LoRA, QLoRA, full fine-tune with one YAML file. Used extensively in the open-source community.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">OpenRLHF</div>
+                <div class="gr-res-author">github.com/OpenRLHF/OpenRLHF</div>
+                <div class="gr-res-why">Open-source PPO, GRPO, and DPO training framework designed for large-scale RLHF. Study the reward modeling pipeline.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Courses</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">RLHF: From PPO to DPO</div>
+                <div class="gr-res-author">Hugging Face Blog series · huggingface.co/blog · Free</div>
+                <div class="gr-res-why">Step-by-step blog posts on reward modeling, PPO training, and DPO with working code. Best practical reference.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">CS324: Large Language Models</div>
+                <div class="gr-res-author">Stanford · stanford-cs324.github.io · Free</div>
+                <div class="gr-res-why">Stanford's LLM course covering alignment, safety, and evaluation alongside architecture and training.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 8: Deploy & Serve ── -->
+    <div class="gr-phase" id="gr-p8">
+      <div class="gr-phase-header gr-color-8">
+        <div class="gr-phase-num">08</div>
+        <div>
+          <div class="gr-phase-title">Deployment, Inference &amp; Production</div>
+          <div class="gr-phase-sub">3–5 weeks · Serving LLMs efficiently at scale</div>
+        </div>
+        <div class="gr-phase-icon">🚀</div>
+      </div>
+      <div class="gr-phase-body">
+        <div class="gr-why">A trained model sitting on a disk generates no value. Deployment requires understanding quantization (4-bit inference on consumer hardware), continuous batching (vLLM's PagedAttention), speculative decoding, and how to build API layers that handle thousands of concurrent requests economically.</div>
+        <div class="gr-resource-grid">
+          <div class="gr-resource-col">
+            <div class="gr-col-label">📄 Key Papers</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Efficient Memory Management for LLM Serving (vLLM)</div>
+                <div class="gr-res-author">Kwon et al. (2023) · arXiv:2309.06180</div>
+                <div class="gr-res-why">PagedAttention — virtual memory for KV caches. The technique behind 24x throughput improvements in production LLM serving.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers</div>
+                <div class="gr-res-author">Frantar et al. (2022) · arXiv:2210.17323</div>
+                <div class="gr-res-why">Quantize a 70B model to 4-bit without significant quality loss. Enables LLaMA-70B on 2× A100s instead of 8×.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Speculative Decoding</div>
+                <div class="gr-res-author">Leviathan et al. (2022) · arXiv:2211.17192</div>
+                <div class="gr-res-why">Draft with a small model, verify with the large model. 2-3× latency reduction with zero quality loss.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">💻 Production Frameworks</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">vLLM</div>
+                <div class="gr-res-author">github.com/vllm-project/vllm</div>
+                <div class="gr-res-why">The industry standard for LLM serving. PagedAttention, continuous batching, OpenAI-compatible API. Run this first.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">llama.cpp</div>
+                <div class="gr-res-author">github.com/ggerganov/llama.cpp</div>
+                <div class="gr-res-why">Inference on CPU and Apple Silicon. GGUF quantization. Best for understanding low-level inference optimization.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">TensorRT-LLM</div>
+                <div class="gr-res-author">github.com/NVIDIA/TensorRT-LLM</div>
+                <div class="gr-res-why">NVIDIA's production inference stack. Kernel fusion, int8/fp8 quantization, in-flight batching. Used by OpenAI and Anthropic.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Ollama</div>
+                <div class="gr-res-author">github.com/ollama/ollama</div>
+                <div class="gr-res-why">One-command local LLM serving. Use for rapid prototyping and testing before moving to production deployment stacks.</div>
+              </div>
+            </div>
+          </div>
+          <div class="gr-resource-col">
+            <div class="gr-col-label">🎥 Courses &amp; Talks</div>
+            <div class="gr-resource-list">
+              <div class="gr-resource-item">
+                <div class="gr-res-name">LLM Inference Optimization</div>
+                <div class="gr-res-author">Hugging Face Blog · huggingface.co/blog · Free</div>
+                <div class="gr-res-why">KV caching, quantization, and batching explained with benchmarks. Practical reference for inference engineers.</div>
+              </div>
+              <div class="gr-resource-item">
+                <div class="gr-res-name">Full Stack LLM Bootcamp</div>
+                <div class="gr-res-author">fullstackdeeplearning.com · Free</div>
+                <div class="gr-res-why">Covers the full deployment pipeline: prompting, chains, evaluation, monitoring, and infrastructure. Strong production focus.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Continuous Learning ── -->
+    <div class="gr-continuous">
+      <div class="gr-continuous-title">📡 Stay Current — Continuous Learning Sources</div>
+      <div class="gr-continuous-grid">
+        <div class="gr-ct-card">
+          <div class="gr-ct-icon">📰</div>
+          <div class="gr-ct-name">Papers with Code</div>
+          <div class="gr-ct-url">paperswithcode.com</div>
+          <div class="gr-ct-desc">Every paper with a GitHub implementation. Filter by LLM, track SOTA on benchmarks. Daily check for serious researchers.</div>
+        </div>
+        <div class="gr-ct-card">
+          <div class="gr-ct-icon">🤗</div>
+          <div class="gr-ct-name">Hugging Face Blog</div>
+          <div class="gr-ct-url">huggingface.co/blog</div>
+          <div class="gr-ct-desc">Authoritative technical posts on new models, training techniques, and deployment. Written by practitioners with code examples.</div>
+        </div>
+        <div class="gr-ct-card">
+          <div class="gr-ct-icon">📬</div>
+          <div class="gr-ct-name">The Batch (deeplearning.ai)</div>
+          <div class="gr-ct-url">deeplearning.ai/the-batch</div>
+          <div class="gr-ct-desc">Weekly newsletter curated by Andrew Ng. Research summaries, industry news, and trend analysis.</div>
+        </div>
+        <div class="gr-ct-card">
+          <div class="gr-ct-icon">🐦</div>
+          <div class="gr-ct-name">Key Researchers to Follow</div>
+          <div class="gr-ct-url">Twitter/X</div>
+          <div class="gr-ct-desc">Andrej Karpathy, Yann LeCun, Ilya Sutskever, Noam Shazeer, Lilian Weng, Sebastian Raschka — primary source research commentary.</div>
+        </div>
+        <div class="gr-ct-card">
+          <div class="gr-ct-icon">📖</div>
+          <div class="gr-ct-name">Lilian Weng's Blog</div>
+          <div class="gr-ct-url">lilianweng.github.io</div>
+          <div class="gr-ct-desc">The best survey-style blog posts on attention mechanisms, RLHF, diffusion models, and agent architectures. Bookmark all of them.</div>
+        </div>
+        <div class="gr-ct-card">
+          <div class="gr-ct-icon">🔬</div>
+          <div class="gr-ct-name">arXiv cs.LG / cs.CL</div>
+          <div class="gr-ct-url">arxiv.org/list/cs.LG/recent</div>
+          <div class="gr-ct-desc">The daily preprint feed. Skim abstracts every morning — most important work appears here 6-12 months before conferences.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END GRADUATE ROADMAP -->
+
 <section id="research-landscape" class="section bg-dark researcher-section hidden">
   <div class="container">
     <div class="section-header">

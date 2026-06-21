@@ -60,6 +60,7 @@ function setMode(mode) {
     .forEach(el => el.classList.add('hidden'));
 
   // Hide special sections
+  const gradSection     = document.getElementById('graduate-roadmap');
   const resSection      = document.getElementById('research-landscape');
   const teamSection     = document.getElementById('team-coordination');
   const startupSection  = document.getElementById('startup-journey');
@@ -67,11 +68,13 @@ function setMode(mode) {
   const founderSection   = document.getElementById('founder-journey');
   const agentmodeSection = document.getElementById('agentmode-journey');
   const navTeam          = document.getElementById('navTeam');
+  const navGrad          = document.getElementById('navGrad');
   const navResearch      = document.getElementById('navResearch');
   const navStartup       = document.getElementById('navStartup');
   const navInvestor      = document.getElementById('navInvestor');
   const navFounder       = document.getElementById('navFounder');
   const navAgentMode     = document.getElementById('navAgentMode');
+  if (gradSection)           gradSection.classList.add('hidden');
   if (resSection)            resSection.classList.add('hidden');
   if (teamSection)           teamSection.classList.add('hidden');
   if (startupSection)        startupSection.classList.add('hidden');
@@ -79,6 +82,7 @@ function setMode(mode) {
   if (founderSection)        founderSection.classList.add('hidden');
   if (agentmodeSection)      agentmodeSection.classList.add('hidden');
   if (navTeam)          navTeam.classList.add('hidden');
+  if (navGrad)          navGrad.classList.add('hidden');
   if (navResearch)      navResearch.classList.add('hidden');
   if (navStartup)       navStartup.classList.add('hidden');
   if (navInvestor)      navInvestor.classList.add('hidden');
@@ -92,6 +96,8 @@ function setMode(mode) {
   } else if (mode === 'graduate') {
     btnGrad.classList.add('active');
     document.querySelectorAll('.grad-text').forEach(el => el.classList.remove('hidden'));
+    if (gradSection) gradSection.classList.remove('hidden');
+    if (navGrad)     navGrad.classList.remove('hidden');
 
   } else if (mode === 'researcher') {
     btnResearch.classList.add('active');

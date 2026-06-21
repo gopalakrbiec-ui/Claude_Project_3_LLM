@@ -5239,3 +5239,250 @@ body {
   display: block !important;
   visibility: visible !important;
 }
+
+/* ══════════════════════════════════════════════════════
+   GRADUATE LEARNING ROADMAP SECTION
+   ══════════════════════════════════════════════════════ */
+.grad-roadmap-section {
+  padding: 80px 0;
+}
+
+.grad-badge {
+  background: linear-gradient(135deg,rgba(124,58,237,0.15),rgba(8,145,178,0.15));
+  color: #7c3aed;
+  border-color: rgba(124,58,237,0.3);
+}
+
+/* Phase strip navigation */
+.gr-phase-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 0 48px;
+  padding: 16px 20px;
+  background: var(--bg-deeper);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.gr-phase-pill {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.gr-phase-pill:hover {
+  background: linear-gradient(135deg,#7c3aed,#0891b2);
+  color: #fff;
+  border-color: transparent;
+}
+
+.gr-strip-arrow {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Individual phase card */
+.gr-phase {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.gr-phase:hover { box-shadow: 0 6px 28px rgba(124,58,237,0.1); }
+
+.gr-phase-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Phase color accents */
+.gr-color-1 { background: linear-gradient(135deg,rgba(99,102,241,0.08),rgba(124,58,237,0.06)); border-left: 4px solid #6366f1; }
+.gr-color-2 { background: linear-gradient(135deg,rgba(124,58,237,0.08),rgba(8,145,178,0.06)); border-left: 4px solid #7c3aed; }
+.gr-color-3 { background: linear-gradient(135deg,rgba(8,145,178,0.08),rgba(5,150,105,0.06)); border-left: 4px solid #0891b2; }
+.gr-color-4 { background: linear-gradient(135deg,rgba(5,150,105,0.08),rgba(217,119,6,0.06)); border-left: 4px solid #059669; }
+.gr-color-5 { background: linear-gradient(135deg,rgba(217,119,6,0.08),rgba(220,38,38,0.06)); border-left: 4px solid #d97706; }
+.gr-color-6 { background: linear-gradient(135deg,rgba(220,38,38,0.08),rgba(236,72,153,0.06)); border-left: 4px solid #dc2626; }
+.gr-color-7 { background: linear-gradient(135deg,rgba(236,72,153,0.08),rgba(124,58,237,0.06)); border-left: 4px solid #ec4899; }
+.gr-color-8 { background: linear-gradient(135deg,rgba(6,182,212,0.08),rgba(99,102,241,0.06)); border-left: 4px solid #06b6d4; }
+
+.gr-phase-num {
+  font-size: 2rem;
+  font-weight: 900;
+  color: transparent;
+  background: linear-gradient(135deg,#7c3aed,#0891b2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  min-width: 48px;
+  line-height: 1;
+}
+
+.gr-phase-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.gr-phase-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.gr-phase-icon {
+  margin-left: auto;
+  font-size: 1.8rem;
+  opacity: 0.7;
+}
+
+.gr-phase-body {
+  padding: 24px 28px;
+}
+
+.gr-why {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  background: var(--bg-deeper);
+  border-radius: 10px;
+  border-left: 3px solid #7c3aed;
+}
+
+/* Resource grid — 3 columns */
+.gr-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gr-resource-col { display: flex; flex-direction: column; gap: 12px; }
+
+.gr-col-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #7c3aed;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.gr-resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gr-resource-item {
+  background: var(--bg-deeper);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color 0.2s;
+}
+
+.gr-resource-item:hover { border-color: rgba(124,58,237,0.3); }
+
+.gr-res-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.gr-res-author {
+  font-size: 0.76rem;
+  color: #7c3aed;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.gr-res-why {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Continuous learning section */
+.gr-continuous {
+  margin-top: 40px;
+  padding: 32px;
+  background: linear-gradient(135deg,rgba(124,58,237,0.06),rgba(8,145,178,0.06));
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 20px;
+}
+
+.gr-continuous-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.gr-continuous-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.gr-ct-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.gr-ct-icon { font-size: 1.6rem; margin-bottom: 8px; }
+
+.gr-ct-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.gr-ct-url {
+  font-size: 0.75rem;
+  color: #7c3aed;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.gr-ct-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .gr-resource-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .gr-resource-grid { grid-template-columns: 1fr; }
+  .gr-phase-header { gap: 12px; }
+  .gr-phase-icon { display: none; }
+  .gr-phase-body { padding: 18px; }
+  .gr-phase-strip { gap: 4px; }
+  .gr-strip-arrow { display: none; }
+}
