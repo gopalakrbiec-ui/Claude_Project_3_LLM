@@ -72,12 +72,14 @@ function setMode(mode) {
   const navInvestor      = document.getElementById('navInvestor');
   const navFounder       = document.getElementById('navFounder');
   const navAgentMode     = document.getElementById('navAgentMode');
-  if (resSection)       resSection.classList.add('hidden');
-  if (teamSection)      teamSection.classList.add('hidden');
-  if (startupSection)   startupSection.classList.add('hidden');
-  if (investorSection)  investorSection.classList.add('hidden');
-  if (founderSection)   founderSection.classList.add('hidden');
-  if (agentmodeSection) agentmodeSection.classList.add('hidden');
+  const agenticExploreSection = document.getElementById('agentic-ai');
+  if (resSection)            resSection.classList.add('hidden');
+  if (teamSection)           teamSection.classList.add('hidden');
+  if (startupSection)        startupSection.classList.add('hidden');
+  if (investorSection)       investorSection.classList.add('hidden');
+  if (founderSection)        founderSection.classList.add('hidden');
+  if (agentmodeSection)      agentmodeSection.classList.add('hidden');
+  if (agenticExploreSection) agenticExploreSection.classList.add('hidden');
   if (navTeam)          navTeam.classList.add('hidden');
   if (navResearch)      navResearch.classList.add('hidden');
   if (navStartup)       navStartup.classList.add('hidden');
@@ -151,6 +153,9 @@ function setMode(mode) {
     document.querySelectorAll('.agentmode-text').forEach(el => el.classList.remove('hidden'));
     if (agentmodeSection) agentmodeSection.classList.remove('hidden');
     if (navAgentMode)     navAgentMode.classList.remove('hidden');
+    // Also show the Agentic AI explore section merged into this mode
+    const agenticExplore = document.getElementById('agentic-ai');
+    if (agenticExplore) agenticExplore.classList.remove('hidden');
   }
 
   // Persist
@@ -443,10 +448,11 @@ function toggleAgentic() {
   const btn = document.getElementById('btnAgentic');
   if (!section) return;
   const isVisible = !section.classList.contains('hidden');
-  if (isVisible) {
+  if (isVisible && currentMode !== 'agentmode') {
+    // Only hide if not in agentmode (where it's always shown)
     section.classList.add('hidden');
     btn.classList.remove('active');
-  } else {
+  } else if (!isVisible) {
     section.classList.remove('hidden');
     btn.classList.add('active');
     setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
