@@ -11,23 +11,28 @@ function setMode(mode) {
   const btnGrad     = document.getElementById('btnGrad');
   const btnResearch = document.getElementById('btnResearch');
   const btnTeam     = document.getElementById('btnTeam');
+  const btnStartup  = document.getElementById('btnStartup');
 
   // Reset all buttons
-  [btnLayman, btnGrad, btnResearch, btnTeam].forEach(b => b && b.classList.remove('active'));
+  [btnLayman, btnGrad, btnResearch, btnTeam, btnStartup].forEach(b => b && b.classList.remove('active'));
 
   // Hide ALL mode content
-  document.querySelectorAll('.layman-text, .grad-text, .researcher-text, .team-text')
+  document.querySelectorAll('.layman-text, .grad-text, .researcher-text, .team-text, .startup-text')
     .forEach(el => el.classList.add('hidden'));
 
   // Hide special sections
-  const resSection  = document.getElementById('research-landscape');
-  const teamSection = document.getElementById('team-coordination');
-  const navTeam     = document.getElementById('navTeam');
-  const navResearch = document.getElementById('navResearch');
-  if (resSection)  resSection.classList.add('hidden');
-  if (teamSection) teamSection.classList.add('hidden');
-  if (navTeam)     navTeam.classList.add('hidden');
-  if (navResearch) navResearch.classList.add('hidden');
+  const resSection     = document.getElementById('research-landscape');
+  const teamSection    = document.getElementById('team-coordination');
+  const startupSection = document.getElementById('startup-journey');
+  const navTeam        = document.getElementById('navTeam');
+  const navResearch    = document.getElementById('navResearch');
+  const navStartup     = document.getElementById('navStartup');
+  if (resSection)     resSection.classList.add('hidden');
+  if (teamSection)    teamSection.classList.add('hidden');
+  if (startupSection) startupSection.classList.add('hidden');
+  if (navTeam)        navTeam.classList.add('hidden');
+  if (navResearch)    navResearch.classList.add('hidden');
+  if (navStartup)     navStartup.classList.add('hidden');
 
   if (mode === 'layman') {
     btnLayman.classList.add('active');
@@ -64,10 +69,33 @@ function setMode(mode) {
         el.style.animation = '';
       });
     }, 50);
+
+  } else if (mode === 'startup') {
+    btnStartup.classList.add('active');
+    document.querySelectorAll('.startup-text').forEach(el => el.classList.remove('hidden'));
+    if (startupSection) startupSection.classList.remove('hidden');
+    if (navStartup)     navStartup.classList.remove('hidden');
+    // Activate first infra tab if not already done
+    setTimeout(() => {
+      const firstItab = document.querySelector('.itab');
+      if (firstItab && !document.querySelector('.itab.active')) {
+        firstItab.classList.add('active');
+      }
+    }, 50);
   }
 
   // Persist
   sessionStorage.setItem('llm-mode', mode);
+}
+
+/* ── Infrastructure tabs (startup mode) ── */
+function showInfra(tab) {
+  document.querySelectorAll('.infra-content').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('.itab').forEach(el => el.classList.remove('active'));
+  const pane = document.getElementById(`ic-${tab}`);
+  if (pane) pane.classList.remove('hidden');
+  const btn = document.querySelector(`.itab[onclick*="'${tab}'"]`);
+  if (btn) btn.classList.add('active');
 }
 
 /* ── Reading tabs ── */

@@ -19,6 +19,7 @@
       <button class="mode-btn" id="btnGrad"     onclick="setMode('graduate')">🎓 Graduate</button>
       <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
       <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
+      <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
     </div>
     <div class="nav-links">
       <a href="#overview">Overview</a>
@@ -27,6 +28,7 @@
       <a href="#roadmap">Roadmap</a>
       <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
       <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
+      <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
     </div>
   </nav>
 
@@ -39,6 +41,7 @@
     <p class="hero-sub grad-text hidden">A comprehensive technical roadmap covering data pipelines, transformer architectures, distributed training, RLHF, and production deployment.</p>
     <p class="hero-sub researcher-text hidden">A research-oriented map of the LLM landscape — foundational papers, open problems, current frontiers, and the directions shaping the next generation of language models.</p>
     <p class="hero-sub team-text hidden">A team-first view of building an LLM — who you need at every stage, what they do, how they coordinate, and how the whole organisation moves together to ship a frontier model.</p>
+    <p class="hero-sub startup-text hidden">The founder's playbook — how to incorporate, raise money, decide what to build, make your first hires, set up infrastructure, go to market, and turn a research project into a revenue-generating AI company.</p>
     <div class="hero-stats">
       <div class="stat-card"><span class="stat-num">8</span><span class="stat-label">Stages</span></div>
       <div class="stat-card"><span class="stat-num">2–5</span><span class="stat-label">Years</span></div>
@@ -348,6 +351,41 @@
             </div>
           </div>
 
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — Data Collection</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>Don't build your own crawler.</strong> Use Common Crawl (free, petabytes) + The Pile + RedPajama. OpenAI and Anthropic both started with publicly available data.</li>
+                  <li><strong>Vertical first:</strong> If you're building a medical LLM, license PubMed + clinical notes from one health system. Cheaper than general corpus and differentiates you.</li>
+                  <li><strong>Legal risk is real.</strong> Post-NYT lawsuit, document every source. Use AI2's open-licensed Dolma or EleutherAI's The Pile to stay safe.</li>
+                  <li><strong>Budget reality:</strong> A 7B-param startup can pre-train on FineWeb-Edu (free, 15T tokens) + 2 data engineers + 3 months = &lt;$50K before compute.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 Startup Cost Reality</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">DIY crawler (team + infra)</span><span class="cc-cost high">$200K–$800K</span></div>
+                  <div class="cc-row"><span class="cc-item">License existing corpus</span><span class="cc-cost med">$10K–$100K</span></div>
+                  <div class="cc-row"><span class="cc-item">Open-source data only</span><span class="cc-cost low">$0 + engineer time</span></div>
+                  <div class="cc-row"><span class="cc-item">Synthetic data (GPT-4 API)</span><span class="cc-cost med">$5K–$50K</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Mistral, Phi, and Falcon all used mostly open-source data. Your moat is curation quality and domain focus — not crawling more of the internet.</div>
+              </div>
+              <div class="su-card su-hire">
+                <div class="su-card-title">👤 First Hire for This Stage</div>
+                <div class="first-hire">
+                  <div class="fh-role">Senior Data Engineer</div>
+                  <div class="fh-why">One great data engineer beats three average ones. Find someone who has worked on ML data pipelines at scale (not just regular ETL).</div>
+                  <div class="fh-where">Where to find: ex-Hugging Face, ex-EleutherAI, ML Twitter/X community, Papers With Code contributors</div>
+                  <div class="fh-comp">Comp: $180K–$250K + 0.5–1.5% equity (seed stage)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -520,6 +558,31 @@
             <div class="handoff-box">
               <div class="hb-title">📦 Handoff to Next Stage</div>
               <div class="hb-content">Delivers: trained tokenizer (vocab + merges file), tokenised binary corpus shards on cluster storage, token count statistics → <strong>Architecture & Pre-Training teams</strong></div>
+            </div>
+          </div>
+
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — Tokenization</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>Don't reinvent the wheel.</strong> Use tiktoken (OpenAI, MIT licensed) or SentencePiece directly. Training your own tokenizer only makes sense if you're heavily multilingual or byte-level.</li>
+                  <li><strong>Reuse LLaMA's tokenizer</strong> if you're building on top of LLaMA-3 family — already trained, tested, 128K vocab, excellent multilingual coverage.</li>
+                  <li><strong>This stage costs almost nothing</strong> at startup scale. One engineer, one week. Don't over-invest.</li>
+                  <li><strong>Exception:</strong> Domain-specific vocab (genomics, legal, medical codes) may warrant custom token merges — worth 2 weeks of ablation.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 Cost Reality</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">Reuse existing (tiktoken/SP)</span><span class="cc-cost low">~$0</span></div>
+                  <div class="cc-row"><span class="cc-item">Train custom BPE from scratch</span><span class="cc-cost med">$2K–$10K</span></div>
+                  <div class="cc-row"><span class="cc-item">Full tokenise corpus (compute)</span><span class="cc-cost med">$5K–$30K</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Spending engineering time here is opportunity cost from pre-training. Adopt and adapt — validate your choice with fertility stats in a day, then move on.</div>
+              </div>
             </div>
           </div>
 
@@ -725,6 +788,40 @@
             <div class="handoff-box">
               <div class="hb-title">📦 Handoff to Next Stage</div>
               <div class="hb-content">Delivers: model code (GitHub repo, reviewed & tested), architecture design doc, hyperparameter starting points, MFU benchmarks on small scale → <strong>Pre-Training team</strong></div>
+            </div>
+          </div>
+
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — Architecture</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>Start from open weights, not scratch.</strong> Mistral 7B, LLaMA-3 8B, Falcon — all MIT/Llama licensed. Continuing pre-training on an open base saves 80% of compute vs from scratch.</li>
+                  <li><strong>Vertical beats general.</strong> A 7B model fine-tuned on legal data beats GPT-3.5-level for legal tasks. You can't out-scale OpenAI — so out-specialise them.</li>
+                  <li><strong>Pick your differentiating architectural bet.</strong> Mistral bet on sliding window attention. Mamba bets on SSMs. What is your 18-month bet? Long context? Multimodal? Reasoning?</li>
+                  <li><strong>Run architecture ablations at 1B scale</strong> before committing to a 70B run. Every architectural decision costs 10× more to change later.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 Cost Reality</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">From-scratch 7B architecture</span><span class="cc-cost med">$50K–$200K in ablations</span></div>
+                  <div class="cc-row"><span class="cc-item">Continue from open weights</span><span class="cc-cost low">$5K–$30K extra compute</span></div>
+                  <div class="cc-row"><span class="cc-item">Architectural research (people)</span><span class="cc-cost high">$300K–$600K/yr per researcher</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Mistral was founded by ex-DeepMind/Meta researchers who already had 5 years of architecture intuition. If your founding team doesn't have that, start from LLaMA weights. Your moat is elsewhere.</div>
+              </div>
+              <div class="su-card su-hire">
+                <div class="su-card-title">👤 Critical Hire</div>
+                <div class="first-hire">
+                  <div class="fh-role">Principal ML Researcher / Co-Founder</div>
+                  <div class="fh-why">This is the most important hire in the company. Ideally a co-founder with deep transformer expertise. OpenAI had Ilya Sutskever. Anthropic had Chris Olah + Jared Kaplan. Mistral had Arthur Mensch + Guillaume Lample.</div>
+                  <div class="fh-where">Find through: co-authoring papers, NeurIPS/ICML networking, AI Twitter. The best researchers are rarely on LinkedIn.</div>
+                  <div class="fh-comp">Comp: 5–15% equity as co-founder; or $350K–$600K cash + 1–3% equity if not co-founder</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -957,6 +1054,41 @@
             </div>
           </div>
 
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — Pre-Training (The Funding Crunch)</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>Cloud credits are your lifeline.</strong> Apply for AWS Activate ($100K), GCP Startups ($200K), Microsoft for Startups ($150K), and CoreWeave/Lambda Labs startup programs. Stack them.</li>
+                  <li><strong>Strategic cloud partnerships.</strong> Microsoft invested $13B in OpenAI partly in exchange for Azure compute credits. Google invested in Anthropic for GCP access. Your Series A/B investor may BE your cloud provider.</li>
+                  <li><strong>Right-size your run.</strong> Train a 7B model on 1T tokens = ~$500K compute. Train a 70B on 2T tokens = ~$5M. Match your training budget to your funding stage.</li>
+                  <li><strong>Spot instances cut cost 60–70%.</strong> Design your training to be preemption-tolerant (checkpoint every 30 min). Lambda Labs and CoreWeave are 40–60% cheaper than AWS for GPU clusters.</li>
+                  <li><strong>Don't train if you don't need to.</strong> Many successful AI startups (Cursor, Harvey, Perplexity) built $1B+ businesses on fine-tuned APIs before touching pre-training.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 Funding Stage vs Compute Budget</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">Pre-seed / Friends & Family</span><span class="cc-cost low">Use cloud credits only. Fine-tune open models.</span></div>
+                  <div class="cc-row"><span class="cc-item">Seed ($2M–$10M)</span><span class="cc-cost med">Train 1B–7B from scratch or continue from open weights. Budget $500K–$2M compute.</span></div>
+                  <div class="cc-row"><span class="cc-item">Series A ($20M–$100M)</span><span class="cc-cost med">Train 7B–70B. Reserve 40–60% of raise for compute.</span></div>
+                  <div class="cc-row"><span class="cc-item">Series B+ ($100M+)</span><span class="cc-cost high">100B+ scale. Negotiate dedicated GPU cluster. Consider owned hardware (H100 at $30K each).</span></div>
+                </div>
+              </div>
+              <div class="su-card su-infra">
+                <div class="su-card-title">🖥️ Infrastructure Decisions</div>
+                <div class="infra-options">
+                  <div class="io-item"><span class="io-label">Cloud Rent</span><span class="io-desc">CoreWeave / Lambda Labs / AWS: flexible, no upfront. Best for &lt;$5M runs.</span></div>
+                  <div class="io-item"><span class="io-label">Reserved Capacity</span><span class="io-desc">1-year H100 reservations: 30% discount. Good for Series B+ with predictable roadmap.</span></div>
+                  <div class="io-item"><span class="io-label">Own Hardware</span><span class="io-desc">H100 DGX: $300K/node. 3-year ROI vs cloud if running &gt;60% utilization. xAI, Inflection went this route.</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Negotiate hard. Cloud providers want anchor AI customers. OpenAI's Azure deal, Anthropic's AWS deal — both included significant compute credits as part of strategic investment.</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1155,6 +1287,32 @@
             <div class="handoff-box">
               <div class="hb-title">📦 Handoff to Next Stage</div>
               <div class="hb-content">Delivers: SFT model checkpoint, instruction dataset (versioned), eval results showing improvement over base, annotation guidelines → <strong>RLHF team</strong></div>
+            </div>
+          </div>
+
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — Fine-Tuning (Your First Product Moment)</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>SFT is where your product vision becomes real.</strong> The instruction dataset you build IS your product differentiation. A legal AI startup builds legal SFT data. A coding assistant startup builds coding SFT data.</li>
+                  <li><strong>Use synthetic data first.</strong> Generate 50K instruction pairs using GPT-4 API (~$500). Get quick signal on what works before spending on human annotators.</li>
+                  <li><strong>Hire domain experts, not just annotators.</strong> For a medical LLM, pay physicians $150/hr for 20 hours. Better data = better model. LIMA showed 1,000 expert examples beat 52,000 crowdsourced ones.</li>
+                  <li><strong>This is your first "demo moment."</strong> After SFT you have something to show investors, early customers, and press. Time it to your fundraise.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 SFT Cost Reality for Startups</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">Synthetic data (GPT-4 API)</span><span class="cc-cost low">$500–$5,000</span></div>
+                  <div class="cc-row"><span class="cc-item">Crowdsourced annotation (Prolific)</span><span class="cc-cost med">$5K–$50K</span></div>
+                  <div class="cc-row"><span class="cc-item">Domain expert annotation</span><span class="cc-cost high">$20K–$200K</span></div>
+                  <div class="cc-row"><span class="cc-item">SFT compute (7B model)</span><span class="cc-cost low">$500–$3,000 on Lambda</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Alpaca (Stanford) spent $500 on GPT-3 API calls to generate 52K instruction pairs and produced a model that shocked the research community. Your first SFT can be remarkably cheap.</div>
+              </div>
             </div>
           </div>
 
@@ -1371,6 +1529,32 @@
             </div>
           </div>
 
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — RLHF (Alignment on a Budget)</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>Start with DPO, not PPO.</strong> DPO requires no separate reward model or RL loop. One ML engineer, one GPU node, two weeks. PPO is for teams with 10+ ML engineers and months of runway.</li>
+                  <li><strong>Use Scale AI or Surge AI</strong> for preference collection. They have trained rater pools and tooling. Cheaper than building your own annotation infrastructure pre-Series A.</li>
+                  <li><strong>Leverage RLAIF.</strong> Use Claude or GPT-4 as your reward signal for non-safety-critical preference pairs. 10× cheaper than human ratings. Anthropic's Constitutional AI approach is well-documented.</li>
+                  <li><strong>Safety is a moat, not a tax.</strong> Enterprise customers (healthcare, finance, legal) will pay a premium for a safer model. Your RLHF investment is a sales asset.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 RLHF Options by Budget</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">DPO on existing preference datasets</span><span class="cc-cost low">$2K–$10K compute</span></div>
+                  <div class="cc-row"><span class="cc-item">RLAIF (Claude/GPT-4 as judge)</span><span class="cc-cost low">$5K–$30K API costs</span></div>
+                  <div class="cc-row"><span class="cc-item">Scale AI human preference pairs</span><span class="cc-cost med">$50K–$300K</span></div>
+                  <div class="cc-row"><span class="cc-item">Full PPO pipeline (team + compute)</span><span class="cc-cost high">$500K–$5M+</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Zephyr-7B (HuggingFace) used DPO on publicly available preference data and matched ChatGPT-3.5 on MT-Bench. Total compute cost: ~$10K. The gap between frontier labs and smart startups is closing fast on RLHF.</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1535,6 +1719,32 @@
             <div class="handoff-box">
               <div class="hb-title">📦 Handoff to Next Stage</div>
               <div class="hb-content">Delivers: model checkpoint (approved), model card, benchmark results table, safety report, known limitations doc → <strong>Deployment team</strong></div>
+            </div>
+          </div>
+
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — Evaluation (Building Credibility)</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>Benchmarks are marketing.</strong> A strong MMLU or MT-Bench score is a press release. Mistral's launch was essentially: "We beat LLaMA-2 13B with a 7B model." That one benchmark result closed a $100M round.</li>
+                  <li><strong>Submit to LMSYS Chatbot Arena.</strong> Free, community-run ELO leaderboard. Appearing above GPT-3.5 is worth more than any marketing campaign for developer credibility.</li>
+                  <li><strong>Create a domain benchmark.</strong> If you're building a legal AI, create "LegalBench performance" as your primary metric. Own the narrative in your vertical.</li>
+                  <li><strong>Red-team before your enterprise pilots.</strong> One safety failure in front of a Fortune 500 prospect ends the deal. Budget 2 weeks of adversarial testing before any enterprise conversation.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 Evaluation Cost for Startups</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">lm-evaluation-harness (open source)</span><span class="cc-cost low">$0 + ~$500 compute</span></div>
+                  <div class="cc-row"><span class="cc-item">LMSYS Arena submission</span><span class="cc-cost low">Free</span></div>
+                  <div class="cc-row"><span class="cc-item">Custom eval suite (1 engineer, 1 month)</span><span class="cc-cost med">~$20K in salary</span></div>
+                  <div class="cc-row"><span class="cc-item">Third-party safety audit (METR, ARC)</span><span class="cc-cost med">$30K–$150K</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Write your model card before your launch. Investors, enterprise customers, and press all read it. A well-written model card with honest capability/limitation disclosures builds more trust than inflated claims.</div>
+              </div>
             </div>
           </div>
 
@@ -1736,6 +1946,33 @@
             <div class="handoff-box">
               <div class="hb-title">🎉 End Product Delivered</div>
               <div class="hb-content">Live API with documented endpoints, SLA guarantees, usage dashboards, model card, safety report, incident runbooks. The LLM is now in production — team transitions to <strong>model maintenance & next training run planning</strong></div>
+            </div>
+          </div>
+
+          <!-- ── STARTUP MODE ── -->
+          <div class="startup-text hidden">
+            <div class="startup-stage-pill">🏢 Startup Lens — Deployment (Your Revenue Engine)</div>
+            <div class="startup-grid">
+              <div class="su-card su-strategy">
+                <div class="su-card-title">💡 Startup Strategy</div>
+                <ul>
+                  <li><strong>API-first launch.</strong> Developer APIs (like OpenAI's) scale with zero marginal sales cost. Launch with a simple REST API, generous free tier, and excellent docs. Developers will build your marketing for you.</li>
+                  <li><strong>Inference cost is your unit economics.</strong> If it costs you $0.002/1K tokens to serve and you charge $0.01/1K tokens, your gross margin is 80%. Model that before launch.</li>
+                  <li><strong>Use vLLM on Lambda Labs.</strong> 60% cheaper than AWS, production-grade serving. Many Series A AI startups serve millions of requests/day on &lt;$50K/month infra spend.</li>
+                  <li><strong>Two-tier pricing from day one.</strong> Free/hobbyist tier (builds community + word of mouth) + paid tier (pays the bills). Anthropic's free Claude.ai vs paid API is the template.</li>
+                  <li><strong>Enterprise contracts are 10–100× the revenue of API.</strong> One Fortune 500 deal at $500K/yr beats 10,000 developer accounts. Build an enterprise tier with SSO, private deployment, SLAs.</li>
+                </ul>
+              </div>
+              <div class="su-card su-cost">
+                <div class="su-card-title">💰 Serving Economics</div>
+                <div class="cost-compare">
+                  <div class="cc-row"><span class="cc-item">vLLM on Lambda Labs (8× H100)</span><span class="cc-cost low">~$14K/month</span></div>
+                  <div class="cc-row"><span class="cc-item">Same on AWS p4de.24xlarge</span><span class="cc-cost high">~$35K/month</span></div>
+                  <div class="cc-row"><span class="cc-item">Throughput (7B INT4, 8× H100)</span><span class="cc-cost low">~5,000 tokens/sec</span></div>
+                  <div class="cc-row"><span class="cc-item">Revenue at $0.01/1K tokens</span><span class="cc-cost med">~$4.3M/month at capacity</span></div>
+                </div>
+                <div class="su-tip">💡 <strong>Founder tip:</strong> Together.ai, Anyscale, and Replicate all started as inference-only companies serving other people's open-source models. You don't need to train to generate revenue — but training gives you a moat.</div>
+              </div>
             </div>
           </div>
 
@@ -2053,6 +2290,454 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ STARTUP JOURNEY (Startup mode only) ════════ -->
+<section id="startup-journey" class="section bg-darker startup-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge startup-badge">🏢 Startup Playbook</div>
+      <h2>The AI Startup Journey</h2>
+      <p class="section-sub">From idea in a coffee shop to billion-dollar AI company — the real story behind OpenAI, Anthropic, Mistral, and what it takes to repeat it</p>
+    </div>
+
+    <!-- ── 1. FOUNDING ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">01</div>
+        <div>
+          <h3 class="sj-title">Founding — The Origin Story</h3>
+          <p class="sj-sub">How the world's top AI companies got started</p>
+        </div>
+      </div>
+      <div class="founding-stories">
+        <div class="fs-card">
+          <div class="fs-logo">🤖</div>
+          <div class="fs-name">OpenAI (2015)</div>
+          <div class="fs-story">Sam Altman + Elon Musk + Greg Brockman + Ilya Sutskever + others. Founded as a non-profit with $1B pledged, motivated by fear of Google DeepMind's AI dominance. The key insight: AGI safety required an independent lab not beholden to a tech giant. Converted to "capped-profit" in 2019 to raise VC. Now valued at $157B.</div>
+          <div class="fs-lesson">💡 Lesson: A clear mission narrative ("safe AGI for humanity") attracts both top talent and capital who feel part of something historic.</div>
+        </div>
+        <div class="fs-card">
+          <div class="fs-logo">🧬</div>
+          <div class="fs-name">Anthropic (2021)</div>
+          <div class="fs-story">Dario Amodei + Daniela Amodei + 7 others left OpenAI after disagreements over safety culture and governance. Raised $124M seed round in weeks — purely on team reputation. Their first product didn't exist. Investors bet on the people. Now at $18B valuation with $7.3B raised.</div>
+          <div class="fs-lesson">💡 Lesson: Team credibility is worth more than a product at the seed stage. If you're ex-OpenAI/DeepMind/Google Brain, you can raise before writing a line of code.</div>
+        </div>
+        <div class="fs-card">
+          <div class="fs-logo">🌪️</div>
+          <div class="fs-name">Mistral AI (2023)</div>
+          <div class="fs-story">Arthur Mensch (ex-DeepMind) + Guillaume Lample + Timothée Lacroix (both ex-Meta FAIR). Raised €105M seed in June 2023 — largest European seed round ever — with a pitch deck and no product. Released Mistral 7B 4 months later as a torrent file on Twitter. Valued at $6B within 12 months of founding.</div>
+          <div class="fs-lesson">💡 Lesson: Open-source as a launch strategy. The torrent tweet generated more press than any ad campaign could. Developer trust was built before the enterprise sales team existed.</div>
+        </div>
+      </div>
+      <div class="founding-checklist">
+        <div class="fc-title">📋 Founding Checklist (Do This in Month 1)</div>
+        <div class="fc-items">
+          <div class="fc-item done">Incorporate as Delaware C-Corp (use Stripe Atlas or Clerky — $500, takes 1 day)</div>
+          <div class="fc-item done">83(b) election for all founders within 30 days of incorporation (saves millions in taxes)</div>
+          <div class="fc-item done">4-year vesting schedule with 1-year cliff for all co-founders</div>
+          <div class="fc-item done">IP assignment agreements — all prior work must be assigned to the company</div>
+          <div class="fc-item done">Open a Mercury or Brex startup bank account (free, instant)</div>
+          <div class="fc-item done">Apply for cloud credits: AWS Activate, GCP Startups, Azure, CoreWeave, Lambda Labs</div>
+          <div class="fc-item done">Set up basic legal: YC SAFE template for first check, NDAs, offer letter templates</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2. FUNDING ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">02</div>
+        <div>
+          <h3 class="sj-title">Funding — The Capital Stack</h3>
+          <p class="sj-sub">How AI companies raise money at every stage</p>
+        </div>
+      </div>
+      <div class="funding-stages">
+        <div class="fs-stage">
+          <div class="fss-label">Pre-Seed</div>
+          <div class="fss-amount">$0 – $3M</div>
+          <div class="fss-who">Friends, family, angels, YC / Entrepreneur First / Pioneer</div>
+          <div class="fss-what">
+            <div class="fss-item">YC: $500K for 7% — apply at ycombinator.com; batch twice/year</div>
+            <div class="fss-item">AI-focused angels: Dylan Field, Nat Friedman, Daniel Gross, Elad Gil</div>
+            <div class="fss-item">At this stage: sell the team + vision. No product needed.</div>
+          </div>
+          <div class="fss-instrument">SAFE note (YC template, $20M cap, uncapped is rare)</div>
+        </div>
+        <div class="fs-stage fs-highlighted">
+          <div class="fss-label">Seed</div>
+          <div class="fss-amount">$3M – $20M</div>
+          <div class="fss-who">Tier-1 VCs: a16z, Sequoia, Khosla, Lightspeed, Index, Coatue</div>
+          <div class="fss-what">
+            <div class="fss-item">Narrative: "We're the team that can train competitive models at 1/10th the cost"</div>
+            <div class="fss-item">Show: early benchmark results, architecture paper, technical demo</div>
+            <div class="fss-item">Reserve 60%+ of seed for compute — this stage is GPU-heavy</div>
+          </div>
+          <div class="fss-instrument">Priced equity round — Series Seed preferred stock, 18–25% dilution</div>
+        </div>
+        <div class="fs-stage fs-highlighted">
+          <div class="fss-label">Series A</div>
+          <div class="fss-amount">$20M – $100M</div>
+          <div class="fss-who">Lead: a16z, Sequoia, Spark Capital. Strategic: Microsoft, Google, Amazon</div>
+          <div class="fss-what">
+            <div class="fss-item">Must show: working model, early customers or waitlist, benchmark leadership in a niche</div>
+            <div class="fss-item">Strategic investors = compute partnerships (Google→Anthropic, Microsoft→OpenAI)</div>
+            <div class="fss-item">Negotiate compute credits as part of the term sheet</div>
+          </div>
+          <div class="fss-instrument">Series A preferred, 20–30% dilution, $100M–$500M valuation</div>
+        </div>
+        <div class="fs-stage">
+          <div class="fss-label">Series B+</div>
+          <div class="fss-amount">$100M – $10B+</div>
+          <div class="fss-who">Growth equity, sovereign wealth funds (PIF, ADIA), big tech strategics</div>
+          <div class="fss-what">
+            <div class="fss-item">Must show: real ARR ($5M–$50M+), clear path to $100M ARR</div>
+            <div class="fss-item">Anthropic raised $7.3B from Amazon + Google. Compute is the asset.</div>
+            <div class="fss-item">Series B+ is about scaling a proven business, not proving the model</div>
+          </div>
+          <div class="fss-instrument">Late-stage preferred or tender offers; secondary liquidity for early employees</div>
+        </div>
+      </div>
+      <div class="investor-tips">
+        <div class="it-card"><div class="it-icon">🎯</div><div class="it-text"><strong>Warm intros only.</strong> Cold emails to VCs convert at &lt;1%. Get introduced through angels, YC alumni, or fellow founders. Attend NeurIPS, ICML, AI conferences — VCs are there.</div></div>
+        <div class="it-card"><div class="it-icon">📊</div><div class="it-text"><strong>The AI pitch deck template:</strong> Problem → Why AI solves it now → Your model's edge → Team (most important slide) → Traction → Market → Ask. Keep it under 12 slides.</div></div>
+        <div class="it-card"><div class="it-icon">⚡</div><div class="it-text"><strong>Run a tight process.</strong> Get 3–5 term sheets in parallel. Competing offers compress timelines and improve terms. Tell each investor you're talking to others.</div></div>
+        <div class="it-card"><div class="it-icon">🤝</div><div class="it-text"><strong>Choose investors for their network, not just money.</strong> The right Series A partner should be able to intro you to your first 5 enterprise customers.</div></div>
+      </div>
+    </div>
+
+    <!-- ── 3. STRATEGY ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">03</div>
+        <div>
+          <h3 class="sj-title">Strategy — Deciding What to Build</h3>
+          <p class="sj-sub">The most important and hardest decisions you'll make</p>
+        </div>
+      </div>
+      <div class="strategy-matrix">
+        <div class="sm-row sm-header">
+          <div class="sm-cell">Approach</div>
+          <div class="sm-cell">Who's done it</div>
+          <div class="sm-cell">Upside</div>
+          <div class="sm-cell">Risk</div>
+          <div class="sm-cell">Capital Needed</div>
+        </div>
+        <div class="sm-row">
+          <div class="sm-cell sm-approach">🏗️ Foundation Model Lab</div>
+          <div class="sm-cell">OpenAI, Anthropic, Mistral, Cohere</div>
+          <div class="sm-cell">Huge platform moat; horizontal market</div>
+          <div class="sm-cell">$100M+ to be competitive; winner-takes-most dynamics</div>
+          <div class="sm-cell sm-high">$50M–$10B+</div>
+        </div>
+        <div class="sm-row">
+          <div class="sm-cell sm-approach">🎯 Vertical AI Application</div>
+          <div class="sm-cell">Harvey (legal), Hippocratic (medical), Glean (enterprise search)</div>
+          <div class="sm-cell">Clear buyer, faster path to revenue, defensible domain data</div>
+          <div class="sm-cell">OpenAI can enter your market; model is a commodity risk</div>
+          <div class="sm-cell sm-med">$2M–$50M</div>
+        </div>
+        <div class="sm-row">
+          <div class="sm-cell sm-approach">🔧 AI Infrastructure / Tools</div>
+          <div class="sm-cell">LangChain, Weights & Biases, Modal, Together.ai</div>
+          <div class="sm-cell">Sells to all AI companies; large addressable market</div>
+          <div class="sm-cell">Hard to defend; big tech can bundle similar tools free</div>
+          <div class="sm-cell sm-med">$3M–$30M</div>
+        </div>
+        <div class="sm-row">
+          <div class="sm-cell sm-approach">🤖 AI-Native Consumer App</div>
+          <div class="sm-cell">Character.ai, Perplexity, Cursor, Notion AI</div>
+          <div class="sm-cell">Massive TAM; viral growth; high retention if product is 10×</div>
+          <div class="sm-cell">CAC can be brutal; ChatGPT/Gemini as free alternative</div>
+          <div class="sm-cell sm-med">$5M–$100M</div>
+        </div>
+      </div>
+      <div class="strategy-questions">
+        <div class="sq-title">🤔 The 5 Questions Every AI Founder Must Answer</div>
+        <div class="sq-items">
+          <div class="sq-item"><span class="sq-q">1. Why now?</span> What has changed in AI capability, cost, or regulation that makes this possible today but not 2 years ago?</div>
+          <div class="sq-item"><span class="sq-q">2. Why us?</span> What unfair advantage do you have — unique data access, domain expertise, compute relationships, distribution, or research insight?</div>
+          <div class="sq-item"><span class="sq-q">3. What is our moat?</span> When GPT-6 launches, why won't it kill your business? (Answer: proprietary data, customer lock-in, domain specialization, or regulation.)</div>
+          <div class="sq-item"><span class="sq-q">4. Who is our first customer?</span> Not "enterprises" — name the actual company and person who will write the first check. Work backwards from there.</div>
+          <div class="sq-item"><span class="sq-q">5. What does success look like in 18 months?</span> A specific technical milestone + a specific revenue target + a specific team size. If you can't answer this, you don't have a strategy.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 4. HIRING ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">04</div>
+        <div>
+          <h3 class="sj-title">Hiring — Building the Team</h3>
+          <p class="sj-sub">The order and profiles that matter most at each stage</p>
+        </div>
+      </div>
+      <div class="hiring-stages">
+        <div class="hs-stage">
+          <div class="hs-label">Founding Team (0→3)</div>
+          <div class="hs-roles">
+            <div class="hs-role"><div class="hr-title">🧠 Technical Co-Founder / CTO</div><div class="hr-desc">Deep ML expertise. Ideally published researcher. Owns training, architecture, and the technical vision. This person is non-negotiable — don't start without them.</div></div>
+            <div class="hs-role"><div class="hr-title">🚀 CEO / Business Co-Founder</div><div class="hr-desc">Fundraising, vision, sales, hiring. Can be technical (Dario Amodei) or business-focused (Sam Altman). Must be world-class at selling the story.</div></div>
+            <div class="hs-role"><div class="hr-title">⚙️ Infra Co-Founder</div><div class="hr-desc">Systems engineering. Owns training infra, cluster management, and deployment. The difference between a research project and a product company.</div></div>
+          </div>
+        </div>
+        <div class="hs-stage">
+          <div class="hs-label">Seed Team (3→15)</div>
+          <div class="hs-roles">
+            <div class="hs-role"><div class="hr-title">📋 Head of Data / Data Lead</div><div class="hr-desc">Hire #4. Data quality determines model quality. This person owns your biggest competitive advantage.</div></div>
+            <div class="hs-role"><div class="hr-title">🔬 2–3 Senior ML Researchers</div><div class="hr-desc">Must have published at NeurIPS/ICML/ICLR. Attract through interesting problems and competitive comp — not just cash. Mission matters enormously to researchers.</div></div>
+            <div class="hs-role"><div class="hr-title">🔧 2–3 ML Engineers</div><div class="hr-desc">Bridge between research and production. Ex-Google Brain, ex-Meta FAIR engineers who can turn a research paper into running code.</div></div>
+            <div class="hs-role"><div class="hr-title">💼 Head of GTM / First Sales</div><div class="hr-desc">Hire early, even at seed. The best technical founders underestimate how long enterprise sales cycles take. Needs 6 months to build pipeline.</div></div>
+          </div>
+        </div>
+        <div class="hs-stage">
+          <div class="hs-label">Series A Team (15→50)</div>
+          <div class="hs-roles">
+            <div class="hs-role"><div class="hr-title">🛡️ Head of Safety & Alignment</div><div class="hr-desc">Critical for enterprise trust and regulation compliance. Builds the red-teaming function and policy relationships.</div></div>
+            <div class="hs-role"><div class="hr-title">🌐 DevRel & Developer Experience</div><div class="hr-desc">Your API docs and SDK are your product's front door for developers. One great DevRel engineer is worth 10 salespeople for developer adoption.</div></div>
+            <div class="hs-role"><div class="hr-title">📊 VP Engineering</div><div class="hr-desc">Scales the engineering org. Introduces process without destroying speed. The hardest hire — get this wrong and great engineers leave.</div></div>
+            <div class="hs-role"><div class="hr-title">⚖️ Legal + Finance</div><div class="hr-desc">Outside counsel for IP and contracts. CFO or VP Finance once you have ARR. Don't hire full-time legal until Series B.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="hiring-tips">
+        <div class="ht-title">🎯 Hiring Tips That Actually Work</div>
+        <div class="ht-grid">
+          <div class="ht-card"><div class="ht-icon">📄</div><div class="ht-text"><strong>Recruit from papers, not resumes.</strong> Find the authors of papers you wish you'd written. Email them directly. Response rate is higher than LinkedIn.</div></div>
+          <div class="ht-card"><div class="ht-icon">🔓</div><div class="ht-text"><strong>Open-source as recruitment.</strong> Mistral released 7B open source partly as a recruiting tool. The best ML engineers wanted to work on the model everyone was downloading.</div></div>
+          <div class="ht-card"><div class="ht-icon">💰</div><div class="ht-text"><strong>Pay top of market cash + meaningful equity.</strong> Series A startups lose candidates to Google for $100K/yr. Close the gap with equity story and mission — but don't assume mission alone works.</div></div>
+          <div class="ht-card"><div class="ht-icon">🌍</div><div class="ht-text"><strong>Remote-first expands your candidate pool 10×.</strong> The best ML researcher might be in London, Paris, or Singapore. Most frontier AI companies are now global from day one.</div></div>
+          <div class="ht-card"><div class="ht-icon">🧪</div><div class="ht-text"><strong>Paid work trials beat interviews.</strong> Offer a 2-week paid trial project before making an offer. You see real work; they experience your culture. Conversion rate to offer is 80%+ if you've done screening right.</div></div>
+          <div class="ht-card"><div class="ht-icon">⚡</div><div class="ht-text"><strong>Move fast.</strong> Top ML talent gets 3–5 competing offers simultaneously. Compress your process to 2 weeks max. Same-day verbal offers close candidates that would otherwise wait for Google.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 5. INFRASTRUCTURE ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">05</div>
+        <div>
+          <h3 class="sj-title">Infrastructure — Tools & Setup</h3>
+          <p class="sj-sub">The exact stack used by modern AI startups, from day one to Series B</p>
+        </div>
+      </div>
+      <div class="infra-tabs">
+        <button class="itab active" onclick="showInfra('compute')">⚡ Compute</button>
+        <button class="itab" onclick="showInfra('mltools')">🔬 ML Tools</button>
+        <button class="itab" onclick="showInfra('devtools')">🛠️ Dev Tools</button>
+        <button class="itab" onclick="showInfra('biz')">💼 Business Tools</button>
+      </div>
+      <div class="infra-content" id="ic-compute">
+        <div class="infra-grid">
+          <div class="infra-card"><div class="ic-phase">Pre-Seed</div><div class="ic-name">Google Colab Pro / Vast.ai</div><div class="ic-desc">$50–$200/month. Good for experiments and prototypes. Not for serious training runs.</div></div>
+          <div class="infra-card"><div class="ic-phase">Seed</div><div class="ic-name">Lambda Labs / CoreWeave</div><div class="ic-desc">40–60% cheaper than AWS. H100 from $2.49/hr. On-demand or reserved. Best price/performance for AI startups.</div></div>
+          <div class="infra-card ic-rec"><div class="ic-phase">Series A</div><div class="ic-name">CoreWeave + AWS Hybrid</div><div class="ic-desc">CoreWeave for training (cost), AWS for serving (reliability). Apply for CoreWeave startup credits ($100K–$500K).</div></div>
+          <div class="infra-card"><div class="ic-phase">Series B+</div><div class="ic-name">Reserved H100 Cluster or Own Hardware</div><div class="ic-desc">1-year reservations on CoreWeave / Azure / AWS save 30–40%. At 1,000+ GPUs, buying your own DGX nodes has 3-year ROI.</div></div>
+        </div>
+      </div>
+      <div class="infra-content hidden" id="ic-mltools">
+        <div class="infra-grid">
+          <div class="infra-card ic-rec"><div class="ic-phase">Training</div><div class="ic-name">Weights & Biases (W&B)</div><div class="ic-desc">Free for startups. The standard for experiment tracking, loss curves, hyperparameter sweeps. Every AI startup uses it.</div></div>
+          <div class="infra-card"><div class="ic-phase">Training Framework</div><div class="ic-name">HuggingFace TRL + PEFT</div><div class="ic-desc">For SFT and RLHF at startup scale. Well-documented, active community, supports LoRA/QLoRA out of the box.</div></div>
+          <div class="infra-card"><div class="ic-phase">Large-Scale Training</div><div class="ic-name">Megatron-LM / PyTorch FSDP</div><div class="ic-desc">For 70B+ runs. FSDP is built into PyTorch 2.0 and easier to set up than Megatron. Use Megatron only if you need extreme MFU.</div></div>
+          <div class="infra-card ic-rec"><div class="ic-phase">Serving</div><div class="ic-name">vLLM</div><div class="ic-desc">Open source, 24× better throughput than naive serving, PagedAttention. The default choice for AI startup inference. Free.</div></div>
+          <div class="infra-card"><div class="ic-phase">Data Pipeline</div><div class="ic-name">HuggingFace Datasets + Datatrove</div><div class="ic-desc">Standard for loading and preprocessing. Datatrove for large-scale web data pipelines. Both open source.</div></div>
+          <div class="infra-card"><div class="ic-phase">Model Registry</div><div class="ic-name">HuggingFace Hub (private)</div><div class="ic-desc">$0 for public models, ~$9/month for private. Version control for model weights. Standard in the industry.</div></div>
+        </div>
+      </div>
+      <div class="infra-content hidden" id="ic-devtools">
+        <div class="infra-grid">
+          <div class="infra-card ic-rec"><div class="ic-phase">Code</div><div class="ic-name">GitHub + GitHub Actions</div><div class="ic-desc">Standard. All training code in private repo. GitHub Actions for CI/CD of eval pipelines and serving deployment.</div></div>
+          <div class="infra-card"><div class="ic-phase">Docs & Knowledge</div><div class="ic-name">Notion</div><div class="ic-desc">Training logs, architecture decisions, meeting notes, hiring pipelines. $16/user/month. Worth every penny for async teams.</div></div>
+          <div class="infra-card"><div class="ic-phase">Communication</div><div class="ic-name">Slack + Linear</div><div class="ic-desc">Slack for async comms (training-alerts bot!). Linear for engineering sprints and issue tracking. Both &lt;$10/user/month.</div></div>
+          <div class="infra-card"><div class="ic-phase">API Backend</div><div class="ic-name">FastAPI + Modal</div><div class="ic-desc">FastAPI for your inference API (Python-native, fast). Modal for serverless GPU functions — great for burst compute without cluster management.</div></div>
+          <div class="infra-card ic-rec"><div class="ic-phase">Monitoring</div><div class="ic-name">Grafana + Prometheus</div><div class="ic-desc">Free, self-hosted. Track GPU utilization, request latency, TTFT, error rates. Essential for production serving.</div></div>
+          <div class="infra-card"><div class="ic-phase">On-Call</div><div class="ic-name">PagerDuty (or Opsgenie free)</div><div class="ic-desc">Rotate on-call during training runs. One missed GPU failure = hours of lost training. &lt;$20/user/month.</div></div>
+        </div>
+      </div>
+      <div class="infra-content hidden" id="ic-biz">
+        <div class="infra-grid">
+          <div class="infra-card ic-rec"><div class="ic-phase">Banking</div><div class="ic-name">Mercury + Brex</div><div class="ic-desc">Mercury for main business account (free). Brex for corporate cards with AI startup perks and high limits. Both instant online setup.</div></div>
+          <div class="infra-card"><div class="ic-phase">Legal</div><div class="ic-name">Clerky / Stripe Atlas + Cooley/Wilson Sonsini</div><div class="ic-desc">Clerky for incorporation ($500 flat). For serious fundraising, engage a startup-specialist law firm (Cooley, Wilson Sonsini, Gunderson) — worth the cost at Series A.</div></div>
+          <div class="infra-card"><div class="ic-phase">CRM</div><div class="ic-name">Attio or HubSpot</div><div class="ic-desc">Attio is the modern CRM built for startups — free to start. Track investor pipeline AND enterprise customer pipeline in one place.</div></div>
+          <div class="infra-card"><div class="ic-phase">Payroll & HR</div><div class="ic-name">Rippling</div><div class="ic-desc">Handles payroll, benefits, equity management, device management. Standard for YC companies. $8/employee/month.</div></div>
+          <div class="infra-card"><div class="ic-phase">Cap Table</div><div class="ic-name">Carta</div><div class="ic-desc">Non-negotiable. Track equity, SAFEs, option pools, and investor rights. $2K–$10K/year. Investors expect you to be on Carta.</div></div>
+          <div class="infra-card ic-rec"><div class="ic-phase">Analytics</div><div class="ic-name">PostHog (self-hosted)</div><div class="ic-desc">Open-source product analytics. Track API usage, feature adoption, churn signals. Free self-hosted. $450/month hosted.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 6. GO-TO-MARKET ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">06</div>
+        <div>
+          <h3 class="sj-title">Go-To-Market — Commercialising Your Model</h3>
+          <p class="sj-sub">How to turn a research project into a revenue-generating company</p>
+        </div>
+      </div>
+      <div class="gtm-phases">
+        <div class="gtm-phase">
+          <div class="gp-header">
+            <div class="gp-icon">🌱</div>
+            <div>
+              <div class="gp-phase">Phase 1: Developer Launch (Month 1–6)</div>
+              <div class="gp-goal">Goal: 1,000 active API users, 10 design partners</div>
+            </div>
+          </div>
+          <div class="gp-tactics">
+            <div class="gp-tactic"><span class="gt-label">Launch on HuggingFace</span> Release model weights publicly (or gated). HuggingFace gets 5M monthly visitors. Mistral's 7B release got 50K downloads in week one.</div>
+            <div class="gp-tactic"><span class="gt-label">Twitter/X launch thread</span> The AI community is on Twitter. A compelling benchmark thread from a credible account gets 10K+ retweets. Mistral launched with a torrent link in a tweet.</div>
+            <div class="gp-tactic"><span class="gt-label">Private beta waitlist</span> Framer, Notion, and Figma all built pre-launch hype with waitlists. Collect 500 emails before you have an API. Use Typeform + Airtable.</div>
+            <div class="gp-tactic"><span class="gt-label">Design partners</span> Find 5–10 companies who will use your model in production in exchange for early access + their feedback shapes your roadmap. These become your first case studies.</div>
+          </div>
+        </div>
+        <div class="gtm-phase">
+          <div class="gp-header">
+            <div class="gp-icon">📈</div>
+            <div>
+              <div class="gp-phase">Phase 2: Developer-Led Growth (Month 6–18)</div>
+              <div class="gp-goal">Goal: $500K ARR, 50 paying enterprise pilots</div>
+            </div>
+          </div>
+          <div class="gp-tactics">
+            <div class="gp-tactic"><span class="gt-label">Best-in-class docs & SDK</span> OpenAI's documentation is a competitive moat. Developers who learn your API become advocates. Invest 1 engineer full-time on developer experience.</div>
+            <div class="gp-tactic"><span class="gt-label">Benchmark leadership</span> Own a leaderboard position. "Fastest inference at 7B scale" or "Best coding model under $0.01/1K tokens" is a marketing hook that writes itself.</div>
+            <div class="gp-tactic"><span class="gt-label">Community flywheel</span> Discord server + open-source ecosystem + hackathons. Perplexity ran hackathons that produced 200+ demos, each one a marketing asset.</div>
+            <div class="gp-tactic"><span class="gt-label">Outbound enterprise</span> Use design partners as case studies. One VP Eng at a mid-market company is worth 500 developer signups in revenue. Start outbound at Month 6 even if product feels unready.</div>
+          </div>
+        </div>
+        <div class="gtm-phase">
+          <div class="gp-header">
+            <div class="gp-icon">🏢</div>
+            <div>
+              <div class="gp-phase">Phase 3: Enterprise Scale (Month 18+)</div>
+              <div class="gp-goal">Goal: $10M ARR, 3+ named enterprise customers</div>
+            </div>
+          </div>
+          <div class="gp-tactics">
+            <div class="gp-tactic"><span class="gt-label">Enterprise sales motion</span> Hire a VP Sales with enterprise SaaS experience (not just AI experience). Add: SOC2 Type II certification, BAA for healthcare, enterprise SLAs.</div>
+            <div class="gp-tactic"><span class="gt-label">Partner ecosystem</span> System integrator partnerships (Accenture, Deloitte) can 10× your enterprise pipeline. They implement AI for Fortune 500s and need models to recommend.</div>
+            <div class="gp-tactic"><span class="gt-label">Government / regulated sector</span> US Federal, EU public sector, healthcare, finance — all have budget and high WTP for compliant AI. Longer sales cycles but $1M+ contracts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 7. REVENUE ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">07</div>
+        <div>
+          <h3 class="sj-title">Revenue — Business Models & Path to Profit</h3>
+          <p class="sj-sub">How AI companies actually make money</p>
+        </div>
+      </div>
+      <div class="revenue-models">
+        <div class="rm-card rm-primary">
+          <div class="rm-icon">⚡</div>
+          <div class="rm-name">API / Token Pricing</div>
+          <div class="rm-example">OpenAI: $0.002–$0.06/1K tokens | Anthropic: $0.003–$0.015/1K</div>
+          <div class="rm-desc">Pay-per-use. Scales automatically. Low friction to start. 70–85% gross margins at scale. Best for developer-first companies.</div>
+          <div class="rm-when">Start here. Launch on day one.</div>
+        </div>
+        <div class="rm-card rm-primary">
+          <div class="rm-icon">🏢</div>
+          <div class="rm-name">Enterprise Contracts</div>
+          <div class="rm-example">Typical: $200K–$5M/year. Harvey AI: $100M+ ARR from law firms.</div>
+          <div class="rm-desc">Annual contracts with SLAs, private deployment, custom fine-tuning, priority support. High ACV, long sales cycle (3–12 months), but very sticky.</div>
+          <div class="rm-when">Build enterprise tier at Month 6–12.</div>
+        </div>
+        <div class="rm-card">
+          <div class="rm-icon">👤</div>
+          <div class="rm-name">Consumer Subscription</div>
+          <div class="rm-example">ChatGPT Plus: $20/month → 10M subscribers = $2.4B/year ARR</div>
+          <div class="rm-desc">B2C SaaS. High volume, lower ACV. Requires strong product + marketing. CAC must be &lt;6 months of LTV. Very hard to make work without a dominant product position.</div>
+          <div class="rm-when">Add only if you have strong B2C traction. Don't split focus early.</div>
+        </div>
+        <div class="rm-card">
+          <div class="rm-icon">🔧</div>
+          <div class="rm-name">Fine-Tuning as a Service</div>
+          <div class="rm-example">OpenAI charges $0.008/1K tokens for fine-tuning. Together.ai offers full pipeline.</div>
+          <div class="rm-desc">Customers bring their own data; you train a custom model version. High margin, creates deep lock-in. Differentiates from pure API players.</div>
+          <div class="rm-when">Add at Series A once you have serving infra.</div>
+        </div>
+        <div class="rm-card">
+          <div class="rm-icon">📦</div>
+          <div class="rm-name">On-Premise / Private Cloud</div>
+          <div class="rm-example">Cohere offers on-prem. Typical: $1M–$10M/year for large enterprises.</div>
+          <div class="rm-desc">Deploy model inside customer's infrastructure. Required for regulated industries (banking, defense, healthcare). Highest ACV but operationally complex.</div>
+          <div class="rm-when">Add at Series B when you have ops capacity.</div>
+        </div>
+      </div>
+      <div class="unit-economics">
+        <div class="ue-title">📊 Unit Economics That Investors Want to See</div>
+        <div class="ue-grid">
+          <div class="ue-item"><div class="ue-metric">Gross Margin</div><div class="ue-value">70–85%</div><div class="ue-note">API businesses at scale. &lt;50% = serving too expensive; revisit quantization.</div></div>
+          <div class="ue-item"><div class="ue-metric">Net Revenue Retention</div><div class="ue-value">&gt;120%</div><div class="ue-note">Customers should expand usage over time. OpenAI's NRR is estimated &gt;150%.</div></div>
+          <div class="ue-item"><div class="ue-metric">CAC Payback</div><div class="ue-value">&lt;12 months</div><div class="ue-note">How long to recover customer acquisition cost. Enterprise &lt;18 months is acceptable.</div></div>
+          <div class="ue-item"><div class="ue-metric">Magic Number</div><div class="ue-value">&gt;0.75</div><div class="ue-note">New ARR / Sales & Marketing spend. Above 0.75 = efficient growth; above 1.5 = accelerate spend.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 8. FOUNDER TIPS ── -->
+    <div class="sj-block">
+      <div class="sj-block-header">
+        <div class="sj-num">08</div>
+        <div>
+          <h3 class="sj-title">Founder Tips — Hard-Won Lessons</h3>
+          <p class="sj-sub">What the founders of OpenAI, Anthropic, Mistral, Cohere, and others wish they'd known</p>
+        </div>
+      </div>
+      <div class="founder-tips-grid">
+        <div class="ft-card ft-critical">
+          <div class="ft-icon">⚠️</div>
+          <div class="ft-title">Avoid the "Research Trap"</div>
+          <div class="ft-body">The most common failure mode: brilliant researchers who build impressive models but no business. Set a revenue target from day one — even $10K ARR in month 6 forces you to talk to customers. Many AI companies have died with state-of-the-art benchmarks and zero customers.</div>
+        </div>
+        <div class="ft-card">
+          <div class="ft-icon">🎯</div>
+          <div class="ft-title">Don't Compete on Scale</div>
+          <div class="ft-body">You cannot out-compute Google or Microsoft. Your edge must be: better training data in a vertical, a unique deployment approach, a proprietary feedback loop from users, or a distribution advantage. Win the niche first, then expand.</div>
+        </div>
+        <div class="ft-card">
+          <div class="ft-icon">🤝</div>
+          <div class="ft-title">Co-Founder Chemistry is Everything</div>
+          <div class="ft-body">AI startups are 2–5 year marathons with constant crises. Pick co-founders you've worked with, not just admired. The stress of a failed training run at 2 AM will reveal character. Anthropic's leadership team had worked together at OpenAI for years before founding.</div>
+        </div>
+        <div class="ft-card ft-critical">
+          <div class="ft-icon">💸</div>
+          <div class="ft-title">Runway is Sacred</div>
+          <div class="ft-body">Keep 18 months of runway at all times. AI companies burn fast — a 1,000 GPU training run can cost $5M in 3 months. Raise before you need it. The moment you're desperate for money, your negotiating leverage disappears and your team senses the stress.</div>
+        </div>
+        <div class="ft-card">
+          <div class="ft-icon">📣</div>
+          <div class="ft-title">Publish or Perish (Recruiting)</div>
+          <div class="ft-body">The best ML researchers want to work on interesting problems AND publish. Allowing publication (even of non-core IP) attracts top talent that would otherwise go to academia or FAANG. Mistral, Cohere, and AI2 all publish actively. OpenAI publishing GPT-1/2/3 papers built their talent brand.</div>
+        </div>
+        <div class="ft-card">
+          <div class="ft-icon">🔄</div>
+          <div class="ft-title">Your First Product Will Be Wrong</div>
+          <div class="ft-body">OpenAI's first product was a gaming AI (Dota 2). Anthropic initially focused on interpretability research before pivoting to Claude. Mistral released models before having a clear application strategy. Stay close to customers, iterate fast, don't fall in love with your first hypothesis.</div>
+        </div>
+        <div class="ft-card">
+          <div class="ft-icon">🌍</div>
+          <div class="ft-title">Regulation is Coming — Get Ahead</div>
+          <div class="ft-body">EU AI Act is law. US EO on AI is active. Enterprise customers will ask for safety audits, data governance, and compliance documentation. Startups that build safety and compliance infrastructure early will have a competitive advantage as regulation tightens. Safety is a moat.</div>
+        </div>
+        <div class="ft-card ft-critical">
+          <div class="ft-icon">🚀</div>
+          <div class="ft-title">Speed Wins in AI</div>
+          <div class="ft-body">The AI landscape changes faster than any sector in history. Mistral went from founding to $6B valuation in 12 months. Cursor went from 0 to $9B in 2 years. The window for any given opportunity is shorter than in traditional software. Bias heavily toward action over deliberation.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
