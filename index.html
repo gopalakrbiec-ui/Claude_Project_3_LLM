@@ -30,6 +30,7 @@
         <button class="mode-btn active" id="btnLayman"   onclick="setMode('layman')">🙋 Layman</button>
         <button class="mode-btn" id="btnGrad"     onclick="setMode('graduate')">🎓 Graduate</button>
         <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
+        <button class="mode-btn" id="btnLLMEng"  onclick="setMode('llmeng')">⚙️ LLM Eng</button>
         <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
         <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
         <button class="mode-btn" id="btnInvestor" onclick="setMode('investor')">💰 Investor</button>
@@ -41,6 +42,7 @@
         <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
         <a href="#graduate-roadmap" id="navGrad" class="hidden">Roadmap</a>
         <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
+        <a href="#llmeng-journey" id="navLLMEng" class="hidden">Code</a>
         <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
         <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
         <a href="#founder-journey" id="navFounder" class="hidden">Founder</a>
@@ -57,6 +59,7 @@
     </h1>
     <p class="hero-sub layman-text">Everything you need to know to build your own AI brain — no jargon, just clear steps.</p>
     <p class="hero-sub grad-text hidden">A comprehensive technical roadmap covering data pipelines, transformer architectures, distributed training, RLHF, and production deployment.</p>
+    <p class="hero-sub llmeng-text hidden">The engineering path — step-by-step Python code for every stage of building an LLM from scratch. From BPE tokenizers to nanoGPT, LoRA fine-tuning to vLLM deployment, with the exact frameworks, commands, and gotchas the papers don't tell you.</p>
     <p class="hero-sub researcher-text hidden">A research-oriented map of the LLM landscape — foundational papers, open problems, current frontiers, and the directions shaping the next generation of language models.</p>
     <p class="hero-sub team-text hidden">A team-first view of building an LLM — who you need at every stage, what they do, how they coordinate, and how the whole organisation moves together to ship a frontier model.</p>
     <p class="hero-sub startup-text hidden">The founder's playbook — how to incorporate, raise money, decide what to build, make your first hires, set up infrastructure, go to market, and turn a research project into a revenue-generating AI company.</p>
@@ -445,6 +448,41 @@
             </div>
             <div class="am-insight">⚡ Agentic data pipelines are now standard at frontier labs — the data flywheel that feeds the model is itself an agentic system, making data collection a competitive moat that compounds over time.</div>
           </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 1: Data Collection</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">Datatrove</span>
+              <span class="le-tag le-fw">requests</span>
+              <span class="le-tag le-fw">BeautifulSoup</span>
+              <span class="le-tag le-fw">fastText</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">data_collection.py</span><span class="le-code-lang">Python</span></div>
+              <pre class="le-pre"><code><span class="le-c"># Step 1: Download &amp; filter Common Crawl with Datatrove</span>
+<span class="le-kw">from</span> datatrove.pipeline.readers <span class="le-kw">import</span> WarcReader
+<span class="le-kw">from</span> datatrove.pipeline.filters <span class="le-kw">import</span> LanguageFilter, GopherQualityFilter
+<span class="le-kw">from</span> datatrove.pipeline.writers <span class="le-kw">import</span> JsonlWriter
+<span class="le-kw">from</span> datatrove.executor <span class="le-kw">import</span> LocalPipelineExecutor
+
+pipeline = LocalPipelineExecutor(pipeline=[
+    WarcReader(<span class="le-str">"s3://commoncrawl/crawl-data/CC-MAIN-2024-10/segments/"</span>),
+    LanguageFilter(languages=[<span class="le-str">"en"</span>]),        <span class="le-c"># Keep English only</span>
+    GopherQualityFilter(min_stop_words=<span class="le-num">2</span>),    <span class="le-c"># Quality heuristics</span>
+    JsonlWriter(<span class="le-str">"output/train_data"</span>),
+], tasks=<span class="le-num">100</span>)
+pipeline.run()
+
+<span class="le-c"># Step 2: Custom scraper for domain-specific data</span>
+<span class="le-kw">import</span> requests
+<span class="le-kw">from</span> bs4 <span class="le-kw">import</span> BeautifulSoup
+
+<span class="le-kw">def</span> <span class="le-fn">scrape_page</span>(url):
+    soup = BeautifulSoup(requests.get(url).text, <span class="le-str">"html.parser"</span>)
+    <span class="le-kw">return</span> <span class="le-str">" "</span>.join(p.get_text() <span class="le-kw">for</span> p <span class="le-kw">in</span> soup.find_all(<span class="le-str">"p"</span>))</code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> Datatrove processes WARC files from Common Crawl at petabyte scale. For a small experiment, start with the <code>datasets</code> library — <code>load_dataset("HuggingFaceFW/fineweb", split="train")</code> gives you 15T tokens of already-cleaned web text.</div>
+          </div>
 
 
 
@@ -775,6 +813,47 @@
               </div>
             </div>
             <div class="am-insight">⚡ The best preprocessing pipelines today are themselves LLM-powered — using smaller models to filter data for larger models, creating a recursive quality improvement loop.</div>
+          </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 2: Tokenizer</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">tiktoken</span>
+              <span class="le-tag le-fw">sentencepiece</span>
+              <span class="le-tag le-fw">minbpe</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">tokenizer.py</span><span class="le-code-lang">Python</span></div>
+              <pre class="le-pre"><code><span class="le-c"># Build BPE tokenizer from scratch (Karpathy's minbpe style)</span>
+<span class="le-kw">def</span> <span class="le-fn">get_stats</span>(ids):
+    counts = {}
+    <span class="le-kw">for</span> pair <span class="le-kw">in</span> zip(ids, ids[<span class="le-num">1</span>:]):
+        counts[pair] = counts.get(pair, <span class="le-num">0</span>) + <span class="le-num">1</span>
+    <span class="le-kw">return</span> counts
+
+<span class="le-kw">def</span> <span class="le-fn">merge</span>(ids, pair, idx):
+    new_ids, i = [], <span class="le-num">0</span>
+    <span class="le-kw">while</span> i &lt; len(ids):
+        <span class="le-kw">if</span> i &lt; len(ids) - <span class="le-num">1</span> <span class="le-kw">and</span> (ids[i], ids[i+<span class="le-num">1</span>]) == pair:
+            new_ids.append(idx); i += <span class="le-num">2</span>
+        <span class="le-kw">else</span>:
+            new_ids.append(ids[i]); i += <span class="le-num">1</span>
+    <span class="le-kw">return</span> new_ids
+
+vocab_size = <span class="le-num">1000</span>
+tokens = list(<span class="le-str">"hello world"</span>.encode(<span class="le-str">"utf-8"</span>))
+<span class="le-kw">for</span> i <span class="le-kw">in</span> range(vocab_size - <span class="le-num">256</span>):
+    stats = get_stats(tokens)
+    top_pair = max(stats, key=stats.get)
+    tokens = merge(tokens, top_pair, <span class="le-num">256</span> + i)
+
+<span class="le-c"># Production: use tiktoken</span>
+<span class="le-kw">import</span> tiktoken
+enc = tiktoken.get_encoding(<span class="le-str">"cl100k_base"</span>)
+ids = enc.encode(<span class="le-str">"Hello, world!"</span>)
+text = enc.decode(ids)</code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> Implement BPE from scratch first (30 lines of Python) — then switch to tiktoken for production. Understanding the merge loop is essential; it explains why tokenization splits differently than you'd expect.</div>
           </div>
 
 
@@ -1118,6 +1197,48 @@
               </div>
             </div>
             <div class="am-insight">⚡ Architecture design is shifting from human intuition to agent-assisted search — the best architectures in 2026 (MLA, sliding window, MoE variants) were discovered through automated exploration that no human team could run manually at the same speed.</div>
+          </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 3: Transformer Architecture</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">PyTorch</span>
+              <span class="le-tag le-fw">nanoGPT</span>
+              <span class="le-tag le-fw">Flash Attention</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">model.py</span><span class="le-code-lang">Python · nanoGPT style</span></div>
+              <pre class="le-pre"><code><span class="le-kw">import</span> torch.nn <span class="le-kw">as</span> nn, torch.nn.functional <span class="le-kw">as</span> F
+
+<span class="le-kw">class</span> <span class="le-cls">CausalSelfAttention</span>(nn.Module):
+    <span class="le-kw">def</span> <span class="le-fn">__init__</span>(self, config):
+        super().__init__()
+        self.n_head = config.n_head; self.n_embd = config.n_embd
+        self.c_attn = nn.Linear(config.n_embd, <span class="le-num">3</span> * config.n_embd)
+        self.c_proj = nn.Linear(config.n_embd, config.n_embd)
+
+    <span class="le-kw">def</span> <span class="le-fn">forward</span>(self, x):
+        B, T, C = x.size()
+        q, k, v = self.c_attn(x).split(self.n_embd, dim=<span class="le-num">2</span>)
+        q = q.view(B, T, self.n_head, C // self.n_head).transpose(<span class="le-num">1</span>, <span class="le-num">2</span>)
+        k = k.view(B, T, self.n_head, C // self.n_head).transpose(<span class="le-num">1</span>, <span class="le-num">2</span>)
+        v = v.view(B, T, self.n_head, C // self.n_head).transpose(<span class="le-num">1</span>, <span class="le-num">2</span>)
+        y = F.scaled_dot_product_attention(q, k, v, is_causal=<span class="le-kw">True</span>)  <span class="le-c"># FlashAttention</span>
+        <span class="le-kw">return</span> self.c_proj(y.transpose(<span class="le-num">1</span>, <span class="le-num">2</span>).contiguous().view(B, T, C))
+
+<span class="le-kw">class</span> <span class="le-cls">Block</span>(nn.Module):
+    <span class="le-kw">def</span> <span class="le-fn">__init__</span>(self, config):
+        super().__init__()
+        self.ln_1 = nn.LayerNorm(config.n_embd)
+        self.attn = CausalSelfAttention(config)
+        self.ln_2 = nn.LayerNorm(config.n_embd)
+        self.mlp  = nn.Sequential(nn.Linear(config.n_embd, <span class="le-num">4</span>*config.n_embd),
+                                   nn.GELU(), nn.Linear(<span class="le-num">4</span>*config.n_embd, config.n_embd))
+    <span class="le-kw">def</span> <span class="le-fn">forward</span>(self, x):
+        x = x + self.attn(self.ln_1(x))  <span class="le-c"># Pre-norm residual</span>
+        <span class="le-kw">return</span> x + self.mlp(self.ln_2(x))</code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> This is the nanoGPT core. Pre-norm residual (<code>x = x + attn(ln(x))</code>) and <code>scaled_dot_product_attention</code> (FlashAttention) are the two most important implementation details for a stable, efficient transformer.</div>
           </div>
 
 
@@ -1485,6 +1606,45 @@
               </div>
             </div>
             <div class="am-insight">⚡ The single biggest leverage point for agentic pre-training: agents monitoring other agents monitoring GPUs. Automated infrastructure dramatically reduces the senior ML engineer hours required per training run — the bottleneck shifts from "we don't have enough engineers" to "we don't have enough compute."</div>
+          </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 4: Pre-training Loop</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">PyTorch DDP</span>
+              <span class="le-tag le-fw">bfloat16</span>
+              <span class="le-tag le-fw">wandb</span>
+              <span class="le-tag le-fw">DeepSpeed</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">train.py</span><span class="le-code-lang">Python · nanoGPT training loop</span></div>
+              <pre class="le-pre"><code><span class="le-kw">import</span> torch, math
+<span class="le-kw">from</span> torch.amp <span class="le-kw">import</span> autocast, GradScaler
+
+max_iters = <span class="le-num">600_000</span>; grad_accum = <span class="le-num">32</span>; lr_max = <span class="le-num">6e-4</span>; warmup = <span class="le-num">2000</span>
+
+<span class="le-kw">def</span> <span class="le-fn">get_lr</span>(it):
+    <span class="le-kw">if</span> it &lt; warmup: <span class="le-kw">return</span> lr_max * it / warmup
+    ratio = (it - warmup) / (max_iters - warmup)
+    <span class="le-kw">return</span> <span class="le-num">0.1</span>*lr_max + <span class="le-num">0.9</span>*lr_max * <span class="le-num">0.5</span> * (<span class="le-num">1</span> + math.cos(math.pi * ratio))
+
+model = GPT(config).cuda()
+optimizer = torch.optim.AdamW(model.parameters(), lr=lr_max, betas=(<span class="le-num">0.9</span>, <span class="le-num">0.95</span>))
+scaler = GradScaler()
+
+<span class="le-kw">for</span> step <span class="le-kw">in</span> range(max_iters):
+    loss_accum = <span class="le-num">0.0</span>
+    <span class="le-kw">for</span> _ <span class="le-kw">in</span> range(grad_accum):   <span class="le-c"># gradient accumulation</span>
+        x, y = get_batch(<span class="le-str">'train'</span>)
+        <span class="le-kw">with</span> autocast(device_type=<span class="le-str">'cuda'</span>, dtype=torch.bfloat16):
+            _, loss = model(x, y)
+        scaler.scale(loss / grad_accum).backward()
+        loss_accum += loss.item()
+    torch.nn.utils.clip_grad_norm_(model.parameters(), <span class="le-num">1.0</span>)  <span class="le-c"># prevent spikes</span>
+    <span class="le-kw">for</span> g <span class="le-kw">in</span> optimizer.param_groups: g[<span class="le-str">'lr'</span>] = get_lr(step)
+    scaler.step(optimizer); scaler.update(); optimizer.zero_grad(set_to_none=<span class="le-kw">True</span>)</code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> Three essentials: (1) gradient accumulation simulates large batch size without OOM, (2) bfloat16 halves memory with no quality loss, (3) cosine LR schedule with warmup gives 10-15% better final loss than constant LR. These are all in nanoGPT — read every line.</div>
           </div>
 
 
@@ -1856,6 +2016,40 @@
               </div>
             </div>
             <div class="am-insight">⚡ The key insight: alignment itself is becoming agentic. The model critiques itself, flags its own failures, and generates its own training signal. Human oversight shifts from "label every example" to "define the constitution and validate the automated process."</div>
+          </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 5: SFT → DPO Alignment</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">TRL</span>
+              <span class="le-tag le-fw">PEFT</span>
+              <span class="le-tag le-fw">HuggingFace</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">align.py</span><span class="le-code-lang">Python · TRL</span></div>
+              <pre class="le-pre"><code><span class="le-kw">from</span> trl <span class="le-kw">import</span> SFTTrainer, SFTConfig, DPOTrainer, DPOConfig
+<span class="le-kw">from</span> peft <span class="le-kw">import</span> LoraConfig
+<span class="le-kw">from</span> datasets <span class="le-kw">import</span> load_dataset
+
+<span class="le-c"># ── Step 1: Supervised Fine-Tuning ──</span>
+sft_trainer = SFTTrainer(
+    model=model, tokenizer=tokenizer,
+    args=SFTConfig(output_dir=<span class="le-str">"sft-out"</span>, num_train_epochs=<span class="le-num">1</span>, bf16=<span class="le-kw">True</span>),
+    train_dataset=load_dataset(<span class="le-str">"HuggingFaceH4/ultrachat_200k"</span>, split=<span class="le-str">"train_sft"</span>),
+    peft_config=LoraConfig(r=<span class="le-num">64</span>, lora_alpha=<span class="le-num">16</span>, target_modules=<span class="le-str">"all-linear"</span>),
+)
+sft_trainer.train()   <span class="le-c"># Model now follows instructions</span>
+
+<span class="le-c"># ── Step 2: DPO on {"prompt","chosen","rejected"} pairs ──</span>
+dpo_trainer = DPOTrainer(
+    model=model, ref_model=<span class="le-kw">None</span>,
+    args=DPOConfig(beta=<span class="le-num">0.1</span>, output_dir=<span class="le-str">"dpo-out"</span>, bf16=<span class="le-kw">True</span>),
+    train_dataset=load_dataset(<span class="le-str">"HuggingFaceH4/ultrafeedback_binarized"</span>, split=<span class="le-str">"train_prefs"</span>),
+    tokenizer=tokenizer,
+)
+dpo_trainer.train()   <span class="le-c"># Model now prefers helpful, harmless responses</span></code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> SFT teaches format; DPO teaches quality. <code>beta=0.1</code> controls KL divergence penalty from the SFT reference model — too low and the model drifts, too high and preferences are ignored. DPO has replaced PPO in most open-source pipelines: simpler, more stable, comparable results.</div>
           </div>
 
 
@@ -2238,6 +2432,41 @@
             </div>
             <div class="am-insight">⚡ The domain-specific LLM business model is under pressure precisely because fine-tuning agents make it cheap to create domain-specific models — the competitive moat shifts entirely to proprietary data, not fine-tuning expertise.</div>
           </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 6: LoRA / QLoRA Fine-tuning</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">PEFT</span>
+              <span class="le-tag le-fw">bitsandbytes</span>
+              <span class="le-tag le-fw">Axolotl</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">finetune.py</span><span class="le-code-lang">Python · QLoRA</span></div>
+              <pre class="le-pre"><code><span class="le-kw">from</span> peft <span class="le-kw">import</span> LoraConfig, get_peft_model, TaskType
+<span class="le-kw">from</span> transformers <span class="le-kw">import</span> AutoModelForCausalLM, BitsAndBytesConfig
+
+model = AutoModelForCausalLM.from_pretrained(
+    <span class="le-str">"meta-llama/Llama-3.1-8B"</span>,
+    quantization_config=BitsAndBytesConfig(
+        load_in_4bit=<span class="le-kw">True</span>, bnb_4bit_quant_type=<span class="le-str">"nf4"</span>,
+        bnb_4bit_compute_dtype=torch.bfloat16,
+    ),  <span class="le-c"># 8B model fits on a single 12GB GPU</span>
+    device_map=<span class="le-str">"auto"</span>,
+)
+
+model = get_peft_model(model, LoraConfig(
+    r=<span class="le-num">16</span>, lora_alpha=<span class="le-num">32</span>,  <span class="le-c"># alpha/r ratio controls effective learning rate</span>
+    target_modules=[<span class="le-str">"q_proj"</span>, <span class="le-str">"k_proj"</span>, <span class="le-str">"v_proj"</span>, <span class="le-str">"o_proj"</span>],
+    task_type=TaskType.CAUSAL_LM,
+))
+model.print_trainable_parameters()
+<span class="le-c"># trainable: 3.4M / 8B total (0.042%) — trains on 1 GPU in hours</span>
+
+<span class="le-c"># After training: merge adapters back for clean deployment</span>
+model.merge_and_unload().save_pretrained(<span class="le-str">"./finetuned-8b"</span>)</code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> QLoRA = 4-bit quantized base + LoRA adapters on top. Only 0.04% of parameters are trained. An 8B model fine-tuned with QLoRA on domain data consistently beats the base 8B model on that domain, while fitting on a single 16GB consumer GPU.</div>
+          </div>
 
 
 
@@ -2573,6 +2802,45 @@
               </div>
             </div>
             <div class="am-insight">⚡ Agentic evaluation is resolving the benchmark contamination crisis — tasks that require real-world tool use cannot be gamed by memorization, giving researchers the reliable capability signal that static benchmarks lost in 2024.</div>
+          </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 7: Evaluation</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">lm-evaluation-harness</span>
+              <span class="le-tag le-fw">wandb</span>
+              <span class="le-tag le-fw">Claude API</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">evaluate.py</span><span class="le-code-lang">Python</span></div>
+              <pre class="le-pre"><code><span class="le-c"># ── 1. Perplexity on validation set ──</span>
+<span class="le-kw">import</span> torch, math
+model.eval()
+losses = [model(x, y)[<span class="le-num">1</span>].item() <span class="le-kw">for</span> x, y <span class="le-kw">in</span> [get_batch(<span class="le-str">'val'</span>) <span class="le-kw">for</span> _ <span class="le-kw">in</span> range(<span class="le-num">200</span>)]]
+print(<span class="le-kw">f</span><span class="le-str">"PPL: {math.exp(sum(losses)/len(losses)):.2f}"</span>)
+
+<span class="le-c"># ── 2. Standard benchmarks (HellaSwag, ARC, MMLU) ──</span>
+<span class="le-kw">import</span> lm_eval
+results = lm_eval.simple_evaluate(
+    model=<span class="le-str">"hf"</span>,
+    model_args=<span class="le-str">"pretrained=./my-llm,dtype=bfloat16"</span>,
+    tasks=[<span class="le-str">"hellaswag"</span>, <span class="le-str">"arc_challenge"</span>, <span class="le-str">"mmlu"</span>, <span class="le-str">"winogrande"</span>],
+    num_fewshot=<span class="le-num">5</span>, batch_size=<span class="le-str">"auto"</span>,
+)
+<span class="le-kw">for</span> task, r <span class="le-kw">in</span> results[<span class="le-str">"results"</span>].items():
+    print(<span class="le-kw">f</span><span class="le-str">"{task}: {r['acc_norm,none']:.3f}"</span>)
+
+<span class="le-c"># ── 3. LLM-as-judge for open-ended quality ──</span>
+<span class="le-kw">import</span> anthropic
+client = anthropic.Anthropic()
+<span class="le-kw">def</span> <span class="le-fn">judge</span>(question, response):
+    <span class="le-kw">return</span> client.messages.create(
+        model=<span class="le-str">"claude-opus-4-8"</span>, max_tokens=<span class="le-num">256</span>,
+        messages=[{<span class="le-str">"role"</span>: <span class="le-str">"user"</span>, <span class="le-str">"content"</span>:
+            <span class="le-kw">f</span><span class="le-str">"Rate 1-10. Q: {question} A: {response}. JSON: {{'score':N,'reason':'...'}}"</span>}]
+    ).content[<span class="le-num">0</span>].text</code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> Three-layer eval strategy: perplexity tracks training health, lm-eval-harness gives standardized benchmarks for comparison with published models, LLM-as-judge catches quality regressions that accuracy scores miss. Never ship on a single metric.</div>
           </div>
 
 
@@ -2943,6 +3211,43 @@
               </div>
             </div>
             <div class="am-insight">⚡ The LLM deployment stack is becoming an agentic system that manages itself — from infrastructure to safety to quality. The human role in production AI shifts from operations to strategy: setting goals, reviewing reports, and approving major changes.</div>
+          </div>
+          <div class="llmeng-text hidden">
+            <div class="le-stage-pill">⚙️ Code — Stage 8: Deployment &amp; Serving</div>
+            <div class="le-stack-row">
+              <span class="le-tag le-py">Python</span>
+              <span class="le-tag le-fw">vLLM</span>
+              <span class="le-tag le-fw">llama.cpp</span>
+              <span class="le-tag le-fw">FastAPI</span>
+              <span class="le-tag le-fw">GGUF</span>
+            </div>
+            <div class="le-code-block">
+              <div class="le-code-header"><span class="le-code-file">serve.py</span><span class="le-code-lang">Python · vLLM</span></div>
+              <pre class="le-pre"><code><span class="le-c"># ── GPU: vLLM with PagedAttention (24x throughput vs naive) ──</span>
+<span class="le-kw">from</span> vllm <span class="le-kw">import</span> LLM, SamplingParams
+llm = LLM(model=<span class="le-str">"./finetuned-8b"</span>, dtype=<span class="le-str">"bfloat16"</span>,
+          tensor_parallel_size=<span class="le-num">2</span>, gpu_memory_utilization=<span class="le-num">0.90</span>)
+out = llm.generate([<span class="le-str">"What is backpropagation?"</span>],
+                   SamplingParams(temperature=<span class="le-num">0.8</span>, max_tokens=<span class="le-num">512</span>))
+print(out[<span class="le-num">0</span>].outputs[<span class="le-num">0</span>].text)
+
+<span class="le-c"># ── CPU/Mac: llama.cpp with 4-bit quantization ──</span>
+<span class="le-c"># 1. Convert: python convert_hf_to_gguf.py ./model --outtype q4_k_m</span>
+<span class="le-kw">from</span> llama_cpp <span class="le-kw">import</span> Llama
+llm_cpu = Llama(<span class="le-str">"model-q4_k_m.gguf"</span>, n_ctx=<span class="le-num">4096</span>, n_gpu_layers=<span class="le-num">-1</span>)
+print(llm_cpu(<span class="le-str">"Transformers are"</span>, max_tokens=<span class="le-num">128</span>)[<span class="le-str">"choices"</span>][<span class="le-num">0</span>][<span class="le-str">"text"</span>])
+
+<span class="le-c"># ── OpenAI-compatible API (drop-in replacement) ──</span>
+<span class="le-c"># Run: vllm serve ./finetuned-8b --port 8000</span>
+<span class="le-kw">from</span> openai <span class="le-kw">import</span> OpenAI
+client = OpenAI(base_url=<span class="le-str">"http://localhost:8000/v1"</span>, api_key=<span class="le-str">"unused"</span>)
+resp = client.chat.completions.create(
+    model=<span class="le-str">"./finetuned-8b"</span>,
+    messages=[{<span class="le-str">"role"</span>: <span class="le-str">"user"</span>, <span class="le-str">"content"</span>: <span class="le-str">"Explain attention in one paragraph"</span>}]
+)
+print(resp.choices[<span class="le-num">0</span>].message.content)</code></pre>
+            </div>
+            <div class="le-insight">🔑 <strong>Key:</strong> vLLM's PagedAttention batches concurrent requests like virtual memory for KV caches — 24× throughput improvement. For edge/Mac, llama.cpp Q4_K_M runs LLaMA-3.1-8B at ~15 tok/s on Apple M2. Both expose an OpenAI-compatible API, so your application code doesn't change.</div>
           </div>
 
 
@@ -5794,6 +6099,526 @@
 
 <!-- ══════════════ WHERE THE FRONTIER IS HEADING ══════════════ -->
 <!-- ══════════════ AGENTIC MODE JOURNEY ══════════════ -->
+<!-- ══════════════ LLM ENGINEERING JOURNEY ══════════════ -->
+<section id="llmeng-journey" class="section bg-darker llmeng-section hidden">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge le-badge">⚙️ LLM Engineering</div>
+      <h2>Build an LLM from Scratch — The Code</h2>
+      <p class="section-sub">Every stage, in Python, step by step. Inspired by Andrej Karpathy's nanoGPT — readable code that you can actually run, with the frameworks, tips, and gotchas that matter.</p>
+    </div>
+
+    <!-- Setup strip -->
+    <div class="le-setup-block">
+      <div class="le-setup-title">⚡ Quick Setup — Install Everything</div>
+      <div class="le-setup-grid">
+        <div class="le-setup-col">
+          <div class="le-setup-label">Core ML Stack</div>
+          <pre class="le-pre le-setup-code"><code>pip install torch torchvision torchaudio \
+    --index-url https://download.pytorch.org/whl/cu121
+pip install transformers datasets tokenizers
+pip install tiktoken sentencepiece</code></pre>
+        </div>
+        <div class="le-setup-col">
+          <div class="le-setup-label">Training & Alignment</div>
+          <pre class="le-pre le-setup-code"><code>pip install trl peft bitsandbytes accelerate
+pip install deepspeed wandb
+pip install datatrove lm-eval</code></pre>
+        </div>
+        <div class="le-setup-col">
+          <div class="le-setup-label">Serving</div>
+          <pre class="le-pre le-setup-code"><code>pip install vllm fastapi uvicorn
+pip install llama-cpp-python
+pip install openai anthropic</code></pre>
+        </div>
+      </div>
+      <div class="le-setup-repos">
+        <div class="le-repo-card">
+          <div class="le-repo-icon">⭐</div>
+          <div class="le-repo-name">karpathy/nanoGPT</div>
+          <div class="le-repo-desc">Start here. 300 lines of PyTorch that trains a GPT. Read every line before anything else.</div>
+        </div>
+        <div class="le-repo-card">
+          <div class="le-repo-icon">⭐</div>
+          <div class="le-repo-name">karpathy/minbpe</div>
+          <div class="le-repo-desc">BPE tokenizer in pure Python. The only way to truly understand how tokens are built.</div>
+        </div>
+        <div class="le-repo-card">
+          <div class="le-repo-icon">⭐</div>
+          <div class="le-repo-name">karpathy/llm.c</div>
+          <div class="le-repo-desc">GPT-2 in pure C/CUDA. Teaches what PyTorch abstracts away — memory, kernels, math.</div>
+        </div>
+        <div class="le-repo-card">
+          <div class="le-repo-icon">📦</div>
+          <div class="le-repo-name">Lightning-AI/litgpt</div>
+          <div class="le-repo-desc">Production LLaMA/Gemma/Mistral implementations. Study config systems and model variants.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Module 1: Data Pipeline ── -->
+    <div class="le-module" id="lem-data">
+      <div class="le-module-header le-m1">
+        <div class="le-m-num">01</div>
+        <div class="le-m-meta">
+          <div class="le-m-title">Data Pipeline — From Raw Web to Training Tokens</div>
+          <div class="le-m-sub">Common Crawl → filter → deduplicate → tokenize → .bin shards</div>
+        </div>
+        <div class="le-m-stack">
+          <span class="le-tag le-fw">Datatrove</span>
+          <span class="le-tag le-fw">datasets</span>
+          <span class="le-tag le-fw">Apache Spark</span>
+        </div>
+      </div>
+      <div class="le-module-body">
+        <div class="le-step-flow">
+          <div class="le-step">
+            <div class="le-step-num">1</div>
+            <div class="le-step-body">
+              <div class="le-step-title">Download & Filter Common Crawl</div>
+              <pre class="le-pre"><code><span class="le-c"># Fastest path: use pre-cleaned FineWeb dataset (15T tokens)</span>
+<span class="le-kw">from</span> datasets <span class="le-kw">import</span> load_dataset
+ds = load_dataset(<span class="le-str">"HuggingFaceFW/fineweb"</span>, name=<span class="le-str">"sample-10BT"</span>, split=<span class="le-str">"train"</span>)
+<span class="le-c"># Or raw CC with Datatrove pipeline (see per-stage code above)</span></code></pre>
+            </div>
+          </div>
+          <div class="le-step">
+            <div class="le-step-num">2</div>
+            <div class="le-step-body">
+              <div class="le-step-title">Tokenize & Write Binary Shards (nanoGPT style)</div>
+              <pre class="le-pre"><code><span class="le-kw">import</span> numpy <span class="le-kw">as</span> np
+<span class="le-kw">import</span> tiktoken
+enc = tiktoken.get_encoding(<span class="le-str">"gpt2"</span>)
+
+<span class="le-kw">def</span> <span class="le-fn">tokenize</span>(doc):
+    tokens = [enc.eot_token]           <span class="le-c"># &lt;|endoftext|&gt; between documents</span>
+    tokens.extend(enc.encode_ordinary(doc[<span class="le-str">"text"</span>]))
+    <span class="le-kw">return</span> np.array(tokens, dtype=np.uint16)
+
+<span class="le-c"># Write shards of 100M tokens each</span>
+shard, idx, total = np.empty((<span class="le-num">100_000_000</span>,), dtype=np.uint16), <span class="le-num">0</span>, <span class="le-num">0</span>
+<span class="le-kw">for</span> doc <span class="le-kw">in</span> ds:
+    toks = tokenize(doc)
+    <span class="le-kw">if</span> idx + len(toks) &gt; len(shard):
+        np.save(<span class="le-kw">f</span><span class="le-str">"shard_{total:04d}.npy"</span>, shard[:idx]); total += <span class="le-num">1</span>; idx = <span class="le-num">0</span>
+    shard[idx:idx+len(toks)] = toks; idx += len(toks)</code></pre>
+            </div>
+          </div>
+          <div class="le-step">
+            <div class="le-step-num">3</div>
+            <div class="le-step-body">
+              <div class="le-step-title">DataLoader for Training</div>
+              <pre class="le-pre"><code><span class="le-kw">import</span> torch, numpy <span class="le-kw">as</span> np, glob
+
+shards = sorted(glob.glob(<span class="le-str">"data/shard_*.npy"</span>))
+current_shard = np.load(shards[<span class="le-num">0</span>], mmap_mode=<span class="le-str">"r"</span>)  <span class="le-c"># memory-mapped</span>
+
+<span class="le-kw">def</span> <span class="le-fn">get_batch</span>(split, B=<span class="le-num">32</span>, T=<span class="le-num">1024</span>):
+    buf = torch.from_numpy(current_shard.astype(np.int32))
+    ix  = torch.randint(len(buf) - T, (B,))
+    x   = torch.stack([buf[i:i+T]   <span class="le-kw">for</span> i <span class="le-kw">in</span> ix]).long()
+    y   = torch.stack([buf[i+<span class="le-num">1</span>:i+T+<span class="le-num">1</span>] <span class="le-kw">for</span> i <span class="le-kw">in</span> ix]).long()
+    <span class="le-kw">return</span> x.cuda(), y.cuda()</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Module 2: Tokenizer ── -->
+    <div class="le-module" id="lem-tok">
+      <div class="le-module-header le-m2">
+        <div class="le-m-num">02</div>
+        <div class="le-m-meta">
+          <div class="le-m-title">Tokenizer — BPE from Scratch to Production</div>
+          <div class="le-m-sub">Build minbpe, understand every merge, then use tiktoken in production</div>
+        </div>
+        <div class="le-m-stack">
+          <span class="le-tag le-fw">minbpe</span>
+          <span class="le-tag le-fw">tiktoken</span>
+          <span class="le-tag le-fw">sentencepiece</span>
+        </div>
+      </div>
+      <div class="le-module-body">
+        <div class="le-callout">Karpathy's minbpe (github.com/karpathy/minbpe) is 200 lines that implement the complete BPE algorithm used in GPT-2/3/4. This is the right way to understand tokenizers — run it on your text and trace every merge.</div>
+        <div class="le-step-flow">
+          <div class="le-step">
+            <div class="le-step-num">1</div>
+            <div class="le-step-body">
+              <div class="le-step-title">Train a BPE Tokenizer from Scratch</div>
+              <pre class="le-pre"><code><span class="le-c"># minbpe BasicTokenizer — full working implementation</span>
+<span class="le-kw">class</span> <span class="le-cls">BasicTokenizer</span>:
+    <span class="le-kw">def</span> <span class="le-fn">train</span>(self, text, vocab_size):
+        assert vocab_size &gt;= <span class="le-num">256</span>
+        ids = list(text.encode(<span class="le-str">"utf-8"</span>))
+        merges = {}             <span class="le-c"># (pair) → new_token_id</span>
+        vocab = {i: bytes([i]) <span class="le-kw">for</span> i <span class="le-kw">in</span> range(<span class="le-num">256</span>)}
+        <span class="le-kw">for</span> i <span class="le-kw">in</span> range(vocab_size - <span class="le-num">256</span>):
+            stats = get_stats(ids)
+            pair = max(stats, key=stats.get)
+            idx = <span class="le-num">256</span> + i
+            ids = merge(ids, pair, idx)
+            merges[pair] = idx
+            vocab[idx] = vocab[pair[<span class="le-num">0</span>]] + vocab[pair[<span class="le-num">1</span>]]
+            print(<span class="le-kw">f</span><span class="le-str">"merge {i+1}: {pair} → {idx} ({vocab[idx]})"</span>)
+        self.merges = merges
+        self.vocab  = vocab
+
+    <span class="le-kw">def</span> <span class="le-fn">encode</span>(self, text):
+        ids = list(text.encode(<span class="le-str">"utf-8"</span>))
+        <span class="le-kw">while</span> len(ids) &gt;= <span class="le-num">2</span>:
+            stats = get_stats(ids)
+            pair = min(stats, key=<span class="le-kw">lambda</span> p: self.merges.get(p, float(<span class="le-str">"inf"</span>)))
+            <span class="le-kw">if</span> pair <span class="le-kw">not</span> <span class="le-kw">in</span> self.merges: <span class="le-kw">break</span>
+            ids = merge(ids, pair, self.merges[pair])
+        <span class="le-kw">return</span> ids
+
+<span class="le-c"># Train on Shakespeare</span>
+t = BasicTokenizer()
+t.train(open(<span class="le-str">"input.txt"</span>).read(), vocab_size=<span class="le-num">512</span>)
+print(t.encode(<span class="le-str">"hello world"</span>))   <span class="le-c"># [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]</span></code></pre>
+            </div>
+          </div>
+          <div class="le-step">
+            <div class="le-step-num">2</div>
+            <div class="le-step-body">
+              <div class="le-step-title">Train with HuggingFace tokenizers (faster, production-ready)</div>
+              <pre class="le-pre"><code><span class="le-kw">from</span> tokenizers <span class="le-kw">import</span> Tokenizer
+<span class="le-kw">from</span> tokenizers.models <span class="le-kw">import</span> BPE
+<span class="le-kw">from</span> tokenizers.trainers <span class="le-kw">import</span> BpeTrainer
+<span class="le-kw">from</span> tokenizers.pre_tokenizers <span class="le-kw">import</span> ByteLevel
+
+tokenizer = Tokenizer(BPE(unk_token=<span class="le-str">"[UNK]"</span>))
+tokenizer.pre_tokenizer = ByteLevel()
+trainer = BpeTrainer(vocab_size=<span class="le-num">32_000</span>, special_tokens=[<span class="le-str">"[UNK]"</span>, <span class="le-str">"[BOS]"</span>, <span class="le-str">"[EOS]"</span>])
+tokenizer.train([<span class="le-str">"data.txt"</span>], trainer)
+tokenizer.save(<span class="le-str">"my_tokenizer.json"</span>)
+
+<span class="le-c"># Load and use</span>
+tok = Tokenizer.from_file(<span class="le-str">"my_tokenizer.json"</span>)
+print(tok.encode(<span class="le-str">"Hello world"</span>).ids)</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Module 3: Model Architecture ── -->
+    <div class="le-module" id="lem-arch">
+      <div class="le-module-header le-m3">
+        <div class="le-m-num">03</div>
+        <div class="le-m-meta">
+          <div class="le-m-title">GPT Architecture — Complete nanoGPT</div>
+          <div class="le-m-sub">Token embeddings → attention blocks → language model head</div>
+        </div>
+        <div class="le-m-stack">
+          <span class="le-tag le-fw">PyTorch</span>
+          <span class="le-tag le-fw">Flash Attention</span>
+          <span class="le-tag le-fw">weight tying</span>
+        </div>
+      </div>
+      <div class="le-module-body">
+        <div class="le-callout">This is the complete GPT model from nanoGPT. ~120 lines. Every frontier LLM is a scaled version of this structure — same blocks, same residual connections, bigger numbers.</div>
+        <pre class="le-pre"><code><span class="le-kw">from</span> dataclasses <span class="le-kw">import</span> dataclass
+<span class="le-kw">import</span> torch, torch.nn <span class="le-kw">as</span> nn, torch.nn.functional <span class="le-kw">as</span> F
+
+<span class="le-cls">@dataclass</span>
+<span class="le-kw">class</span> <span class="le-cls">GPTConfig</span>:
+    block_size: int = <span class="le-num">1024</span>    <span class="le-c"># context window length</span>
+    vocab_size: int = <span class="le-num">50304</span>   <span class="le-c"># GPT-2 vocab, padded to multiple of 64</span>
+    n_layer:    int = <span class="le-num">12</span>       <span class="le-c"># transformer blocks (GPT-2 small=12, medium=24, large=36)</span>
+    n_head:     int = <span class="le-num">12</span>       <span class="le-c"># attention heads</span>
+    n_embd:     int = <span class="le-num">768</span>      <span class="le-c"># embedding dim (GPT-2 small)</span>
+
+<span class="le-kw">class</span> <span class="le-cls">CausalSelfAttention</span>(nn.Module):
+    <span class="le-kw">def</span> <span class="le-fn">__init__</span>(self, config):
+        super().__init__()
+        assert config.n_embd % config.n_head == <span class="le-num">0</span>
+        self.n_head = config.n_head
+        self.n_embd = config.n_embd
+        self.c_attn = nn.Linear(config.n_embd, <span class="le-num">3</span> * config.n_embd, bias=<span class="le-kw">False</span>)
+        self.c_proj = nn.Linear(config.n_embd, config.n_embd, bias=<span class="le-kw">False</span>)
+        self.c_proj.NANOGPT_SCALE_INIT = <span class="le-num">1</span>  <span class="le-c"># flag for special init</span>
+
+    <span class="le-kw">def</span> <span class="le-fn">forward</span>(self, x):
+        B, T, C = x.size()
+        q, k, v = self.c_attn(x).split(self.n_embd, dim=<span class="le-num">2</span>)
+        head_dim = C // self.n_head
+        q = q.view(B, T, self.n_head, head_dim).transpose(<span class="le-num">1</span>, <span class="le-num">2</span>)
+        k = k.view(B, T, self.n_head, head_dim).transpose(<span class="le-num">1</span>, <span class="le-num">2</span>)
+        v = v.view(B, T, self.n_head, head_dim).transpose(<span class="le-num">1</span>, <span class="le-num">2</span>)
+        <span class="le-c"># PyTorch 2.0 fused FlashAttention — no attention matrix stored in memory</span>
+        y = F.scaled_dot_product_attention(q, k, v, is_causal=<span class="le-kw">True</span>)
+        y = y.transpose(<span class="le-num">1</span>, <span class="le-num">2</span>).contiguous().view(B, T, C)
+        <span class="le-kw">return</span> self.c_proj(y)
+
+<span class="le-kw">class</span> <span class="le-cls">MLP</span>(nn.Module):
+    <span class="le-kw">def</span> <span class="le-fn">__init__</span>(self, config):
+        super().__init__()
+        self.c_fc   = nn.Linear(config.n_embd, <span class="le-num">4</span> * config.n_embd, bias=<span class="le-kw">False</span>)
+        self.c_proj = nn.Linear(<span class="le-num">4</span> * config.n_embd, config.n_embd, bias=<span class="le-kw">False</span>)
+        self.gelu   = nn.GELU(approximate=<span class="le-str">"tanh"</span>)  <span class="le-c"># GPT-2 used tanh approx</span>
+        self.c_proj.NANOGPT_SCALE_INIT = <span class="le-num">1</span>
+
+    <span class="le-kw">def</span> <span class="le-fn">forward</span>(self, x):
+        <span class="le-kw">return</span> self.c_proj(self.gelu(self.c_fc(x)))
+
+<span class="le-kw">class</span> <span class="le-cls">Block</span>(nn.Module):
+    <span class="le-kw">def</span> <span class="le-fn">__init__</span>(self, config):
+        super().__init__()
+        self.ln_1 = nn.LayerNorm(config.n_embd)
+        self.attn = CausalSelfAttention(config)
+        self.ln_2 = nn.LayerNorm(config.n_embd)
+        self.mlp  = MLP(config)
+
+    <span class="le-kw">def</span> <span class="le-fn">forward</span>(self, x):
+        x = x + self.attn(self.ln_1(x))  <span class="le-c"># Pre-norm: normalize BEFORE attention</span>
+        x = x + self.mlp(self.ln_2(x))   <span class="le-c"># Residual connections preserve gradients</span>
+        <span class="le-kw">return</span> x
+
+<span class="le-kw">class</span> <span class="le-cls">GPT</span>(nn.Module):
+    <span class="le-kw">def</span> <span class="le-fn">__init__</span>(self, config):
+        super().__init__()
+        self.config = config
+        self.transformer = nn.ModuleDict(dict(
+            wte  = nn.Embedding(config.vocab_size, config.n_embd),   <span class="le-c"># token embeddings</span>
+            wpe  = nn.Embedding(config.block_size, config.n_embd),   <span class="le-c"># position embeddings</span>
+            h    = nn.ModuleList([Block(config) <span class="le-kw">for</span> _ <span class="le-kw">in</span> range(config.n_layer)]),
+            ln_f = nn.LayerNorm(config.n_embd),
+        ))
+        self.lm_head = nn.Linear(config.n_embd, config.vocab_size, bias=<span class="le-kw">False</span>)
+        <span class="le-c"># Weight tying: same matrix for input embedding and output projection</span>
+        <span class="le-c"># Halves parameters; GPT-2 paper found it improves perplexity</span>
+        self.transformer.wte.weight = self.lm_head.weight
+        self.apply(self._init_weights)
+
+    <span class="le-kw">def</span> <span class="le-fn">_init_weights</span>(self, module):
+        std = <span class="le-num">0.02</span>
+        <span class="le-kw">if</span> hasattr(module, <span class="le-str">'NANOGPT_SCALE_INIT'</span>):
+            std *= (<span class="le-num">2</span> * self.config.n_layer) ** -<span class="le-num">0.5</span>  <span class="le-c"># scale down residual projections</span>
+        <span class="le-kw">if</span> isinstance(module, nn.Linear):
+            torch.nn.init.normal_(module.weight, mean=<span class="le-num">0.0</span>, std=std)
+        <span class="le-kw">elif</span> isinstance(module, nn.Embedding):
+            torch.nn.init.normal_(module.weight, mean=<span class="le-num">0.0</span>, std=<span class="le-num">0.02</span>)
+
+    <span class="le-kw">def</span> <span class="le-fn">forward</span>(self, idx, targets=<span class="le-kw">None</span>):
+        B, T = idx.size()
+        pos = torch.arange(<span class="le-num">0</span>, T, device=idx.device)
+        x = self.transformer.wte(idx) + self.transformer.wpe(pos)
+        <span class="le-kw">for</span> block <span class="le-kw">in</span> self.transformer.h:
+            x = block(x)
+        x = self.transformer.ln_f(x)
+        logits = self.lm_head(x)                     <span class="le-c"># (B, T, vocab_size)</span>
+        loss = <span class="le-kw">None</span>
+        <span class="le-kw">if</span> targets <span class="le-kw">is not None</span>:
+            loss = F.cross_entropy(logits.view(-<span class="le-num">1</span>, logits.size(-<span class="le-num">1</span>)), targets.view(-<span class="le-num">1</span>))
+        <span class="le-kw">return</span> logits, loss
+
+    <span class="le-kw">@torch</span>.no_grad()
+    <span class="le-kw">def</span> <span class="le-fn">generate</span>(self, idx, max_new_tokens, temperature=<span class="le-num">1.0</span>, top_k=<span class="le-kw">None</span>):
+        <span class="le-kw">for</span> _ <span class="le-kw">in</span> range(max_new_tokens):
+            idx_cond = idx[:, -self.config.block_size:]   <span class="le-c"># crop to context window</span>
+            logits, _ = self(idx_cond)
+            logits = logits[:, -<span class="le-num">1</span>, :] / temperature    <span class="le-c"># last token logits</span>
+            <span class="le-kw">if</span> top_k <span class="le-kw">is not None</span>:
+                v, _ = torch.topk(logits, min(top_k, logits.size(-<span class="le-num">1</span>)))
+                logits[logits &lt; v[:, [-<span class="le-num">1</span>]]] = float(<span class="le-str">'-inf'</span>)
+            probs = F.softmax(logits, dim=-<span class="le-num">1</span>)
+            idx_next = torch.multinomial(probs, num_samples=<span class="le-num">1</span>)
+            idx = torch.cat((idx, idx_next), dim=<span class="le-num">1</span>)
+        <span class="le-kw">return</span> idx
+
+<span class="le-c"># Instantiate GPT-2 small (124M params)</span>
+model = GPT(GPTConfig()).cuda()
+print(f"Parameters: {sum(p.numel() for p in model.parameters()):,}")
+<span class="le-c"># Parameters: 124,439,808</span></code></pre>
+      </div>
+    </div>
+
+    <!-- ── Module 4: Training ── -->
+    <div class="le-module" id="lem-train">
+      <div class="le-module-header le-m4">
+        <div class="le-m-num">04</div>
+        <div class="le-m-meta">
+          <div class="le-m-title">Pre-training — The Complete Training Loop</div>
+          <div class="le-m-sub">Gradient accumulation · mixed precision · cosine schedule · DDP</div>
+        </div>
+        <div class="le-m-stack">
+          <span class="le-tag le-fw">PyTorch DDP</span>
+          <span class="le-tag le-fw">bfloat16</span>
+          <span class="le-tag le-fw">wandb</span>
+        </div>
+      </div>
+      <div class="le-module-body">
+        <div class="le-step-flow">
+          <div class="le-step">
+            <div class="le-step-num">1</div>
+            <div class="le-step-body">
+              <div class="le-step-title">Configure AdamW with weight decay</div>
+              <pre class="le-pre"><code><span class="le-kw">def</span> <span class="le-fn">configure_optimizers</span>(model, weight_decay, lr):
+    <span class="le-c"># Separate params: decay weights (not biases, embeddings, LN)</span>
+    decay   = {n <span class="le-kw">for</span> n,p <span class="le-kw">in</span> model.named_parameters() <span class="le-kw">if</span> p.dim() &gt;= <span class="le-num">2</span>}
+    no_decay = {n <span class="le-kw">for</span> n,p <span class="le-kw">in</span> model.named_parameters() <span class="le-kw">if</span> p.dim() &lt; <span class="le-num">2</span>}
+    param_groups = [
+        {<span class="le-str">"params"</span>: [p <span class="le-kw">for</span> n,p <span class="le-kw">in</span> model.named_parameters() <span class="le-kw">if</span> n <span class="le-kw">in</span> decay],
+         <span class="le-str">"weight_decay"</span>: weight_decay},
+        {<span class="le-str">"params"</span>: [p <span class="le-kw">for</span> n,p <span class="le-kw">in</span> model.named_parameters() <span class="le-kw">if</span> n <span class="le-kw">in</span> no_decay],
+         <span class="le-str">"weight_decay"</span>: <span class="le-num">0.0</span>},
+    ]
+    <span class="le-kw">return</span> torch.optim.AdamW(param_groups, lr=lr, betas=(<span class="le-num">0.9</span>, <span class="le-num">0.95</span>), eps=<span class="le-num">1e-8</span>, fused=<span class="le-kw">True</span>)</code></pre>
+            </div>
+          </div>
+          <div class="le-step">
+            <div class="le-step-num">2</div>
+            <div class="le-step-body">
+              <div class="le-step-title">Multi-GPU with DDP + compile for 2x speed</div>
+              <pre class="le-pre"><code><span class="le-c"># Run with: torchrun --nproc_per_node=8 train.py</span>
+<span class="le-kw">import</span> torch.distributed <span class="le-kw">as</span> dist
+<span class="le-kw">from</span> torch.nn.parallel <span class="le-kw">import</span> DistributedDataParallel <span class="le-kw">as</span> DDP
+
+dist.init_process_group(backend=<span class="le-str">"nccl"</span>)
+rank = dist.get_rank()
+model = GPT(GPTConfig()).to(rank)
+model = torch.compile(model)  <span class="le-c"># PyTorch 2.0: fuse ops, ~2x faster training</span>
+model = DDP(model, device_ids=[rank])
+
+<span class="le-c"># Only log from rank 0</span>
+<span class="le-kw">if</span> rank == <span class="le-num">0</span>:
+    <span class="le-kw">import</span> wandb
+    wandb.init(project=<span class="le-str">"my-gpt"</span>)</code></pre>
+            </div>
+          </div>
+          <div class="le-step">
+            <div class="le-step-num">3</div>
+            <div class="le-step-body">
+              <div class="le-step-title">Checkpoint and resume</div>
+              <pre class="le-pre"><code><span class="le-c"># Save checkpoint every 1000 steps</span>
+<span class="le-kw">if</span> step % <span class="le-num">1000</span> == <span class="le-num">0</span> <span class="le-kw">and</span> rank == <span class="le-num">0</span>:
+    torch.save({
+        <span class="le-str">'step'</span>: step, <span class="le-str">'model'</span>: model.module.state_dict(),
+        <span class="le-str">'optimizer'</span>: optimizer.state_dict(), <span class="le-str">'val_loss'</span>: val_loss,
+    }, <span class="le-kw">f</span><span class="le-str">"ckpt_{step:06d}.pt"</span>)
+
+<span class="le-c"># Resume from checkpoint</span>
+ckpt = torch.load(<span class="le-str">"ckpt_050000.pt"</span>)
+model.load_state_dict(ckpt[<span class="le-str">'model'</span>])
+optimizer.load_state_dict(ckpt[<span class="le-str">'optimizer'</span>])
+start_step = ckpt[<span class="le-str">'step'</span>] + <span class="le-num">1</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Module 5-8: Quick Reference ── -->
+    <div class="le-quick-ref">
+      <div class="le-qr-title">⚡ Stages 5–8: Quick Reference Commands</div>
+      <div class="le-qr-grid">
+        <div class="le-qr-card">
+          <div class="le-qr-stage">05 — SFT + DPO</div>
+          <pre class="le-pre le-qr-pre"><code><span class="le-c"># Full SFT pipeline in one command (Axolotl)</span>
+axolotl train config.yaml
+<span class="le-c"># config.yaml sets model, dataset, LoRA rank,</span>
+<span class="le-c"># epochs, lr, output dir — no Python needed</span>
+
+<span class="le-c"># Or TRL SFT + DPO (see per-stage code above)</span>
+python sft_train.py --model llama3.1-8b
+python dpo_train.py --beta 0.1</code></pre>
+        </div>
+        <div class="le-qr-card">
+          <div class="le-qr-stage">06 — LoRA / QLoRA</div>
+          <pre class="le-pre le-qr-pre"><code><span class="le-c"># Merge LoRA adapters after training</span>
+python merge_lora.py \
+  --base meta-llama/Llama-3.1-8B \
+  --adapter ./lora-output \
+  --out ./merged-model
+
+<span class="le-c"># Upload to HuggingFace Hub</span>
+huggingface-cli upload \
+  ./merged-model my-org/my-llama-3.1-8b</code></pre>
+        </div>
+        <div class="le-qr-card">
+          <div class="le-qr-stage">07 — Eval</div>
+          <pre class="le-pre le-qr-pre"><code><span class="le-c"># Run lm-evaluation-harness</span>
+lm_eval --model hf \
+  --model_args pretrained=./model \
+  --tasks hellaswag,arc_challenge,mmlu \
+  --num_fewshot 5 \
+  --output_path ./results.json
+
+<span class="le-c"># View results</span>
+python -m lm_eval.utils.display_results \
+  ./results.json</code></pre>
+        </div>
+        <div class="le-qr-card">
+          <div class="le-qr-stage">08 — Serve</div>
+          <pre class="le-pre le-qr-pre"><code><span class="le-c"># vLLM OpenAI-compatible server</span>
+vllm serve ./merged-model \
+  --port 8000 \
+  --tensor-parallel-size 2 \
+  --served-model-name my-llm
+
+<span class="le-c"># Convert to GGUF for CPU inference</span>
+python llama.cpp/convert_hf_to_gguf.py \
+  ./merged-model --outtype q4_k_m \
+  --outfile model.gguf</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="le-resources">
+      <div class="le-res-title">📚 Essential Reading Order</div>
+      <div class="le-res-list">
+        <div class="le-res-item">
+          <div class="le-res-order">1</div>
+          <div class="le-res-body">
+            <div class="le-res-name">Neural Networks: Zero to Hero (Karpathy, YouTube)</div>
+            <div class="le-res-desc">Watch all 8 videos in order. Build micrograd → makemore → nanoGPT. The single best engineering path into LLMs.</div>
+          </div>
+        </div>
+        <div class="le-res-item">
+          <div class="le-res-order">2</div>
+          <div class="le-res-body">
+            <div class="le-res-name">nanoGPT source code (github.com/karpathy/nanoGPT)</div>
+            <div class="le-res-desc">Read train.py and model.py line by line. Train on Shakespeare (~10 min on a single GPU). Then train on OpenWebText.</div>
+          </div>
+        </div>
+        <div class="le-res-item">
+          <div class="le-res-order">3</div>
+          <div class="le-res-body">
+            <div class="le-res-name">Attention Is All You Need (Vaswani et al. 2017)</div>
+            <div class="le-res-desc">Read the paper after implementing nanoGPT — every design choice will be obvious. Pay attention to the multi-head attention diagram and positional encoding.</div>
+          </div>
+        </div>
+        <div class="le-res-item">
+          <div class="le-res-order">4</div>
+          <div class="le-res-body">
+            <div class="le-res-name">Dive into Deep Learning (d2l.ai) — Chapters 9–11</div>
+            <div class="le-res-desc">Attention mechanisms, transformer encoder/decoder, and BERT chapters. Every code block is runnable in the browser.</div>
+          </div>
+        </div>
+        <div class="le-res-item">
+          <div class="le-res-order">5</div>
+          <div class="le-res-body">
+            <div class="le-res-name">TRL Documentation + Hugging Face Alignment Handbook</div>
+            <div class="le-res-desc">github.com/huggingface/alignment-handbook — production SFT+DPO recipes for LLaMA, Mistral, Gemma with working configs.</div>
+          </div>
+        </div>
+        <div class="le-res-item">
+          <div class="le-res-order">6</div>
+          <div class="le-res-body">
+            <div class="le-res-name">llm.c (Karpathy) — GPT-2 in pure C/CUDA</div>
+            <div class="le-res-desc">After nanoGPT, read llm.c to understand what PyTorch abstracts away. CUDA kernels, memory layout, attention math at the metal level.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END LLM ENGINEERING JOURNEY -->
+
 <section id="agentmode-journey" class="section bg-darker agentmode-section hidden">
   <div class="container">
     <div class="section-header">
