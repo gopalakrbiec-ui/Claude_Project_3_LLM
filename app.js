@@ -14,7 +14,6 @@ const MODE_LABELS = {
   investor:   "Investor's Perspective",
   founder:    "Founder's Perspective",
   agentmode:  'Agentic AI Mode',
-  llmeng:     'LLM Engineering',
 };
 
 function setMode(mode) {
@@ -36,7 +35,6 @@ function setMode(mode) {
         investor:   'linear-gradient(135deg,#16a34a,#0891b2)',
         founder:    'linear-gradient(135deg,#d97706,#7c3aed)',
         agentmode:  'linear-gradient(135deg,#06b6d4,#6366f1)',
-        llmeng:     'linear-gradient(135deg,#059669,#0891b2)',
       };
       lbl.style.backgroundImage = gradients[mode] || gradients.layman;
       lbl.style.webkitBackgroundClip = 'text';
@@ -53,13 +51,12 @@ function setMode(mode) {
   const btnInvestor = document.getElementById('btnInvestor');
   const btnFounder   = document.getElementById('btnFounder');
   const btnAgentMode = document.getElementById('btnAgentMode');
-  const btnLLMEng   = document.getElementById('btnLLMEng');
 
   // Reset all buttons
-  [btnLayman, btnGrad, btnResearch, btnTeam, btnStartup, btnInvestor, btnFounder, btnAgentMode, btnLLMEng].forEach(b => b && b.classList.remove('active'));
+  [btnLayman, btnGrad, btnResearch, btnTeam, btnStartup, btnInvestor, btnFounder, btnAgentMode].forEach(b => b && b.classList.remove('active'));
 
   // Hide ALL mode content
-  document.querySelectorAll('.layman-text, .grad-text, .researcher-text, .team-text, .startup-text, .investor-text, .founder-text, .agentmode-text, .llmeng-text')
+  document.querySelectorAll('.layman-text, .grad-text, .researcher-text, .team-text, .startup-text, .investor-text, .founder-text, .agentmode-text')
     .forEach(el => el.classList.add('hidden'));
 
   // Hide special sections
@@ -70,7 +67,6 @@ function setMode(mode) {
   const investorSection = document.getElementById('investor-journey');
   const founderSection   = document.getElementById('founder-journey');
   const agentmodeSection = document.getElementById('agentmode-journey');
-  const llmengSection    = document.getElementById('llmeng-journey');
   const navTeam          = document.getElementById('navTeam');
   const navGrad          = document.getElementById('navGrad');
   const navResearch      = document.getElementById('navResearch');
@@ -78,7 +74,6 @@ function setMode(mode) {
   const navInvestor      = document.getElementById('navInvestor');
   const navFounder       = document.getElementById('navFounder');
   const navAgentMode     = document.getElementById('navAgentMode');
-  const navLLMEng        = document.getElementById('navLLMEng');
   if (gradSection)           gradSection.classList.add('hidden');
   if (resSection)            resSection.classList.add('hidden');
   if (teamSection)           teamSection.classList.add('hidden');
@@ -86,7 +81,6 @@ function setMode(mode) {
   if (investorSection)       investorSection.classList.add('hidden');
   if (founderSection)        founderSection.classList.add('hidden');
   if (agentmodeSection)      agentmodeSection.classList.add('hidden');
-  if (llmengSection)         llmengSection.classList.add('hidden');
   if (navTeam)          navTeam.classList.add('hidden');
   if (navGrad)          navGrad.classList.add('hidden');
   if (navResearch)      navResearch.classList.add('hidden');
@@ -94,7 +88,6 @@ function setMode(mode) {
   if (navInvestor)      navInvestor.classList.add('hidden');
   if (navFounder)       navFounder.classList.add('hidden');
   if (navAgentMode)     navAgentMode.classList.add('hidden');
-  if (navLLMEng)        navLLMEng.classList.add('hidden');
 
   if (mode === 'layman') {
     btnLayman.classList.add('active');
@@ -164,12 +157,6 @@ function setMode(mode) {
     document.querySelectorAll('.agentmode-text').forEach(el => el.classList.remove('hidden'));
     if (agentmodeSection) agentmodeSection.classList.remove('hidden');
     if (navAgentMode)     navAgentMode.classList.remove('hidden');
-
-  } else if (mode === 'llmeng') {
-    btnLLMEng.classList.add('active');
-    document.querySelectorAll('.llmeng-text').forEach(el => el.classList.remove('hidden'));
-    if (llmengSection) llmengSection.classList.remove('hidden');
-    if (navLLMEng)     navLLMEng.classList.remove('hidden');
   }
 
   // Persist
