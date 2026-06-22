@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     /* ── Layout ── */
-    .news-main  { padding: 2rem 0 5rem; }
-    .news-hero  {
+    .news-main { padding: 2rem 0 5rem; }
+    .news-hero {
       text-align: center;
       padding: 2rem 0 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid var(--border);
       margin-bottom: 2rem;
     }
-    .news-hero h2 { font-size: 1.9rem; font-weight: 800; color: #f1f5f9; margin-bottom: .5rem; }
-    .news-hero p  { color: #94a3b8; font-size: .9rem; }
+    .news-hero h2 { font-size: 1.9rem; font-weight: 800; color: var(--text); margin-bottom: .5rem; }
+    .news-hero p  { color: var(--text-muted); font-size: .9rem; }
 
     /* ── Status bar ── */
     .news-status {
@@ -24,31 +24,28 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: .75rem;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: .75rem 1.25rem;
       margin-bottom: 1.75rem;
       font-size: .82rem;
     }
-    .news-status-left  { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .news-status-left { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
     .status-dot {
       width: 8px; height: 8px; border-radius: 50%;
-      background: #10b981; box-shadow: 0 0 6px #10b981;
+      background: #059669; box-shadow: 0 0 6px rgba(5,150,105,.5);
       display: inline-block; margin-right: .4rem;
       animation: pulse-dot 2s infinite;
     }
-    @keyframes pulse-dot {
-      0%,100%{ opacity:1; }
-      50%{ opacity:.4; }
-    }
-    .status-live   { color: #10b981; font-weight: 600; }
-    .status-time   { color: #94a3b8; }
-    .status-next   { color: #7dd3fc; }
+    @keyframes pulse-dot { 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+    .status-live  { color: #059669; font-weight: 600; }
+    .status-time  { color: var(--text-muted); }
+    .status-next  { color: var(--accent3); }
     .news-refresh-btn {
-      background: rgba(99,102,241,.2);
-      border: 1px solid rgba(99,102,241,.4);
-      color: #a5b4fc;
+      background: rgba(79,70,229,.1);
+      border: 1px solid rgba(79,70,229,.3);
+      color: var(--accent);
       padding: .35rem .9rem;
       border-radius: 8px;
       font-size: .8rem;
@@ -56,8 +53,8 @@
       cursor: pointer;
       transition: background .2s;
     }
-    .news-refresh-btn:hover { background: rgba(99,102,241,.35); }
-    .news-refresh-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .news-refresh-btn:hover   { background: rgba(79,70,229,.18); }
+    .news-refresh-btn:disabled{ opacity: .5; cursor: not-allowed; }
 
     /* ── Category tabs ── */
     .news-tabs {
@@ -72,17 +69,17 @@
       font-size: .78rem;
       font-weight: 600;
       cursor: pointer;
-      border: 1px solid rgba(255,255,255,.1);
-      color: #94a3b8;
-      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: var(--bg-card2);
       transition: all .2s;
       white-space: nowrap;
     }
-    .news-tab:hover  { color: #e2e8f0; border-color: rgba(255,255,255,.25); }
+    .news-tab:hover { color: var(--text); border-color: #9ca3af; background: #fff; }
     .news-tab.active {
       color: #fff;
-      background: var(--tab-color, rgba(99,102,241,.4));
-      border-color: var(--tab-color, rgba(99,102,241,.6));
+      background: var(--tab-color, var(--accent));
+      border-color: var(--tab-color, var(--accent));
     }
 
     /* ── Grid ── */
@@ -96,19 +93,21 @@
 
     /* ── Article card ── */
     .news-card {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
+      background: #fff;
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1.1rem 1.25rem;
       display: flex;
       flex-direction: column;
       gap: .6rem;
-      transition: border-color .2s, transform .15s;
+      transition: border-color .2s, box-shadow .2s, transform .15s;
       text-decoration: none;
       color: inherit;
+      box-shadow: var(--shadow);
     }
     .news-card:hover {
-      border-color: rgba(255,255,255,.2);
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(79,70,229,.12);
       transform: translateY(-2px);
     }
     .nc-source {
@@ -118,23 +117,25 @@
     }
     .nc-source-icon {
       width: 18px; height: 18px; border-radius: 4px;
-      background: rgba(255,255,255,.1);
+      background: var(--bg-card2);
       display: flex; align-items: center; justify-content: center;
       font-size: .65rem;
+      border: 1px solid var(--border);
     }
-    .nc-source-name { font-size: .72rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
-    .nc-date        { font-size: .7rem; color: #475569; margin-left: auto; }
-    .nc-title       { font-size: .88rem; font-weight: 600; color: #e2e8f0; line-height: 1.5; flex: 1; }
-    .nc-desc        { font-size: .75rem; color: #64748b; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .nc-source-name { font-size: .72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
+    .nc-date        { font-size: .7rem; color: #9ca3af; margin-left: auto; }
+    .nc-title       { font-size: .88rem; font-weight: 600; color: var(--text); line-height: 1.5; flex: 1; }
+    .nc-desc        { font-size: .78rem; color: var(--text-secondary); line-height: 1.55;
+                      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .nc-tag {
       align-self: flex-start;
-      padding: .18rem .55rem;
+      padding: .2rem .6rem;
       border-radius: 9999px;
       font-size: .68rem;
       font-weight: 600;
-      background: var(--tab-color-dim, rgba(99,102,241,.15));
-      color: var(--tab-color-text, #a5b4fc);
-      border: 1px solid var(--tab-color-border, rgba(99,102,241,.25));
+      background: var(--tab-color-dim, rgba(79,70,229,.08));
+      color: var(--tab-color-text, var(--accent));
+      border: 1px solid var(--tab-color-border, rgba(79,70,229,.2));
     }
 
     /* ── Skeleton loader ── */
@@ -146,15 +147,16 @@
     @media(max-width:1024px){ .news-skeleton { grid-template-columns: repeat(2,1fr); } }
     @media(max-width:640px) { .news-skeleton { grid-template-columns: 1fr; } }
     .sk-card {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.06);
+      background: #fff;
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1.1rem 1.25rem;
       display: flex; flex-direction: column; gap: .7rem;
+      box-shadow: var(--shadow);
     }
     .sk-line {
       border-radius: 6px;
-      background: linear-gradient(90deg, rgba(255,255,255,.06) 25%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.06) 75%);
+      background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
     }
@@ -169,23 +171,23 @@
     .news-empty {
       text-align: center;
       padding: 3rem 1rem;
-      color: #64748b;
+      color: var(--text-muted);
       grid-column: 1/-1;
     }
     .news-empty-icon { font-size: 2.5rem; margin-bottom: .75rem; }
-    .news-empty h4 { color: #94a3b8; font-size: 1rem; margin-bottom: .4rem; }
-    .news-empty p { font-size: .82rem; }
-    .news-empty a { color: #7dd3fc; }
+    .news-empty h4 { color: var(--text-secondary); font-size: 1rem; margin-bottom: .4rem; }
+    .news-empty p  { font-size: .82rem; }
+    .news-empty a  { color: var(--accent); }
 
     /* ── Sources panel ── */
     .news-sources {
       margin-top: 2.5rem;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1.25rem 1.5rem;
     }
-    .ns-title { font-size: .88rem; font-weight: 700; color: #94a3b8; margin-bottom: 1rem; }
+    .ns-title { font-size: .88rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 1rem; }
     .ns-grid {
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -195,10 +197,10 @@
     @media(max-width:500px){ .ns-grid { grid-template-columns: 1fr; } }
     .ns-item {
       display: flex; align-items: center; gap: .5rem;
-      font-size: .75rem; color: #64748b;
+      font-size: .75rem; color: var(--text-secondary);
     }
     .ns-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .ns-link { color: #7dd3fc; text-decoration: none; }
+    .ns-link { color: var(--accent); text-decoration: none; }
     .ns-link:hover { text-decoration: underline; }
 
     /* ── Schedule banner ── */
@@ -211,19 +213,20 @@
     .ns-card {
       flex: 1;
       min-width: 200px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
+      background: #fff;
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: .85rem 1.1rem;
       display: flex;
       align-items: center;
       gap: .75rem;
+      box-shadow: var(--shadow);
     }
     .ns-icon { font-size: 1.5rem; }
-    .ns-label { font-size: .72rem; color: #64748b; text-transform: uppercase; letter-spacing: .05em; }
-    .ns-time  { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
-    .ns-tz    { font-size: .7rem; color: #475569; }
-    .ns-countdown { font-size: .75rem; color: #7dd3fc; margin-top: .15rem; }
+    .ns-label { font-size: .72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+    .ns-time  { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .ns-tz    { font-size: .7rem; color: #9ca3af; }
+    .ns-countdown { font-size: .75rem; color: var(--accent3); font-weight: 600; margin-top: .15rem; }
   </style>
 </head>
 <body>
@@ -428,18 +431,18 @@ const FEEDS = [
 
 /* ── Category metadata ── */
 const CAT_META = {
-  all:         { label: '🌐 All News',      color: 'rgba(99,102,241,.4)',   text: '#a5b4fc',   border: 'rgba(99,102,241,.3)' },
-  research:    { label: '🔬 Research',       color: 'rgba(217,119,6,.15)',   text: '#fbbf24',   border: 'rgba(217,119,6,.3)'  },
-  investments: { label: '💰 Investments',    color: 'rgba(22,163,74,.15)',   text: '#4ade80',   border: 'rgba(22,163,74,.3)'  },
-  adoption:    { label: '🏢 Adoption',       color: 'rgba(8,145,178,.15)',   text: '#38bdf8',   border: 'rgba(8,145,178,.3)'  },
-  startups:    { label: '🚀 Startups',       color: 'rgba(236,72,153,.15)',  text: '#f9a8d4',   border: 'rgba(236,72,153,.3)' },
-  political:   { label: '🏛️ Political',      color: 'rgba(239,68,68,.15)',   text: '#fca5a5',   border: 'rgba(239,68,68,.3)'  },
-  llm:         { label: '🤖 LLM News',       color: 'rgba(139,92,246,.15)',  text: '#c4b5fd',   border: 'rgba(139,92,246,.3)' },
-  india:       { label: '🇮🇳 India AI',       color: 'rgba(249,115,22,.15)',  text: '#fdba74',   border: 'rgba(249,115,22,.3)' },
-  china:       { label: '🇨🇳 China AI',       color: 'rgba(220,38,38,.15)',   text: '#fca5a5',   border: 'rgba(220,38,38,.3)'  },
-  opensource:  { label: '🟢 Open Source',    color: 'rgba(5,150,105,.15)',   text: '#6ee7b7',   border: 'rgba(5,150,105,.3)'  },
-  future:      { label: '🔮 Future of AI',   color: 'rgba(6,182,212,.15)',   text: '#67e8f9',   border: 'rgba(6,182,212,.3)'  },
-  agi:         { label: '🧠 AGI',            color: 'rgba(99,102,241,.2)',   text: '#a5b4fc',   border: 'rgba(99,102,241,.35)' },
+  all:         { label: '🌐 All News',      color: '#4f46e5', text: '#fff', border: '#4f46e5', dim: 'rgba(79,70,229,.08)',   dimText: '#4f46e5',   dimBorder: 'rgba(79,70,229,.25)'  },
+  research:    { label: '🔬 Research',       color: '#d97706', text: '#fff', border: '#d97706', dim: 'rgba(217,119,6,.08)',  dimText: '#b45309',   dimBorder: 'rgba(217,119,6,.3)'   },
+  investments: { label: '💰 Investments',    color: '#16a34a', text: '#fff', border: '#16a34a', dim: 'rgba(22,163,74,.08)',  dimText: '#15803d',   dimBorder: 'rgba(22,163,74,.3)'   },
+  adoption:    { label: '🏢 Adoption',       color: '#0891b2', text: '#fff', border: '#0891b2', dim: 'rgba(8,145,178,.08)',  dimText: '#0369a1',   dimBorder: 'rgba(8,145,178,.3)'   },
+  startups:    { label: '🚀 Startups',       color: '#db2777', text: '#fff', border: '#db2777', dim: 'rgba(219,39,119,.08)', dimText: '#be185d',   dimBorder: 'rgba(219,39,119,.3)'  },
+  political:   { label: '🏛️ Political',      color: '#dc2626', text: '#fff', border: '#dc2626', dim: 'rgba(220,38,38,.08)',  dimText: '#b91c1c',   dimBorder: 'rgba(220,38,38,.3)'   },
+  llm:         { label: '🤖 LLM News',       color: '#7c3aed', text: '#fff', border: '#7c3aed', dim: 'rgba(124,58,237,.08)', dimText: '#6d28d9',   dimBorder: 'rgba(124,58,237,.3)'  },
+  india:       { label: '🇮🇳 India AI',       color: '#ea580c', text: '#fff', border: '#ea580c', dim: 'rgba(234,88,12,.08)',  dimText: '#c2410c',   dimBorder: 'rgba(234,88,12,.3)'   },
+  china:       { label: '🇨🇳 China AI',       color: '#dc2626', text: '#fff', border: '#dc2626', dim: 'rgba(220,38,38,.08)',  dimText: '#991b1b',   dimBorder: 'rgba(220,38,38,.25)'  },
+  opensource:  { label: '🟢 Open Source',    color: '#059669', text: '#fff', border: '#059669', dim: 'rgba(5,150,105,.08)',  dimText: '#047857',   dimBorder: 'rgba(5,150,105,.3)'   },
+  future:      { label: '🔮 Future of AI',   color: '#0891b2', text: '#fff', border: '#0891b2', dim: 'rgba(6,182,212,.08)',  dimText: '#0e7490',   dimBorder: 'rgba(6,182,212,.3)'   },
+  agi:         { label: '🧠 AGI',            color: '#4f46e5', text: '#fff', border: '#4f46e5', dim: 'rgba(79,70,229,.08)',  dimText: '#3730a3',   dimBorder: 'rgba(79,70,229,.25)'  },
 };
 
 /* ── State ── */
@@ -550,9 +553,10 @@ function renderArticles() {
   grid.innerHTML = list.slice(0, 60).map(a => {
     const ago = timeAgo(a.date);
     const desc = a.desc ? a.desc.slice(0, 140) + (a.desc.length > 140 ? '…' : '') : '';
+    const cm = CAT_META[a.cat] || CAT_META.all;
     return `
       <a class="news-card" href="${escHtml(a.link)}" target="_blank" rel="noopener"
-         style="--tab-color:${meta.color}; --tab-color-dim:${meta.color}; --tab-color-text:${meta.text}; --tab-color-border:${meta.border}">
+         style="--tab-color:${cm.color}; --tab-color-dim:${cm.dim}; --tab-color-text:${cm.dimText}; --tab-color-border:${cm.dimBorder}">
         <div class="nc-source">
           <div class="nc-source-icon">${a.icon}</div>
           <div class="nc-source-name">${escHtml(a.source)}</div>
@@ -560,7 +564,7 @@ function renderArticles() {
         </div>
         <div class="nc-title">${escHtml(a.title)}</div>
         ${desc ? `<div class="nc-desc">${escHtml(desc)}</div>` : ''}
-        <div class="nc-tag">${CAT_META[a.cat]?.label || a.cat}</div>
+        <div class="nc-tag">${cm.label}</div>
       </a>`;
   }).join('');
 }
