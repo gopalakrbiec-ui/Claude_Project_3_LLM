@@ -17,20 +17,17 @@ MARKER_START = "<!-- BLOG_POSTS_START -->"
 MARKER_END   = "<!-- BLOG_POSTS_END -->"
 
 def build_table(posts):
-    lines = [
-        "| | Title | Tags | Date | Read |",
-        "|---|---|---|---|---|",
-    ]
+    lines = []
     for p in posts:
-        emoji  = p.get("emoji", "📝")
-        title  = p.get("title", "Untitled")
-        slug   = p.get("slug", "")
-        tags   = ", ".join(p.get("tags", []))
-        date   = p.get("date", "")
-        rt     = p.get("readTime", "")
-        url    = f"{BASE_URL}/blog/{slug}.html"
+        emoji    = p.get("emoji", "📝")
+        title    = p.get("title", "Untitled")
+        slug     = p.get("slug", "")
+        tags     = ", ".join(p.get("tags", []))
+        date     = p.get("date", "")
+        rt       = p.get("readTime", "")
+        url      = f"{BASE_URL}/blog/{slug}.html"
         featured = " ⭐" if p.get("featured") else ""
-        lines.append(f"| {emoji} | [{title}{featured}]({url}) | {tags} | {date} | {rt} |")
+        lines.append(f"- {emoji} [{title}{featured}]({url}) — {tags} · {date} · {rt}")
     return "\n".join(lines)
 
 def update_readme():
