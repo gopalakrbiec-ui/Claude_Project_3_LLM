@@ -11,18 +11,6 @@
       "tags": ["Agentic AI", "Research"],
       "emoji": "⚡",
       "featured": true
-    },
-    {
-      "slug": "deepseek-r2-what-we-know",
-      "title": "DeepSeek R2: What We Know So Far and Why It Matters",
-      "excerpt": "Rumours of DeepSeek's next reasoning model are swirling. Here's everything credible that's surfaced — and why the next drop could again reshape assumptions about what closed labs cost to train.",
-      "author": "Hamal Rashid",
-      "authorInitials": "HR",
-      "date": "2026-06-20",
-      "readTime": "6 min",
-      "tags": ["Research", "China AI"],
-      "emoji": "🧠",
-      "featured": false
     }
   ]
 }
