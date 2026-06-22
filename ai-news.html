@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily AI News — FrontierLLM Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Layout ── */
+    .news-main  { padding: 2rem 0 5rem; }
+    .news-hero  {
+      text-align: center;
+      padding: 2rem 0 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 2rem;
+    }
+    .news-hero h2 { font-size: 1.9rem; font-weight: 800; color: #f1f5f9; margin-bottom: .5rem; }
+    .news-hero p  { color: #94a3b8; font-size: .9rem; }
+
+    /* ── Status bar ── */
+    .news-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1.75rem;
+      font-size: .82rem;
+    }
+    .news-status-left  { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #10b981; box-shadow: 0 0 6px #10b981;
+      display: inline-block; margin-right: .4rem;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100%{ opacity:1; }
+      50%{ opacity:.4; }
+    }
+    .status-live   { color: #10b981; font-weight: 600; }
+    .status-time   { color: #94a3b8; }
+    .status-next   { color: #7dd3fc; }
+    .news-refresh-btn {
+      background: rgba(99,102,241,.2);
+      border: 1px solid rgba(99,102,241,.4);
+      color: #a5b4fc;
+      padding: .35rem .9rem;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .news-refresh-btn:hover { background: rgba(99,102,241,.35); }
+    .news-refresh-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* ── Category tabs ── */
+    .news-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1.75rem;
+    }
+    .news-tab {
+      padding: .4rem .9rem;
+      border-radius: 9999px;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.1);
+      color: #94a3b8;
+      background: rgba(255,255,255,.04);
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .news-tab:hover  { color: #e2e8f0; border-color: rgba(255,255,255,.25); }
+    .news-tab.active {
+      color: #fff;
+      background: var(--tab-color, rgba(99,102,241,.4));
+      border-color: var(--tab-color, rgba(99,102,241,.6));
+    }
+
+    /* ── Grid ── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+    @media(max-width:1024px){ .news-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:640px) { .news-grid { grid-template-columns: 1fr; } }
+
+    /* ── Article card ── */
+    .news-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      transition: border-color .2s, transform .15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .news-card:hover {
+      border-color: rgba(255,255,255,.2);
+      transform: translateY(-2px);
+    }
+    .nc-source {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .nc-source-icon {
+      width: 18px; height: 18px; border-radius: 4px;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem;
+    }
+    .nc-source-name { font-size: .72rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
+    .nc-date        { font-size: .7rem; color: #475569; margin-left: auto; }
+    .nc-title       { font-size: .88rem; font-weight: 600; color: #e2e8f0; line-height: 1.5; flex: 1; }
+    .nc-desc        { font-size: .75rem; color: #64748b; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .nc-tag {
+      align-self: flex-start;
+      padding: .18rem .55rem;
+      border-radius: 9999px;
+      font-size: .68rem;
+      font-weight: 600;
+      background: var(--tab-color-dim, rgba(99,102,241,.15));
+      color: var(--tab-color-text, #a5b4fc);
+      border: 1px solid var(--tab-color-border, rgba(99,102,241,.25));
+    }
+
+    /* ── Skeleton loader ── */
+    .news-skeleton {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.1rem;
+    }
+    @media(max-width:1024px){ .news-skeleton { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:640px) { .news-skeleton { grid-template-columns: 1fr; } }
+    .sk-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      padding: 1.1rem 1.25rem;
+      display: flex; flex-direction: column; gap: .7rem;
+    }
+    .sk-line {
+      border-radius: 6px;
+      background: linear-gradient(90deg, rgba(255,255,255,.06) 25%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.06) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { to { background-position: -200% 0; } }
+    .sk-short { height: 10px; width: 40%; }
+    .sk-title { height: 14px; width: 100%; }
+    .sk-title2{ height: 14px; width: 75%; }
+    .sk-desc  { height: 10px; width: 90%; }
+    .sk-desc2 { height: 10px; width: 60%; }
+
+    /* ── Empty / error state ── */
+    .news-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #64748b;
+      grid-column: 1/-1;
+    }
+    .news-empty-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+    .news-empty h4 { color: #94a3b8; font-size: 1rem; margin-bottom: .4rem; }
+    .news-empty p { font-size: .82rem; }
+    .news-empty a { color: #7dd3fc; }
+
+    /* ── Sources panel ── */
+    .news-sources {
+      margin-top: 2.5rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+    }
+    .ns-title { font-size: .88rem; font-weight: 700; color: #94a3b8; margin-bottom: 1rem; }
+    .ns-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: .75rem;
+    }
+    @media(max-width:900px){ .ns-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:500px){ .ns-grid { grid-template-columns: 1fr; } }
+    .ns-item {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .75rem; color: #64748b;
+    }
+    .ns-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .ns-link { color: #7dd3fc; text-decoration: none; }
+    .ns-link:hover { text-decoration: underline; }
+
+    /* ── Schedule banner ── */
+    .news-schedule {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+    }
+    .ns-card {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px;
+      padding: .85rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .ns-icon { font-size: 1.5rem; }
+    .ns-label { font-size: .72rem; color: #64748b; text-transform: uppercase; letter-spacing: .05em; }
+    .ns-time  { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
+    .ns-tz    { font-size: .7rem; color: #475569; }
+    .ns-countdown { font-size: .75rem; color: #7dd3fc; margin-top: .15rem; }
+  </style>
+</head>
+<body>
+
+<header class="hero hero-sub-page">
+  <nav class="navbar">
+    <div class="navbar-top">
+      <a href="index.html" class="logo logo-link">🚀 FrontierLLM Academy</a>
+      <div class="navbar-panels">
+        <span class="navbar-panels-label">Explore:</span>
+        <a href="frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
+        <a href="future-frontier.html"   class="panel-btn">🔮 Future Frontier</a>
+        <a href="llm-engineering.html"   class="panel-btn">⚙️ LLM Engineering</a>
+        <a href="ai-news.html"           class="panel-btn active">📰 Daily AI News</a>
+      </div>
+    </div>
+    <div class="navbar-bottom">
+      <div class="nav-links">
+        <a href="index.html">← Back to Academy</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="sub-page-main news-main">
+<div class="container">
+
+  <div class="news-hero">
+    <div class="section-badge" style="background:linear-gradient(135deg,#d97706,#dc2626);color:#fff;padding:.35rem 1rem;border-radius:9999px;font-size:.8rem;font-weight:700;display:inline-block;margin-bottom:.75rem;">📰 Daily AI News</div>
+    <h2>AI News Aggregator</h2>
+    <p>Live headlines from 30+ sources across research, investments, policy, and technology — refreshed every morning at 6 AM IST and evening at 8 PM IST.</p>
+  </div>
+
+  <!-- Schedule banner -->
+  <div class="news-schedule">
+    <div class="ns-card">
+      <div class="ns-icon">🌅</div>
+      <div>
+        <div class="ns-label">Morning Edition</div>
+        <div class="ns-time">6:00 AM IST</div>
+        <div class="ns-tz">UTC+5:30 — Daily</div>
+        <div class="ns-countdown" id="countdown-am"></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-icon">🌆</div>
+      <div>
+        <div class="ns-label">Evening Edition</div>
+        <div class="ns-time">8:00 PM IST</div>
+        <div class="ns-tz">UTC+5:30 — Daily</div>
+        <div class="ns-countdown" id="countdown-pm"></div>
+      </div>
+    </div>
+    <div class="ns-card" style="flex:2;min-width:280px;">
+      <div class="ns-icon">🔄</div>
+      <div style="flex:1">
+        <div class="ns-label">Last Fetched</div>
+        <div class="ns-time" id="last-fetched-time">—</div>
+        <div class="ns-tz" id="last-fetched-tz"></div>
+        <div class="ns-countdown" id="next-refresh-label"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div class="news-status">
+    <div class="news-status-left">
+      <span><span class="status-dot"></span><span class="status-live" id="status-text">Loading headlines…</span></span>
+      <span class="status-time" id="status-count"></span>
+      <span class="status-next" id="status-next"></span>
+    </div>
+    <button class="news-refresh-btn" id="refreshBtn" onclick="fetchAllFeeds(true)">⟳ Refresh Now</button>
+  </div>
+
+  <!-- Category tabs -->
+  <div class="news-tabs" id="newsTabs">
+    <button class="news-tab active" data-cat="all"        style="--tab-color:rgba(99,102,241,.5)">🌐 All News</button>
+    <button class="news-tab" data-cat="research"   style="--tab-color:rgba(217,119,6,.5)">🔬 Research</button>
+    <button class="news-tab" data-cat="investments" style="--tab-color:rgba(22,163,74,.5)">💰 Investments</button>
+    <button class="news-tab" data-cat="adoption"   style="--tab-color:rgba(8,145,178,.5)">🏢 Adoption</button>
+    <button class="news-tab" data-cat="startups"   style="--tab-color:rgba(236,72,153,.5)">🚀 Startups</button>
+    <button class="news-tab" data-cat="political"  style="--tab-color:rgba(239,68,68,.5)">🏛️ Political</button>
+    <button class="news-tab" data-cat="llm"        style="--tab-color:rgba(139,92,246,.5)">🤖 LLM News</button>
+    <button class="news-tab" data-cat="india"      style="--tab-color:rgba(249,115,22,.5)">🇮🇳 India AI</button>
+    <button class="news-tab" data-cat="china"      style="--tab-color:rgba(220,38,38,.5)">🇨🇳 China AI</button>
+    <button class="news-tab" data-cat="opensource" style="--tab-color:rgba(5,150,105,.5)">🟢 Open Source</button>
+    <button class="news-tab" data-cat="future"     style="--tab-color:rgba(6,182,212,.5)">🔮 Future of AI</button>
+    <button class="news-tab" data-cat="agi"        style="--tab-color:rgba(99,102,241,.6)">🧠 AGI</button>
+  </div>
+
+  <!-- Article area -->
+  <div id="news-content">
+    <!-- Skeleton shown during load -->
+    <div class="news-skeleton" id="news-skeleton">
+      <div class="sk-card"><div class="sk-line sk-short"></div><div class="sk-line sk-title"></div><div class="sk-line sk-title2"></div><div class="sk-line sk-desc"></div><div class="sk-line sk-desc2"></div></div>
+      <div class="sk-card"><div class="sk-line sk-short"></div><div class="sk-line sk-title"></div><div class="sk-line sk-title2"></div><div class="sk-line sk-desc"></div><div class="sk-line sk-desc2"></div></div>
+      <div class="sk-card"><div class="sk-line sk-short"></div><div class="sk-line sk-title"></div><div class="sk-line sk-title2"></div><div class="sk-line sk-desc"></div><div class="sk-line sk-desc2"></div></div>
+      <div class="sk-card"><div class="sk-line sk-short"></div><div class="sk-line sk-title"></div><div class="sk-line sk-title2"></div><div class="sk-line sk-desc"></div><div class="sk-line sk-desc2"></div></div>
+      <div class="sk-card"><div class="sk-line sk-short"></div><div class="sk-line sk-title"></div><div class="sk-line sk-title2"></div><div class="sk-line sk-desc"></div><div class="sk-line sk-desc2"></div></div>
+      <div class="sk-card"><div class="sk-line sk-short"></div><div class="sk-line sk-title"></div><div class="sk-line sk-title2"></div><div class="sk-line sk-desc"></div><div class="sk-line sk-desc2"></div></div>
+    </div>
+    <div class="news-grid" id="news-grid" style="display:none;"></div>
+  </div>
+
+  <!-- Source directory -->
+  <div class="news-sources">
+    <div class="ns-title">📡 Monitored Sources (30+)</div>
+    <div class="ns-grid">
+      <div class="ns-item"><span class="ns-dot" style="background:#d97706"></span><span>ArXiv cs.AI / cs.LG</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#d97706"></span><span>Google AI Blog</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#d97706"></span><span>DeepMind Blog</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#d97706"></span><span>HuggingFace Blog</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#16a34a"></span><span>TechCrunch AI</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#16a34a"></span><span>VentureBeat AI</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#16a34a"></span><span>Bloomberg Tech</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#16a34a"></span><span>Crunchbase News</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#0891b2"></span><span>MIT Tech Review</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#0891b2"></span><span>Wired AI</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#0891b2"></span><span>The Verge AI</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#0891b2"></span><span>Ars Technica AI</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#dc2626"></span><span>Politico Tech</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#dc2626"></span><span>Reuters Technology</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#dc2626"></span><span>The Hill Tech</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#dc2626"></span><span>FT Technology</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#8b5cf6"></span><span>OpenAI Blog</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#8b5cf6"></span><span>Anthropic News</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#8b5cf6"></span><span>Meta AI Research</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#8b5cf6"></span><span>Mistral / Cohere</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#f97316"></span><span>Economic Times Tech</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#f97316"></span><span>LiveMint Technology</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#f97316"></span><span>YourStory AI</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#f97316"></span><span>The Hindu Tech</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#ef4444"></span><span>SCMP Technology</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#ef4444"></span><span>Caixin Global Tech</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#059669"></span><span>GitHub Blog</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#059669"></span><span>LessWrong / AF</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#06b6d4"></span><span>IEEE Spectrum AI</span></div>
+      <div class="ns-item"><span class="ns-dot" style="background:#06b6d4"></span><span>AI Index Report</span></div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   CONFIG: RSS sources per category
+   Using rss2json.com as CORS-free RSS proxy (no key needed for public feeds)
+═══════════════════════════════════════════════════ */
+const RSS2JSON = 'https://api.rss2json.com/v1/api.json?count=8&rss_url=';
+
+const FEEDS = [
+  // Research
+  { url: 'https://export.arxiv.org/rss/cs.AI',              cat: 'research',    source: 'ArXiv cs.AI',       icon: '📄' },
+  { url: 'https://export.arxiv.org/rss/cs.LG',              cat: 'research',    source: 'ArXiv cs.LG',       icon: '📄' },
+  { url: 'https://research.google/blog/rss/',               cat: 'research',    source: 'Google Research',   icon: '🔬' },
+  { url: 'https://www.deepmind.com/blog/rss.xml',           cat: 'research',    source: 'DeepMind',          icon: '🔬' },
+
+  // AI Investments
+  { url: 'https://techcrunch.com/category/artificial-intelligence/feed/', cat: 'investments', source: 'TechCrunch AI', icon: '💼' },
+  { url: 'https://news.crunchbase.com/feed/',               cat: 'investments', source: 'Crunchbase',        icon: '💰' },
+  { url: 'https://venturebeat.com/ai/feed/',                cat: 'investments', source: 'VentureBeat AI',    icon: '📈' },
+
+  // AI Adoption
+  { url: 'https://www.technologyreview.com/feed/',          cat: 'adoption',    source: 'MIT Tech Review',   icon: '🏢' },
+  { url: 'https://feeds.arstechnica.com/arstechnica/technology-lab', cat: 'adoption', source: 'Ars Technica', icon: '🔧' },
+  { url: 'https://www.wired.com/feed/tag/artificial-intelligence/rss', cat: 'adoption', source: 'Wired AI', icon: '⚡' },
+
+  // AI Startups
+  { url: 'https://techcrunch.com/startups/feed/',           cat: 'startups',    source: 'TechCrunch Startups', icon: '🚀' },
+  { url: 'https://venturebeat.com/feed/',                   cat: 'startups',    source: 'VentureBeat',       icon: '🏗️' },
+
+  // Political / Policy
+  { url: 'https://feeds.reuters.com/reuters/technologyNews', cat: 'political',  source: 'Reuters Tech',      icon: '📰' },
+  { url: 'https://thehill.com/technology/feed/',            cat: 'political',   source: 'The Hill Tech',     icon: '🏛️' },
+
+  // LLM News
+  { url: 'https://huggingface.co/blog/feed.xml',            cat: 'llm',         source: 'HuggingFace Blog',  icon: '🤗' },
+  { url: 'https://openai.com/blog/rss.xml',                 cat: 'llm',         source: 'OpenAI Blog',       icon: '🤖' },
+  { url: 'https://www.anthropic.com/rss.xml',               cat: 'llm',         source: 'Anthropic',         icon: '🤖' },
+
+  // India AI
+  { url: 'https://economictimes.indiatimes.com/tech/technology/rssfeeds/13357270.cms', cat: 'india', source: 'Economic Times', icon: '🇮🇳' },
+  { url: 'https://www.livemint.com/technology/rss.xml',     cat: 'india',       source: 'LiveMint Tech',     icon: '🇮🇳' },
+
+  // China AI
+  { url: 'https://www.scmp.com/rss/91/feed',                cat: 'china',       source: 'SCMP Tech',         icon: '🇨🇳' },
+  { url: 'https://feeds.reuters.com/reuters/technologyNews', cat: 'china',      source: 'Reuters',           icon: '📰' },
+
+  // Open Source AI
+  { url: 'https://github.blog/feed/',                       cat: 'opensource',  source: 'GitHub Blog',       icon: '🐙' },
+  { url: 'https://huggingface.co/blog/feed.xml',            cat: 'opensource',  source: 'HuggingFace',       icon: '🟢' },
+
+  // Future of AI
+  { url: 'https://www.technologyreview.com/feed/',          cat: 'future',      source: 'MIT Tech Review',   icon: '🔮' },
+  { url: 'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss', cat: 'future', source: 'IEEE Spectrum', icon: '⚡' },
+
+  // AGI
+  { url: 'https://www.lesswrong.com/feed.xml',              cat: 'agi',         source: 'LessWrong',         icon: '🧠' },
+  { url: 'https://intelligence.org/feed/',                  cat: 'agi',         source: 'MIRI',              icon: '🧠' },
+];
+
+/* ── Category metadata ── */
+const CAT_META = {
+  all:         { label: '🌐 All News',      color: 'rgba(99,102,241,.4)',   text: '#a5b4fc',   border: 'rgba(99,102,241,.3)' },
+  research:    { label: '🔬 Research',       color: 'rgba(217,119,6,.15)',   text: '#fbbf24',   border: 'rgba(217,119,6,.3)'  },
+  investments: { label: '💰 Investments',    color: 'rgba(22,163,74,.15)',   text: '#4ade80',   border: 'rgba(22,163,74,.3)'  },
+  adoption:    { label: '🏢 Adoption',       color: 'rgba(8,145,178,.15)',   text: '#38bdf8',   border: 'rgba(8,145,178,.3)'  },
+  startups:    { label: '🚀 Startups',       color: 'rgba(236,72,153,.15)',  text: '#f9a8d4',   border: 'rgba(236,72,153,.3)' },
+  political:   { label: '🏛️ Political',      color: 'rgba(239,68,68,.15)',   text: '#fca5a5',   border: 'rgba(239,68,68,.3)'  },
+  llm:         { label: '🤖 LLM News',       color: 'rgba(139,92,246,.15)',  text: '#c4b5fd',   border: 'rgba(139,92,246,.3)' },
+  india:       { label: '🇮🇳 India AI',       color: 'rgba(249,115,22,.15)',  text: '#fdba74',   border: 'rgba(249,115,22,.3)' },
+  china:       { label: '🇨🇳 China AI',       color: 'rgba(220,38,38,.15)',   text: '#fca5a5',   border: 'rgba(220,38,38,.3)'  },
+  opensource:  { label: '🟢 Open Source',    color: 'rgba(5,150,105,.15)',   text: '#6ee7b7',   border: 'rgba(5,150,105,.3)'  },
+  future:      { label: '🔮 Future of AI',   color: 'rgba(6,182,212,.15)',   text: '#67e8f9',   border: 'rgba(6,182,212,.3)'  },
+  agi:         { label: '🧠 AGI',            color: 'rgba(99,102,241,.2)',   text: '#a5b4fc',   border: 'rgba(99,102,241,.35)' },
+};
+
+/* ── State ── */
+let allArticles  = [];
+let activeTab    = 'all';
+let fetchedOnce  = false;
+const CACHE_KEY  = 'ai-news-cache';
+const CACHE_TS   = 'ai-news-ts';
+
+/* ── Fetch a single feed via rss2json ── */
+async function fetchFeed(feed) {
+  const url = RSS2JSON + encodeURIComponent(feed.url);
+  try {
+    const res  = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    const data = await res.json();
+    if (data.status !== 'ok') return [];
+    return (data.items || []).map(item => ({
+      title:  cleanText(item.title   || ''),
+      desc:   cleanText(item.description || item.content || ''),
+      link:   item.link  || item.guid || '#',
+      date:   item.pubDate ? new Date(item.pubDate) : new Date(),
+      source: feed.source,
+      icon:   feed.icon,
+      cat:    feed.cat,
+    }));
+  } catch (_) {
+    return [];
+  }
+}
+
+function cleanText(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  return (tmp.textContent || tmp.innerText || '').trim().replace(/\s+/g, ' ');
+}
+
+/* ── Fetch all feeds ── */
+async function fetchAllFeeds(force = false) {
+  // Check cache (valid for 6 hours)
+  const ts = localStorage.getItem(CACHE_TS);
+  if (!force && ts && (Date.now() - parseInt(ts)) < 6 * 3600 * 1000) {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      try {
+        allArticles = JSON.parse(cached).map(a => ({ ...a, date: new Date(a.date) }));
+        renderArticles();
+        setStatus('Loaded from cache', allArticles.length);
+        return;
+      } catch(_) {}
+    }
+  }
+
+  const btn = document.getElementById('refreshBtn');
+  btn.disabled = true;
+  btn.textContent = '⟳ Fetching…';
+  document.getElementById('status-text').textContent = 'Fetching latest headlines…';
+  document.getElementById('news-skeleton').style.display = 'grid';
+  document.getElementById('news-grid').style.display = 'none';
+
+  // Fetch all feeds concurrently
+  const results = await Promise.allSettled(FEEDS.map(f => fetchFeed(f)));
+  const articles = results
+    .flatMap(r => r.status === 'fulfilled' ? r.value : [])
+    .filter(a => a.title && a.link && a.link !== '#')
+    // Deduplicate by title similarity
+    .filter((a, i, arr) => arr.findIndex(b => b.title.slice(0,40) === a.title.slice(0,40)) === i)
+    // Sort newest first
+    .sort((a, b) => b.date - a.date);
+
+  allArticles = articles;
+  fetchedOnce = true;
+
+  // Cache
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(articles));
+    localStorage.setItem(CACHE_TS, Date.now().toString());
+  } catch(_) {}
+
+  renderArticles();
+  setStatus('Live', allArticles.length);
+  updateLastFetched();
+
+  btn.disabled = false;
+  btn.textContent = '⟳ Refresh Now';
+}
+
+/* ── Render articles for active tab ── */
+function renderArticles() {
+  const grid     = document.getElementById('news-grid');
+  const skeleton = document.getElementById('news-skeleton');
+  skeleton.style.display = 'none';
+  grid.style.display = 'grid';
+
+  const cat  = activeTab;
+  const meta = CAT_META[cat] || CAT_META.all;
+  const list = cat === 'all' ? allArticles : allArticles.filter(a => a.cat === cat);
+
+  if (list.length === 0) {
+    grid.innerHTML = `
+      <div class="news-empty">
+        <div class="news-empty-icon">📭</div>
+        <h4>No headlines yet for this category</h4>
+        <p>Some RSS feeds may be temporarily unavailable. <a href="#" onclick="fetchAllFeeds(true);return false;">Try refreshing</a> or check back later.</p>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.slice(0, 60).map(a => {
+    const ago = timeAgo(a.date);
+    const desc = a.desc ? a.desc.slice(0, 140) + (a.desc.length > 140 ? '…' : '') : '';
+    return `
+      <a class="news-card" href="${escHtml(a.link)}" target="_blank" rel="noopener"
+         style="--tab-color:${meta.color}; --tab-color-dim:${meta.color}; --tab-color-text:${meta.text}; --tab-color-border:${meta.border}">
+        <div class="nc-source">
+          <div class="nc-source-icon">${a.icon}</div>
+          <div class="nc-source-name">${escHtml(a.source)}</div>
+          <div class="nc-date">${ago}</div>
+        </div>
+        <div class="nc-title">${escHtml(a.title)}</div>
+        ${desc ? `<div class="nc-desc">${escHtml(desc)}</div>` : ''}
+        <div class="nc-tag">${CAT_META[a.cat]?.label || a.cat}</div>
+      </a>`;
+  }).join('');
+}
+
+function setStatus(state, count) {
+  document.getElementById('status-text').textContent = state === 'Live' ? 'Live — fetched now' : state;
+  document.getElementById('status-count').textContent = count ? `${count} articles across all categories` : '';
+}
+
+function updateLastFetched() {
+  const now = new Date();
+  const ist = new Intl.DateTimeFormat('en-IN', {
+    timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit',
+    hour12: true, day: 'numeric', month: 'short'
+  }).format(now);
+  document.getElementById('last-fetched-time').textContent = ist;
+  document.getElementById('last-fetched-tz').textContent = 'IST (Asia/Kolkata)';
+}
+
+/* ── Tab switching ── */
+document.getElementById('newsTabs').addEventListener('click', e => {
+  const btn = e.target.closest('.news-tab');
+  if (!btn) return;
+  document.querySelectorAll('.news-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeTab = btn.dataset.cat;
+  if (fetchedOnce) renderArticles();
+});
+
+/* ── Countdown to next IST refresh ── */
+function updateCountdowns() {
+  const now = new Date();
+  // IST offset = UTC+5:30
+  const istMs = now.getTime() + (5.5 * 3600 * 1000);
+  const ist   = new Date(istMs);
+  const h = ist.getUTCHours(), m = ist.getUTCMinutes();
+
+  function msUntil(targetH) {
+    let diff = (targetH * 60 - (h * 60 + m)) * 60 * 1000 - ist.getUTCSeconds() * 1000;
+    if (diff < 0) diff += 24 * 3600 * 1000;
+    return diff;
+  }
+
+  function fmt(ms) {
+    const s  = Math.floor(ms / 1000);
+    const hh = Math.floor(s / 3600);
+    const mm = Math.floor((s % 3600) / 60);
+    const ss = s % 60;
+    if (hh > 0) return `in ${hh}h ${mm}m`;
+    if (mm > 0) return `in ${mm}m ${ss}s`;
+    return `in ${ss}s`;
+  }
+
+  const amEl = document.getElementById('countdown-am');
+  const pmEl = document.getElementById('countdown-pm');
+  const nextEl = document.getElementById('next-refresh-label');
+
+  const msToAM = msUntil(6);
+  const msToPM = msUntil(20);
+
+  amEl.textContent = `Next: ${fmt(msToAM)}`;
+  pmEl.textContent = `Next: ${fmt(msToPM)}`;
+
+  const nextMs = Math.min(msToAM, msToPM);
+  const nextLabel = msToAM < msToPM ? '6:00 AM IST' : '8:00 PM IST';
+  nextEl.textContent = `Next auto-refresh: ${nextLabel} (${fmt(nextMs)})`;
+  document.getElementById('status-next').textContent = `Next refresh: ${fmt(nextMs)}`;
+
+  // Trigger auto-fetch when countdown hits 0
+  if (msToAM < 5000 || msToPM < 5000) {
+    fetchAllFeeds(true);
+  }
+}
+
+/* ── Helpers ── */
+function timeAgo(date) {
+  const s = Math.floor((Date.now() - date) / 1000);
+  if (s < 60)    return 'just now';
+  if (s < 3600)  return `${Math.floor(s/60)}m ago`;
+  if (s < 86400) return `${Math.floor(s/3600)}h ago`;
+  return `${Math.floor(s/86400)}d ago`;
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+/* ── IST-aware auto-refresh: check every 30 seconds ── */
+setInterval(updateCountdowns, 1000);
+setInterval(() => {
+  const ts = localStorage.getItem(CACHE_TS);
+  if (ts && (Date.now() - parseInt(ts)) > 6 * 3600 * 1000) {
+    fetchAllFeeds(true);
+  }
+}, 30 * 60 * 1000); // check every 30 min
+
+/* ── Init ── */
+updateCountdowns();
+fetchAllFeeds();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
