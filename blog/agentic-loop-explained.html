@@ -221,24 +221,74 @@
     .paper-why { font-size: 0.8rem; color: #6b7280; line-height: 1.5; }
     .paper-link { font-size: 0.75rem; font-weight: 700; color: #4338ca; margin-top: 4px; display: inline-block; }
 
-    /* Video cards */
-    .video-list { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
-    .video-card {
+    /* Video embeds */
+    .video-list { display: flex; flex-direction: column; gap: 28px; margin: 20px 0; }
+    .video-embed-card {
       background: #fff;
       border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 14px 18px;
-      display: flex;
-      gap: 14px;
-      align-items: center;
+      border-radius: 14px;
+      overflow: hidden;
     }
-    .video-thumb { font-size: 2rem; flex-shrink: 0; }
+    .video-embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+    }
+    .video-embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-embed-info { padding: 14px 18px; }
     .video-title { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 3px; }
     .video-meta { font-size: 0.78rem; color: #6b7280; }
-    .video-why { font-size: 0.8rem; color: #374151; margin-top: 4px; line-height: 1.5; }
+    .video-why { font-size: 0.8rem; color: #374151; margin-top: 6px; line-height: 1.5; }
+
+    /* PE vs Loop section */
+    .vs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .vs-card {
+      border-radius: 14px;
+      padding: 20px;
+      border: 2px solid transparent;
+    }
+    .vs-card.old { background: #fef3c7; border-color: #fbbf24; }
+    .vs-card.new { background: rgba(79,70,229,0.05); border-color: #6366f1; }
+    .vs-card-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .vs-card.old .vs-card-label { color: #b45309; }
+    .vs-card.new .vs-card-label { color: #4338ca; }
+    .vs-card-title { font-size: 1rem; font-weight: 800; color: #111827; margin-bottom: 10px; }
+    .vs-card ul { padding-left: 18px; margin: 0; }
+    .vs-card ul li { font-size: 0.83rem; color: #374151; line-height: 1.7; }
+    .future-box {
+      background: linear-gradient(135deg, rgba(79,70,229,0.06), rgba(8,145,178,0.06));
+      border: 1px solid rgba(79,70,229,0.2);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+    .future-box h3 { font-size: 1rem; font-weight: 800; color: #111827; margin-bottom: 14px; }
+    .future-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .future-row:last-child { margin-bottom: 0; }
+    .future-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+    .future-text { font-size: 0.85rem; color: #374151; line-height: 1.6; }
+    .future-text strong { color: #111827; }
 
     @media (max-width: 768px) {
       .phase-grid { grid-template-columns: 1fr; }
+      .vs-grid { grid-template-columns: 1fr; }
       .loop-diagram { width: 280px; height: 280px; }
       .loop-node { width: 74px; font-size: 0.68rem; }
       .loop-node .node-icon { font-size: 1.1rem; }
@@ -348,7 +398,7 @@
         FrontierLLM Team
       </div>
       <span>June 22, 2026</span>
-      <span>9 min read</span>
+      <span>12 min read</span>
     </div>
 
     <div class="blog-post-body">
@@ -631,6 +681,92 @@ that doesn't depend on any of those assumptions being true.</span></div>
         The strategic differentiator isn't whether a system has the loop — they all do. It's <em>loop depth</em> (how many iterations before output), <em>loop transparency</em> (can the user see the reasoning?), and <em>loop cost</em> (compute per iteration). Claude's extended thinking makes the loop unusually transparent; o3's deep reasoning makes it unusually deep.
       </p>
 
+      <!-- ───────── PE VS LOOP ───────── -->
+      <h2>Agentic Loop vs Prompt Engineering — What's the Difference?</h2>
+
+      <p>
+        Once people understand the agentic loop, they ask: <em>"Does this replace prompt engineering? Is PE dead?"</em> The short answer is no — but the relationship between the two is more interesting than that.
+      </p>
+
+      <div class="vs-grid">
+        <div class="vs-card old">
+          <div class="vs-card-label">Classic Approach</div>
+          <div class="vs-card-title">Prompt Engineering</div>
+          <ul>
+            <li>One input → one output</li>
+            <li>You craft the perfect ask upfront</li>
+            <li>All complexity lives in the prompt</li>
+            <li>Model corrects nothing — you retry manually</li>
+            <li>Skill: writing precise, structured instructions</li>
+            <li>Ceiling: bounded by what fits in one context pass</li>
+          </ul>
+        </div>
+        <div class="vs-card new">
+          <div class="vs-card-label">Modern Approach</div>
+          <div class="vs-card-title">Agentic Loop Design</div>
+          <ul>
+            <li>Multiple input/output cycles per task</li>
+            <li>You design the <em>process</em>, not just the ask</li>
+            <li>Complexity is distributed across loop iterations</li>
+            <li>Model self-corrects between steps</li>
+            <li>Skill: orchestration, stopping conditions, tool design</li>
+            <li>Ceiling: bounded only by compute and loop depth</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>
+        Think of prompt engineering as writing a great <strong>single email</strong> — clear, precise, gets results. Agentic loop design is like running a <strong>project</strong> — you define the phases, hand-offs, checkpoints, and when to call it done. Both require skill. Neither makes the other obsolete.
+      </p>
+
+      <p>
+        In fact, prompt engineering becomes <em>more</em> important inside an agentic loop, not less. Each step in the loop has its own prompt — for the planning step, the tool call, the self-critique, the final synthesis. A poorly engineered step prompt cascades errors forward. The loop amplifies both good and bad prompting.
+      </p>
+
+      <blockquote>
+        Prompt engineering is to agentic loops what grammar is to writing. You still need it. But mastering grammar alone doesn't make you a novelist.
+      </blockquote>
+
+      <h3 style="font-size:1.05rem;margin-top:32px;">Is Prompt Engineering Disappearing?</h3>
+
+      <p>
+        The practice is <strong>evolving</strong>, not vanishing. Here's what's actually changing:
+      </p>
+
+      <div class="future-box">
+        <h3>How the skills are shifting (2024 → 2026 → beyond)</h3>
+        <div class="future-row">
+          <div class="future-icon">📉</div>
+          <div class="future-text"><strong>Declining:</strong> "Magic phrase" hunting — finding the exact wording that unlocks a behaviour. Models are less brittle; you no longer need to say "think step by step" to get CoT. Surface-level prompt tricks are fading.</div>
+        </div>
+        <div class="future-row">
+          <div class="future-icon">📈</div>
+          <div class="future-text"><strong>Growing:</strong> System prompt architecture — designing the agent's persistent instructions, memory schema, tool definitions, and persona. This is prompt engineering at the infrastructure level, and it's becoming a core engineering discipline.</div>
+        </div>
+        <div class="future-row">
+          <div class="future-icon">📈</div>
+          <div class="future-text"><strong>Growing:</strong> Loop orchestration — deciding <em>how many</em> loop iterations to allow, what triggers a new iteration, when to stop, and how results from one step get injected into the next. This is new territory that didn't exist with single-shot models.</div>
+        </div>
+        <div class="future-row">
+          <div class="future-icon">🔄</div>
+          <div class="future-text"><strong>Transforming:</strong> User-facing prompting is becoming more conversational and less formulaic, because the loop handles correction. The burden shifts from the user crafting the perfect one-shot query to the <em>system designer</em> building robust loops.</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.05rem;margin-top:32px;">Will Everyone Just "Run Agents" in the Future?</h3>
+
+      <p>
+        For complex, multi-step tasks — yes, that's already the direction. Claude Code, Devin, Cursor, AutoGPT — these all abstract the loop away from the user. You describe the outcome; the agent manages the iterations. The prompt engineering happens inside the product, not inside your head.
+      </p>
+
+      <p>
+        But for <strong>exploratory thinking, creative work, and one-off tasks</strong> — the single-shot conversation isn't going anywhere. The loop is computationally expensive. Sometimes you want a fast answer, not 15 tool calls and a self-critique cycle. The model choosing <em>when</em> to loop vs when to answer directly is itself one of the key open research problems in agent design.
+      </p>
+
+      <p>
+        The near-term reality: most people will interact with products that hide the loop entirely (agents, copilots, workflows), while a smaller group of practitioners will explicitly design and tune those loops. That second group is essentially the "prompt engineer" role, renamed and elevated.
+      </p>
+
       <!-- ───────── PAPERS ───────── -->
       <h2>Research Papers to Read</h2>
 
@@ -688,38 +824,46 @@ that doesn't depend on any of those assumptions being true.</span></div>
 
       <div class="video-list">
 
-        <div class="video-card">
-          <div class="video-thumb">🎥</div>
-          <div>
+        <div class="video-embed-card">
+          <div class="video-embed-wrap">
+            <iframe src="https://www.youtube.com/embed/zjkBMFhNj_g" title="Andrej Karpathy — Intro to Large Language Models" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-embed-info">
             <div class="video-title">Andrej Karpathy — "Intro to Large Language Models"</div>
             <div class="video-meta">YouTube · ~1 hour · Andrej Karpathy</div>
             <div class="video-why">The clearest explanation of how LLMs generate tokens, what "thinking" actually means computationally, and how tool use extends the model's capabilities. He covers the loop concept without calling it that — watching this makes the loop intuitive rather than abstract.</div>
           </div>
         </div>
 
-        <div class="video-card">
-          <div class="video-thumb">🎥</div>
-          <div>
-            <div class="video-title">Harrison Chase — "Building LLM Agents with LangGraph"</div>
-            <div class="video-meta">YouTube · LangChain channel · ~45 min</div>
+        <div class="video-embed-card">
+          <div class="video-embed-wrap">
+            <iframe src="https://www.youtube.com/embed/DSdyqPzdlQU" title="Harrison Chase — Building Reliable AI Agents with LangGraph" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-embed-info">
+            <div class="video-title">Harrison Chase — "Building Reliable AI Agents with LangGraph"</div>
+            <div class="video-meta">YouTube · LangChain channel · Harrison Chase</div>
             <div class="video-why">LangGraph makes the loop explicit as a graph you draw and execute. Watching this gives you a visual model of how Think → Act → Observe maps to real code. Best for developers who want to build their own agentic pipelines.</div>
           </div>
         </div>
 
-        <div class="video-card">
-          <div class="video-thumb">🎥</div>
-          <div>
-            <div class="video-title">Yannic Kilcher — "ReAct: Synergizing Reasoning and Acting"</div>
-            <div class="video-meta">YouTube · Yannic Kilcher · ~30 min</div>
+        <div class="video-embed-card">
+          <div class="video-embed-wrap">
+            <iframe src="https://www.youtube.com/embed/SQlSpXkFPtI" title="ReAct: Synergizing Reasoning and Acting in Language Models — Yannic Kilcher" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-embed-info">
+            <div class="video-title">Yannic Kilcher — "ReAct: Synergizing Reasoning and Acting" (#204)</div>
+            <div class="video-meta">YouTube · Yannic Kilcher</div>
             <div class="video-why">A line-by-line walkthrough of the ReAct paper with live examples. If you read one paper from the list above, watch this video alongside it — Yannic's paper breakdowns are the best in the field for making research immediately applicable.</div>
           </div>
         </div>
 
-        <div class="video-card">
-          <div class="video-thumb">🎥</div>
-          <div>
-            <div class="video-title">Anthropic — "Claude's Extended Thinking" (official demo)</div>
-            <div class="video-meta">YouTube · Anthropic · ~20 min</div>
+        <div class="video-embed-card">
+          <div class="video-embed-wrap">
+            <iframe src="https://www.youtube.com/embed/hk1d2Ht7s4w" title="Anthropic Upgraded Claude with Extended Thinking" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-embed-info">
+            <div class="video-title">Anthropic — "Claude's Extended Thinking: Too Powerful?"</div>
+            <div class="video-meta">YouTube · ~15 min</div>
             <div class="video-why">Shows the loop in action inside Claude specifically — you can watch the internal reasoning steps in real time. Seeing the scratchpad makes the Perceive → Think → Act pattern concrete rather than theoretical.</div>
           </div>
         </div>
