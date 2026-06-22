@@ -160,7 +160,7 @@ body {
 /* ── Mega-dropdown panel ── */
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 4px);
   left: 0;
   min-width: 240px;
   background: #fff;
@@ -173,6 +173,16 @@ body {
   z-index: 998;
 }
 .nav-dropdown:hover .nav-dropdown-menu { display: flex; }
+
+/* Invisible bridge fills the gap between trigger and menu so hover doesn't break mid-transit */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
 
 /* Colored header block at top of each dropdown */
 .nav-dd-header {
