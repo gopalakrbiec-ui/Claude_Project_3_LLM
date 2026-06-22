@@ -367,17 +367,56 @@ function initScrollReveal() {
   });
 }
 
+/* ── Slide-down nav panels ── */
+function closeAllNavPanels() {
+  document.querySelectorAll('.nav-panel.open').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('.nav-tab.active').forEach(t => {
+    t.classList.remove('active');
+    const ch = t.querySelector('.nav-chevron');
+    if (ch) ch.style.transform = '';
+  });
+  const bd = document.getElementById('navBackdrop');
+  if (bd) bd.classList.remove('open');
+}
+
+function initNavPanels() {
+  const backdrop = document.getElementById('navBackdrop');
+
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.stopPropagation();
+      const panel = document.getElementById('navPanel-' + tab.dataset.panel);
+      const isOpen = panel && panel.classList.contains('open');
+      closeAllNavPanels();
+      if (!isOpen && panel) {
+        panel.classList.add('open');
+        tab.classList.add('active');
+        const ch = tab.querySelector('.nav-chevron');
+        if (ch) ch.style.transform = 'rotate(180deg)';
+        if (backdrop) backdrop.classList.add('open');
+      }
+    });
+  });
+
+  if (backdrop) backdrop.addEventListener('click', closeAllNavPanels);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllNavPanels(); });
+}
+
 /* ── Smooth navbar hide/show on scroll ── */
 function initNavbar() {
   let lastY = 0;
   const nav = document.querySelector('.navbar');
+  const wrap = document.getElementById('navPanelWrap');
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     if (y > lastY && y > 120) {
+      closeAllNavPanels();
       nav.style.transform = 'translateY(-100%)';
       nav.style.transition = 'transform 0.3s ease';
+      if (wrap) { wrap.style.transform = 'translateY(-100%)'; wrap.style.transition = 'transform 0.3s ease'; }
     } else {
       nav.style.transform = '';
+      if (wrap) wrap.style.transform = '';
     }
     lastY = y;
   });
@@ -458,6 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNeuralCanvas();
   initScrollReveal();
   initNavbar();
+  initNavPanels();
   addSvgDefs();
   initTypingDemo();
 
