@@ -45,7 +45,9 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- ⚡ [The Agentic Loop: How Claude Thinks, Acts, and Corrects Itself ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/agentic-loop-explained.html) — Agentic AI, Research · 2026-06-22 · 12 min
+| | Title | Tags | Date | Read |
+|---|---|---|---|---|
+| ⚡ | [The Agentic Loop: How Claude Thinks, Acts, and Corrects Itself ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/agentic-loop-explained.html) | Agentic AI, Research | 2026-06-22 | 12 min |
 <!-- BLOG_POSTS_END -->
 
 ---
