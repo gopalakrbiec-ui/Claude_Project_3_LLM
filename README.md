@@ -32,11 +32,11 @@ Everything is served as static files. No login, no tracking, no paywall.
 - [LLM Engineering](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/llm-engineering.html) — Practical concepts for building with LLMs — prompting, fine-tuning, RAG, agents, evals
 
 ### 🌏 AI Ecosystems — Country Deep Dives
-- [India AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/india-ai.html) — India's AI landscape — domestic models, government initiatives, startup ecosystem
-- [China AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/china-ai.html) — China's AI strategy, frontier labs, regulatory environment, and key models
-- [America AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/usa-ai.html) — US AI policy, hyperscaler investments, leading labs, and the Stargate project
-- [Europe AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/europe-ai.html) — European AI landscape — Mistral, EU AI Act, country hubs, and the path to AI sovereignty
 - [Sovereign AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/sovereign-ai.html) — Comprehensive guide to sovereign AI — all countries, investment strategies, Pax Silica, and the four pillars
+- [America AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/usa-ai.html) — US AI policy, hyperscaler investments, leading labs, and the Stargate project
+- [China AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/china-ai.html) — China's AI strategy, frontier labs, regulatory environment, and key models
+- [Europe AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/europe-ai.html) — European AI landscape — Mistral, EU AI Act, country hubs, and the path to AI sovereignty
+- [India AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/india-ai.html) — India's AI landscape — domestic models, government initiatives, startup ecosystem
 
 ### 📰 News & Blog
 - [Daily AI News](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/ai-news.html) — Curated AI news feed updated regularly
