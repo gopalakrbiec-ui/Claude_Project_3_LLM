@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Agentic Loop Explained — FrontierLLM Academy Blog</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* ── Post-specific styles ── */
+
+    /* Loop diagram */
+    .loop-diagram {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      margin: 32px auto;
+      flex-shrink: 0;
+    }
+    .loop-ring {
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 2px solid #e5e7eb;
+    }
+    .loop-arc {
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #4f46e5;
+      border-right-color: #6366f1;
+      animation: arcSpin 3s linear infinite;
+    }
+    @keyframes arcSpin { to { transform: rotate(360deg); } }
+
+    .loop-node {
+      position: absolute;
+      width: 88px;
+      padding: 10px 8px;
+      background: #fff;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #374151;
+      line-height: 1.4;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      z-index: 2;
+    }
+    .loop-node .node-icon { font-size: 1.4rem; display: block; margin-bottom: 3px; }
+    /* top */
+    .loop-node.perceive { top: 0; left: 50%; transform: translateX(-50%); }
+    /* right */
+    .loop-node.think    { right: 0; top: 50%; transform: translateY(-50%); }
+    /* bottom */
+    .loop-node.act      { bottom: 0; left: 50%; transform: translateX(-50%); }
+    /* left */
+    .loop-node.observe  { left: 0; top: 50%; transform: translateY(-50%); }
+
+    /* Pulse each node in sequence */
+    .loop-node.perceive { animation: nodePulse 3s 0s ease-in-out infinite; }
+    .loop-node.think    { animation: nodePulse 3s 0.75s ease-in-out infinite; }
+    .loop-node.act      { animation: nodePulse 3s 1.5s ease-in-out infinite; }
+    .loop-node.observe  { animation: nodePulse 3s 2.25s ease-in-out infinite; }
+
+    @keyframes nodePulse {
+      0%, 20%, 100% { border-color: #e5e7eb; box-shadow: none; }
+      25%, 50% { border-color: #4f46e5; box-shadow: 0 0 16px rgba(79,70,229,0.35); color: #4338ca; background: rgba(79,70,229,0.05); }
+    }
+
+    /* Center label */
+    .loop-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #9ca3af;
+      text-align: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    /* Diagram + caption wrapper */
+    .diagram-wrap {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      background: #f8f9fc;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px 32px;
+      margin: 28px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .diagram-caption { flex: 1; min-width: 200px; }
+    .diagram-caption h3 { font-size: 1rem; font-weight: 800; margin-bottom: 12px; color: #111827; }
+    .diagram-caption p { font-size: 0.875rem; color: #6b7280; line-height: 1.7; }
+
+    /* Phase cards */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .phase-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 20px;
+      border-top: 3px solid var(--phase-color, #4f46e5);
+    }
+    .phase-card-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .phase-card-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: var(--phase-color); margin-bottom: 4px; }
+    .phase-card-title { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 8px; }
+    .phase-card-desc { font-size: 0.84rem; color: #6b7280; line-height: 1.6; }
+
+    /* Try-it boxes */
+    .try-box {
+      background: linear-gradient(135deg, rgba(79,70,229,0.04), rgba(8,145,178,0.04));
+      border: 1px solid rgba(79,70,229,0.2);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .try-box-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #4338ca;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .try-box-title { font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 12px; }
+    .prompt-block {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      margin: 10px 0;
+    }
+    .prompt-block .prompt-label { color: #89b4fa; font-weight: 700; }
+    .prompt-block .prompt-text { color: #cdd6f4; }
+    .try-box-note { font-size: 0.8rem; color: #6b7280; margin-top: 8px; font-style: italic; }
+    .loop-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(79,70,229,0.1);
+      color: #4338ca;
+      border-radius: 50px;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin: 0 4px;
+    }
+
+    /* Scenario cards */
+    .scenario-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+    .scenario-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .scenario-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .scenario-title { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 4px; }
+    .scenario-desc { font-size: 0.83rem; color: #6b7280; line-height: 1.6; }
+    .scenario-loops {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .scenario-loop-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 50px;
+      background: rgba(79,70,229,0.08);
+      color: #4338ca;
+    }
+
+    /* Competitor table */
+    .competitor-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin: 20px 0; }
+    .competitor-table th { background: rgba(79,70,229,0.07); color: #4338ca; padding: 10px 14px; text-align: left; font-weight: 700; border-bottom: 2px solid #e5e7eb; }
+    .competitor-table td { padding: 10px 14px; border-bottom: 1px solid rgba(79,70,229,0.06); color: #374151; }
+    .competitor-table tr:hover td { background: rgba(79,70,229,0.03); }
+    .badge-yes { background: rgba(5,150,105,0.1); color: #047857; padding: 2px 8px; border-radius: 50px; font-weight: 700; font-size: 0.72rem; }
+    .badge-partial { background: rgba(245,158,11,0.1); color: #b45309; padding: 2px 8px; border-radius: 50px; font-weight: 700; font-size: 0.72rem; }
+
+    /* Paper cards */
+    .paper-list { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+    .paper-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .paper-year { font-size: 0.78rem; font-weight: 800; color: #f59e0b; min-width: 40px; padding-top: 2px; }
+    .paper-title { font-size: 0.88rem; font-weight: 700; color: #111827; margin-bottom: 3px; }
+    .paper-why { font-size: 0.8rem; color: #6b7280; line-height: 1.5; }
+    .paper-link { font-size: 0.75rem; font-weight: 700; color: #4338ca; margin-top: 4px; display: inline-block; }
+
+    /* Video cards */
+    .video-list { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+    .video-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .video-thumb { font-size: 2rem; flex-shrink: 0; }
+    .video-title { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 3px; }
+    .video-meta { font-size: 0.78rem; color: #6b7280; }
+    .video-why { font-size: 0.8rem; color: #374151; margin-top: 4px; line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .phase-grid { grid-template-columns: 1fr; }
+      .loop-diagram { width: 280px; height: 280px; }
+      .loop-node { width: 74px; font-size: 0.68rem; }
+      .loop-node .node-icon { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <!-- ═══ Ribbon 1: Brand ═══ -->
+  <div class="navbar-brand">
+    <a href="../index.html" class="logo">🚀 FrontierLLM Academy</a>
+    <span class="navbar-brand-tagline">Build · Learn · Explore</span>
+  </div>
+  <!-- ═══ Ribbon 2: Navigation ═══ -->
+  <div class="navbar-main">
+    <button class="nav-tab" data-panel="mode">🎓 Learning Mode <i class="nav-chevron">▼</i></button>
+    <div class="navbar-sep"></div>
+    <button class="nav-tab" data-panel="explore">🧭 Explore <i class="nav-chevron">▼</i></button>
+    <button class="nav-tab" data-panel="ecosystems">🌏 AI Ecosystems <i class="nav-chevron">▼</i></button>
+    <div class="navbar-sep"></div>
+    <a href="../pages/ai-news.html" class="nav-item">📰 Daily AI News</a>
+    <button class="nav-tab active" data-panel="blog">✍️ Blog <i class="nav-chevron">▼</i></button>
+  </div>
+</nav>
+
+<!-- ═══ Slide-down Nav Panels ═══ -->
+<div class="nav-backdrop" id="navBackdrop"></div>
+<div class="nav-panel-wrap" id="navPanelWrap">
+
+  <div class="nav-panel" id="navPanel-mode">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-mode">
+        <div class="nav-panel-hd-title">🎓 Learning Mode</div>
+        <div class="nav-panel-hd-sub">Choose your perspective on LLMs</div>
+      </div>
+      <div class="nav-panel-items mode-grid">
+        <a href="../index.html?mode=layman" class="mode-panel-btn">🙋 Layman</a>
+        <a href="../index.html?mode=graduate" class="mode-panel-btn">🎓 Graduate</a>
+        <a href="../index.html?mode=researcher" class="mode-panel-btn">🔬 Researcher</a>
+        <a href="../index.html?mode=team" class="mode-panel-btn">👥 Team</a>
+        <a href="../index.html?mode=startup" class="mode-panel-btn">🏢 Startup</a>
+        <a href="../index.html?mode=investor" class="mode-panel-btn">💰 Investor</a>
+        <a href="../index.html?mode=founder" class="mode-panel-btn">🧭 Founder</a>
+        <a href="../index.html?mode=agentmode" class="mode-panel-btn">⚡ Agentic</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-panel" id="navPanel-explore">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-explore">
+        <div class="nav-panel-hd-title">🧭 Explore</div>
+        <div class="nav-panel-hd-sub">Deep-dive resources &amp; timelines</div>
+      </div>
+      <div class="nav-panel-items">
+        <a href="../pages/frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
+        <a href="../pages/future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
+        <a href="../pages/llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-panel" id="navPanel-ecosystems">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-eco">
+        <div class="nav-panel-hd-title">🌏 AI Ecosystems</div>
+        <div class="nav-panel-hd-sub">Country-level AI market deep dives</div>
+      </div>
+      <div class="nav-panel-items">
+        <a href="../pages/india-ai.html" class="panel-btn">🇮🇳 India AI</a>
+        <a href="../pages/china-ai.html" class="panel-btn">🇨🇳 China AI</a>
+        <a href="../pages/usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-panel" id="navPanel-blog">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-hd nav-dd-blog">
+        <div class="nav-panel-hd-title">✍️ Blog</div>
+        <div class="nav-panel-hd-sub">Short articles from the team</div>
+      </div>
+      <div class="nav-panel-items nav-panel-blog-items">
+        <a href="../pages/blog.html" class="panel-btn nav-panel-blog-all">📋 All Posts</a>
+        <div class="nav-panel-divider"></div>
+        <div class="nav-panel-label">Recent Posts</div>
+        <div id="blogNavMenu"><!-- populated by JS --></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<main style="padding-top: 94px;">
+  <div class="blog-post-wrap">
+
+    <a href="../pages/blog.html" class="blog-back">← Back to Blog</a>
+
+    <div class="blog-post-tag">⚡ Agentic AI · Research</div>
+
+    <h1 class="blog-post-title">The Agentic Loop: How Claude Thinks, Acts, and Corrects Itself</h1>
+
+    <div class="blog-post-meta">
+      <div class="blog-post-author">
+        <div class="blog-card-author-avatar">FL</div>
+        FrontierLLM Team
+      </div>
+      <span>June 22, 2026</span>
+      <span>9 min read</span>
+    </div>
+
+    <div class="blog-post-body">
+
+      <p>
+        When you ask Claude to write and debug a Python script, something interesting happens. It doesn't just respond once and stop. It writes code, notices a potential issue in its own output, revises, considers edge cases, revises again — all before you see a single character. That internal rhythm — <strong>observe, think, act, observe again</strong> — is the agentic loop, and it's the core engine behind every modern AI agent.
+      </p>
+
+      <p>
+        Understanding this loop doesn't just make you a better Claude user. It changes how you write prompts, how you structure multi-step tasks, and why certain approaches produce dramatically better results than others.
+      </p>
+
+      <!-- ───────── DIAGRAM ───────── -->
+      <h2>The Loop, Visualised</h2>
+
+      <div class="diagram-wrap">
+        <div class="loop-diagram">
+          <div class="loop-ring"></div>
+          <div class="loop-arc"></div>
+          <div class="loop-node perceive">
+            <span class="node-icon">👁️</span>
+            PERCEIVE
+          </div>
+          <div class="loop-node think">
+            <span class="node-icon">🧠</span>
+            THINK
+          </div>
+          <div class="loop-node act">
+            <span class="node-icon">⚡</span>
+            ACT
+          </div>
+          <div class="loop-node observe">
+            <span class="node-icon">🔍</span>
+            OBSERVE
+          </div>
+          <div class="loop-center">Agent<br>Loop</div>
+        </div>
+        <div class="diagram-caption">
+          <h3>One loop iteration ≈ one "thought step"</h3>
+          <p>
+            The spinning arc shows the agent's current focus rotating through each stage. In Claude, this loop can run dozens of times per response during extended thinking — each turn tightening the output toward the correct answer.
+          </p>
+          <p style="margin-top:10px;">
+            The loop terminates when a <strong>stopping condition</strong> is met: task complete, token budget reached, or the agent decides no further action improves the answer.
+          </p>
+        </div>
+      </div>
+
+      <!-- ───────── FOUR PHASES ───────── -->
+      <h2>The Four Phases in Detail</h2>
+
+      <div class="phase-grid">
+        <div class="phase-card" style="--phase-color: #4f46e5;">
+          <div class="phase-card-icon">👁️</div>
+          <div class="phase-card-label">Phase 1</div>
+          <div class="phase-card-title">Perceive</div>
+          <div class="phase-card-desc">
+            The agent receives its full context: your prompt, any prior conversation, results from the last tool call, system instructions, and memory state. This is the "inbox" before any thinking begins. In Claude, this is the entire context window at the start of each generation step.
+          </div>
+        </div>
+
+        <div class="phase-card" style="--phase-color: #7c3aed;">
+          <div class="phase-card-icon">🧠</div>
+          <div class="phase-card-label">Phase 2</div>
+          <div class="phase-card-title">Think / Plan</div>
+          <div class="phase-card-desc">
+            The agent reasons over its context. This is where chain-of-thought happens. In Claude's extended thinking mode, this is explicit — you can see the internal scratchpad. The model decomposes the task, identifies what information is missing, and selects an action. Good thinking here prevents wasted action steps later.
+          </div>
+        </div>
+
+        <div class="phase-card" style="--phase-color: #0891b2;">
+          <div class="phase-card-icon">⚡</div>
+          <div class="phase-card-label">Phase 3</div>
+          <div class="phase-card-title">Act</div>
+          <div class="phase-card-desc">
+            The agent executes: calls a tool (web search, code interpreter, file read), generates a draft response, writes to memory, or calls another agent. In Claude Code, Act is when a shell command runs or a file gets edited. One act per loop iteration — this keeps actions auditable and reversible.
+          </div>
+        </div>
+
+        <div class="phase-card" style="--phase-color: #059669;">
+          <div class="phase-card-icon">🔍</div>
+          <div class="phase-card-label">Phase 4</div>
+          <div class="phase-card-title">Observe</div>
+          <div class="phase-card-desc">
+            The result of the action flows back into context. A tool returned an error? That error is now the top of the context window heading into the next loop. This is the self-correcting mechanism — the agent sees what it did, evaluates the outcome, and either loops again or terminates. Most bugs in agent pipelines live here: truncated outputs, silent errors that look like success.
+          </div>
+        </div>
+      </div>
+
+      <blockquote>
+        The loop isn't a limitation — it's the feature. A single-shot LLM response is a guess. A looping agent is an iterative solver. The difference in output quality grows exponentially with task complexity.
+      </blockquote>
+
+      <!-- ───────── TRY IT ───────── -->
+      <h2>Try It in Claude: 3 Real Examples</h2>
+
+      <p>
+        Each example below is designed to deliberately trigger the agentic loop. You'll see Claude self-correct mid-response, revise its plan, or acknowledge an assumption was wrong. That's the loop working.
+      </p>
+
+      <!-- Example 1 -->
+      <div class="try-box">
+        <div class="try-box-label">⚡ Example 1 — Code Debugging Loop</div>
+        <div class="try-box-title">Trigger: "Write code, run it, fix what breaks"</div>
+        <div class="prompt-block"><span class="prompt-label">You → Claude:</span>
+<span class="prompt-text">Write a Python function that reads a CSV file, finds duplicate rows
+based on email column, and returns a deduplicated dataframe.
+
+Then walk through what would happen if the CSV has:
+1. An email column with mixed case (e.g. "User@Gmail.com" vs "user@gmail.com")
+2. Rows where the email field is empty
+3. A file path that doesn't exist
+
+For each case, show what your current code does wrong, then fix it
+and explain what changed.</span></div>
+        <div class="try-box-note">
+          🔁 Loop trigger: Asking Claude to deliberately find its own bugs forces multiple Perceive→Think→Act→Observe cycles. Watch how it revises the function 3 times — one per edge case.
+        </div>
+      </div>
+
+      <!-- Example 2 -->
+      <div class="try-box">
+        <div class="try-box-label">⚡ Example 2 — Research Synthesis Loop</div>
+        <div class="try-box-title">Trigger: "Build an argument, then steelman the opposite"</div>
+        <div class="prompt-block"><span class="prompt-label">You → Claude:</span>
+<span class="prompt-text">Topic: "LLMs will replace most knowledge workers within 5 years."
+
+Step 1: Build the strongest possible case FOR this claim.
+         Use specific evidence, name companies, cite trends.
+
+Step 2: Now act as a skeptic. Find the 3 weakest points in
+         your own Step 1 argument. Be specific about what
+         evidence you overstated or what you assumed without proof.
+
+Step 3: Revise your original claim to a version you'd actually
+         defend in front of economists.</span></div>
+        <div class="try-box-note">
+          🔁 Loop trigger: Step 2 forces Claude to observe its own output from Step 1 and critique it. This is a manually structured agentic loop — you're the orchestrator running the Observe phase explicitly.
+        </div>
+      </div>
+
+      <!-- Example 3 -->
+      <div class="try-box">
+        <div class="try-box-label">⚡ Example 3 — Planning + Self-Correction Loop</div>
+        <div class="try-box-title">Trigger: "Plan a task, then catch your own planning errors"</div>
+        <div class="prompt-block"><span class="prompt-label">You → Claude:</span>
+<span class="prompt-text">I want to launch a newsletter about AI for non-technical founders.
+I have zero subscribers, $0 budget, and 5 hours/week.
+
+First: give me a 90-day launch plan.
+
+Then: review your own plan and identify every assumption you made
+that could be wrong. For each assumption, tell me what happens
+to the plan if that assumption fails — and what the backup is.
+
+Finally: give me the single most important action for Day 1
+that doesn't depend on any of those assumptions being true.</span></div>
+        <div class="try-box-note">
+          🔁 Loop trigger: The "review your own plan" step forces a full Observe cycle on Claude's own output. The final step forces synthesis after self-correction — this is three loop iterations in a single prompt.
+        </div>
+      </div>
+
+      <!-- ───────── SCENARIOS ───────── -->
+      <h2>Where the Loop Changes the Game</h2>
+
+      <p>The loop isn't equally valuable everywhere. Here are the scenarios where it earns its keep:</p>
+
+      <div class="scenario-list">
+        <div class="scenario-item">
+          <div class="scenario-icon">🔧</div>
+          <div>
+            <div class="scenario-title">Complex Software Development</div>
+            <div class="scenario-desc">Writing a function that calls an API, parses the response, handles rate limits, and retries on failure. Each of those requirements is one loop iteration. A single-shot response to "write this API caller" misses 3 of 4 requirements on average.</div>
+            <div class="scenario-loops">
+              <span class="scenario-loop-tag">Write draft</span>
+              <span class="scenario-loop-tag">Find missing error handling</span>
+              <span class="scenario-loop-tag">Add retry logic</span>
+              <span class="scenario-loop-tag">Test edge cases</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-item">
+          <div class="scenario-icon">📊</div>
+          <div>
+            <div class="scenario-title">Data Analysis with Unknown Structure</div>
+            <div class="scenario-desc">When you don't know what's in a dataset before you start, the loop is essential — inspect the data, form a hypothesis, test it, revise. In Claude's code interpreter, this is the natural rhythm of exploratory analysis.</div>
+            <div class="scenario-loops">
+              <span class="scenario-loop-tag">Inspect schema</span>
+              <span class="scenario-loop-tag">Identify anomalies</span>
+              <span class="scenario-loop-tag">Adjust analysis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-item">
+          <div class="scenario-icon">✍️</div>
+          <div>
+            <div class="scenario-title">Long-form Writing and Editing</div>
+            <div class="scenario-desc">First draft → identify weak sections → rewrite them → check for consistency → polish tone. Each step is a loop. The quality gap between "write me an article" and a looped write-critique-revise cycle is dramatic on any piece over 500 words.</div>
+            <div class="scenario-loops">
+              <span class="scenario-loop-tag">Draft</span>
+              <span class="scenario-loop-tag">Self-critique</span>
+              <span class="scenario-loop-tag">Targeted revision</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-item">
+          <div class="scenario-icon">🤔</div>
+          <div>
+            <div class="scenario-title">Strategic Decision Analysis</div>
+            <div class="scenario-desc">Build a case, find the weakest assumptions, pressure-test with adversarial scenarios, arrive at a robust conclusion. This is the loop applied to thinking — and it's where Claude's extended thinking model especially shines over single-pass responses.</div>
+            <div class="scenario-loops">
+              <span class="scenario-loop-tag">Initial analysis</span>
+              <span class="scenario-loop-tag">Stress test</span>
+              <span class="scenario-loop-tag">Revised recommendation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────── COMPETITORS ───────── -->
+      <h2>Is This Universal? How Competitors Use the Loop</h2>
+
+      <p>
+        Yes — the agentic loop is the standard pattern across all frontier AI systems. The differences are in implementation details: how many iterations, how tools are called, how memory is managed.
+      </p>
+
+      <table class="competitor-table">
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>Loop Mechanism</th>
+            <th>Tool Use</th>
+            <th>Self-Correction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Claude (Anthropic)</strong></td>
+            <td>Extended thinking + tool_use content blocks</td>
+            <td><span class="badge-yes">Full</span></td>
+            <td><span class="badge-yes">Native in CoT</span></td>
+          </tr>
+          <tr>
+            <td><strong>GPT-4o / o3 (OpenAI)</strong></td>
+            <td>Reasoning tokens (o-series) + function calling</td>
+            <td><span class="badge-yes">Full</span></td>
+            <td><span class="badge-yes">Native in o-series</span></td>
+          </tr>
+          <tr>
+            <td><strong>Gemini 2.0 (Google)</strong></td>
+            <td>Native function calling + Gemini Live streaming</td>
+            <td><span class="badge-yes">Full</span></td>
+            <td><span class="badge-partial">Partial</span></td>
+          </tr>
+          <tr>
+            <td><strong>LangGraph / LangChain</strong></td>
+            <td>Explicit graph nodes — loop is in the framework</td>
+            <td><span class="badge-yes">Full</span></td>
+            <td><span class="badge-yes">Framework-level</span></td>
+          </tr>
+          <tr>
+            <td><strong>Cognition Devin</strong></td>
+            <td>Long-horizon agent loop with shell + browser</td>
+            <td><span class="badge-yes">Full</span></td>
+            <td><span class="badge-yes">Core design</span></td>
+          </tr>
+          <tr>
+            <td><strong>Microsoft Copilot</strong></td>
+            <td>Orchestration layer over GPT-4 + Bing</td>
+            <td><span class="badge-partial">Search + Office</span></td>
+            <td><span class="badge-partial">Limited</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The strategic differentiator isn't whether a system has the loop — they all do. It's <em>loop depth</em> (how many iterations before output), <em>loop transparency</em> (can the user see the reasoning?), and <em>loop cost</em> (compute per iteration). Claude's extended thinking makes the loop unusually transparent; o3's deep reasoning makes it unusually deep.
+      </p>
+
+      <!-- ───────── PAPERS ───────── -->
+      <h2>Research Papers to Read</h2>
+
+      <div class="paper-list">
+
+        <div class="paper-card">
+          <div class="paper-year">2022</div>
+          <div>
+            <div class="paper-title">ReAct: Synergizing Reasoning and Acting in Language Models</div>
+            <div class="paper-why">The foundational paper. Yao et al. show that interleaving chain-of-thought reasoning traces with tool actions dramatically outperforms either alone. This is the formal origin of the "Think before you Act" loop design.</div>
+            <a class="paper-link" href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629 →</a>
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-year">2023</div>
+          <div>
+            <div class="paper-title">Toolformer: Language Models Can Teach Themselves to Use Tools</div>
+            <div class="paper-why">Schick et al. (Meta AI) show how LLMs can learn to call APIs mid-generation — the foundation for Claude's tool_use blocks. Explains why tool use isn't bolted on but integrated into the generation process.</div>
+            <a class="paper-link" href="https://arxiv.org/abs/2302.04761" target="_blank" rel="noopener">arxiv.org/abs/2302.04761 →</a>
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-year">2023</div>
+          <div>
+            <div class="paper-title">Self-Refine: Iterative Refinement with Self-Feedback</div>
+            <div class="paper-why">Madaan et al. (CMU) demonstrate that having an LLM critique and refine its own output in a loop consistently outperforms single-pass generation — across code, essay writing, and math. The theoretical backing for the try-it examples above.</div>
+            <a class="paper-link" href="https://arxiv.org/abs/2303.17651" target="_blank" rel="noopener">arxiv.org/abs/2303.17651 →</a>
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-year">2023</div>
+          <div>
+            <div class="paper-title">Cognitive Architectures for Language Agents (CoALA)</div>
+            <div class="paper-why">Sumers et al. (Princeton) provide the most complete taxonomy of how language agents are structured — memory types, action spaces, decision procedures. If you want a vocabulary for discussing agent design, this is the reference.</div>
+            <a class="paper-link" href="https://arxiv.org/abs/2309.02427" target="_blank" rel="noopener">arxiv.org/abs/2309.02427 →</a>
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <div class="paper-year">2024</div>
+          <div>
+            <div class="paper-title">Anthropic's Model Specification (Constitutional AI + Model Card)</div>
+            <div class="paper-why">Not a research paper, but Anthropic's public documentation on how Claude's agentic behaviour is constrained, how it handles multi-step tool use, and the safety considerations baked into the loop design. Essential reading for anyone building on Claude.</div>
+            <a class="paper-link" href="https://www.anthropic.com/research" target="_blank" rel="noopener">anthropic.com/research →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ───────── VIDEOS ───────── -->
+      <h2>Best YouTube Videos to Watch</h2>
+
+      <div class="video-list">
+
+        <div class="video-card">
+          <div class="video-thumb">🎥</div>
+          <div>
+            <div class="video-title">Andrej Karpathy — "Intro to Large Language Models"</div>
+            <div class="video-meta">YouTube · ~1 hour · Andrej Karpathy</div>
+            <div class="video-why">The clearest explanation of how LLMs generate tokens, what "thinking" actually means computationally, and how tool use extends the model's capabilities. He covers the loop concept without calling it that — watching this makes the loop intuitive rather than abstract.</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">🎥</div>
+          <div>
+            <div class="video-title">Harrison Chase — "Building LLM Agents with LangGraph"</div>
+            <div class="video-meta">YouTube · LangChain channel · ~45 min</div>
+            <div class="video-why">LangGraph makes the loop explicit as a graph you draw and execute. Watching this gives you a visual model of how Think → Act → Observe maps to real code. Best for developers who want to build their own agentic pipelines.</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">🎥</div>
+          <div>
+            <div class="video-title">Yannic Kilcher — "ReAct: Synergizing Reasoning and Acting"</div>
+            <div class="video-meta">YouTube · Yannic Kilcher · ~30 min</div>
+            <div class="video-why">A line-by-line walkthrough of the ReAct paper with live examples. If you read one paper from the list above, watch this video alongside it — Yannic's paper breakdowns are the best in the field for making research immediately applicable.</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">🎥</div>
+          <div>
+            <div class="video-title">Anthropic — "Claude's Extended Thinking" (official demo)</div>
+            <div class="video-meta">YouTube · Anthropic · ~20 min</div>
+            <div class="video-why">Shows the loop in action inside Claude specifically — you can watch the internal reasoning steps in real time. Seeing the scratchpad makes the Perceive → Think → Act pattern concrete rather than theoretical.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ───────── CONCLUSION ───────── -->
+      <h2>The One Thing to Take Away</h2>
+
+      <p>
+        The agentic loop transforms a language model from a one-shot text predictor into a system capable of multi-step reasoning, self-correction, and goal-directed behaviour. Every capability you admire in Claude — writing code that actually runs, building on its own previous output, catching its own mistakes — is the loop doing its job.
+      </p>
+
+      <p>
+        Once you internalise the loop, you stop writing single-sentence prompts and start structuring conversations as <em>explicit loop iterations</em>: draft, critique, revise. You get measurably better outputs for the same underlying model — not because the model changed, but because you started working with its architecture instead of against it.
+      </p>
+
+      <blockquote>
+        The best Claude prompts aren't clever one-liners. They're well-designed loops — with clear stopping conditions, explicit observation steps, and room for the model to self-correct before it hands you the final answer.
+      </blockquote>
+
+    </div><!-- end blog-post-body -->
+
+  </div>
+</main>
+
+<script src="../app.js"></script>
+</body>
+</html>
