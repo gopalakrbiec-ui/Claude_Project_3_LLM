@@ -373,123 +373,135 @@
 
 <script>
 /* ═══════════════════════════════════════════════════
-   CONFIG: RSS sources per category
-   Using rss2json.com as CORS-free RSS proxy (no key needed for public feeds)
+   AI News Aggregator
+   CORS proxy: allorigins.win — no API key needed
+   RSS parsed with native DOMParser
 ═══════════════════════════════════════════════════ */
-const RSS2JSON = 'https://api.rss2json.com/v1/api.json?count=8&rss_url=';
 
+const PROXY = 'https://api.allorigins.win/raw?url=';
+
+/* Feeds — reduced to the most reliable public RSS sources */
 const FEEDS = [
-  // Research
-  { url: 'https://export.arxiv.org/rss/cs.AI',              cat: 'research',    source: 'ArXiv cs.AI',       icon: '📄' },
-  { url: 'https://export.arxiv.org/rss/cs.LG',              cat: 'research',    source: 'ArXiv cs.LG',       icon: '📄' },
-  { url: 'https://research.google/blog/rss/',               cat: 'research',    source: 'Google Research',   icon: '🔬' },
-  { url: 'https://www.deepmind.com/blog/rss.xml',           cat: 'research',    source: 'DeepMind',          icon: '🔬' },
-
-  // AI Investments
-  { url: 'https://techcrunch.com/category/artificial-intelligence/feed/', cat: 'investments', source: 'TechCrunch AI', icon: '💼' },
-  { url: 'https://news.crunchbase.com/feed/',               cat: 'investments', source: 'Crunchbase',        icon: '💰' },
-  { url: 'https://venturebeat.com/ai/feed/',                cat: 'investments', source: 'VentureBeat AI',    icon: '📈' },
-
-  // AI Adoption
-  { url: 'https://www.technologyreview.com/feed/',          cat: 'adoption',    source: 'MIT Tech Review',   icon: '🏢' },
-  { url: 'https://feeds.arstechnica.com/arstechnica/technology-lab', cat: 'adoption', source: 'Ars Technica', icon: '🔧' },
-  { url: 'https://www.wired.com/feed/tag/artificial-intelligence/rss', cat: 'adoption', source: 'Wired AI', icon: '⚡' },
-
-  // AI Startups
-  { url: 'https://techcrunch.com/startups/feed/',           cat: 'startups',    source: 'TechCrunch Startups', icon: '🚀' },
-  { url: 'https://venturebeat.com/feed/',                   cat: 'startups',    source: 'VentureBeat',       icon: '🏗️' },
-
-  // Political / Policy
-  { url: 'https://feeds.reuters.com/reuters/technologyNews', cat: 'political',  source: 'Reuters Tech',      icon: '📰' },
-  { url: 'https://thehill.com/technology/feed/',            cat: 'political',   source: 'The Hill Tech',     icon: '🏛️' },
-
-  // LLM News
-  { url: 'https://huggingface.co/blog/feed.xml',            cat: 'llm',         source: 'HuggingFace Blog',  icon: '🤗' },
-  { url: 'https://openai.com/blog/rss.xml',                 cat: 'llm',         source: 'OpenAI Blog',       icon: '🤖' },
-  { url: 'https://www.anthropic.com/rss.xml',               cat: 'llm',         source: 'Anthropic',         icon: '🤖' },
-
-  // India AI
+  /* Research */
+  { url: 'https://export.arxiv.org/rss/cs.AI',                          cat: 'research',    source: 'ArXiv cs.AI',        icon: '📄' },
+  { url: 'https://export.arxiv.org/rss/cs.LG',                          cat: 'research',    source: 'ArXiv cs.LG',        icon: '📄' },
+  { url: 'https://deepmind.google/blog/rss.xml',                        cat: 'research',    source: 'DeepMind',           icon: '🔬' },
+  /* Investments / TC */
+  { url: 'https://techcrunch.com/category/artificial-intelligence/feed/', cat: 'investments', source: 'TechCrunch AI',    icon: '💼' },
+  { url: 'https://venturebeat.com/ai/feed/',                             cat: 'investments', source: 'VentureBeat AI',    icon: '📈' },
+  /* Adoption */
+  { url: 'https://feeds.arstechnica.com/arstechnica/technology-lab',    cat: 'adoption',    source: 'Ars Technica',       icon: '🔧' },
+  { url: 'https://www.technologyreview.com/feed/',                       cat: 'adoption',    source: 'MIT Tech Review',   icon: '🏢' },
+  /* Startups */
+  { url: 'https://techcrunch.com/startups/feed/',                        cat: 'startups',    source: 'TechCrunch',        icon: '🚀' },
+  /* Political */
+  { url: 'https://thehill.com/technology/feed/',                         cat: 'political',   source: 'The Hill Tech',     icon: '🏛️' },
+  /* LLM */
+  { url: 'https://huggingface.co/blog/feed.xml',                         cat: 'llm',         source: 'HuggingFace',       icon: '🤗' },
+  { url: 'https://openai.com/blog/rss.xml',                              cat: 'llm',         source: 'OpenAI',            icon: '🤖' },
+  /* India AI */
   { url: 'https://economictimes.indiatimes.com/tech/technology/rssfeeds/13357270.cms', cat: 'india', source: 'Economic Times', icon: '🇮🇳' },
-  { url: 'https://www.livemint.com/technology/rss.xml',     cat: 'india',       source: 'LiveMint Tech',     icon: '🇮🇳' },
-
-  // China AI
-  { url: 'https://www.scmp.com/rss/91/feed',                cat: 'china',       source: 'SCMP Tech',         icon: '🇨🇳' },
-  { url: 'https://feeds.reuters.com/reuters/technologyNews', cat: 'china',      source: 'Reuters',           icon: '📰' },
-
-  // Open Source AI
-  { url: 'https://github.blog/feed/',                       cat: 'opensource',  source: 'GitHub Blog',       icon: '🐙' },
-  { url: 'https://huggingface.co/blog/feed.xml',            cat: 'opensource',  source: 'HuggingFace',       icon: '🟢' },
-
-  // Future of AI
-  { url: 'https://www.technologyreview.com/feed/',          cat: 'future',      source: 'MIT Tech Review',   icon: '🔮' },
-  { url: 'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss', cat: 'future', source: 'IEEE Spectrum', icon: '⚡' },
-
-  // AGI
-  { url: 'https://www.lesswrong.com/feed.xml',              cat: 'agi',         source: 'LessWrong',         icon: '🧠' },
-  { url: 'https://intelligence.org/feed/',                  cat: 'agi',         source: 'MIRI',              icon: '🧠' },
+  { url: 'https://www.livemint.com/technology/rss.xml',                  cat: 'india',       source: 'LiveMint',          icon: '🇮🇳' },
+  /* China AI */
+  { url: 'https://www.scmp.com/rss/91/feed',                             cat: 'china',       source: 'SCMP Tech',         icon: '🇨🇳' },
+  /* Open Source */
+  { url: 'https://github.blog/feed/',                                    cat: 'opensource',  source: 'GitHub Blog',       icon: '🐙' },
+  /* Future */
+  { url: 'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss', cat: 'future', source: 'IEEE Spectrum',   icon: '⚡' },
+  /* AGI */
+  { url: 'https://www.lesswrong.com/feed.xml',                           cat: 'agi',         source: 'LessWrong',         icon: '🧠' },
 ];
 
-/* ── Category metadata ── */
 const CAT_META = {
-  all:         { label: '🌐 All News',      color: '#4f46e5', text: '#fff', border: '#4f46e5', dim: 'rgba(79,70,229,.08)',   dimText: '#4f46e5',   dimBorder: 'rgba(79,70,229,.25)'  },
-  research:    { label: '🔬 Research',       color: '#d97706', text: '#fff', border: '#d97706', dim: 'rgba(217,119,6,.08)',  dimText: '#b45309',   dimBorder: 'rgba(217,119,6,.3)'   },
-  investments: { label: '💰 Investments',    color: '#16a34a', text: '#fff', border: '#16a34a', dim: 'rgba(22,163,74,.08)',  dimText: '#15803d',   dimBorder: 'rgba(22,163,74,.3)'   },
-  adoption:    { label: '🏢 Adoption',       color: '#0891b2', text: '#fff', border: '#0891b2', dim: 'rgba(8,145,178,.08)',  dimText: '#0369a1',   dimBorder: 'rgba(8,145,178,.3)'   },
-  startups:    { label: '🚀 Startups',       color: '#db2777', text: '#fff', border: '#db2777', dim: 'rgba(219,39,119,.08)', dimText: '#be185d',   dimBorder: 'rgba(219,39,119,.3)'  },
-  political:   { label: '🏛️ Political',      color: '#dc2626', text: '#fff', border: '#dc2626', dim: 'rgba(220,38,38,.08)',  dimText: '#b91c1c',   dimBorder: 'rgba(220,38,38,.3)'   },
-  llm:         { label: '🤖 LLM News',       color: '#7c3aed', text: '#fff', border: '#7c3aed', dim: 'rgba(124,58,237,.08)', dimText: '#6d28d9',   dimBorder: 'rgba(124,58,237,.3)'  },
-  india:       { label: '🇮🇳 India AI',       color: '#ea580c', text: '#fff', border: '#ea580c', dim: 'rgba(234,88,12,.08)',  dimText: '#c2410c',   dimBorder: 'rgba(234,88,12,.3)'   },
-  china:       { label: '🇨🇳 China AI',       color: '#dc2626', text: '#fff', border: '#dc2626', dim: 'rgba(220,38,38,.08)',  dimText: '#991b1b',   dimBorder: 'rgba(220,38,38,.25)'  },
-  opensource:  { label: '🟢 Open Source',    color: '#059669', text: '#fff', border: '#059669', dim: 'rgba(5,150,105,.08)',  dimText: '#047857',   dimBorder: 'rgba(5,150,105,.3)'   },
-  future:      { label: '🔮 Future of AI',   color: '#0891b2', text: '#fff', border: '#0891b2', dim: 'rgba(6,182,212,.08)',  dimText: '#0e7490',   dimBorder: 'rgba(6,182,212,.3)'   },
-  agi:         { label: '🧠 AGI',            color: '#4f46e5', text: '#fff', border: '#4f46e5', dim: 'rgba(79,70,229,.08)',  dimText: '#3730a3',   dimBorder: 'rgba(79,70,229,.25)'  },
+  all:         { label: '🌐 All News',    color: '#4f46e5', dim: 'rgba(79,70,229,.08)',   dimText: '#4f46e5', dimBorder: 'rgba(79,70,229,.25)'  },
+  research:    { label: '🔬 Research',    color: '#d97706', dim: 'rgba(217,119,6,.08)',   dimText: '#b45309', dimBorder: 'rgba(217,119,6,.3)'   },
+  investments: { label: '💰 Investments', color: '#16a34a', dim: 'rgba(22,163,74,.08)',   dimText: '#15803d', dimBorder: 'rgba(22,163,74,.3)'   },
+  adoption:    { label: '🏢 Adoption',    color: '#0891b2', dim: 'rgba(8,145,178,.08)',   dimText: '#0369a1', dimBorder: 'rgba(8,145,178,.3)'   },
+  startups:    { label: '🚀 Startups',    color: '#db2777', dim: 'rgba(219,39,119,.08)',  dimText: '#be185d', dimBorder: 'rgba(219,39,119,.3)'  },
+  political:   { label: '🏛️ Political',   color: '#dc2626', dim: 'rgba(220,38,38,.08)',   dimText: '#b91c1c', dimBorder: 'rgba(220,38,38,.3)'   },
+  llm:         { label: '🤖 LLM News',    color: '#7c3aed', dim: 'rgba(124,58,237,.08)',  dimText: '#6d28d9', dimBorder: 'rgba(124,58,237,.3)'  },
+  india:       { label: '🇮🇳 India AI',    color: '#ea580c', dim: 'rgba(234,88,12,.08)',   dimText: '#c2410c', dimBorder: 'rgba(234,88,12,.3)'   },
+  china:       { label: '🇨🇳 China AI',    color: '#dc2626', dim: 'rgba(220,38,38,.08)',   dimText: '#991b1b', dimBorder: 'rgba(220,38,38,.25)'  },
+  opensource:  { label: '🟢 Open Source', color: '#059669', dim: 'rgba(5,150,105,.08)',   dimText: '#047857', dimBorder: 'rgba(5,150,105,.3)'   },
+  future:      { label: '🔮 Future of AI',color: '#0891b2', dim: 'rgba(6,182,212,.08)',   dimText: '#0e7490', dimBorder: 'rgba(6,182,212,.3)'   },
+  agi:         { label: '🧠 AGI',         color: '#4f46e5', dim: 'rgba(79,70,229,.08)',   dimText: '#3730a3', dimBorder: 'rgba(79,70,229,.25)'  },
 };
 
-/* ── State ── */
-let allArticles  = [];
-let activeTab    = 'all';
-let fetchedOnce  = false;
-const CACHE_KEY  = 'ai-news-cache';
-const CACHE_TS   = 'ai-news-ts';
+let allArticles = [];
+let activeTab   = 'all';
+let fetchedOnce = false;
+const CACHE_KEY = 'ai-news-v2-cache';
+const CACHE_TS  = 'ai-news-v2-ts';
 
-/* ── Fetch a single feed via rss2json ── */
-async function fetchFeed(feed) {
-  const url = RSS2JSON + encodeURIComponent(feed.url);
+/* ── Parse one RSS/Atom feed XML string ── */
+function parseRSS(xmlText, feed) {
   try {
-    const res  = await fetch(url, { signal: AbortSignal.timeout(8000) });
-    const data = await res.json();
-    if (data.status !== 'ok') return [];
-    return (data.items || []).map(item => ({
-      title:  cleanText(item.title   || ''),
-      desc:   cleanText(item.description || item.content || ''),
-      link:   item.link  || item.guid || '#',
-      date:   item.pubDate ? new Date(item.pubDate) : new Date(),
-      source: feed.source,
-      icon:   feed.icon,
-      cat:    feed.cat,
-    }));
+    const doc   = new DOMParser().parseFromString(xmlText, 'text/xml');
+    const isAtom = doc.querySelector('feed') !== null;
+    const items  = isAtom
+      ? [...doc.querySelectorAll('entry')]
+      : [...doc.querySelectorAll('item')];
+
+    return items.slice(0, 10).map(el => {
+      const get = (tag) => {
+        const node = el.querySelector(tag);
+        return node ? (node.textContent || node.getAttribute('href') || '').trim() : '';
+      };
+      const title = cleanText(get('title'));
+      const link  = isAtom
+        ? (el.querySelector('link[rel="alternate"]')?.getAttribute('href') || el.querySelector('link')?.getAttribute('href') || get('id'))
+        : (get('link') || get('guid'));
+      const desc  = cleanText(get('description') || get('summary') || get('content'));
+      const rawDate = get('pubDate') || get('updated') || get('published') || '';
+      const date  = rawDate ? new Date(rawDate) : new Date();
+
+      if (!title || !link || link.startsWith('http') === false) return null;
+      return { title, link, desc, date, source: feed.source, icon: feed.icon, cat: feed.cat };
+    }).filter(Boolean);
+  } catch (e) {
+    return [];
+  }
+}
+
+/* ── Fetch a single feed via allorigins proxy ── */
+async function fetchFeed(feed) {
+  const proxyUrl = PROXY + encodeURIComponent(feed.url);
+  try {
+    const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
+    if (!res.ok) return [];
+    const text = await res.text();
+    return parseRSS(text, feed);
   } catch (_) {
     return [];
   }
 }
 
-function cleanText(html) {
-  const tmp = document.createElement('div');
-  tmp.innerHTML = html;
-  return (tmp.textContent || tmp.innerText || '').trim().replace(/\s+/g, ' ');
+/* ── Batch fetch with concurrency limit ── */
+async function fetchInBatches(feeds, batchSize = 4) {
+  const results = [];
+  for (let i = 0; i < feeds.length; i += batchSize) {
+    const batch = feeds.slice(i, i + batchSize);
+    const batchResults = await Promise.allSettled(batch.map(f => fetchFeed(f)));
+    results.push(...batchResults);
+    // Small delay between batches to avoid hammering the proxy
+    if (i + batchSize < feeds.length) await new Promise(r => setTimeout(r, 400));
+  }
+  return results;
 }
 
-/* ── Fetch all feeds ── */
+/* ── Main fetch ── */
 async function fetchAllFeeds(force = false) {
-  // Check cache (valid for 6 hours)
+  // Serve from cache if fresh (< 6 hours) and not forced
   const ts = localStorage.getItem(CACHE_TS);
   if (!force && ts && (Date.now() - parseInt(ts)) < 6 * 3600 * 1000) {
     const cached = localStorage.getItem(CACHE_KEY);
     if (cached) {
       try {
         allArticles = JSON.parse(cached).map(a => ({ ...a, date: new Date(a.date) }));
+        fetchedOnce = true;
         renderArticles();
-        setStatus('Loaded from cache', allArticles.length);
+        setStatus('Cached', allArticles.length);
+        updateLastFetched(new Date(parseInt(ts)));
         return;
       } catch(_) {}
     }
@@ -498,24 +510,21 @@ async function fetchAllFeeds(force = false) {
   const btn = document.getElementById('refreshBtn');
   btn.disabled = true;
   btn.textContent = '⟳ Fetching…';
-  document.getElementById('status-text').textContent = 'Fetching latest headlines…';
+  document.getElementById('status-text').textContent = 'Fetching live headlines…';
   document.getElementById('news-skeleton').style.display = 'grid';
   document.getElementById('news-grid').style.display = 'none';
 
-  // Fetch all feeds concurrently
-  const results = await Promise.allSettled(FEEDS.map(f => fetchFeed(f)));
+  const results = await fetchInBatches(FEEDS, 4);
+
   const articles = results
     .flatMap(r => r.status === 'fulfilled' ? r.value : [])
-    .filter(a => a.title && a.link && a.link !== '#')
-    // Deduplicate by title similarity
-    .filter((a, i, arr) => arr.findIndex(b => b.title.slice(0,40) === a.title.slice(0,40)) === i)
-    // Sort newest first
+    .filter(a => a && a.title && a.link)
+    .filter((a, i, arr) => arr.findIndex(b => b.title.slice(0, 50) === a.title.slice(0, 50)) === i)
     .sort((a, b) => b.date - a.date);
 
   allArticles = articles;
   fetchedOnce = true;
 
-  // Cache
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify(articles));
     localStorage.setItem(CACHE_TS, Date.now().toString());
@@ -523,65 +532,71 @@ async function fetchAllFeeds(force = false) {
 
   renderArticles();
   setStatus('Live', allArticles.length);
-  updateLastFetched();
+  updateLastFetched(new Date());
 
   btn.disabled = false;
   btn.textContent = '⟳ Refresh Now';
 }
 
-/* ── Render articles for active tab ── */
+/* ── Render ── */
 function renderArticles() {
   const grid     = document.getElementById('news-grid');
   const skeleton = document.getElementById('news-skeleton');
   skeleton.style.display = 'none';
-  grid.style.display = 'grid';
+  grid.style.display     = 'grid';
 
-  const cat  = activeTab;
-  const meta = CAT_META[cat] || CAT_META.all;
-  const list = cat === 'all' ? allArticles : allArticles.filter(a => a.cat === cat);
+  const list = activeTab === 'all'
+    ? allArticles
+    : allArticles.filter(a => a.cat === activeTab);
 
   if (list.length === 0) {
+    const cm = CAT_META[activeTab] || CAT_META.all;
     grid.innerHTML = `
       <div class="news-empty">
         <div class="news-empty-icon">📭</div>
-        <h4>No headlines yet for this category</h4>
-        <p>Some RSS feeds may be temporarily unavailable. <a href="#" onclick="fetchAllFeeds(true);return false;">Try refreshing</a> or check back later.</p>
+        <h4>${allArticles.length === 0 ? 'Could not fetch headlines' : 'No articles in this category yet'}</h4>
+        <p>${allArticles.length === 0
+          ? 'The RSS proxy may be temporarily unavailable. <a href="#" onclick="fetchAllFeeds(true);return false;">Try again</a> — or visit sources directly below.'
+          : 'Try <a href="#" onclick="fetchAllFeeds(true);return false;">refreshing</a> or check another category.'
+        }</p>
       </div>`;
     return;
   }
 
   grid.innerHTML = list.slice(0, 60).map(a => {
-    const ago = timeAgo(a.date);
-    const desc = a.desc ? a.desc.slice(0, 140) + (a.desc.length > 140 ? '…' : '') : '';
-    const cm = CAT_META[a.cat] || CAT_META.all;
-    return `
-      <a class="news-card" href="${escHtml(a.link)}" target="_blank" rel="noopener"
-         style="--tab-color:${cm.color}; --tab-color-dim:${cm.dim}; --tab-color-text:${cm.dimText}; --tab-color-border:${cm.dimBorder}">
-        <div class="nc-source">
-          <div class="nc-source-icon">${a.icon}</div>
-          <div class="nc-source-name">${escHtml(a.source)}</div>
-          <div class="nc-date">${ago}</div>
-        </div>
-        <div class="nc-title">${escHtml(a.title)}</div>
-        ${desc ? `<div class="nc-desc">${escHtml(desc)}</div>` : ''}
-        <div class="nc-tag">${cm.label}</div>
-      </a>`;
+    const ago  = timeAgo(a.date);
+    const desc = a.desc ? a.desc.slice(0, 150) + (a.desc.length > 150 ? '…' : '') : '';
+    const cm   = CAT_META[a.cat] || CAT_META.all;
+    return `<a class="news-card" href="${escHtml(a.link)}" target="_blank" rel="noopener"
+       style="--tab-color:${cm.color};--tab-color-dim:${cm.dim};--tab-color-text:${cm.dimText};--tab-color-border:${cm.dimBorder}">
+      <div class="nc-source">
+        <div class="nc-source-icon">${a.icon}</div>
+        <div class="nc-source-name">${escHtml(a.source)}</div>
+        <div class="nc-date">${ago}</div>
+      </div>
+      <div class="nc-title">${escHtml(a.title)}</div>
+      ${desc ? `<div class="nc-desc">${escHtml(desc)}</div>` : ''}
+      <div class="nc-tag">${cm.label}</div>
+    </a>`;
   }).join('');
 }
 
 function setStatus(state, count) {
-  document.getElementById('status-text').textContent = state === 'Live' ? 'Live — fetched now' : state;
-  document.getElementById('status-count').textContent = count ? `${count} articles across all categories` : '';
+  const el = document.getElementById('status-text');
+  const ct = document.getElementById('status-count');
+  if (state === 'Live')   { el.textContent = '● Live — just fetched'; }
+  else if (state === 'Cached') { el.textContent = '○ Loaded from cache'; }
+  else { el.textContent = state; }
+  ct.textContent = count ? `${count} articles` : '';
 }
 
-function updateLastFetched() {
-  const now = new Date();
+function updateLastFetched(date) {
   const ist = new Intl.DateTimeFormat('en-IN', {
     timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit',
     hour12: true, day: 'numeric', month: 'short'
-  }).format(now);
+  }).format(date);
   document.getElementById('last-fetched-time').textContent = ist;
-  document.getElementById('last-fetched-tz').textContent = 'IST (Asia/Kolkata)';
+  document.getElementById('last-fetched-tz').textContent = 'IST';
 }
 
 /* ── Tab switching ── */
@@ -594,78 +609,63 @@ document.getElementById('newsTabs').addEventListener('click', e => {
   if (fetchedOnce) renderArticles();
 });
 
-/* ── Countdown to next IST refresh ── */
+/* ── IST countdowns ── */
 function updateCountdowns() {
-  const now = new Date();
-  // IST offset = UTC+5:30
+  const now   = new Date();
   const istMs = now.getTime() + (5.5 * 3600 * 1000);
   const ist   = new Date(istMs);
-  const h = ist.getUTCHours(), m = ist.getUTCMinutes();
+  const h = ist.getUTCHours(), m = ist.getUTCMinutes(), s = ist.getUTCSeconds();
 
   function msUntil(targetH) {
-    let diff = (targetH * 60 - (h * 60 + m)) * 60 * 1000 - ist.getUTCSeconds() * 1000;
-    if (diff < 0) diff += 24 * 3600 * 1000;
+    let diff = ((targetH * 60) - (h * 60 + m)) * 60 * 1000 - s * 1000;
+    if (diff <= 0) diff += 24 * 3600 * 1000;
     return diff;
   }
-
   function fmt(ms) {
-    const s  = Math.floor(ms / 1000);
-    const hh = Math.floor(s / 3600);
-    const mm = Math.floor((s % 3600) / 60);
-    const ss = s % 60;
-    if (hh > 0) return `in ${hh}h ${mm}m`;
-    if (mm > 0) return `in ${mm}m ${ss}s`;
-    return `in ${ss}s`;
+    const t  = Math.floor(ms / 1000);
+    const hh = Math.floor(t / 3600);
+    const mm = Math.floor((t % 3600) / 60);
+    const ss = t % 60;
+    return hh > 0 ? `in ${hh}h ${mm}m` : mm > 0 ? `in ${mm}m ${ss}s` : `in ${ss}s`;
   }
 
-  const amEl = document.getElementById('countdown-am');
-  const pmEl = document.getElementById('countdown-pm');
-  const nextEl = document.getElementById('next-refresh-label');
+  const msAM = msUntil(6), msPM = msUntil(20);
+  document.getElementById('countdown-am').textContent    = fmt(msAM);
+  document.getElementById('countdown-pm').textContent    = fmt(msPM);
+  const nextMs    = Math.min(msAM, msPM);
+  const nextLabel = msAM < msPM ? '6 AM IST' : '8 PM IST';
+  document.getElementById('next-refresh-label').textContent = `Next auto-refresh at ${nextLabel} (${fmt(nextMs)})`;
+  document.getElementById('status-next').textContent        = `Next refresh ${fmt(nextMs)}`;
 
-  const msToAM = msUntil(6);
-  const msToPM = msUntil(20);
-
-  amEl.textContent = `Next: ${fmt(msToAM)}`;
-  pmEl.textContent = `Next: ${fmt(msToPM)}`;
-
-  const nextMs = Math.min(msToAM, msToPM);
-  const nextLabel = msToAM < msToPM ? '6:00 AM IST' : '8:00 PM IST';
-  nextEl.textContent = `Next auto-refresh: ${nextLabel} (${fmt(nextMs)})`;
-  document.getElementById('status-next').textContent = `Next refresh: ${fmt(nextMs)}`;
-
-  // Trigger auto-fetch when countdown hits 0
-  if (msToAM < 5000 || msToPM < 5000) {
-    fetchAllFeeds(true);
-  }
+  if (msAM < 3000 || msPM < 3000) fetchAllFeeds(true);
 }
 
 /* ── Helpers ── */
+function cleanText(html) {
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  return (d.textContent || d.innerText || '').trim().replace(/\s+/g, ' ');
+}
 function timeAgo(date) {
   const s = Math.floor((Date.now() - date) / 1000);
+  if (isNaN(s) || s < 0) return '';
   if (s < 60)    return 'just now';
   if (s < 3600)  return `${Math.floor(s/60)}m ago`;
   if (s < 86400) return `${Math.floor(s/3600)}h ago`;
   return `${Math.floor(s/86400)}d ago`;
 }
-
 function escHtml(str) {
-  return String(str)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;');
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-/* ── IST-aware auto-refresh: check every 30 seconds ── */
+/* ── Auto-refresh every 30 min check ── */
 setInterval(updateCountdowns, 1000);
 setInterval(() => {
   const ts = localStorage.getItem(CACHE_TS);
-  if (ts && (Date.now() - parseInt(ts)) > 6 * 3600 * 1000) {
-    fetchAllFeeds(true);
-  }
-}, 30 * 60 * 1000); // check every 30 min
+  if (ts && (Date.now() - parseInt(ts)) > 6 * 3600 * 1000) fetchAllFeeds(true);
+}, 30 * 60 * 1000);
 
-/* ── Init ── */
+/* ── Boot ── */
 updateCountdowns();
 fetchAllFeeds();
 </script>
