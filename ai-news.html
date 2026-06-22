@@ -372,300 +372,297 @@
 </main>
 
 <script>
-/* ═══════════════════════════════════════════════════
-   AI News Aggregator
-   CORS proxy: allorigins.win — no API key needed
-   RSS parsed with native DOMParser
-═══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════
+   AI News Aggregator — multi-proxy + progressive render
+══════════════════════════════════════════════════ */
 
-const PROXY = 'https://api.allorigins.win/raw?url=';
+const PROXIES = [
+  u => `https://corsproxy.io/?url=${encodeURIComponent(u)}`,
+  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+];
 
-/* Feeds — reduced to the most reliable public RSS sources */
 const FEEDS = [
-  /* Research */
-  { url: 'https://export.arxiv.org/rss/cs.AI',                          cat: 'research',    source: 'ArXiv cs.AI',        icon: '📄' },
-  { url: 'https://export.arxiv.org/rss/cs.LG',                          cat: 'research',    source: 'ArXiv cs.LG',        icon: '📄' },
-  { url: 'https://deepmind.google/blog/rss.xml',                        cat: 'research',    source: 'DeepMind',           icon: '🔬' },
-  /* Investments / TC */
-  { url: 'https://techcrunch.com/category/artificial-intelligence/feed/', cat: 'investments', source: 'TechCrunch AI',    icon: '💼' },
-  { url: 'https://venturebeat.com/ai/feed/',                             cat: 'investments', source: 'VentureBeat AI',    icon: '📈' },
-  /* Adoption */
-  { url: 'https://feeds.arstechnica.com/arstechnica/technology-lab',    cat: 'adoption',    source: 'Ars Technica',       icon: '🔧' },
-  { url: 'https://www.technologyreview.com/feed/',                       cat: 'adoption',    source: 'MIT Tech Review',   icon: '🏢' },
-  /* Startups */
-  { url: 'https://techcrunch.com/startups/feed/',                        cat: 'startups',    source: 'TechCrunch',        icon: '🚀' },
-  /* Political */
-  { url: 'https://thehill.com/technology/feed/',                         cat: 'political',   source: 'The Hill Tech',     icon: '🏛️' },
-  /* LLM */
-  { url: 'https://huggingface.co/blog/feed.xml',                         cat: 'llm',         source: 'HuggingFace',       icon: '🤗' },
-  { url: 'https://openai.com/blog/rss.xml',                              cat: 'llm',         source: 'OpenAI',            icon: '🤖' },
-  /* India AI */
-  { url: 'https://economictimes.indiatimes.com/tech/technology/rssfeeds/13357270.cms', cat: 'india', source: 'Economic Times', icon: '🇮🇳' },
-  { url: 'https://www.livemint.com/technology/rss.xml',                  cat: 'india',       source: 'LiveMint',          icon: '🇮🇳' },
-  /* China AI */
-  { url: 'https://www.scmp.com/rss/91/feed',                             cat: 'china',       source: 'SCMP Tech',         icon: '🇨🇳' },
-  /* Open Source */
-  { url: 'https://github.blog/feed/',                                    cat: 'opensource',  source: 'GitHub Blog',       icon: '🐙' },
-  /* Future */
-  { url: 'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss', cat: 'future', source: 'IEEE Spectrum',   icon: '⚡' },
-  /* AGI */
-  { url: 'https://www.lesswrong.com/feed.xml',                           cat: 'agi',         source: 'LessWrong',         icon: '🧠' },
+  { url:'https://export.arxiv.org/rss/cs.AI',                                  cat:'research',    source:'ArXiv cs.AI',     icon:'📄' },
+  { url:'https://export.arxiv.org/rss/cs.LG',                                  cat:'research',    source:'ArXiv cs.LG',     icon:'📄' },
+  { url:'https://huggingface.co/blog/feed.xml',                                 cat:'llm',         source:'HuggingFace',     icon:'🤗' },
+  { url:'https://techcrunch.com/category/artificial-intelligence/feed/',        cat:'investments', source:'TechCrunch AI',   icon:'💼' },
+  { url:'https://feeds.arstechnica.com/arstechnica/technology-lab',             cat:'adoption',    source:'Ars Technica',    icon:'🔧' },
+  { url:'https://techcrunch.com/startups/feed/',                                cat:'startups',    source:'TC Startups',     icon:'🚀' },
+  { url:'https://thehill.com/technology/feed/',                                 cat:'political',   source:'The Hill',        icon:'🏛️' },
+  { url:'https://openai.com/blog/rss.xml',                                      cat:'llm',         source:'OpenAI Blog',     icon:'🤖' },
+  { url:'https://www.technologyreview.com/feed/',                               cat:'adoption',    source:'MIT Tech Review', icon:'🏢' },
+  { url:'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss',    cat:'future',      source:'IEEE Spectrum',   icon:'⚡' },
+  { url:'https://github.blog/feed/',                                            cat:'opensource',  source:'GitHub Blog',     icon:'🐙' },
+  { url:'https://www.lesswrong.com/feed.xml',                                   cat:'agi',         source:'LessWrong',       icon:'🧠' },
+  { url:'https://economictimes.indiatimes.com/tech/technology/rssfeeds/13357270.cms', cat:'india', source:'Economic Times', icon:'🇮🇳' },
+  { url:'https://www.livemint.com/technology/rss.xml',                          cat:'india',       source:'LiveMint',        icon:'🇮🇳' },
+  { url:'https://www.scmp.com/rss/91/feed',                                     cat:'china',       source:'SCMP Tech',       icon:'🇨🇳' },
+  { url:'https://venturebeat.com/ai/feed/',                                     cat:'investments', source:'VentureBeat AI',  icon:'📈' },
 ];
 
 const CAT_META = {
-  all:         { label: '🌐 All News',    color: '#4f46e5', dim: 'rgba(79,70,229,.08)',   dimText: '#4f46e5', dimBorder: 'rgba(79,70,229,.25)'  },
-  research:    { label: '🔬 Research',    color: '#d97706', dim: 'rgba(217,119,6,.08)',   dimText: '#b45309', dimBorder: 'rgba(217,119,6,.3)'   },
-  investments: { label: '💰 Investments', color: '#16a34a', dim: 'rgba(22,163,74,.08)',   dimText: '#15803d', dimBorder: 'rgba(22,163,74,.3)'   },
-  adoption:    { label: '🏢 Adoption',    color: '#0891b2', dim: 'rgba(8,145,178,.08)',   dimText: '#0369a1', dimBorder: 'rgba(8,145,178,.3)'   },
-  startups:    { label: '🚀 Startups',    color: '#db2777', dim: 'rgba(219,39,119,.08)',  dimText: '#be185d', dimBorder: 'rgba(219,39,119,.3)'  },
-  political:   { label: '🏛️ Political',   color: '#dc2626', dim: 'rgba(220,38,38,.08)',   dimText: '#b91c1c', dimBorder: 'rgba(220,38,38,.3)'   },
-  llm:         { label: '🤖 LLM News',    color: '#7c3aed', dim: 'rgba(124,58,237,.08)',  dimText: '#6d28d9', dimBorder: 'rgba(124,58,237,.3)'  },
-  india:       { label: '🇮🇳 India AI',    color: '#ea580c', dim: 'rgba(234,88,12,.08)',   dimText: '#c2410c', dimBorder: 'rgba(234,88,12,.3)'   },
-  china:       { label: '🇨🇳 China AI',    color: '#dc2626', dim: 'rgba(220,38,38,.08)',   dimText: '#991b1b', dimBorder: 'rgba(220,38,38,.25)'  },
-  opensource:  { label: '🟢 Open Source', color: '#059669', dim: 'rgba(5,150,105,.08)',   dimText: '#047857', dimBorder: 'rgba(5,150,105,.3)'   },
-  future:      { label: '🔮 Future of AI',color: '#0891b2', dim: 'rgba(6,182,212,.08)',   dimText: '#0e7490', dimBorder: 'rgba(6,182,212,.3)'   },
-  agi:         { label: '🧠 AGI',         color: '#4f46e5', dim: 'rgba(79,70,229,.08)',   dimText: '#3730a3', dimBorder: 'rgba(79,70,229,.25)'  },
+  all:         {label:'🌐 All News',    color:'#4f46e5', dim:'rgba(79,70,229,.08)',   dt:'#4f46e5', db:'rgba(79,70,229,.25)'},
+  research:    {label:'🔬 Research',    color:'#d97706', dim:'rgba(217,119,6,.08)',   dt:'#b45309', db:'rgba(217,119,6,.3)' },
+  investments: {label:'💰 Investments', color:'#16a34a', dim:'rgba(22,163,74,.08)',   dt:'#15803d', db:'rgba(22,163,74,.3)' },
+  adoption:    {label:'🏢 Adoption',    color:'#0891b2', dim:'rgba(8,145,178,.08)',   dt:'#0369a1', db:'rgba(8,145,178,.3)' },
+  startups:    {label:'🚀 Startups',    color:'#db2777', dim:'rgba(219,39,119,.08)',  dt:'#be185d', db:'rgba(219,39,119,.3)'},
+  political:   {label:'🏛️ Political',   color:'#dc2626', dim:'rgba(220,38,38,.08)',   dt:'#b91c1c', db:'rgba(220,38,38,.3)' },
+  llm:         {label:'🤖 LLM News',    color:'#7c3aed', dim:'rgba(124,58,237,.08)',  dt:'#6d28d9', db:'rgba(124,58,237,.3)'},
+  india:       {label:'🇮🇳 India AI',    color:'#ea580c', dim:'rgba(234,88,12,.08)',   dt:'#c2410c', db:'rgba(234,88,12,.3)' },
+  china:       {label:'🇨🇳 China AI',    color:'#dc2626', dim:'rgba(220,38,38,.08)',   dt:'#991b1b', db:'rgba(220,38,38,.25)'},
+  opensource:  {label:'🟢 Open Source', color:'#059669', dim:'rgba(5,150,105,.08)',   dt:'#047857', db:'rgba(5,150,105,.3)' },
+  future:      {label:'🔮 Future of AI',color:'#0891b2', dim:'rgba(6,182,212,.08)',   dt:'#0e7490', db:'rgba(6,182,212,.3)' },
+  agi:         {label:'🧠 AGI',         color:'#4f46e5', dim:'rgba(79,70,229,.08)',   dt:'#3730a3', db:'rgba(79,70,229,.25)'},
 };
 
 let allArticles = [];
 let activeTab   = 'all';
 let fetchedOnce = false;
-const CACHE_KEY = 'ai-news-v2-cache';
-const CACHE_TS  = 'ai-news-v2-ts';
+const CACHE_KEY = 'ai-news-v4';
+const CACHE_TS  = 'ai-news-v4-ts';
 
-/* ── Parse one RSS/Atom feed XML string ── */
-function parseRSS(xmlText, feed) {
-  try {
-    const doc   = new DOMParser().parseFromString(xmlText, 'text/xml');
-    const isAtom = doc.querySelector('feed') !== null;
-    const items  = isAtom
-      ? [...doc.querySelectorAll('entry')]
-      : [...doc.querySelectorAll('item')];
-
-    return items.slice(0, 10).map(el => {
-      const get = (tag) => {
-        const node = el.querySelector(tag);
-        return node ? (node.textContent || node.getAttribute('href') || '').trim() : '';
-      };
-      const title = cleanText(get('title'));
-      const link  = isAtom
-        ? (el.querySelector('link[rel="alternate"]')?.getAttribute('href') || el.querySelector('link')?.getAttribute('href') || get('id'))
-        : (get('link') || get('guid'));
-      const desc  = cleanText(get('description') || get('summary') || get('content'));
-      const rawDate = get('pubDate') || get('updated') || get('published') || '';
-      const date  = rawDate ? new Date(rawDate) : new Date();
-
-      if (!title || !link || link.startsWith('http') === false) return null;
-      return { title, link, desc, date, source: feed.source, icon: feed.icon, cat: feed.cat };
-    }).filter(Boolean);
-  } catch (e) {
-    return [];
-  }
-}
-
-/* ── Fetch a single feed via allorigins proxy ── */
+/* Try each proxy in turn; return items from first that works */
 async function fetchFeed(feed) {
-  const proxyUrl = PROXY + encodeURIComponent(feed.url);
+  for (const makeUrl of PROXIES) {
+    try {
+      const res = await fetch(makeUrl(feed.url), {
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!res.ok) continue;
+      const text = await res.text();
+      if (!text || text.length < 200) continue;
+      const items = parseXML(text, feed);
+      if (items.length > 0) return items;
+    } catch (_) {}
+  }
+  return [];
+}
+
+function parseXML(xml, feed) {
   try {
-    const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
-    if (!res.ok) return [];
-    const text = await res.text();
-    return parseRSS(text, feed);
-  } catch (_) {
-    return [];
-  }
+    const doc  = new DOMParser().parseFromString(xml, 'text/xml');
+    if (doc.querySelector('parsererror')) {
+      /* try as HTML in case proxy wraps it */
+      const doc2 = new DOMParser().parseFromString(xml, 'text/html');
+      const pre  = doc2.querySelector('pre, body');
+      if (pre) {
+        const inner = new DOMParser().parseFromString(pre.textContent, 'text/xml');
+        if (!inner.querySelector('parsererror')) return parseXML(inner, feed, true);
+      }
+      return [];
+    }
+    return extractItems(doc, feed);
+  } catch (_) { return []; }
 }
 
-/* ── Batch fetch with concurrency limit ── */
-async function fetchInBatches(feeds, batchSize = 4) {
-  const results = [];
-  for (let i = 0; i < feeds.length; i += batchSize) {
-    const batch = feeds.slice(i, i + batchSize);
-    const batchResults = await Promise.allSettled(batch.map(f => fetchFeed(f)));
-    results.push(...batchResults);
-    // Small delay between batches to avoid hammering the proxy
-    if (i + batchSize < feeds.length) await new Promise(r => setTimeout(r, 400));
-  }
-  return results;
+function extractItems(doc, feed) {
+  const isAtom = !!doc.querySelector('feed > entry');
+  const nodes  = isAtom
+    ? [...doc.querySelectorAll('entry')]
+    : [...doc.querySelectorAll('item')];
+
+  return nodes.slice(0, 10).flatMap(n => {
+    try {
+      const get = tag => (n.querySelector(tag)?.textContent || '').trim();
+
+      const title = stripHTML(get('title'));
+      if (!title) return [];
+
+      /* link — multiple strategies */
+      let link = '';
+      if (isAtom) {
+        link = n.querySelector('link[rel="alternate"]')?.getAttribute('href')
+            || n.querySelector('link:not([rel])')?.getAttribute('href')
+            || n.querySelector('link')?.getAttribute('href')
+            || get('id');
+      } else {
+        /* RSS <link> sits as a TEXT NODE between tags, not as a child element */
+        const linkEl = n.querySelector('link');
+        if (linkEl) {
+          link = linkEl.textContent.trim();
+          if (!link) {
+            /* some parsers put it as nextSibling text */
+            let sib = linkEl.nextSibling;
+            while (sib && !link) {
+              link = (sib.textContent || '').trim();
+              sib = sib.nextSibling;
+            }
+          }
+        }
+        if (!link) link = get('guid');
+        if (!link) {
+          /* last resort: find any http URL in the item text */
+          const m = n.innerHTML.match(/https?:\/\/[^\s<>"]+/);
+          if (m) link = m[0];
+        }
+      }
+      if (!link || !link.startsWith('http')) return [];
+
+      const desc = stripHTML(get('description') || get('summary') || get('content'));
+      const raw  = get('pubDate') || get('updated') || get('published') || '';
+      const date = raw ? new Date(raw) : new Date();
+      if (isNaN(date.getTime())) return [];
+
+      return [{ title, link, desc, date, source: feed.source, icon: feed.icon, cat: feed.cat }];
+    } catch (_) { return []; }
+  });
 }
 
-/* ── Main fetch ── */
+function stripHTML(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.innerHTML = s;
+  return (d.textContent||d.innerText||'').replace(/\s+/g,' ').trim();
+}
+
+/* Progressive: render as each feed resolves */
 async function fetchAllFeeds(force = false) {
-  // Serve from cache if fresh (< 6 hours) and not forced
   const ts = localStorage.getItem(CACHE_TS);
-  if (!force && ts && (Date.now() - parseInt(ts)) < 6 * 3600 * 1000) {
-    const cached = localStorage.getItem(CACHE_KEY);
-    if (cached) {
-      try {
-        allArticles = JSON.parse(cached).map(a => ({ ...a, date: new Date(a.date) }));
+  if (!force && ts && Date.now() - +ts < 6*3600_000) {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (raw) {
+        allArticles = JSON.parse(raw).map(a => ({...a, date: new Date(a.date)}));
         fetchedOnce = true;
         renderArticles();
-        setStatus('Cached', allArticles.length);
-        updateLastFetched(new Date(parseInt(ts)));
+        setStatus(`Cached · ${allArticles.length} articles`);
+        updateLastFetched(new Date(+ts));
         return;
-      } catch(_) {}
-    }
+      }
+    } catch(_) {}
   }
 
   const btn = document.getElementById('refreshBtn');
-  btn.disabled = true;
-  btn.textContent = '⟳ Fetching…';
-  document.getElementById('status-text').textContent = 'Fetching live headlines…';
+  btn.disabled = true; btn.textContent = '⟳ Fetching…';
   document.getElementById('news-skeleton').style.display = 'grid';
   document.getElementById('news-grid').style.display = 'none';
+  allArticles = []; fetchedOnce = false;
+  let done = 0;
 
-  const results = await fetchInBatches(FEEDS, 4);
+  const promises = FEEDS.map(feed =>
+    fetchFeed(feed).then(items => {
+      done++;
+      if (items.length) {
+        allArticles = dedupe([...allArticles, ...items])
+          .sort((a,b) => b.date - a.date);
+        fetchedOnce = true;
+        renderArticles();
+      }
+      setStatus(`Loading ${done}/${FEEDS.length} · ${allArticles.length} articles found`);
+    }).catch(() => { done++; })
+  );
 
-  const articles = results
-    .flatMap(r => r.status === 'fulfilled' ? r.value : [])
-    .filter(a => a && a.title && a.link)
-    .filter((a, i, arr) => arr.findIndex(b => b.title.slice(0, 50) === a.title.slice(0, 50)) === i)
-    .sort((a, b) => b.date - a.date);
-
-  allArticles = articles;
+  await Promise.allSettled(promises);
   fetchedOnce = true;
-
-  try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify(articles));
-    localStorage.setItem(CACHE_TS, Date.now().toString());
-  } catch(_) {}
-
   renderArticles();
-  setStatus('Live', allArticles.length);
-  updateLastFetched(new Date());
 
-  btn.disabled = false;
-  btn.textContent = '⟳ Refresh Now';
+  if (allArticles.length === 0) {
+    setStatus('⚠️ Could not load feeds — try refreshing');
+  } else {
+    setStatus(`✓ Live · ${allArticles.length} articles`);
+    updateLastFetched(new Date());
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(allArticles));
+      localStorage.setItem(CACHE_TS, Date.now().toString());
+    } catch(_) {}
+  }
+
+  btn.disabled = false; btn.textContent = '⟳ Refresh Now';
 }
 
-/* ── Render ── */
+function dedupe(arr) {
+  const seen = new Set();
+  return arr.filter(a => {
+    const k = a.title.slice(0,60).toLowerCase().replace(/\W/g,'');
+    if (seen.has(k)) return false;
+    seen.add(k); return true;
+  });
+}
+
 function renderArticles() {
-  const grid     = document.getElementById('news-grid');
-  const skeleton = document.getElementById('news-skeleton');
-  skeleton.style.display = 'none';
-  grid.style.display     = 'grid';
+  const grid = document.getElementById('news-grid');
+  const skel = document.getElementById('news-skeleton');
+  skel.style.display = 'none';
+  grid.style.display = 'grid';
 
   const list = activeTab === 'all'
     ? allArticles
     : allArticles.filter(a => a.cat === activeTab);
 
-  if (list.length === 0) {
-    const cm = CAT_META[activeTab] || CAT_META.all;
-    grid.innerHTML = `
-      <div class="news-empty">
-        <div class="news-empty-icon">📭</div>
-        <h4>${allArticles.length === 0 ? 'Could not fetch headlines' : 'No articles in this category yet'}</h4>
-        <p>${allArticles.length === 0
-          ? 'The RSS proxy may be temporarily unavailable. <a href="#" onclick="fetchAllFeeds(true);return false;">Try again</a> — or visit sources directly below.'
-          : 'Try <a href="#" onclick="fetchAllFeeds(true);return false;">refreshing</a> or check another category.'
-        }</p>
-      </div>`;
+  if (!list.length) {
+    grid.innerHTML = `<div class="news-empty">
+      <div class="news-empty-icon">📭</div>
+      <h4>${fetchedOnce && allArticles.length ? 'No articles in this category yet' : 'Loading headlines…'}</h4>
+      <p>If this persists, <a href="#" onclick="fetchAllFeeds(true);return false;">try refreshing</a>.</p>
+    </div>`;
     return;
   }
 
-  grid.innerHTML = list.slice(0, 60).map(a => {
-    const ago  = timeAgo(a.date);
-    const desc = a.desc ? a.desc.slice(0, 150) + (a.desc.length > 150 ? '…' : '') : '';
-    const cm   = CAT_META[a.cat] || CAT_META.all;
-    return `<a class="news-card" href="${escHtml(a.link)}" target="_blank" rel="noopener"
-       style="--tab-color:${cm.color};--tab-color-dim:${cm.dim};--tab-color-text:${cm.dimText};--tab-color-border:${cm.dimBorder}">
+  grid.innerHTML = list.slice(0,60).map(a => {
+    const cm  = CAT_META[a.cat] || CAT_META.all;
+    const ago = timeAgo(a.date);
+    const desc = a.desc ? a.desc.slice(0,160) + (a.desc.length>160?'…':'') : '';
+    return `<a class="news-card" href="${esc(a.link)}" target="_blank" rel="noopener"
+      style="--tab-color:${cm.color};--tab-color-dim:${cm.dim};--tab-color-text:${cm.dt};--tab-color-border:${cm.db}">
       <div class="nc-source">
         <div class="nc-source-icon">${a.icon}</div>
-        <div class="nc-source-name">${escHtml(a.source)}</div>
+        <div class="nc-source-name">${esc(a.source)}</div>
         <div class="nc-date">${ago}</div>
       </div>
-      <div class="nc-title">${escHtml(a.title)}</div>
-      ${desc ? `<div class="nc-desc">${escHtml(desc)}</div>` : ''}
+      <div class="nc-title">${esc(a.title)}</div>
+      ${desc ? `<div class="nc-desc">${esc(desc)}</div>` : ''}
       <div class="nc-tag">${cm.label}</div>
     </a>`;
   }).join('');
 }
 
-function setStatus(state, count) {
-  const el = document.getElementById('status-text');
-  const ct = document.getElementById('status-count');
-  if (state === 'Live')   { el.textContent = '● Live — just fetched'; }
-  else if (state === 'Cached') { el.textContent = '○ Loaded from cache'; }
-  else { el.textContent = state; }
-  ct.textContent = count ? `${count} articles` : '';
+function setStatus(msg) {
+  document.getElementById('status-text').textContent = msg;
+  document.getElementById('status-count').textContent = '';
 }
-
-function updateLastFetched(date) {
-  const ist = new Intl.DateTimeFormat('en-IN', {
-    timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit',
-    hour12: true, day: 'numeric', month: 'short'
-  }).format(date);
+function updateLastFetched(d) {
+  const ist = new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',hour12:true,day:'numeric',month:'short'}).format(d);
   document.getElementById('last-fetched-time').textContent = ist;
-  document.getElementById('last-fetched-tz').textContent = 'IST';
+  document.getElementById('last-fetched-tz').textContent   = 'IST';
 }
 
-/* ── Tab switching ── */
 document.getElementById('newsTabs').addEventListener('click', e => {
-  const btn = e.target.closest('.news-tab');
-  if (!btn) return;
-  document.querySelectorAll('.news-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeTab = btn.dataset.cat;
+  const b = e.target.closest('.news-tab');
+  if (!b) return;
+  document.querySelectorAll('.news-tab').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  activeTab = b.dataset.cat;
   if (fetchedOnce) renderArticles();
 });
 
-/* ── IST countdowns ── */
 function updateCountdowns() {
-  const now   = new Date();
-  const istMs = now.getTime() + (5.5 * 3600 * 1000);
-  const ist   = new Date(istMs);
-  const h = ist.getUTCHours(), m = ist.getUTCMinutes(), s = ist.getUTCSeconds();
-
-  function msUntil(targetH) {
-    let diff = ((targetH * 60) - (h * 60 + m)) * 60 * 1000 - s * 1000;
-    if (diff <= 0) diff += 24 * 3600 * 1000;
-    return diff;
-  }
-  function fmt(ms) {
-    const t  = Math.floor(ms / 1000);
-    const hh = Math.floor(t / 3600);
-    const mm = Math.floor((t % 3600) / 60);
-    const ss = t % 60;
-    return hh > 0 ? `in ${hh}h ${mm}m` : mm > 0 ? `in ${mm}m ${ss}s` : `in ${ss}s`;
-  }
-
-  const msAM = msUntil(6), msPM = msUntil(20);
-  document.getElementById('countdown-am').textContent    = fmt(msAM);
-  document.getElementById('countdown-pm').textContent    = fmt(msPM);
-  const nextMs    = Math.min(msAM, msPM);
-  const nextLabel = msAM < msPM ? '6 AM IST' : '8 PM IST';
-  document.getElementById('next-refresh-label').textContent = `Next auto-refresh at ${nextLabel} (${fmt(nextMs)})`;
-  document.getElementById('status-next').textContent        = `Next refresh ${fmt(nextMs)}`;
-
-  if (msAM < 3000 || msPM < 3000) fetchAllFeeds(true);
+  const ist = new Date(Date.now() + 5.5*3600_000);
+  const h=ist.getUTCHours(), m=ist.getUTCMinutes(), s=ist.getUTCSeconds();
+  const until = th => { let d=((th*60)-(h*60+m))*60_000-s*1000; if(d<=0)d+=86400_000; return d; };
+  const fmt   = ms  => { const t=Math.floor(ms/1000),hh=Math.floor(t/3600),mm=Math.floor(t%3600/60),ss=t%60;
+                          return hh>0?`in ${hh}h ${mm}m`:mm>0?`in ${mm}m ${ss}s`:`in ${ss}s`; };
+  const msAM=until(6), msPM=until(20);
+  const el = id => document.getElementById(id);
+  el('countdown-am').textContent = fmt(msAM);
+  el('countdown-pm').textContent = fmt(msPM);
+  const nxt=Math.min(msAM,msPM), lbl=msAM<msPM?'6 AM IST':'8 PM IST';
+  el('next-refresh-label').textContent = `Next refresh at ${lbl} (${fmt(nxt)})`;
+  el('status-next').textContent = `Next ${fmt(nxt)}`;
+  if (msAM<3000||msPM<3000) fetchAllFeeds(true);
 }
 
-/* ── Helpers ── */
-function cleanText(html) {
-  const d = document.createElement('div');
-  d.innerHTML = html;
-  return (d.textContent || d.innerText || '').trim().replace(/\s+/g, ' ');
+function timeAgo(d) {
+  const s=Math.floor((Date.now()-d)/1000);
+  if(isNaN(s)||s<0)return'';
+  if(s<60)return'just now'; if(s<3600)return`${Math.floor(s/60)}m ago`;
+  if(s<86400)return`${Math.floor(s/3600)}h ago`; return`${Math.floor(s/86400)}d ago`;
 }
-function timeAgo(date) {
-  const s = Math.floor((Date.now() - date) / 1000);
-  if (isNaN(s) || s < 0) return '';
-  if (s < 60)    return 'just now';
-  if (s < 3600)  return `${Math.floor(s/60)}m ago`;
-  if (s < 86400) return `${Math.floor(s/3600)}h ago`;
-  return `${Math.floor(s/86400)}d ago`;
-}
-function escHtml(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-/* ── Auto-refresh every 30 min check ── */
 setInterval(updateCountdowns, 1000);
-setInterval(() => {
-  const ts = localStorage.getItem(CACHE_TS);
-  if (ts && (Date.now() - parseInt(ts)) > 6 * 3600 * 1000) fetchAllFeeds(true);
-}, 30 * 60 * 1000);
+setInterval(()=>{ const ts=localStorage.getItem(CACHE_TS); if(ts&&Date.now()-+ts>6*3600_000)fetchAllFeeds(true); }, 30*60_000);
 
-/* ── Boot ── */
 updateCountdowns();
 fetchAllFeeds();
 </script>
