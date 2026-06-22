@@ -433,14 +433,17 @@ function initTypingDemo() {
 async function loadBlogNavPosts() {
   const menu = document.getElementById('blogNavMenu');
   if (!menu) return;
+  // Detect if we're in a subdirectory (blog/ posts) and adjust path
+  const isSubdir = window.location.pathname.includes('/blog/');
+  const jsonPath = isSubdir ? '../blog/index.json' : 'blog/index.json';
   try {
-    const r = await fetch('/blog/index.json');
+    const r = await fetch(jsonPath);
     if (!r.ok) return;
     const data = await r.json();
     const posts = (data.posts || []).slice(0, 4);
     posts.forEach(p => {
       const a = document.createElement('a');
-      a.href = `/blog/${p.slug}.html`;
+      a.href = isSubdir ? `${p.slug}.html` : `blog/${p.slug}.html`;
       a.className = 'panel-btn';
       a.textContent = `${p.emoji || '📝'} ${p.title}`;
       a.style.cssText = 'font-size:0.82rem;white-space:normal;line-height:1.3;';
