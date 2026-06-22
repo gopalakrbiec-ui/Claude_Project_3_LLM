@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepSeek R2: What We Know So Far — FrontierLLM Academy Blog</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="hero hero-sub-page">
+  <nav class="navbar">
+    <div class="navbar-top">
+      <a href="../index.html" class="logo logo-link">🚀 FrontierLLM Academy</a>
+      <div class="navbar-nav">
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-trigger">📚 Learn <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-menu">
+            <a href="../frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
+            <a href="../future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
+            <a href="../llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-trigger">🌏 AI Ecosystems <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-menu">
+            <a href="../india-ai.html" class="panel-btn">🇮🇳 India AI</a>
+            <a href="../china-ai.html" class="panel-btn">🇨🇳 China AI</a>
+            <a href="../usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
+          </div>
+        </div>
+        <a href="../blog.html" class="nav-item active">✍️ Blog</a>
+        <a href="../ai-news.html" class="nav-item">📰 News</a>
+      </div>
+    </div>
+    <div class="navbar-bottom">
+      <div class="nav-links">
+        <a href="../blog.html">← Back to Blog</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main style="padding-top: 100px;">
+  <div class="blog-post-wrap">
+
+    <a href="../blog.html" class="blog-back">← Back to Blog</a>
+
+    <div class="blog-post-tag">🧠 Research · China AI</div>
+    <h1 class="blog-post-title">DeepSeek R2: What We Know So Far and Why It Matters</h1>
+
+    <div class="blog-post-meta">
+      <div class="blog-post-author">
+        <div class="blog-card-author-avatar">HR</div>
+        Hamal Rashid
+      </div>
+      <span>June 20, 2026</span>
+      <span>6 min read</span>
+    </div>
+
+    <div class="blog-post-body">
+
+      <p>
+        DeepSeek shocked the AI world in January 2025 when R1 dropped and outperformed o1 on most reasoning benchmarks — trained at a reported fraction of the cost. Now, eighteen months later, the question on every researcher's mind is: what does R2 look like?
+      </p>
+
+      <p>
+        We don't have official confirmation yet. But a combination of research paper trails, compute activity on Chinese cloud providers, and the occasional engineer's oblique LinkedIn post paints a picture worth examining.
+      </p>
+
+      <h2>What the Paper Trail Suggests</h2>
+
+      <p>
+        DeepSeek's own publications since R1 have quietly explored several directions that look very much like R2 ablations:
+      </p>
+
+      <ul>
+        <li><strong>Longer chain-of-thought with budgeted tokens</strong> — a March 2026 paper from the team describes a method for dynamically allocating "thinking budget" per query, avoiding the runaway compute of naive long-CoT.</li>
+        <li><strong>Multi-step tool use</strong> — their agentic eval suite (DSAT) implies the next model is designed from the ground up for multi-turn tool calls, not just single-shot reasoning.</li>
+        <li><strong>Reduced hallucination via process reward models</strong> — a joint paper with Tsinghua extended their GRPO algorithm to PRMs, which typically adds 4–6% on factuality evals.</li>
+      </ul>
+
+      <h2>The Compute Signal</h2>
+
+      <p>
+        Chinese semiconductor analyst firm SemiAnalysis flagged an unusual procurement pattern on Huawei's Ascend 910C cluster in Q1 2026. Usage spiked in a pattern consistent with a large-scale pretraining run — not fine-tuning. The window: roughly 6 weeks of sustained high utilisation across what they estimate to be ~8,000 chips.
+      </p>
+
+      <blockquote>
+        If it's an 800B dense model, that's roughly 3×10²⁴ FLOPs — comfortably in GPT-4 territory, at Huawei chip efficiency that's still a significant run. If it's MoE with 100B active params, the numbers get more interesting.
+      </blockquote>
+
+      <h2>Why It Matters Beyond the Benchmark Race</h2>
+
+      <p>
+        The bigger story isn't whether R2 beats o3 or Gemini Ultra on AIME 2026. It's what the <em>existence</em> of a competitive Chinese reasoning model means for the global AI market:
+      </p>
+
+      <ol>
+        <li><strong>Open weights or not?</strong> R1 was open. If R2 is open, the entire cost structure of reasoning APIs changes again within weeks of launch.</li>
+        <li><strong>Export control pressure</strong> — the US has ratcheted chip export restrictions three times since 2023. A frontier R2 trained on domestic Ascend chips would be the clearest proof yet that the controls have been bypassed — not illegally, but rendered moot by indigenous hardware progress.</li>
+        <li><strong>India, Southeast Asia, Middle East markets</strong> — these regions have been fence-sitters between US and Chinese AI providers. A capable open R2 could tip procurement decisions that the US labs assumed were locked up.</li>
+      </ol>
+
+      <h2>What to Watch For</h2>
+
+      <p>
+        DeepSeek historically drops models with minimal pre-announcement. Based on R1's trajectory, here's the release signal checklist:
+      </p>
+
+      <ul>
+        <li>A Hugging Face model card quietly appears — R1 went live on HF 6 hours before any press release</li>
+        <li>The DeepSeek app updates to a new model ID in its API response headers</li>
+        <li>The r/LocalLLaMA subreddit lights up with first-inference reports</li>
+      </ul>
+
+      <p>
+        We'll update this post as soon as something concrete surfaces. In the meantime, the smart play is to watch the paper output from DeepSeek's team — they tend to publish the ablation studies before the model itself.
+      </p>
+
+    </div>
+
+  </div>
+</main>
+
+<script src="../app.js"></script>
+</body>
+</html>

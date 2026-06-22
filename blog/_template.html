@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- CHANGE: update title -->
+  <title>POST TITLE — FrontierLLM Academy Blog</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="hero hero-sub-page">
+  <nav class="navbar">
+    <div class="navbar-top">
+      <a href="../index.html" class="logo logo-link">🚀 FrontierLLM Academy</a>
+      <div class="navbar-nav">
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-trigger">📚 Learn <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-menu">
+            <a href="../frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
+            <a href="../future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
+            <a href="../llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-trigger">🌏 AI Ecosystems <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-menu">
+            <a href="../india-ai.html" class="panel-btn">🇮🇳 India AI</a>
+            <a href="../china-ai.html" class="panel-btn">🇨🇳 China AI</a>
+            <a href="../usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
+          </div>
+        </div>
+        <a href="../blog.html" class="nav-item active">✍️ Blog</a>
+        <a href="../ai-news.html" class="nav-item">📰 News</a>
+      </div>
+    </div>
+    <div class="navbar-bottom">
+      <div class="nav-links">
+        <a href="../blog.html">← Back to Blog</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main style="padding-top: 100px;">
+  <div class="blog-post-wrap">
+
+    <a href="../blog.html" class="blog-back">← Back to Blog</a>
+
+    <!-- CHANGE: emoji + tag labels (e.g. "🧠 Research · China AI") -->
+    <div class="blog-post-tag">🧠 Tag · Category</div>
+
+    <!-- CHANGE: post title -->
+    <h1 class="blog-post-title">Your Post Title Goes Here</h1>
+
+    <div class="blog-post-meta">
+      <div class="blog-post-author">
+        <!-- CHANGE: initials in avatar, and author name -->
+        <div class="blog-card-author-avatar">HR</div>
+        Author Name
+      </div>
+      <!-- CHANGE: date and read time -->
+      <span>June 22, 2026</span>
+      <span>5 min read</span>
+    </div>
+
+    <!-- ═══════════════ WRITE YOUR POST BELOW ═══════════════ -->
+    <div class="blog-post-body">
+
+      <p>
+        Opening paragraph — hook the reader in 2–3 sentences. State the claim or question you're going to answer.
+      </p>
+
+      <h2>First Section Heading</h2>
+
+      <p>Body text. Use <strong>bold</strong> for key terms. Keep paragraphs short — 3–5 sentences max.</p>
+
+      <ul>
+        <li>Bullet point one</li>
+        <li>Bullet point two</li>
+        <li>Bullet point three</li>
+      </ul>
+
+      <h2>Second Section Heading</h2>
+
+      <p>Continue the article...</p>
+
+      <blockquote>
+        Use a blockquote for a key insight, stat, or pull-quote that deserves visual emphasis.
+      </blockquote>
+
+      <h2>Conclusion / What to Watch</h2>
+
+      <p>
+        Wrap up with the "so what". What should the reader take away or do next?
+      </p>
+
+    </div>
+    <!-- ═══════════════ END POST ═══════════════ -->
+
+  </div>
+</main>
+
+<script src="../app.js"></script>
+</body>
+</html>
+
+<!--
+HOW TO PUBLISH A NEW POST
+══════════════════════════════════════════════════════════
+1. Copy this file:  cp blog/_template.html blog/your-post-slug.html
+2. Edit the HTML:   update title, tag, h1, meta, and body content
+3. Add to manifest: open blog/index.json, add a new object to the "posts" array:
+   {
+     "slug": "your-post-slug",
+     "title": "Your Post Title",
+     "excerpt": "One or two sentence summary shown on the blog card.",
+     "author": "Your Name",
+     "authorInitials": "YN",
+     "date": "2026-06-22",
+     "readTime": "5 min",
+     "tags": ["Tag1", "Tag2"],
+     "emoji": "🧠",
+     "featured": false
+   }
+   Set "featured": true for the first/top post (only one at a time).
+4. git add blog/your-post-slug.html blog/index.json
+5. git commit -m "Blog: add post — Your Post Title"
+6. git push
+══════════════════════════════════════════════════════════
+-->

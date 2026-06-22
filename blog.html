@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — FrontierLLM Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="hero hero-sub-page">
+  <nav class="navbar">
+    <div class="navbar-top">
+      <a href="index.html" class="logo logo-link">🚀 FrontierLLM Academy</a>
+      <div class="navbar-nav">
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-trigger">📚 Learn <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-menu">
+            <a href="frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
+            <a href="future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
+            <a href="llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-trigger">🌏 AI Ecosystems <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-menu">
+            <a href="india-ai.html" class="panel-btn">🇮🇳 India AI</a>
+            <a href="china-ai.html" class="panel-btn">🇨🇳 China AI</a>
+            <a href="usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
+          </div>
+        </div>
+        <a href="blog.html" class="nav-item active">✍️ Blog</a>
+        <a href="ai-news.html" class="nav-item">📰 News</a>
+      </div>
+    </div>
+    <div class="navbar-bottom">
+      <div class="nav-links">
+        <a href="index.html">← Back to Academy</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero -->
+<div class="blog-hero" style="padding-top: 100px;">
+  <div class="hero-badge">✍️ From the editors</div>
+  <h1 class="blog-hero-title">FrontierLLM <span class="gradient-text">Blog</span></h1>
+  <p class="blog-hero-sub">Short articles on AI research, ecosystems, and industry shifts — written by the team and community contributors.</p>
+</div>
+
+<!-- Main content -->
+<div class="container">
+
+  <!-- Tag filter bar -->
+  <div class="blog-filters" id="filterBar">
+    <button class="blog-filter-btn active" data-tag="all" onclick="filterPosts('all', this)">All</button>
+  </div>
+
+  <!-- Post grid -->
+  <div class="blog-grid" id="blogGrid">
+    <div class="blog-empty">
+      <div class="blog-empty-icon">⏳</div>
+      <p>Loading posts…</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let allPosts = [];
+
+  async function loadPosts() {
+    try {
+      const r = await fetch('blog/index.json');
+      const data = await r.json();
+      allPosts = data.posts || [];
+      buildFilterBar(allPosts);
+      renderGrid(allPosts);
+    } catch (e) {
+      document.getElementById('blogGrid').innerHTML =
+        '<div class="blog-empty"><div class="blog-empty-icon">⚠️</div><p>Could not load posts.</p></div>';
+    }
+  }
+
+  function buildFilterBar(posts) {
+    const tags = new Set();
+    posts.forEach(p => (p.tags || []).forEach(t => tags.add(t)));
+    const bar = document.getElementById('filterBar');
+    tags.forEach(tag => {
+      const btn = document.createElement('button');
+      btn.className = 'blog-filter-btn';
+      btn.dataset.tag = tag;
+      btn.textContent = tag;
+      btn.onclick = () => filterPosts(tag, btn);
+      bar.appendChild(btn);
+    });
+  }
+
+  function filterPosts(tag, btn) {
+    document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filtered = tag === 'all' ? allPosts : allPosts.filter(p => (p.tags || []).includes(tag));
+    renderGrid(filtered);
+  }
+
+  function formatDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function renderGrid(posts) {
+    const grid = document.getElementById('blogGrid');
+    if (!posts.length) {
+      grid.innerHTML = '<div class="blog-empty"><div class="blog-empty-icon">🔍</div><p>No posts found.</p></div>';
+      return;
+    }
+
+    grid.innerHTML = posts.map((p, i) => {
+      const href = `blog/${p.slug}.html`;
+      const tagHtml = (p.tags || []).map(t => t).join(' · ');
+
+      if (p.featured) {
+        return `
+          <a href="${href}" class="blog-card featured">
+            <div class="blog-card-visual">${p.emoji || '📝'}</div>
+            <div class="blog-card-body">
+              <span class="blog-card-featured-badge">⭐ Featured</span>
+              <div class="blog-card-tag">${p.emoji || '📝'} ${tagHtml}</div>
+              <div class="blog-card-title">${p.title}</div>
+              <div class="blog-card-excerpt">${p.excerpt}</div>
+              <div class="blog-card-meta">
+                <span class="blog-card-author">
+                  <span class="blog-card-author-avatar">${p.authorInitials}</span>
+                  ${p.author}
+                </span>
+                <span class="blog-card-read-time">⏱ ${p.readTime}</span>
+                <span class="blog-card-date">${formatDate(p.date)}</span>
+              </div>
+            </div>
+          </a>`;
+      }
+
+      return `
+        <a href="${href}" class="blog-card">
+          <div class="blog-card-tag">${p.emoji || '📝'} ${tagHtml}</div>
+          <div class="blog-card-title">${p.title}</div>
+          <div class="blog-card-excerpt">${p.excerpt}</div>
+          <div class="blog-card-meta">
+            <span class="blog-card-author">
+              <span class="blog-card-author-avatar">${p.authorInitials}</span>
+              ${p.author}
+            </span>
+            <span class="blog-card-read-time">⏱ ${p.readTime}</span>
+            <span class="blog-card-date">${formatDate(p.date)}</span>
+          </div>
+        </a>`;
+    }).join('');
+  }
+
+  loadPosts();
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>

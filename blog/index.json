@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "slug": "deepseek-r2-what-we-know",
+      "title": "DeepSeek R2: What We Know So Far and Why It Matters",
+      "excerpt": "Rumours of DeepSeek's next reasoning model are swirling. Here's everything credible that's surfaced — and why the next drop could again reshape assumptions about what closed labs cost to train.",
+      "author": "Hamal Rashid",
+      "authorInitials": "HR",
+      "date": "2026-06-20",
+      "readTime": "6 min",
+      "tags": ["Research", "China AI"],
+      "emoji": "🧠",
+      "featured": true
+    },
+    {
+      "slug": "india-sarvam3-launch",
+      "title": "Sarvam-3 Is Here: India's Most Capable Open LLM Yet",
+      "excerpt": "Sarvam AI quietly dropped their third-generation model this week. We ran it through a battery of Indic-language tasks and compared it against Aya 35B and Krutrim-2. The results surprised us.",
+      "author": "Priya Nair",
+      "authorInitials": "PN",
+      "date": "2026-06-18",
+      "readTime": "8 min",
+      "tags": ["India AI", "Models"],
+      "emoji": "🇮🇳",
+      "featured": false
+    },
+    {
+      "slug": "moe-explained-simply",
+      "title": "Mixture of Experts: The Architecture Behind Every Frontier Model in 2026",
+      "excerpt": "GPT-4, Gemini 1.5, Mistral, Grok — they all use MoE. But what is it, why does it matter, and should your startup care? A plain-English breakdown with diagrams.",
+      "author": "Hamal Rashid",
+      "authorInitials": "HR",
+      "date": "2026-06-15",
+      "readTime": "10 min",
+      "tags": ["Architecture", "Learning"],
+      "emoji": "⚡",
+      "featured": false
+    },
+    {
+      "slug": "stargate-500b-reality-check",
+      "title": "Stargate: $500B Reality Check — What's Actually Been Committed",
+      "excerpt": "The headline number is enormous. The reality is more complicated. We break down the announced funding tranches, who controls the compute, and what the buildout timeline actually looks like.",
+      "author": "Hamal Rashid",
+      "authorInitials": "HR",
+      "date": "2026-06-10",
+      "readTime": "7 min",
+      "tags": ["USA AI", "Investment"],
+      "emoji": "💰",
+      "featured": false
+    }
+  ]
+}
