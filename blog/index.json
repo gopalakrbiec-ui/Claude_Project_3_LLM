@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "ai-news-june-22-2026",
+      "title": "AI News Digest — June 22, 2026",
+      "excerpt": "Today's biggest stories across Research, Investments, LLMs, Open Source, India, China, AGI, and the Future — 11 categories, real sources, curated in 5 bullets each.",
+      "author": "FrontierLLM Team",
+      "authorInitials": "FL",
+      "date": "2026-06-22",
+      "readTime": "8 min",
+      "tags": ["News", "Weekly Digest"],
+      "emoji": "📰",
+      "featured": false
+    },
+    {
       "slug": "agentic-loop-explained",
       "title": "The Agentic Loop: How Claude Thinks, Acts, and Corrects Itself",
       "excerpt": "The loop that turns a one-shot text predictor into a self-correcting agent — explained with diagrams, animations, and real Claude prompts you can try today.",
