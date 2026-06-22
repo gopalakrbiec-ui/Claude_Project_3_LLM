@@ -1,6 +1,6 @@
 # 🚀 FrontierLLM Academy
 
-**A free, interactive educational website about frontier AI and large language models.**
+**Interactive educational website about frontier AI and large language models.**
 
 FrontierLLM Academy helps learners at every level — from curious beginners to ML researchers — explore how modern LLMs work, what's happening at the AI frontier, and how to think about the field from multiple professional perspectives.
 
@@ -10,14 +10,13 @@ FrontierLLM Academy helps learners at every level — from curious beginners to 
 
 ## What This Project Is
 
-A static educational website (pure HTML/CSS/JS — no framework, no build step, no backend) organized around:
+A static educational website 
 
 - **8 Learning Modes** — switch perspective between Layman, Graduate, Researcher, Startup, Investor, Founder, Team, and Agentic mode
 - **Deep-dive pages** — curated content on timelines, AI ecosystems, and engineering concepts
 - **A blog** — long-form posts with diagrams, animations, and interactive examples
 - **Daily AI News** — a live feed of what's happening in the field
 
-Everything is served as static files. No login, no tracking, no paywall.
 
 ---
 
@@ -90,13 +89,7 @@ FrontierLLM-Academy/
 └── CLAUDE.md               ← AI agent context file
 ```
 
----
 
-## 🛠 Tech Stack
-
-- **Pure HTML5 / CSS3 / Vanilla JS** — no framework, no bundler
-- **GitHub Pages** — static hosting, zero config
-- **GitHub Actions** — auto-updates the blog table in this README on every push
 
 ---
 
@@ -108,8 +101,3 @@ See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for step-by-step guides on:
 
 When you push a new entry to `blog/index.json`, the GitHub Action automatically regenerates the blog table in this README.
 
----
-
-## 🤖 Auto-Update
-
-The **Blog Posts** table above is auto-generated from `blog/index.json` by `.github/workflows/update-readme.yml`. It runs on every push that touches `blog/index.json` or any `blog/*.html` file. No manual README edits needed when adding or removing posts.
