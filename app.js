@@ -43,16 +43,18 @@ function setMode(mode) {
     }, 150);
   }
 
-  const btnLayman   = document.getElementById('btnLayman');
-  const btnGrad     = document.getElementById('btnGrad');
-  const btnResearch = document.getElementById('btnResearch');
-  const btnTeam     = document.getElementById('btnTeam');
-  const btnStartup  = document.getElementById('btnStartup');
-  const btnInvestor = document.getElementById('btnInvestor');
-  const btnFounder   = document.getElementById('btnFounder');
-  const btnAgentMode = document.getElementById('btnAgentMode');
+  // Support both old hero btn IDs and new navbar dropdown btn IDs
+  const btnLayman   = document.getElementById('btnLayman')   || document.getElementById('modeBtn_layman');
+  const btnGrad     = document.getElementById('btnGrad')     || document.getElementById('modeBtn_graduate');
+  const btnResearch = document.getElementById('btnResearch') || document.getElementById('modeBtn_researcher');
+  const btnTeam     = document.getElementById('btnTeam')     || document.getElementById('modeBtn_team');
+  const btnStartup  = document.getElementById('btnStartup')  || document.getElementById('modeBtn_startup');
+  const btnInvestor = document.getElementById('btnInvestor') || document.getElementById('modeBtn_investor');
+  const btnFounder  = document.getElementById('btnFounder')  || document.getElementById('modeBtn_founder');
+  const btnAgentMode= document.getElementById('btnAgentMode')|| document.getElementById('modeBtn_agentmode');
 
-  // Reset all buttons
+  // Reset all mode buttons (both old and new selectors)
+  document.querySelectorAll('.mode-btn, .mode-panel-btn').forEach(b => b.classList.remove('active', 'mode-active'));
   [btnLayman, btnGrad, btnResearch, btnTeam, btnStartup, btnInvestor, btnFounder, btnAgentMode].forEach(b => b && b.classList.remove('active'));
 
   // Hide ALL mode content
@@ -427,6 +429,26 @@ function initTypingDemo() {
   }, 3000);
 }
 
+/* ── Blog nav dropdown population ── */
+async function loadBlogNavPosts() {
+  const menu = document.getElementById('blogNavMenu');
+  if (!menu) return;
+  try {
+    const r = await fetch('/blog/index.json');
+    if (!r.ok) return;
+    const data = await r.json();
+    const posts = (data.posts || []).slice(0, 4);
+    posts.forEach(p => {
+      const a = document.createElement('a');
+      a.href = `/blog/${p.slug}.html`;
+      a.className = 'panel-btn';
+      a.textContent = `${p.emoji || '📝'} ${p.title}`;
+      a.style.cssText = 'font-size:0.82rem;white-space:normal;line-height:1.3;';
+      menu.appendChild(a);
+    });
+  } catch (_) { /* silent fail — static list remains */ }
+}
+
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   createStars();
@@ -436,11 +458,20 @@ document.addEventListener('DOMContentLoaded', () => {
   addSvgDefs();
   initTypingDemo();
 
-  // Restore mode
-  const saved = sessionStorage.getItem('llm-mode');
-  if (saved) setMode(saved);
+  // Read ?mode= URL param (used when navigating from other pages via Learning Mode dropdown)
+  const urlMode = new URLSearchParams(window.location.search).get('mode');
+  if (urlMode && MODE_LABELS[urlMode]) {
+    setMode(urlMode);
+  } else {
+    // Restore last mode from session
+    const saved = sessionStorage.getItem('llm-mode');
+    if (saved) setMode(saved);
+  }
 
   // Open first stage by default
   const firstToggle = document.querySelector('.stage-toggle');
   if (firstToggle) toggleStage(firstToggle);
+
+  // Populate blog nav dropdown
+  loadBlogNavPosts();
 });

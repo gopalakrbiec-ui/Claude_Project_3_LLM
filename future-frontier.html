@@ -9,12 +9,31 @@
 <body>
 
 <header class="hero hero-sub-page">
-  <nav class="navbar">
-        <div class="navbar-top">
-      <a href="index.html" class="logo logo-link">🚀 FrontierLLM Academy</a>
-      <div class="navbar-nav">
+    <nav class="navbar">
+    <!-- Ribbon 1: Brand -->
+    <div class="navbar-brand">
+      <a href="index.html" class="logo">🚀 FrontierLLM Academy</a>
+      <span class="navbar-brand-tagline">Build · Learn · Explore</span>
+    </div>
+    <!-- Ribbon 2: Navigation -->
+    <div class="navbar-main">
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-trigger">🎓 Learning Mode <i class="nav-chevron">▼</i></div>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-label">Select your lens</div>
+            <a href="index.html?mode=layman" class="mode-panel-btn">🙋 Layman</a>
+            <a href="index.html?mode=graduate" class="mode-panel-btn">🎓 Graduate</a>
+            <a href="index.html?mode=researcher" class="mode-panel-btn">🔬 Researcher</a>
+            <a href="index.html?mode=team" class="mode-panel-btn">👥 Team</a>
+            <a href="index.html?mode=startup" class="mode-panel-btn">🏢 Startup</a>
+            <a href="index.html?mode=investor" class="mode-panel-btn">💰 Investor</a>
+            <a href="index.html?mode=founder" class="mode-panel-btn">🧭 Founder</a>
+            <a href="index.html?mode=agentmode" class="mode-panel-btn">⚡ Agentic</a>
+        </div>
+      </div>
+      <div class="navbar-sep"></div>
         <div class="nav-dropdown">
-          <div class="nav-dropdown-trigger active">📚 Learn <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-trigger active">🧭 Explore <i class="nav-chevron">▼</i></div>
           <div class="nav-dropdown-menu">
             <a href="frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
             <a href="future-frontier.html" class="panel-btn active">🔮 Future Frontier</a>
@@ -23,30 +42,22 @@
         </div>
         <div class="nav-dropdown">
           <div class="nav-dropdown-trigger">🌏 AI Ecosystems <i class="nav-chevron">▼</i></div>
-          <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-menu" style="left:auto;right:0;">
             <a href="india-ai.html" class="panel-btn">🇮🇳 India AI</a>
             <a href="china-ai.html" class="panel-btn">🇨🇳 China AI</a>
             <a href="usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
           </div>
         </div>
-        <a href="blog.html" class="nav-item">✍️ Blog</a>
-        <a href="ai-news.html" class="nav-item">📰 News</a>
-      </div>
-    </div>
-        <div class="explore-menu">
-          <a href="frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
-          <a href="future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
-          <a href="llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
-          <a href="ai-news.html" class="panel-btn">📰 Daily AI News</a>
-          <a href="india-ai.html" class="panel-btn">🇮🇳 India AI</a>
-          <a href="china-ai.html" class="panel-btn">🇨🇳 China AI</a>
-          <a href="usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
+      <div class="navbar-sep"></div>
+      <a href="ai-news.html" class="nav-item">📰 Daily AI News</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-trigger">✍️ Blog <i class="nav-chevron">▼</i></div>
+        <div class="nav-dropdown-menu" style="left:auto;right:0;" id="blogNavMenu">
+          <a href="blog.html" class="panel-btn">📋 All Posts</a>
+          <div class="nav-dropdown-divider"></div>
+          <div class="nav-dropdown-label">Recent Posts</div>
+          <!-- populated by JS via loadBlogNavPosts() -->
         </div>
-      </div>
-    </div>
-    <div class="navbar-bottom">
-      <div class="nav-links">
-        <a href="index.html">← Back to Academy</a>
       </div>
     </div>
   </nav>

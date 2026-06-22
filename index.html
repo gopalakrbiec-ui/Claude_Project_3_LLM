@@ -11,14 +11,31 @@
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <header class="hero">
   <div class="stars" id="stars"></div>
-  <nav class="navbar">
-
-    <!-- ── Top bar: logo + panel nav ── -->
-        <div class="navbar-top">
+    <nav class="navbar">
+    <!-- Ribbon 1: Brand -->
+    <div class="navbar-brand">
       <div class="logo">🚀 FrontierLLM Academy</div>
-      <div class="navbar-nav">
+      <span class="navbar-brand-tagline">Build · Learn · Explore</span>
+    </div>
+    <!-- Ribbon 2: Navigation -->
+    <div class="navbar-main">
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-trigger active">🎓 Learning Mode <i class="nav-chevron">▼</i></div>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-label">Select your lens</div>
+            <button class="mode-panel-btn" id="modeBtn_layman" onclick="setMode('layman')">🙋 Layman</button>
+            <button class="mode-panel-btn" id="modeBtn_graduate" onclick="setMode('graduate')">🎓 Graduate</button>
+            <button class="mode-panel-btn" id="modeBtn_researcher" onclick="setMode('researcher')">🔬 Researcher</button>
+            <button class="mode-panel-btn" id="modeBtn_team" onclick="setMode('team')">👥 Team</button>
+            <button class="mode-panel-btn" id="modeBtn_startup" onclick="setMode('startup')">🏢 Startup</button>
+            <button class="mode-panel-btn" id="modeBtn_investor" onclick="setMode('investor')">💰 Investor</button>
+            <button class="mode-panel-btn" id="modeBtn_founder" onclick="setMode('founder')">🧭 Founder</button>
+            <button class="mode-panel-btn" id="modeBtn_agentmode" onclick="setMode('agentmode')">⚡ Agentic</button>
+        </div>
+      </div>
+      <div class="navbar-sep"></div>
         <div class="nav-dropdown">
-          <div class="nav-dropdown-trigger">📚 Learn <i class="nav-chevron">▼</i></div>
+          <div class="nav-dropdown-trigger">🧭 Explore <i class="nav-chevron">▼</i></div>
           <div class="nav-dropdown-menu">
             <a href="frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
             <a href="future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
@@ -27,44 +44,24 @@
         </div>
         <div class="nav-dropdown">
           <div class="nav-dropdown-trigger">🌏 AI Ecosystems <i class="nav-chevron">▼</i></div>
-          <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-menu" style="left:auto;right:0;">
             <a href="india-ai.html" class="panel-btn">🇮🇳 India AI</a>
             <a href="china-ai.html" class="panel-btn">🇨🇳 China AI</a>
             <a href="usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
           </div>
         </div>
-        <a href="blog.html" class="nav-item">✍️ Blog</a>
-        <a href="ai-news.html" class="nav-item">📰 News</a>
-      </div>
-    </div>
-            <div class="explore-dropdown">
-        <div class="explore-trigger">🧭 Explore <i class="explore-chevron">▼</i></div>
-        <div class="explore-menu">
-          <a href="frontier-timeline.html" class="panel-btn">🗺️ FrontierAI Timeline</a>
-          <a href="future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
-          <a href="llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
-          <a href="ai-news.html" class="panel-btn">📰 Daily AI News</a>
-          <a href="india-ai.html" class="panel-btn">🇮🇳 India AI</a>
-          <a href="china-ai.html" class="panel-btn">🇨🇳 China AI</a>
-          <a href="usa-ai.html" class="panel-btn">🇺🇸 America AI</a>
+      <div class="navbar-sep"></div>
+      <a href="ai-news.html" class="nav-item">📰 Daily AI News</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-trigger">✍️ Blog <i class="nav-chevron">▼</i></div>
+        <div class="nav-dropdown-menu" style="left:auto;right:0;" id="blogNavMenu">
+          <a href="blog.html" class="panel-btn">📋 All Posts</a>
+          <div class="nav-dropdown-divider"></div>
+          <div class="nav-dropdown-label">Recent Posts</div>
+          <!-- populated by JS via loadBlogNavPosts() -->
         </div>
       </div>
     </div>
-
-    <!-- ── Bottom bar: section anchors ── -->
-    <div class="navbar-bottom">
-      <div class="nav-links">
-        <a href="#stages">Stages</a>
-        <a href="#team-coordination" id="navTeam" class="hidden">Team</a>
-        <a href="#graduate-roadmap" id="navGrad" class="hidden">Roadmap</a>
-        <a href="#research-landscape" id="navResearch" class="hidden">Research</a>
-        <a href="#startup-journey" id="navStartup" class="hidden">Startup</a>
-        <a href="#investor-journey" id="navInvestor" class="hidden">Investor</a>
-        <a href="#founder-journey" id="navFounder" class="hidden">Founder</a>
-        <a href="#agentmode-journey" id="navAgentMode" class="hidden">Agentic</a>
-      </div>
-    </div>
-
   </nav>
 
   <div class="hero-content">
@@ -80,21 +77,6 @@
     <p class="hero-sub investor-text hidden">The investor's lens — startup financials, valuation frameworks, funding mechanics, cap tables, burn discipline, the path to IPO, and hard-won lessons from AI founders who've raised billions.</p>
     <p class="hero-sub agentmode-text hidden">The agentic lens — how autonomous AI agents, coding recursion, and intelligent frameworks are reshaping every stage of LLM development, and whether the current agentic market is a durable category or a transitionary layer soon absorbed by increasingly capable foundation models.</p>
     <p class="hero-sub founder-text hidden">The builder's compass — how to find market gaps, generate ideas, differentiate your product, attract talent, build authority, manage yourself and your team, and decide when to start, when to pivot, and when to stop in the AI era.</p>
-
-    <!-- ── Learning Mode strip (moved from navbar) ── -->
-    <div class="hero-mode-strip">
-      <span class="hero-mode-label">View as:</span>
-      <div class="mode-toggle">
-        <button class="mode-btn active" id="btnLayman"   onclick="setMode('layman')">🙋 Layman</button>
-        <button class="mode-btn" id="btnGrad"     onclick="setMode('graduate')">🎓 Graduate</button>
-        <button class="mode-btn" id="btnResearch" onclick="setMode('researcher')">🔬 Researcher</button>
-        <button class="mode-btn" id="btnTeam"     onclick="setMode('team')">👥 Team</button>
-        <button class="mode-btn" id="btnStartup"  onclick="setMode('startup')">🏢 Startup</button>
-        <button class="mode-btn" id="btnInvestor" onclick="setMode('investor')">💰 Investor</button>
-        <button class="mode-btn" id="btnFounder"  onclick="setMode('founder')">🧭 Founder</button>
-        <button class="mode-btn" id="btnAgentMode" onclick="setMode('agentmode')">⚡ Agentic</button>
-      </div>
-    </div>
 
     <div class="hero-stats">
       <div class="stat-card"><span class="stat-num">8</span><span class="stat-label">Stages</span></div>
