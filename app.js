@@ -468,27 +468,29 @@ function initTypingDemo() {
   }, 3000);
 }
 
-/* ── Blog nav dropdown population ── */
+/* ── Blog nav panel population ── */
 async function loadBlogNavPosts() {
   const menu = document.getElementById('blogNavMenu');
   if (!menu) return;
-  // Detect if we're in a subdirectory (blog/ posts) and adjust path
-  const isSubdir = window.location.pathname.includes('/blog/');
-  const jsonPath = isSubdir ? '../blog/index.json' : 'blog/index.json';
+  const path = window.location.pathname;
+  const isBlogPost = path.includes('/blog/');   // blog/slug.html
+  const isPage     = path.includes('/pages/');  // pages/foo.html
+  const jsonPath   = isBlogPost || isPage ? '../blog/index.json' : 'blog/index.json';
   try {
     const r = await fetch(jsonPath);
     if (!r.ok) return;
     const data = await r.json();
-    const posts = (data.posts || []).slice(0, 4);
-    posts.forEach(p => {
+    (data.posts || []).slice(0, 4).forEach(p => {
       const a = document.createElement('a');
-      a.href = isSubdir ? `${p.slug}.html` : `blog/${p.slug}.html`;
+      a.href = isBlogPost ? `${p.slug}.html`
+             : isPage     ? `../blog/${p.slug}.html`
+             :               `blog/${p.slug}.html`;
       a.className = 'panel-btn';
       a.textContent = `${p.emoji || '📝'} ${p.title}`;
       a.style.cssText = 'font-size:0.82rem;white-space:normal;line-height:1.3;';
       menu.appendChild(a);
     });
-  } catch (_) { /* silent fail — static list remains */ }
+  } catch (_) {}
 }
 
 /* ── Init ── */
