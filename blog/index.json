@@ -14,12 +14,12 @@
     },
     {
       "slug": "agentic-loop-explained",
-      "title": "The Agentic Loop: How Claude Thinks, Acts, and Corrects Itself",
-      "excerpt": "The loop that turns a one-shot text predictor into a self-correcting agent — explained with diagrams, animations, and real Claude prompts you can try today.",
+      "title": "Loop Engineering: The New Meta for AI Agents",
+      "excerpt": "The shift from prompt engineering to loop engineering — how Boris Cherny, Peter Steinberger, and Addy Osmani crystallized a new paradigm for building AI systems in 2026.",
       "author": "FrontierLLM Team",
       "authorInitials": "FL",
       "date": "2026-06-22",
-      "readTime": "12 min",
+      "readTime": "16 min",
       "tags": ["Agentic AI", "Research"],
       "emoji": "⚡",
       "featured": true

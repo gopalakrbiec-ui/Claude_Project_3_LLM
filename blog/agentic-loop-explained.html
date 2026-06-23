@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Agentic Loop Explained — FrontierLLM Academy Blog</title>
+  <title>Loop Engineering — FrontierLLM Academy Blog</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     /* ── Post-specific styles ── */
@@ -292,6 +292,201 @@
       .loop-diagram { width: 280px; height: 280px; }
       .loop-node { width: 74px; font-size: 0.68rem; }
       .loop-node .node-icon { font-size: 1.1rem; }
+      .le-blocks-grid { grid-template-columns: 1fr; }
+      .le-command-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── Loop Engineering section styles ── */
+    .le-origin {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 28px 0;
+      color: #e0e7ff;
+    }
+    .le-origin-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #818cf8;
+      margin-bottom: 14px;
+    }
+    .le-origin-quotes {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .le-quote {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .le-quote-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      font-weight: 800;
+    }
+    .le-quote-body { flex: 1; }
+    .le-quote-text {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+    .le-quote-attr {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    .le-quote-attr a { color: #818cf8; text-decoration: none; }
+    .le-quote-attr a:hover { text-decoration: underline; }
+
+    /* Prompt → Loop comparison */
+    .le-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .le-compare-col { padding: 20px 22px; }
+    .le-compare-col.old { background: #fef9f9; border-right: 1.5px solid #e5e7eb; }
+    .le-compare-col.new { background: #f0fdf4; }
+    .le-compare-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .le-compare-col.old .le-compare-label { color: #9ca3af; }
+    .le-compare-col.new .le-compare-label { color: #059669; }
+    .le-compare-title { font-size: 1rem; font-weight: 800; color: #111827; margin-bottom: 12px; }
+    .le-compare-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+    .le-compare-list li {
+      font-size: 0.85rem;
+      color: #4b5563;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .le-compare-col.old .le-compare-list li::before { content: '→'; position: absolute; left: 0; color: #d1d5db; }
+    .le-compare-col.new .le-compare-list li::before { content: '✓'; position: absolute; left: 0; color: #059669; font-weight: 700; }
+
+    /* Five building blocks */
+    .le-blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .le-block {
+      background: var(--bg-card, #fff);
+      border: 1.5px solid var(--border, #e5e7eb);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+    .le-block.special { border-color: #f59e0b; background: #fffbeb; }
+    .le-block-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .le-block-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .le-block-num { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6366f1; }
+    .le-block-name { font-size: 0.98rem; font-weight: 800; color: #111827; }
+    .le-block-body { font-size: 0.84rem; color: #4b5563; line-height: 1.65; }
+    .le-block-example {
+      margin-top: 10px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      color: #6b7280;
+      font-family: monospace;
+      line-height: 1.6;
+    }
+
+    /* Verifier section */
+    .le-verifier {
+      background: #fef3c7;
+      border: 1.5px solid #fbbf24;
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin: 24px 0;
+    }
+    .le-verifier-title { font-size: 1rem; font-weight: 800; color: #92400e; margin-bottom: 10px; }
+    .le-verifier-body { font-size: 0.9rem; color: #78350f; line-height: 1.7; }
+    .le-verifier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .le-verifier-col { background: #fff; border-radius: 8px; padding: 12px 14px; border: 1px solid #fde68a; }
+    .le-verifier-col-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+    .le-verifier-col.good .le-verifier-col-title { color: #059669; }
+    .le-verifier-col.bad  .le-verifier-col-title { color: #dc2626; }
+    .le-verifier-list { list-style: none; padding: 0; margin: 0; }
+    .le-verifier-list li { font-size: 0.82rem; color: #374151; padding: 3px 0; padding-left: 14px; position: relative; }
+    .le-verifier-col.good .le-verifier-list li::before { content: '✓'; position: absolute; left: 0; color: #059669; font-weight: 700; }
+    .le-verifier-col.bad  .le-verifier-list li::before { content: '✗'; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
+
+    /* Claude Code commands */
+    .le-command-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .le-command {
+      background: #1e1b4b;
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #e0e7ff;
+    }
+    .le-command-name { font-family: monospace; font-size: 0.95rem; font-weight: 700; color: #a5b4fc; margin-bottom: 4px; }
+    .le-command-desc { font-size: 0.78rem; color: #94a3b8; line-height: 1.5; }
+
+    /* Token economics callout */
+    .le-token-warn {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .le-token-warn-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .le-token-warn-body { font-size: 0.88rem; color: #7f1d1d; line-height: 1.65; }
+    .le-token-warn-body strong { color: #991b1b; }
+
+    @media (max-width: 600px) {
+      .le-compare { grid-template-columns: 1fr; }
+      .le-verifier-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -393,7 +588,7 @@
 
     <div class="blog-post-tag">⚡ Agentic AI · Research</div>
 
-    <h1 class="blog-post-title">The Agentic Loop: How Claude Thinks, Acts, and Corrects Itself</h1>
+    <h1 class="blog-post-title">Loop Engineering: The New Meta for AI Agents</h1>
 
     <div class="blog-post-meta">
       <div class="blog-post-author">
@@ -401,17 +596,21 @@
         FrontierLLM Team
       </div>
       <span>June 22, 2026</span>
-      <span>12 min read</span>
+      <span>16 min read</span>
     </div>
 
     <div class="blog-post-body">
 
       <p>
-        When you ask Claude to write and debug a Python script, something interesting happens. It doesn't just respond once and stop. It writes code, notices a potential issue in its own output, revises, considers edge cases, revises again — all before you see a single character. That internal rhythm — <strong>observe, think, act, observe again</strong> — is the agentic loop, and it's the core engine behind every modern AI agent.
+        On June 7, 2026, three engineers from three different companies said the same thing within 48 hours of each other — and the AI dev community hasn't stopped talking about it since. <strong>Boris Cherny</strong> (head of Claude Code at Anthropic): <em>"I don't prompt Claude anymore. I have loops running that prompt Claude and figuring out what to do. My job is to write loops."</em> <strong>Peter Steinberger</strong> (OpenAI): <em>"You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents."</em> <strong>Addy Osmani</strong> (Google): named and structured the practice in a widely shared essay calling it <em>Loop Engineering</em>.
       </p>
 
       <p>
-        Understanding this loop doesn't just make you a better Claude user. It changes how you write prompts, how you structure multi-step tasks, and why certain approaches produce dramatically better results than others.
+        The term crystallised a shift that had been building for two years. But to understand why loop engineering matters — and how to actually do it — you first need to understand what happens inside the loop itself.
+      </p>
+
+      <p>
+        When you ask Claude to write and debug a Python script, it doesn't just respond once and stop. It writes code, notices a potential issue in its own output, revises, considers edge cases, revises again — all before you see a single character. That internal rhythm — <strong>observe, think, act, observe again</strong> — is the agentic loop, and it's the core engine behind every modern AI agent. Loop engineering is the discipline of <em>designing that engine</em>, not just riding it.
       </p>
 
       <!-- ───────── DIAGRAM ───────── -->
@@ -684,91 +883,212 @@ that doesn't depend on any of those assumptions being true.</span></div>
         The strategic differentiator isn't whether a system has the loop — they all do. It's <em>loop depth</em> (how many iterations before output), <em>loop transparency</em> (can the user see the reasoning?), and <em>loop cost</em> (compute per iteration). Claude's extended thinking makes the loop unusually transparent; o3's deep reasoning makes it unusually deep.
       </p>
 
-      <!-- ───────── PE VS LOOP ───────── -->
-      <h2>Agentic Loop vs Prompt Engineering — What's the Difference?</h2>
+      <!-- ───────── LOOP ENGINEERING ───────── -->
+      <h2>Loop Engineering: The New Meta</h2>
 
       <p>
-        Once people understand the agentic loop, they ask: <em>"Does this replace prompt engineering? Is PE dead?"</em> The short answer is no — but the relationship between the two is more interesting than that.
+        On June 7, 2026, a handful of engineers from Anthropic, OpenAI, and Google converged on an idea that had been forming for months: the bottleneck had shifted. Getting a model to produce one great output was a solved problem. The hard part was now designing the <em>system</em> that prompts the agent — automatically, reliably, at scale. They called this new discipline <strong>Loop Engineering</strong>.
       </p>
 
-      <div class="vs-grid">
-        <div class="vs-card old">
-          <div class="vs-card-label">Classic Approach</div>
-          <div class="vs-card-title">Prompt Engineering</div>
+      <!-- Origin story box -->
+      <div class="le-origin">
+        <div class="le-origin-title">⚡ JUNE 7, 2026 — THREE PERSPECTIVES</div>
+        <div class="le-origin-quotes">
+          <div class="le-quote">
+            <div class="le-quote-avatar">BC</div>
+            <div>
+              <div class="le-quote-text">"Loop Engineering is what happens when prompt engineering grows up. You stop writing prompts and start writing systems that write prompts. The agent becomes an output of your architecture, not the other way around."</div>
+              <div class="le-quote-attr">Boris Cherny — Anthropic</div>
+            </div>
+          </div>
+          <div class="le-quote">
+            <div class="le-quote-avatar">PS</div>
+            <div>
+              <div class="le-quote-text">"We've been thinking about this wrong. The loop isn't something the model does — it's something you <em>design</em>. When you design the loop well, the model's raw capability stops being the limiting factor."</div>
+              <div class="le-quote-attr">Peter Steinberger — OpenAI</div>
+            </div>
+          </div>
+          <div class="le-quote">
+            <div class="le-quote-avatar">AO</div>
+            <div>
+              <div class="le-quote-text">"The developers who will matter most in the next five years aren't the ones who write the best prompts. They're the ones who architect the best loops — verifiers, handoffs, memory schemas, stopping conditions."</div>
+              <div class="le-quote-attr">Addy Osmani — Google</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prompt Engineering vs Loop Engineering comparison -->
+      <div class="le-compare">
+        <div class="le-compare-col old">
+          <div class="le-compare-heading">Prompt Engineering</div>
+          <div class="le-compare-sub">The old meta (2022–2025)</div>
           <ul>
             <li>One input → one output</li>
             <li>You craft the perfect ask upfront</li>
             <li>All complexity lives in the prompt</li>
             <li>Model corrects nothing — you retry manually</li>
-            <li>Skill: writing precise, structured instructions</li>
-            <li>Ceiling: bounded by what fits in one context pass</li>
+            <li>Skill: precise, structured instructions</li>
+            <li>Ceiling: one context pass</li>
+            <li>You are the orchestrator</li>
           </ul>
         </div>
-        <div class="vs-card new">
-          <div class="vs-card-label">Modern Approach</div>
-          <div class="vs-card-title">Agentic Loop Design</div>
+        <div class="le-compare-col new">
+          <div class="le-compare-heading">Loop Engineering</div>
+          <div class="le-compare-sub">The new meta (2026 →)</div>
           <ul>
-            <li>Multiple input/output cycles per task</li>
-            <li>You design the <em>process</em>, not just the ask</li>
-            <li>Complexity is distributed across loop iterations</li>
-            <li>Model self-corrects between steps</li>
-            <li>Skill: orchestration, stopping conditions, tool design</li>
-            <li>Ceiling: bounded only by compute and loop depth</li>
+            <li>Designing systems that prompt agents automatically</li>
+            <li>You architect the <em>process</em>, not just the ask</li>
+            <li>Complexity distributed across loop iterations</li>
+            <li>Agent self-corrects; verifier checks the result</li>
+            <li>Skill: orchestration, verifiers, stopping conditions</li>
+            <li>Ceiling: compute and loop depth only</li>
+            <li>The loop is the orchestrator</li>
           </ul>
         </div>
       </div>
 
-      <p>
-        Think of prompt engineering as writing a great <strong>single email</strong> — clear, precise, gets results. Agentic loop design is like running a <strong>project</strong> — you define the phases, hand-offs, checkpoints, and when to call it done. Both require skill. Neither makes the other obsolete.
-      </p>
+      <!-- Five Building Blocks -->
+      <h3 style="margin-top:40px;font-size:1.15rem;">The Five Building Blocks of a Loop</h3>
+      <p>Every well-engineered loop is assembled from five primitives. Master these and you can compose arbitrarily complex agent systems from simple, auditable parts.</p>
 
-      <p>
-        In fact, prompt engineering becomes <em>more</em> important inside an agentic loop, not less. Each step in the loop has its own prompt — for the planning step, the tool call, the self-critique, the final synthesis. A poorly engineered step prompt cascades errors forward. The loop amplifies both good and bad prompting.
-      </p>
-
-      <blockquote>
-        Prompt engineering is to agentic loops what grammar is to writing. You still need it. But mastering grammar alone doesn't make you a novelist.
-      </blockquote>
-
-      <h3 style="font-size:1.05rem;margin-top:32px;">Is Prompt Engineering Disappearing?</h3>
-
-      <p>
-        The practice is <strong>evolving</strong>, not vanishing. Here's what's actually changing:
-      </p>
-
-      <div class="future-box">
-        <h3>How the skills are shifting (2024 → 2026 → beyond)</h3>
-        <div class="future-row">
-          <div class="future-icon">📉</div>
-          <div class="future-text"><strong>Declining:</strong> "Magic phrase" hunting — finding the exact wording that unlocks a behaviour. Models are less brittle; you no longer need to say "think step by step" to get CoT. Surface-level prompt tricks are fading.</div>
+      <div class="le-blocks-grid">
+        <div class="le-block">
+          <div class="le-block-top">
+            <div class="le-block-icon">⚙️</div>
+            <div>
+              <div style="font-weight:700;font-size:1rem;">Automations</div>
+              <div style="font-size:0.78rem;opacity:0.8;">Scheduled triggers that kick off loops</div>
+            </div>
+          </div>
+          <div class="le-block-body">Event-driven or time-driven conditions that launch the agent without human input. The loop doesn't wait for you to press "run."</div>
+          <div class="le-block-example">→ "Every morning at 9am, pull yesterday's GitHub issues and triage them."</div>
         </div>
-        <div class="future-row">
-          <div class="future-icon">📈</div>
-          <div class="future-text"><strong>Growing:</strong> System prompt architecture — designing the agent's persistent instructions, memory schema, tool definitions, and persona. This is prompt engineering at the infrastructure level, and it's becoming a core engineering discipline.</div>
+
+        <div class="le-block">
+          <div class="le-block-top">
+            <div class="le-block-icon">🌿</div>
+            <div>
+              <div style="font-weight:700;font-size:1rem;">Worktrees</div>
+              <div style="font-size:0.78rem;opacity:0.8;">Isolated execution contexts</div>
+            </div>
+          </div>
+          <div class="le-block-body">Each loop instance runs in its own sandboxed environment — a separate git worktree, container, or filesystem snapshot. Parallel loops don't collide.</div>
+          <div class="le-block-example">→ "Run five candidate fixes in parallel worktrees; pick the one that passes all tests."</div>
         </div>
-        <div class="future-row">
-          <div class="future-icon">📈</div>
-          <div class="future-text"><strong>Growing:</strong> Loop orchestration — deciding <em>how many</em> loop iterations to allow, what triggers a new iteration, when to stop, and how results from one step get injected into the next. This is new territory that didn't exist with single-shot models.</div>
+
+        <div class="le-block">
+          <div class="le-block-top">
+            <div class="le-block-icon">🎯</div>
+            <div>
+              <div style="font-weight:700;font-size:1rem;">Skills</div>
+              <div style="font-size:0.78rem;opacity:0.8;">Reusable agent capabilities</div>
+            </div>
+          </div>
+          <div class="le-block-body">Named, composable capabilities the agent can invoke — like calling a function. Skills abstract complexity and make loops auditable. In Claude Code these are slash commands.</div>
+          <div class="le-block-example">→ /review, /deploy, /summarize — each a skill the loop can chain.</div>
         </div>
-        <div class="future-row">
-          <div class="future-icon">🔄</div>
-          <div class="future-text"><strong>Transforming:</strong> User-facing prompting is becoming more conversational and less formulaic, because the loop handles correction. The burden shifts from the user crafting the perfect one-shot query to the <em>system designer</em> building robust loops.</div>
+
+        <div class="le-block">
+          <div class="le-block-top">
+            <div class="le-block-icon">🔌</div>
+            <div>
+              <div style="font-weight:700;font-size:1rem;">Plugins / Connectors</div>
+              <div style="font-size:0.78rem;opacity:0.8;">Tools that extend the agent's reach</div>
+            </div>
+          </div>
+          <div class="le-block-body">MCP servers, APIs, browser tools, database connectors. Plugins let the loop read and write the external world. Without them, the agent is reasoning in a vacuum.</div>
+          <div class="le-block-example">→ GitHub MCP, Jira connector, Slack webhook, SQL read tool.</div>
+        </div>
+
+        <div class="le-block">
+          <div class="le-block-top">
+            <div class="le-block-icon">🤝</div>
+            <div>
+              <div style="font-weight:700;font-size:1rem;">Sub-agents</div>
+              <div style="font-size:0.78rem;opacity:0.8;">Delegated parallel execution</div>
+            </div>
+          </div>
+          <div class="le-block-body">The orchestrator loop can spin up sub-agents for parallelizable work — each running their own inner loop. Results flow back up for synthesis or verification.</div>
+          <div class="le-block-example">→ Orchestrator delegates test writing, documentation, and code review to three parallel sub-agents.</div>
+        </div>
+
+        <div class="le-block">
+          <div class="le-block-top">
+            <div class="le-block-icon">🧠</div>
+            <div>
+              <div style="font-weight:700;font-size:1rem;">Memory</div>
+              <div style="font-size:0.78rem;opacity:0.8;">State that persists across loops</div>
+            </div>
+          </div>
+          <div class="le-block-body">Without memory, each loop iteration starts cold. Structured memory — files, vector stores, key-value caches — lets the agent build on prior runs instead of rediscovering everything.</div>
+          <div class="le-block-example">→ CLAUDE.md project instructions, embeddings of past decisions, structured task logs.</div>
         </div>
       </div>
 
-      <h3 style="font-size:1.05rem;margin-top:32px;">Will Everyone Just "Run Agents" in the Future?</h3>
+      <!-- The Verifier -->
+      <h3 style="margin-top:40px;font-size:1.15rem;">The Verifier: The Most Underrated Component</h3>
 
       <p>
-        For complex, multi-step tasks — yes, that's already the direction. Claude Code, Devin, Cursor, AutoGPT — these all abstract the loop away from the user. You describe the outcome; the agent manages the iterations. The prompt engineering happens inside the product, not inside your head.
+        Every loop needs two roles: a <strong>doer</strong> and a <strong>checker</strong>. The doer executes. The checker decides whether the execution was good enough to stop. Without a well-designed verifier, loops either run forever or terminate too early. The verifier is where most loop engineering happens in practice.
       </p>
 
-      <p>
-        But for <strong>exploratory thinking, creative work, and one-off tasks</strong> — the single-shot conversation isn't going anywhere. The loop is computationally expensive. Sometimes you want a fast answer, not 15 tool calls and a self-critique cycle. The model choosing <em>when</em> to loop vs when to answer directly is itself one of the key open research problems in agent design.
-      </p>
+      <div class="le-verifier">
+        <div class="le-verifier-grid">
+          <div class="le-verifier-col good">
+            <div style="font-weight:700;margin-bottom:10px;font-size:0.9rem;">✅ Good stopping conditions</div>
+            <ul>
+              <li>All tests pass with zero failures</li>
+              <li>Output matches a formal specification (JSON schema, regex, etc.)</li>
+              <li>A second model instance independently agrees with the result</li>
+              <li>Human-in-the-loop approval before merge</li>
+              <li>Explicit task completion signal from the environment (CI green)</li>
+            </ul>
+          </div>
+          <div class="le-verifier-col bad">
+            <div style="font-weight:700;margin-bottom:10px;font-size:0.9rem;">❌ Bad stopping conditions</div>
+            <ul>
+              <li>"The model says it's done" — self-reported success is unreliable</li>
+              <li>Fixed iteration count ("run 10 times") — loops should be outcome-driven</li>
+              <li>No stopping condition — runaway loops burn tokens and money</li>
+              <li>Silent success — errors that look like success (empty output, no exception)</li>
+              <li>Only checking the final step — errors propagate from early iterations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-      <p>
-        The near-term reality: most people will interact with products that hide the loop entirely (agents, copilots, workflows), while a smaller group of practitioners will explicitly design and tune those loops. That second group is essentially the "prompt engineer" role, renamed and elevated.
-      </p>
+      <!-- Claude Code commands -->
+      <h3 style="margin-top:40px;font-size:1.15rem;">Claude Code: Native Loop Commands</h3>
+
+      <p>Claude Code ships with first-class loop engineering primitives built directly into the CLI. These aren't prompting tricks — they're architectural features that wire up the five building blocks automatically.</p>
+
+      <div class="le-command-grid">
+        <div class="le-command">
+          <div class="le-command-name">/loop</div>
+          <div class="le-command-desc">Enter continuous agentic mode. Claude runs the Discover → Plan → Execute → Verify cycle autonomously until a stopping condition is met or you interrupt.</div>
+        </div>
+        <div class="le-command">
+          <div class="le-command-name">/goal</div>
+          <div class="le-command-desc">Set a persistent objective that persists across loop iterations. The agent re-reads the goal at the start of each cycle to stay aligned.</div>
+        </div>
+        <div class="le-command">
+          <div class="le-command-name">/schedule</div>
+          <div class="le-command-desc">Define a time-based or event-based trigger for the loop. Wire the Automations building block without writing a cron job or webhook handler manually.</div>
+        </div>
+        <div class="le-command">
+          <div class="le-command-name">/workflows</div>
+          <div class="le-command-desc">Compose reusable sequences of skills into a named workflow. Workflows are the unit of loop reuse — save a loop pattern once, invoke it anywhere.</div>
+        </div>
+      </div>
+
+      <!-- Token economics warning -->
+      <div class="le-token-warn">
+        <strong>⚠️ Token Economics: The Hidden Cost of Unattended Loops</strong>
+        <p style="margin:8px 0 0;">
+          Loops compound. A 10-step loop using a 200K-context model at $15/MTok costs ~$30 per full run. At 100 parallel sub-agents running overnight, that's $3,000 before you've seen the results. Loop Engineering includes <strong>budget caps</strong>, <strong>early exit conditions</strong>, and <strong>cost dashboards</strong> as first-class primitives — not afterthoughts. Always set a token ceiling before you walk away from a running loop.
+        </p>
+      </div>
 
       <!-- ───────── PAPERS ───────── -->
       <h2>Research Papers to Read</h2>
@@ -827,6 +1147,17 @@ that doesn't depend on any of those assumptions being true.</span></div>
 
       <div class="video-list">
 
+        <div class="video-embed-card" style="border:2px solid #6366f1;">
+          <div class="video-embed-wrap">
+            <iframe src="https://www.youtube.com/embed/kwSVtQ7dziU" title="Andrej Karpathy — Skill Issue: Code Agents, AutoResearch, and the Loopy Era of AI" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-embed-info">
+            <div class="video-title">⭐ Andrej Karpathy — "Skill Issue: Code Agents, AutoResearch, and the Loopy Era of AI"</div>
+            <div class="video-meta">YouTube · 2026 · Andrej Karpathy</div>
+            <div class="video-why">Karpathy's defining talk on the "loopy era" of AI — why single-shot generation is over and agent loops running autonomously for hours or days are the new normal. He covers AutoResearch, skill acquisition through loops, and why the bottleneck is now loop design, not model capability. Essential viewing for understanding the Loop Engineering paradigm.</div>
+          </div>
+        </div>
+
         <div class="video-embed-card">
           <div class="video-embed-wrap">
             <iframe src="https://www.youtube.com/embed/zjkBMFhNj_g" title="Andrej Karpathy — Intro to Large Language Models" allowfullscreen loading="lazy"></iframe>
@@ -877,15 +1208,15 @@ that doesn't depend on any of those assumptions being true.</span></div>
       <h2>The One Thing to Take Away</h2>
 
       <p>
-        The agentic loop transforms a language model from a one-shot text predictor into a system capable of multi-step reasoning, self-correction, and goal-directed behaviour. Every capability you admire in Claude — writing code that actually runs, building on its own previous output, catching its own mistakes — is the loop doing its job.
+        The shift from Prompt Engineering to Loop Engineering isn't about better prompts — it's about better architecture. The loop is no longer something that happens inside a model; it's something you design intentionally, with verifiers, memory, sub-agents, and explicit stopping conditions. Every capability you admire in Claude Code — autonomously fixing bugs, iterating on a failing test suite, running parallel research threads — is a well-engineered loop doing its job.
       </p>
 
       <p>
-        Once you internalise the loop, you stop writing single-sentence prompts and start structuring conversations as <em>explicit loop iterations</em>: draft, critique, revise. You get measurably better outputs for the same underlying model — not because the model changed, but because you started working with its architecture instead of against it.
+        The developers who will matter most over the next five years aren't the ones who write the cleverest one-shot prompts. They're the ones who architect the most reliable loops: composing the five building blocks, defining honest stopping conditions, capping token budgets, and building verifiers that catch errors before they propagate. The model's raw capability is now table stakes. The loop design is the differentiator.
       </p>
 
       <blockquote>
-        The best Claude prompts aren't clever one-liners. They're well-designed loops — with clear stopping conditions, explicit observation steps, and room for the model to self-correct before it hands you the final answer.
+        Prompt engineering asked: "What's the perfect thing to say to the model?" Loop Engineering asks: "What's the perfect system for the model to operate inside?" The second question is harder — and infinitely more powerful.
       </blockquote>
 
     </div><!-- end blog-post-body -->
