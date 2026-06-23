@@ -30,6 +30,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 - [FrontierAI Timeline](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/frontier-timeline.html) — A chronological map of major frontier model releases, capability jumps, and research milestones
 - [Future Frontier](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/future-frontier.html) — Forward-looking analysis of where AI capability and safety research is heading
 - [LLM Engineering](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/llm-engineering.html) — Practical concepts for building with LLMs — prompting, fine-tuning, RAG, agents, evals
+- [Coding Agents](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/coding-agents.html) — Deep dive on coding agents & tools: evolution timeline, tool comparisons, MCP ecosystem, SWE-bench, investments, research papers, and future roadmap
 
 ### 🌏 AI Ecosystems — Country Deep Dives
 - [Sovereign AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/sovereign-ai.html) — Comprehensive guide to sovereign AI — all countries, investment strategies, Pax Silica, and the four pillars
