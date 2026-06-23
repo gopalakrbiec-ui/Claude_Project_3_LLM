@@ -49,7 +49,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 
 <!-- BLOG_POSTS_START -->
 - 📰 [AI News Digest — June 22, 2026](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/ai-news-june-22-2026.html) — News, Weekly Digest · 2026-06-22 · 8 min
-- ⚡ [The Agentic Loop: How Claude Thinks, Acts, and Corrects Itself ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/agentic-loop-explained.html) — Agentic AI, Research · 2026-06-22 · 12 min
+- ⚡ [Loop Engineering: The New Meta for AI Agents ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/agentic-loop-explained.html) — Agentic AI, Research · 2026-06-22 · 16 min
 <!-- BLOG_POSTS_END -->
 
 ---
