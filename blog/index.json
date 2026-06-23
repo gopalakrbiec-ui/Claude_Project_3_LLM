@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "frontier-model-pricing",
+      "title": "Frontier Model Pricing: The Complete Guide",
+      "excerpt": "Tokens vs parameters, architecture cost drivers, the full pricing table across all frontier models, regional variation, open-source economics, and a startup pricing playbook.",
+      "author": "FrontierLLM Team",
+      "authorInitials": "FL",
+      "date": "2026-06-23",
+      "readTime": "20 min",
+      "tags": ["Economics", "Business", "Research"],
+      "emoji": "💰",
+      "featured": false
+    },
+    {
       "slug": "ai-news-june-22-2026",
       "title": "AI News Digest — June 22, 2026",
       "excerpt": "Today's biggest stories across Research, Investments, LLMs, Open Source, India, China, AGI, and the Future — 11 categories, real sources, curated in 5 bullets each.",
