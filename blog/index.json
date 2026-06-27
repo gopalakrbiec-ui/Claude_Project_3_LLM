@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "filmmaking-encyclopedia",
+      "title": "The Complete Filmmaking Encyclopedia",
+      "excerpt": "Every phase, role, and activity in the filmmaking pipeline — from a single idea to a global audience. 7 phases, 200+ roles, all the craft explained with animations and infographics.",
+      "author": "FrontierLLM Team",
+      "authorInitials": "FL",
+      "date": "2026-06-27",
+      "readTime": "30 min",
+      "tags": ["Filmmaking", "Creative Industry", "Encyclopedia"],
+      "emoji": "🎬",
+      "featured": false
+    },
+    {
       "slug": "frontier-model-pricing",
       "title": "Frontier Model Pricing: The Complete Guide",
       "excerpt": "Tokens vs parameters, architecture cost drivers, the full pricing table across all frontier models, regional variation, open-source economics, and a startup pricing playbook.",
