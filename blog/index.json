@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "image-video-ai-models",
+      "title": "Image & Video AI Models: The Complete Guide",
+      "excerpt": "Every generative image and video model, benchmark, major player, startup, funding round, dataset, architecture, monetization model, and research frontier in 2026.",
+      "author": "FrontierLLM Team",
+      "authorInitials": "FL",
+      "date": "2026-06-30",
+      "readTime": "25 min",
+      "tags": ["Generative AI", "Computer Vision", "Deep Dive"],
+      "emoji": "🎨",
+      "featured": true
+    },
+    {
       "slug": "filmmaking-encyclopedia",
       "title": "The Complete Filmmaking Encyclopedia",
       "excerpt": "Every phase, role, and activity in the filmmaking pipeline — from a single idea to a global audience. 7 phases, 200+ roles, all the craft explained with animations and infographics.",
@@ -46,7 +58,7 @@
       "readTime": "16 min",
       "tags": ["Agentic AI", "Research"],
       "emoji": "⚡",
-      "featured": true
+      "featured": false
     }
   ]
 }
