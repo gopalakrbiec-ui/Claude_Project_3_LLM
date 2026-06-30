@@ -48,10 +48,11 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
+- 🎨 [Image & Video AI Models: The Complete Guide ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/image-video-ai-models.html) — Generative AI, Computer Vision, Deep Dive · 2026-06-30 · 25 min
 - 🎬 [The Complete Filmmaking Encyclopedia](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/filmmaking-encyclopedia.html) — Filmmaking, Creative Industry, Encyclopedia · 2026-06-27 · 30 min
 - 💰 [Frontier Model Pricing: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/frontier-model-pricing.html) — Economics, Business, Research · 2026-06-23 · 20 min
 - 📰 [AI News Digest — June 22, 2026](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/ai-news-june-22-2026.html) — News, Weekly Digest · 2026-06-22 · 8 min
-- ⚡ [Loop Engineering: The New Meta for AI Agents ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/agentic-loop-explained.html) — Agentic AI, Research · 2026-06-22 · 16 min
+- ⚡ [Loop Engineering: The New Meta for AI Agents](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/agentic-loop-explained.html) — Agentic AI, Research · 2026-06-22 · 16 min
 <!-- BLOG_POSTS_END -->
 
 ---
