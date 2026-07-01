@@ -539,148 +539,6 @@
     .kpi-pill strong { color: #4f46e5; font-size: 1.1rem; }
     .kpi-pill span { font-size: 0.78rem; color: #6b7280; display: block; }
 
-    /* ── History Timeline ── */
-    .history-timeline {
-      position: relative;
-      margin: 36px 0 48px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-    }
-    .ht-scroll {
-      min-width: 900px;
-      position: relative;
-      padding: 0 20px;
-    }
-    /* Year ruler */
-    .ht-ruler {
-      display: flex;
-      align-items: flex-start;
-      position: relative;
-      height: 32px;
-      margin-bottom: 0;
-    }
-    .ht-year-mark {
-      position: absolute;
-      top: 0;
-      transform: translateX(-50%);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #9ca3af;
-      white-space: nowrap;
-    }
-    /* Central axis */
-    .ht-axis {
-      position: relative;
-      height: 4px;
-      background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899, #f43f5e, #f97316, #eab308);
-      border-radius: 2px;
-      margin: 0;
-    }
-    /* Event rows: above and below axis */
-    .ht-events-above,
-    .ht-events-below {
-      position: relative;
-      height: 160px;
-    }
-    .ht-events-above { margin-bottom: 0; }
-    .ht-events-below { margin-top: 0; }
-
-    .ht-event {
-      position: absolute;
-      width: 140px;
-      transform: translateX(-50%);
-    }
-    /* Events above axis sit bottom-aligned */
-    .ht-events-above .ht-event {
-      bottom: 0;
-    }
-    /* Events below axis sit top-aligned */
-    .ht-events-below .ht-event {
-      top: 0;
-    }
-
-    /* Connector lines */
-    .ht-event::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      background: var(--he-color, #6366f1);
-    }
-    .ht-events-above .ht-event::before {
-      bottom: -1px;
-      height: var(--he-line, 40px);
-    }
-    .ht-events-below .ht-event::before {
-      top: -1px;
-      height: var(--he-line, 40px);
-    }
-
-    /* Dot on axis */
-    .ht-dot {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--he-color, #6366f1);
-      border: 2px solid #fff;
-      box-shadow: 0 0 0 2px var(--he-color, #6366f1);
-      z-index: 2;
-    }
-    .ht-events-above .ht-dot {
-      bottom: calc(-1px - var(--he-line, 40px) - 5px);
-    }
-    .ht-events-below .ht-dot {
-      top: calc(-1px - var(--he-line, 40px) - 5px);
-    }
-
-    .ht-card {
-      background: #fff;
-      border: 1.5px solid var(--he-color, #e5e7eb);
-      border-radius: 10px;
-      padding: 9px 10px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      animation: htFadeIn 0.5s ease forwards;
-      opacity: 0;
-    }
-    @keyframes htFadeIn {
-      to { opacity: 1; }
-    }
-    .ht-card-date {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--he-color, #6366f1);
-      margin-bottom: 2px;
-    }
-    .ht-card-name {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: #111827;
-      margin-bottom: 2px;
-      line-height: 1.2;
-    }
-    .ht-card-desc {
-      font-size: 0.65rem;
-      color: #6b7280;
-      line-height: 1.35;
-    }
-    .ht-card-type {
-      display: inline-block;
-      font-size: 0.6rem;
-      font-weight: 700;
-      padding: 1px 6px;
-      border-radius: 999px;
-      margin-top: 4px;
-    }
-    .type-img  { background: #ede9fe; color: #6d28d9; }
-    .type-vid  { background: #fce7f3; color: #be185d; }
-    .type-arch { background: #d1fae5; color: #065f46; }
-    .type-oss  { background: #dbeafe; color: #1d4ed8; }
-
     .ht-legend {
       display: flex;
       gap: 16px;
@@ -855,165 +713,656 @@
       <h2 id="history" class="iv-section">🕰️ A Decade of Visual AI — Complete History</h2>
 
       <p>
-        From GANs that could barely produce a recognisable face to real-time 4K video generation in twelve years. Here's every landmark moment:
+        From GANs that could barely produce a recognisable face to real-time 4K video generation in twelve years. Here's every landmark moment, in order:
       </p>
 
-      <div class="history-timeline">
-        <div class="ht-scroll" id="htScroll">
-
-          <!-- Year markers -->
-          <div class="ht-ruler" id="htRuler"></div>
-
-          <!-- Events above the axis -->
-          <div class="ht-events-above" id="htAbove"></div>
-
-          <!-- The coloured axis -->
-          <div class="ht-axis"></div>
-
-          <!-- Events below the axis -->
-          <div class="ht-events-below" id="htBelow"></div>
-
-        </div>
-
-        <div class="ht-legend">
-          <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#6d28d9;"></div> Image Model</div>
-          <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#be185d;"></div> Video Model</div>
-          <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#065f46;"></div> Architecture / Research</div>
-          <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#1d4ed8;"></div> Open Source</div>
-        </div>
+      <!-- Legend -->
+      <div class="ht-legend">
+        <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#6d28d9;"></div> Image Model</div>
+        <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#be185d;"></div> Video Model</div>
+        <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#059669;"></div> Architecture / Research</div>
+        <div class="ht-legend-item"><div class="ht-legend-dot" style="background:#1d4ed8;"></div> Open Source</div>
       </div>
 
-      <script>
-      (function() {
-        // Timeline data: [year, month(1-12), name, desc, type(img/vid/arch/oss), side(above/below)]
-        const events = [
-          [2014, 6,  "GANs (Goodfellow)", "Generative Adversarial Networks introduced — the first DL generative paradigm", "arch", "above"],
-          [2015, 11, "Deep Dream", "Google's DeepDream makes neural feature visualisation viral", "img", "below"],
-          [2016, 6,  "pix2pix", "Image-to-image translation with conditional GANs", "arch", "above"],
-          [2017, 10, "Progressive GAN", "NVIDIA: growing resolution stage-by-stage for HD face synthesis", "img", "below"],
-          [2018, 9,  "BigGAN", "DeepMind scales GAN training — class-conditional 512px ImageNet", "img", "above"],
-          [2019, 2,  "StyleGAN", "NVIDIA: style-based latent space, photorealistic faces (FFHQ)", "img", "below"],
-          [2019, 10, "DALL-E (prototype)", "OpenAI's GPT-2 generates images via dVAE tokenisation internally", "arch", "above"],
-          [2020, 6,  "DDPM (Ho et al.)", "Denoising Diffusion Probabilistic Models — the architecture that changed everything", "arch", "below"],
-          [2021, 1,  "DALL-E 1", "OpenAI releases first public text-to-image model at 256px via dVAE", "img", "above"],
-          [2021, 5,  "CLIP (OpenAI)", "Contrastive vision-language pretraining — enables text conditioning at scale", "arch", "below"],
-          [2021, 12, "GLIDE", "Diffusion + CLIP guidance → photorealistic text-to-image for the first time", "img", "above"],
-          [2022, 4,  "DALL-E 2", "OpenAI: CLIP-guided diffusion, 1024px, inpainting, outpainting", "img", "below"],
-          [2022, 4,  "Imagen (Google)", "Cascaded diffusion with large language model text encoder — beats DALL-E 2 on FID", "img", "above"],
-          [2022, 8,  "Stable Diffusion 1", "CompVis + Stability AI open-source release — democratises image generation globally", "oss", "below"],
-          [2022, 10, "Midjourney v4", "Aesthetic quality leap; Discord-native community reaches millions", "img", "above"],
-          [2022, 10, "Make-A-Video (Meta)", "First text-to-video diffusion model — 5 sec, 256px", "vid", "below"],
-          [2022, 10, "Phenaki (Google)", "Variable-length video generation from text — up to 2 minutes", "vid", "above"],
-          [2023, 3,  "GPT-4 Vision", "Multimodal understanding; image input unlocks grounded generation", "arch", "below"],
-          [2023, 4,  "Segment Anything", "Meta SAM: universal object segmentation, open weights", "oss", "above"],
-          [2023, 5,  "ControlNet", "Structure-guided diffusion (pose, depth, edge) — huge for controllability", "arch", "below"],
-          [2023, 6,  "SDXL 1.0", "Stability AI: 1024px, dual text encoders, refiner stage", "oss", "above"],
-          [2023, 6,  "Runway Gen-2", "First commercially viable video generation — multi-modal (text/image/video input)", "vid", "below"],
-          [2023, 9,  "DALL-E 3", "OpenAI: follows complex prompts with ChatGPT integration; text rendering leap", "img", "above"],
-          [2023, 10, "Pika Labs 1.0", "Pika raises $55M; accessible video gen for creators goes viral", "vid", "below"],
-          [2023, 11, "Stable Video Diffusion", "Stability AI: first open-weight video generation model (14/25 frames)", "oss", "above"],
-          [2024, 1,  "Lumiere (Google)", "Space-time U-Net for temporally consistent video from a single reference", "vid", "below"],
-          [2024, 2,  "Sora (OpenAI)", "Video DiT — 60 sec 1080p cinematic video; industry shock moment", "vid", "above"],
-          [2024, 3,  "Stable Diffusion 3", "Multimodal Diffusion Transformer (MMDiT); 3B params; text in images", "oss", "below"],
-          [2024, 4,  "FLUX.1 (BFL)", "Rectified Flow Transformer from original SD creators; best anatomy + text", "img", "above"],
-          [2024, 6,  "Kling 1.0", "Kuaishou's video model rivals Sora on motion quality; 30 sec clips", "vid", "below"],
-          [2024, 7,  "Midjourney v6.1", "Highest aesthetic quality; character reference consistency", "img", "above"],
-          [2024, 8,  "CogVideoX", "THUDM open-weight 5B video DiT — best open video model 2024", "oss", "below"],
-          [2024, 10, "Movie Gen (Meta)", "Joint video + audio generation — 16 sec HD with synchronized sound", "vid", "above"],
-          [2024, 10, "Veo 2 (Google)", "4K 120 sec video; physics simulation; world-leading benchmark scores", "vid", "below"],
-          [2024, 11, "Adobe Firefly 3", "Commercially safe; Generative Fill in Photoshop/Premiere; 400M licensed assets", "img", "above"],
-          [2024, 12, "Wan (Alibaba)", "Open-weight video flow matching model; efficient mobile-class inference", "oss", "below"],
-          [2025, 2,  "GPT-4o Image", "Autoregressive + diffusion hybrid; conversational image editing; OCR retention", "img", "above"],
-          [2025, 3,  "Runway Gen-4", "Multi-shot consistent characters; Act-One face transfer; 4K", "vid", "below"],
-          [2025, 4,  "Gemini Imagen 3", "Best-in-class photorealism; deep Gemini Advanced integration", "img", "above"],
-          [2025, 6,  "Ideogram 2.5", "World's best text-in-image rendering; fine-grained typography control", "img", "below"],
-          [2025, 9,  "Midjourney v7", "Personalization system; 4096px native; style locks for brands", "img", "above"],
-          [2025, 11, "Kling 1.6", "Motion quality parity with Western models; strong free tier", "vid", "below"],
-          [2026, 2,  "SD 3.5 + Flow FLUX", "Flow matching becomes default for new image models; 8-step inference standard", "oss", "above"],
-          [2026, 6,  "Real-Time Video (2026)", "Sub-10-second 720p video generation becomes commercially available", "vid", "below"],
-        ];
+      <div class="ft-timeline" style="margin-top:32px;">
 
-        const START_YEAR = 2014;
-        const END_YEAR   = 2026.6;
-        const TOTAL_SPAN = END_YEAR - START_YEAR;
+        <!-- ── ERA 1: GAN ERA ─────────────────────── -->
+        <div class="ft-era-banner">🎭 Era 1 — GAN Era (2014–2020)</div>
 
-        const scroller = document.getElementById('htScroll');
-        const ruler    = document.getElementById('htRuler');
-        const above    = document.getElementById('htAbove');
-        const below    = document.getElementById('htBelow');
+        <div class="ft-year-marker">2014</div>
 
-        const W = Math.max(900, scroller.parentElement.clientWidth - 40);
-        scroller.style.minWidth = W + 'px';
-
-        function pct(year, month) {
-          return ((year + (month - 1) / 12 - START_YEAR) / TOTAL_SPAN) * 100;
-        }
-
-        // Draw year marks
-        for (let y = START_YEAR; y <= Math.ceil(END_YEAR); y++) {
-          const m = document.createElement('div');
-          m.className = 'ht-year-mark';
-          m.style.left = pct(y, 1) + '%';
-          m.textContent = y;
-          ruler.appendChild(m);
-        }
-
-        const colorMap = {
-          img:  '#6d28d9',
-          vid:  '#be185d',
-          arch: '#059669',
-          oss:  '#1d4ed8',
-        };
-        const labelMap = {
-          img:  'Image',
-          vid:  'Video',
-          arch: 'Architecture',
-          oss:  'Open Source',
-        };
-
-        // Sort events into lanes to avoid overlap
-        // Track rightmost pixel per lane
-        const aboveLanes = []; // array of {rightPct}
-        const belowLanes = [];
-
-        // Process above / below separately; assign stagger delays
-        let aboveIdx = 0, belowIdx = 0;
-
-        events.forEach((ev, i) => {
-          const [year, month, name, desc, type, side] = ev;
-          const leftPct = pct(year, month);
-          const color   = colorMap[type];
-          const delay   = i * 40;
-
-          const container = side === 'above' ? above : below;
-
-          const wrap = document.createElement('div');
-          wrap.className = 'ht-event';
-          wrap.style.left = leftPct + '%';
-          wrap.style.setProperty('--he-color', color);
-
-          // Vary line heights to create stagger and avoid card collisions
-          const lineHeights = side === 'above'
-            ? [32, 70, 110, 32, 70, 110]
-            : [28, 64, 104, 28, 64, 104];
-          const idx = side === 'above' ? aboveIdx++ : belowIdx++;
-          const lh = lineHeights[idx % lineHeights.length];
-          wrap.style.setProperty('--he-line', lh + 'px');
-
-          wrap.innerHTML = `
-            <div class="ht-dot"></div>
-            <div class="ht-card" style="animation-delay:${delay}ms;">
-              <div class="ht-card-date">${month}/${year}</div>
-              <div class="ht-card-name">${name}</div>
-              <div class="ht-card-desc">${desc}</div>
-              <span class="ht-card-type type-${type}">${labelMap[type]}</span>
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#059669;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#059669;">Architecture</span>
+              <span class="ft-date">Jun 2014</span>
             </div>
-          `;
+            <div class="ft-model-name">GANs — Generative Adversarial Networks</div>
+            <div class="ft-tagline">Ian Goodfellow et al. · NeurIPS 2014</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Two networks (generator + discriminator) in adversarial training — the first viable deep generative framework.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Launched the entire field of learned image synthesis. Every major generative image model for the next 8 years built on or competed with GANs.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Architecture</span><span class="ft-tag">Foundational</span></div>
+          </div>
+        </div>
 
-          container.appendChild(wrap);
-        });
-      })();
-      </script>
+        <div class="ft-year-marker">2015</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Jun 2015</span>
+            </div>
+            <div class="ft-model-name">Deep Dream</div>
+            <div class="ft-tagline">Google Brain · Feature visualisation goes viral</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Inceptionism / gradient ascent on CNN activations produces hallucinatory imagery — first mainstream AI art moment.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Introduced the public to the idea that neural networks "see" the world. Cultural turning point for AI art.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">Cultural Milestone</span></div>
+          </div>
+        </div>
+
+        <div class="ft-year-marker">2016</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#059669;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#059669;">Architecture</span>
+              <span class="ft-date">Nov 2016</span>
+            </div>
+            <div class="ft-model-name">pix2pix</div>
+            <div class="ft-tagline">UC Berkeley · Image-to-image translation with cGANs</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Conditional GAN learns to translate between any paired image domain (sketch→photo, day→night, map→aerial).</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Template for all conditional image generation. Spawned CycleGAN, Vid2Vid, and the entire image editing-with-AI lineage.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Architecture</span><span class="ft-tag">Image Editing</span></div>
+          </div>
+        </div>
+
+        <div class="ft-year-marker">2017</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Oct 2017</span>
+            </div>
+            <div class="ft-model-name">Progressive GAN</div>
+            <div class="ft-tagline">NVIDIA · High-resolution face synthesis via staged training</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Trains GAN from 4×4 up to 1024×1024 by progressively adding resolution layers — first photorealistic face synthesis at HD.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>1024×1024 generated faces indistinguishable from photos. Set off the deepfake conversation. Direct ancestor of StyleGAN.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">NVIDIA</span></div>
+          </div>
+        </div>
+
+        <div class="ft-year-marker">2018</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Sep 2018</span>
+            </div>
+            <div class="ft-model-name">BigGAN</div>
+            <div class="ft-tagline">DeepMind · Class-conditional ImageNet at 512px</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Largest GAN trained to date — 512px class-conditional generation across 1000 ImageNet categories at unprecedented quality.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Demonstrated scaling laws apply to GANs. Introduced truncation trick for quality/diversity tradeoff.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">DeepMind</span></div>
+          </div>
+        </div>
+
+        <div class="ft-year-marker">2019</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Feb 2019</span>
+            </div>
+            <div class="ft-model-name">StyleGAN</div>
+            <div class="ft-tagline">NVIDIA · Style-based generator with mapping network</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Introduces W-space latent mapping and AdaIN style injection — fine-grained control over coarse (pose) and fine (texture) attributes separately.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>"This person does not exist" goes viral. StyleGAN2 and StyleGAN3 remain best-in-class for face synthesis. Inspires latent editing research (GANSpace, InterFaceGAN).</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">NVIDIA</span><span class="ft-tag">Faces</span></div>
+          </div>
+        </div>
+
+        <div class="ft-year-marker">2020</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#059669;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#059669;">Architecture</span>
+              <span class="ft-date">Jun 2020</span>
+            </div>
+            <div class="ft-model-name">DDPM — Denoising Diffusion Probabilistic Models</div>
+            <div class="ft-tagline">Ho et al. · NeurIPS 2020 · The architecture that changed everything</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Learns to reverse a noise-addition process step by step. Achieves image quality surpassing GANs without adversarial training instability.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>The foundation of every modern image and video generation model. Stable Diffusion, DALL-E 2, Imagen, Sora — all descendants.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Architecture</span><span class="ft-tag">Foundational</span><span class="ft-tag">Milestone</span></div>
+          </div>
+        </div>
+
+        <!-- ── ERA 2: DIFFUSION DAWN ─────────────────────── -->
+        <div class="ft-era-banner">🌅 Era 2 — Diffusion Dawn (2021–2022)</div>
+
+        <div class="ft-year-marker">2021</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#059669;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#059669;">Architecture</span>
+              <span class="ft-date">Jan 2021</span>
+            </div>
+            <div class="ft-model-name">CLIP</div>
+            <div class="ft-tagline">OpenAI · Contrastive Language-Image Pretraining</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Trained on 400M image-text pairs to align visual and language embeddings. Zero-shot image classification rivalling supervised models.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Unlocked text-guided image generation. The "steering wheel" plugged into diffusion models to make them prompt-responsive. Powers FID evaluation and aesthetic scoring to this day.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Architecture</span><span class="ft-tag">OpenAI</span><span class="ft-tag">Multimodal</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Jan 2021</span>
+            </div>
+            <div class="ft-model-name">DALL-E 1</div>
+            <div class="ft-tagline">OpenAI · First public text-to-image model</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Uses a dVAE to tokenise images, then a GPT-style transformer to generate image tokens from text. 256px, surprising prompt adherence.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First model that could reliably generate "an armchair in the shape of an avocado." Proved text-to-image was viable. Named the product category.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">OpenAI</span><span class="ft-tag">Text-to-Image</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Dec 2021</span>
+            </div>
+            <div class="ft-model-name">GLIDE</div>
+            <div class="ft-tagline">OpenAI · Diffusion + CLIP guidance — photorealism breakthrough</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Combines diffusion models with classifier-free guidance and CLIP text conditioning. First model to produce photorealistic scenes from prompts.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Outperformed DALL-E 1 dramatically. Human evaluators preferred it 3:1. The proof-of-concept that led directly to DALL-E 2.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">OpenAI</span><span class="ft-tag">Diffusion</span></div>
+          </div>
+        </div>
+
+        <div class="ft-year-marker">2022</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Apr 2022</span>
+            </div>
+            <div class="ft-model-name">DALL-E 2</div>
+            <div class="ft-tagline">OpenAI · CLIP-guided diffusion at 1024px</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>CLIP image embeddings as conditioning signal. Supports inpainting, outpainting, and image variations. 4× higher resolution than DALL-E 1.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First model to create an industry — spawned Midjourney, Stability AI, and dozens of startups. Mainstream media moment: "AI can draw anything."</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">OpenAI</span><span class="ft-tag">1024px</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">May 2022</span>
+            </div>
+            <div class="ft-model-name">Imagen</div>
+            <div class="ft-tagline">Google Brain · Cascaded diffusion + large language model encoder</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Uses T5-XXL (frozen) as text encoder — much stronger semantic understanding than CLIP. Cascaded diffusion pipelines for high resolution.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Beat DALL-E 2 on FID on COCO. Introduced DrawBench benchmark. Demonstrated LLM text encoders are superior for complex prompts.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">Google</span><span class="ft-tag">Photorealism</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item ft-milestone">
+          <div class="ft-dot" style="background:#1d4ed8;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#1d4ed8;">Open Source</span>
+              <span class="ft-date">Aug 2022</span>
+            </div>
+            <div class="ft-model-name">Stable Diffusion 1.x ⭐</div>
+            <div class="ft-tagline">CompVis / Stability AI · Latent Diffusion open-sourced</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Latent Diffusion Model (LDM) compresses images to 8× smaller latent space before denoising — runs on a consumer GPU for the first time. Full weights released publicly.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>The most consequential open-source AI release ever in the visual domain. Sparked: Civitai (100K+ community models), DreamBooth, ControlNet, A1111 WebUI with 50M downloads, and a Cambrian explosion of visual AI applications.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Open Source</span><span class="ft-tag">Milestone</span><span class="ft-tag">Democratisation</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Oct 2022</span>
+            </div>
+            <div class="ft-model-name">Midjourney v3/v4</div>
+            <div class="ft-tagline">Midjourney · Aesthetic quality leap via Discord</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Optimises for human aesthetic preference rather than raw FID. Discord-native UX creates massive community feedback loop.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Became the tool of choice for concept artists, designers, and creators. 180M+ users by 2026. $200M ARR with zero VC funding.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">Midjourney</span><span class="ft-tag">Aesthetic</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Oct 2022</span>
+            </div>
+            <div class="ft-model-name">Make-A-Video</div>
+            <div class="ft-tagline">Meta AI · First text-to-video diffusion model</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Extends a text-to-image diffusion model into the temporal dimension without video-text pairs — leverages image-text supervision only.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First demonstration that video generation from text was tractable at all. 16 frames, 256px — primitive but proved the concept.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">Meta</span><span class="ft-tag">First</span></div>
+          </div>
+        </div>
+
+        <!-- ── ERA 3: COMMERCIALISATION ─────────────────────── -->
+        <div class="ft-era-banner">🏭 Era 3 — Commercialisation (2023)</div>
+
+        <div class="ft-year-marker">2023</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#059669;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#059669;">Architecture</span>
+              <span class="ft-date">Feb 2023</span>
+            </div>
+            <div class="ft-model-name">ControlNet</div>
+            <div class="ft-tagline">Lvmin Zhang · Structure-guided diffusion conditioning</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Adds trainable copy of SD encoder to accept structural conditioning: pose skeletons, depth maps, Canny edges, scribbles. Any structure can guide generation.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Made AI image generation useful for professional workflows. Designers could now maintain composition while changing style. GitHub's #1 trending repo in 2023.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Architecture</span><span class="ft-tag">Controllability</span><span class="ft-tag">Open Source</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#1d4ed8;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#1d4ed8;">Open Source</span>
+              <span class="ft-date">Apr 2023</span>
+            </div>
+            <div class="ft-model-name">Segment Anything Model (SAM)</div>
+            <div class="ft-tagline">Meta AI · Universal image segmentation at zero-shot</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Trained on 1B masks — segments any object in any image with a click, box, or text prompt. Zero-shot generalisation across domains.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Became the standard preprocessing layer for editing pipelines. SAM 2 (2024) extends to video. Used in robotics, medical imaging, and autonomous driving.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Open Source</span><span class="ft-tag">Meta</span><span class="ft-tag">Segmentation</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#1d4ed8;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#1d4ed8;">Open Source</span>
+              <span class="ft-date">Jul 2023</span>
+            </div>
+            <div class="ft-model-name">SDXL 1.0</div>
+            <div class="ft-tagline">Stability AI · 1024px dual-encoder latent diffusion</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>3× larger U-Net, dual text encoders (CLIP-L + OpenCLIP-G), 1024px native resolution, refiner model for detail. Open weights.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Set the open-source image quality bar for 18 months. Ecosystem of SDXL LoRAs and checkpoints on Civitai exceeded 50K models.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Open Source</span><span class="ft-tag">Stability AI</span><span class="ft-tag">1024px</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Jun 2023</span>
+            </div>
+            <div class="ft-model-name">Runway Gen-2</div>
+            <div class="ft-tagline">Runway · First commercially viable text/image-to-video</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Multi-modal conditioning (text, image, or video input). Consistent motion and scene structure for 4-second clips. First product deployed in real film productions.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Validated the professional video generation market. Used in multiple award-winning short films. Triggered $236M Series D for Runway.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">Runway</span><span class="ft-tag">Commercial</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Oct 2023</span>
+            </div>
+            <div class="ft-model-name">DALL-E 3</div>
+            <div class="ft-tagline">OpenAI · Complex prompt adherence + ChatGPT integration</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Re-captioned training data with GPT-4V — dramatically improved prompt following. Integrated directly into ChatGPT. Text rendering 10× better than previous generation.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Bundled with ChatGPT gave DALL-E 3 distribution to 100M+ users overnight. Set the standard for prompt adherence that competitors still chase.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">OpenAI</span><span class="ft-tag">Text Rendering</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Nov 2023</span>
+            </div>
+            <div class="ft-model-name">Pika Labs 1.0</div>
+            <div class="ft-tagline">Pika · Creator-focused video generation goes viral</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Discord-native video generation with scene-modify, expand, and fill controls. Accessible quality in seconds. $55M raised at launch.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Brought video generation to 500K+ creators within weeks. Validated consumer video gen market. Triggered Runway Gen-3 and Kling acceleration.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">Startup</span><span class="ft-tag">Creator Economy</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#1d4ed8;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#1d4ed8;">Open Source</span>
+              <span class="ft-date">Nov 2023</span>
+            </div>
+            <div class="ft-model-name">Stable Video Diffusion (SVD)</div>
+            <div class="ft-tagline">Stability AI · First open-weight video generation model</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Fine-tunes SDXL image encoder into temporal domain. Generates 14 or 25 frames at 576×1024. Full open weights released.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First open-source video model usable locally. Triggered CogVideoX, Open-Sora, and the open video research ecosystem.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Open Source</span><span class="ft-tag">Video</span><span class="ft-tag">Stability AI</span></div>
+          </div>
+        </div>
+
+        <!-- ── ERA 4: VIDEO WARS ─────────────────────── -->
+        <div class="ft-era-banner">⚔️ Era 4 — The Video Wars (2024)</div>
+
+        <div class="ft-year-marker">2024</div>
+
+        <div class="ft-item ft-milestone">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Feb 2024</span>
+            </div>
+            <div class="ft-model-name">Sora ⭐</div>
+            <div class="ft-tagline">OpenAI · 60-second 1080p cinematic video — industry shock moment</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Video Diffusion Transformer (DiT) operating on spatial-temporal patches. Understands object permanence, physics, scene consistency across 60 seconds.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Shocked Hollywood, VFX studios, and the entire creative industry. "The iPhone moment for AI video." Triggered emergency strategy reviews at every major studio. Launched the global video AI arms race.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">OpenAI</span><span class="ft-tag">Milestone</span><span class="ft-tag">DiT</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#1d4ed8;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#1d4ed8;">Open Source</span>
+              <span class="ft-date">Mar 2024</span>
+            </div>
+            <div class="ft-model-name">Stable Diffusion 3</div>
+            <div class="ft-tagline">Stability AI · Multimodal Diffusion Transformer (MMDiT)</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Replaces U-Net with Multimodal DiT. Separate streams for image and text tokens with bidirectional attention between them. 3B parameters. Excellent text rendering in images.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Proved DiT architecture superiority over U-Net at scale. Open weights set new open-source benchmark. Template for SD 3.5 and community fine-tuning.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Open Source</span><span class="ft-tag">DiT</span><span class="ft-tag">Stability AI</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Aug 2024</span>
+            </div>
+            <div class="ft-model-name">FLUX.1</div>
+            <div class="ft-tagline">Black Forest Labs · Rectified Flow Transformer — new state of the art</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Rectified Flow Matching + Transformer architecture from original SD creators (Robin Rombach et al.). Dramatically better anatomy, hands, and text rendering. Three tiers: [pro], [dev] (open weights), [schnell] (distilled, 4 steps).</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Immediately became community favourite. [dev] weights downloaded 2M+ times in first month. Set new standard for open image models that SD 3.5 had to match.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">Open Source</span><span class="ft-tag">Flow Matching</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Jun 2024</span>
+            </div>
+            <div class="ft-model-name">Kling 1.0</div>
+            <div class="ft-tagline">Kuaishou · China's Sora challenger — 30 sec at 1080p</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>3D Variational Autoencoder for spatial-temporal consistency. 30 seconds at 1080p with comparable motion quality to Sora. Strong free tier drives viral adoption.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First Chinese model to credibly compete with Western frontier video models. Forced OpenAI and Runway to accelerate releases. 10M users in 3 months.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">China</span><span class="ft-tag">Kuaishou</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#1d4ed8;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#1d4ed8;">Open Source</span>
+              <span class="ft-date">Aug 2024</span>
+            </div>
+            <div class="ft-model-name">CogVideoX-5B</div>
+            <div class="ft-tagline">THUDM (Tsinghua) · Best open-weight video model of 2024</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>5B parameter video DiT with expert transformer blocks. Full open weights including 5B and 2B variants. Trained on curated OpenVid-1M dataset.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First open video model with quality approaching commercial offerings. Enabled academic video research. Spawned CogVideoX fine-tuning ecosystem.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Open Source</span><span class="ft-tag">Video</span><span class="ft-tag">DiT</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Oct 2024</span>
+            </div>
+            <div class="ft-model-name">Movie Gen</div>
+            <div class="ft-tagline">Meta AI · Joint video + synchronized audio generation</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>30B parameter model that jointly generates 16-second HD video with temporally aligned audio. Fine-grained editing of real videos. Open research paper, no public weights.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First demonstration of true audio-video co-generation. Sets direction for 2026's multimodal video systems. Research baseline for the industry.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">Meta</span><span class="ft-tag">Audio</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Dec 2024</span>
+            </div>
+            <div class="ft-model-name">Veo 2</div>
+            <div class="ft-tagline">Google DeepMind · 4K · 120 seconds · Physics-aware</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>4K resolution, 120-second clips, physics simulation, cinematic camera controls. Highest VBench scores of any model at launch. Integrated into Vertex AI and VideoFX.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Dethroned Sora on benchmark leaderboards. Demonstrated Google's TPU infrastructure advantage for video at scale. Available to enterprise customers via API.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">Google</span><span class="ft-tag">4K</span><span class="ft-tag">Physics</span></div>
+          </div>
+        </div>
+
+        <!-- ── ERA 5: CONVERGENCE ─────────────────────── -->
+        <div class="ft-era-banner">🌐 Era 5 — Convergence &amp; Realtime (2025–2026)</div>
+
+        <div class="ft-year-marker">2025</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Feb 2025</span>
+            </div>
+            <div class="ft-model-name">GPT-4o Native Image Generation</div>
+            <div class="ft-tagline">OpenAI · Autoregressive + diffusion hybrid; conversational editing</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Autoregressive token generation (not diffusion) for images within the same model as text. Conversational image editing ("make the hat blue"), OCR and text retention across edits.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Category-defining: image editing as dialogue. 1M+ images generated in first 24 hours. Made accurate text-in-image trivially easy. Disrupted standalone image generation tools.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">OpenAI</span><span class="ft-tag">Editing</span><span class="ft-tag">Autoregressive</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Mar 2025</span>
+            </div>
+            <div class="ft-model-name">Runway Gen-4</div>
+            <div class="ft-tagline">Runway · Multi-shot consistency + face transfer at 4K</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Consistent character identity across multiple shots and camera angles. Act-One: facial performance transfer from actor reference. 4K output. Professional film-grade controls.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First video model to support multi-shot productions — the missing piece for professional film use. Used in Tribeca Film Festival selections. Industry adoption accelerates.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">Runway</span><span class="ft-tag">Professional</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Jun 2025</span>
+            </div>
+            <div class="ft-model-name">Ideogram 2.5</div>
+            <div class="ft-tagline">Ideogram · World-best text rendering + typography control</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Fine-grained control over font, weight, position, and styling of text within images. Accurate multi-line text rendering — previously the hardest problem in image generation.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Made AI practical for graphic design, marketing, and typographic work. Preferred over DALL-E 3 and FLUX for any text-heavy creative work.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">Typography</span><span class="ft-tag">Design</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#6d28d9;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#6d28d9;">Image</span>
+              <span class="ft-date">Sep 2025</span>
+            </div>
+            <div class="ft-model-name">Midjourney v7</div>
+            <div class="ft-tagline">Midjourney · Personalisation system + 4096px native</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Personalisation trains a user-specific style model from their rating history. 4096px native. Style reference locking for brand consistency across prompts.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>First model with true per-user aesthetic adaptation. Enterprise brands can "own" a visual style. Continues Midjourney's dominance of the aesthetic image market.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Image</span><span class="ft-tag">Midjourney</span><span class="ft-tag">Personalisation</span></div>
+          </div>
+        </div>
+
+        <div class="ft-year-marker">2026</div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#1d4ed8;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#1d4ed8;">Open Source</span>
+              <span class="ft-date">Early 2026</span>
+            </div>
+            <div class="ft-model-name">SD 3.5 + Flow Matching Era</div>
+            <div class="ft-tagline">Stability AI / Community · Flow matching becomes the open standard</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Flow matching (Rectified Flow) replaces DDPM as the default training paradigm for new open image models. 8-step inference at quality previously requiring 50 steps.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Consumer GPU generation under 2 seconds. Open fine-tuning ecosystem catches up to commercial quality in most domains. Inference cost drops 80% vs 2022 SD.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Open Source</span><span class="ft-tag">Flow Matching</span><span class="ft-tag">Efficiency</span></div>
+          </div>
+        </div>
+
+        <div class="ft-item">
+          <div class="ft-dot" style="background:#be185d;"></div>
+          <div class="ft-card">
+            <div class="ft-card-top">
+              <span class="ft-badge" style="background:#be185d;">Video</span>
+              <span class="ft-date">Mid 2026</span>
+            </div>
+            <div class="ft-model-name">Real-Time Video Generation Era</div>
+            <div class="ft-tagline">Industry-wide · Sub-10s video becomes commercially standard</div>
+            <div class="ft-rows">
+              <div class="ft-row"><span class="ft-lbl">Breakthrough</span><span>Distillation + flow matching brings 720p 5-second video generation under 10 seconds on H100. Multiple providers offer real-time preview modes.</span></div>
+              <div class="ft-row"><span class="ft-lbl">Impact</span><span>Interactive video editing becomes viable. Game asset generation, social media creation, and advertising workflows transformed. Video generation as ubiquitous as image generation was in 2023.</span></div>
+            </div>
+            <div class="ft-tags"><span class="ft-tag">Video</span><span class="ft-tag">Real-Time</span><span class="ft-tag">2026</span></div>
+          </div>
+        </div>
+
+      </div><!-- /ft-timeline -->
 
       <!-- ═══════════════ MARKET ═══════════════ -->
       <h2 id="market" class="iv-section">📊 The Market in Numbers</h2>
