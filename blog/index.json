@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "voice-ai-models",
+      "title": "Voice & Speech AI Models: The Complete Guide",
+      "excerpt": "Every TTS, ASR, and voice cloning model, benchmark, major player, startup, funding round, dataset, architecture, monetization model, and research frontier in 2026.",
+      "author": "FrontierLLM Team",
+      "authorInitials": "FL",
+      "date": "2026-07-01",
+      "readTime": "24 min",
+      "tags": ["Speech AI", "Audio", "Deep Dive"],
+      "emoji": "🎙️",
+      "featured": true
+    },
+    {
       "slug": "image-video-ai-models",
       "title": "Image & Video AI Models: The Complete Guide",
       "excerpt": "Every generative image and video model, benchmark, major player, startup, funding round, dataset, architecture, monetization model, and research frontier in 2026.",
@@ -10,7 +22,7 @@
       "readTime": "25 min",
       "tags": ["Generative AI", "Computer Vision", "Deep Dive"],
       "emoji": "🎨",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "filmmaking-encyclopedia",
