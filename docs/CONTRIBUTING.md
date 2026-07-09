@@ -86,7 +86,7 @@
 ## File Structure Quick Reference
 
 ```
-FrontierAIModels-Academy/
+FrontierAIModel-Academy/
 ├── index.html          ← Home (root only)
 ├── styles.css          ← All CSS
 ├── app.js              ← All JS
