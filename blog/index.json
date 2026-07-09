@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "multimodal-consolidation",
+      "title": "Multimodality & The Great Consolidation",
+      "excerpt": "Why text, image, video, audio, and action are converging into single any-to-any foundation models — architecture taxonomy, the frontier lab race, and open research frontiers.",
+      "author": "FrontierLLM Team",
+      "authorInitials": "FL",
+      "date": "2026-07-03",
+      "readTime": "26 min",
+      "tags": ["Multimodal AI", "Architecture", "Research"],
+      "emoji": "🧬",
+      "featured": true
+    },
+    {
       "slug": "voice-ai-models",
       "title": "Voice & Speech AI Models: The Complete Guide",
       "excerpt": "Every TTS, ASR, and voice cloning model, benchmark, major player, startup, funding round, dataset, architecture, monetization model, and research frontier in 2026.",
@@ -10,7 +22,7 @@
       "readTime": "24 min",
       "tags": ["Speech AI", "Audio", "Deep Dive"],
       "emoji": "🎙️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "image-video-ai-models",
