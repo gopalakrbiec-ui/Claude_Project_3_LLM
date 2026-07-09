@@ -1,4 +1,4 @@
-# FrontierLLM Academy — Claude Agent Context
+# FrontierAIModels Academy — Claude Agent Context
 
 ## Project Type
 Static educational website. No build step, no framework, no backend.
@@ -6,7 +6,7 @@ All pages are plain HTML/CSS/JS served as files.
 
 ## File Structure
 ```
-FrontierLLM-Academy/
+FrontierAIModels-Academy/
 ├── index.html              ← Home page (stays in root, always)
 ├── styles.css              ← All CSS (single file)
 ├── app.js                  ← All JS (single file)
@@ -99,4 +99,4 @@ Only one post should have `"featured": true` at a time.
 
 ## Git Branch
 Active development branch: `claude/trusting-mendel-u9s1oh`
-Remote: `gopalakrbiec-ui/Claude_Project_3_LLM` (also mirrors to `gopalakrbiec-ui/FrontierLLM-Academy`)
+Remote: `gopalakrbiec-ui/Claude_Project_3_LLM` (also mirrors to `gopalakrbiec-ui/FrontierAIModels-Academy`)

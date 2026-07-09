@@ -1,10 +1,10 @@
-# 🚀 FrontierLLM Academy
+# 🚀 FrontierAIModels Academy
 
 **A free, interactive educational website about frontier AI and large language models.**
 
-FrontierLLM Academy helps learners at every level — from curious beginners to ML researchers — explore how modern LLMs work, what's happening at the AI frontier, and how to think about the field from multiple professional perspectives.
+FrontierAIModels Academy helps learners at every level — from curious beginners to ML researchers — explore how modern LLMs work, what's happening at the AI frontier, and how to think about the field from multiple professional perspectives.
 
-🌐 **Live site:** [gopalakrbiec-ui.github.io/FrontierLLM-Academy](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy)
+🌐 **Live site:** [gopalakrbiec-ui.github.io/FrontierAIModels-Academy](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy)
 
 ---
 
@@ -24,37 +24,37 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## Site Structure
 
 ### 🏠 Home
-- [Home](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy) — Landing page with learning mode selector, site overview, and featured content
+- [Home](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy) — Landing page with learning mode selector, site overview, and featured content
 
 ### 🧭 Explore — Deep-Dive Resources
-- [FrontierAI Timeline](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/frontier-timeline.html) — A chronological map of major frontier model releases, capability jumps, and research milestones
-- [Future Frontier](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/future-frontier.html) — Forward-looking analysis of where AI capability and safety research is heading
-- [LLM Engineering](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/llm-engineering.html) — Practical concepts for building with LLMs — prompting, fine-tuning, RAG, agents, evals
-- [Coding Agents](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/coding-agents.html) — Deep dive on coding agents & tools: evolution timeline, tool comparisons, MCP ecosystem, SWE-bench, investments, research papers, and future roadmap
+- [FrontierAI Timeline](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/frontier-timeline.html) — A chronological map of major frontier model releases, capability jumps, and research milestones
+- [Future Frontier](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/future-frontier.html) — Forward-looking analysis of where AI capability and safety research is heading
+- [LLM Engineering](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/llm-engineering.html) — Practical concepts for building with LLMs — prompting, fine-tuning, RAG, agents, evals
+- [Coding Agents](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/coding-agents.html) — Deep dive on coding agents & tools: evolution timeline, tool comparisons, MCP ecosystem, SWE-bench, investments, research papers, and future roadmap
 
 ### 🌏 AI Ecosystems — Country Deep Dives
-- [Sovereign AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/sovereign-ai.html) — Comprehensive guide to sovereign AI — all countries, investment strategies, Pax Silica, and the four pillars
-- [America AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/usa-ai.html) — US AI policy, hyperscaler investments, leading labs, and the Stargate project
-- [China AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/china-ai.html) — China's AI strategy, frontier labs, regulatory environment, and key models
-- [Europe AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/europe-ai.html) — European AI landscape — Mistral, EU AI Act, country hubs, and the path to AI sovereignty
-- [India AI](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/india-ai.html) — India's AI landscape — domestic models, government initiatives, startup ecosystem
+- [Sovereign AI](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/sovereign-ai.html) — Comprehensive guide to sovereign AI — all countries, investment strategies, Pax Silica, and the four pillars
+- [America AI](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/usa-ai.html) — US AI policy, hyperscaler investments, leading labs, and the Stargate project
+- [China AI](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/china-ai.html) — China's AI strategy, frontier labs, regulatory environment, and key models
+- [Europe AI](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/europe-ai.html) — European AI landscape — Mistral, EU AI Act, country hubs, and the path to AI sovereignty
+- [India AI](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/india-ai.html) — India's AI landscape — domestic models, government initiatives, startup ecosystem
 
 ### 📰 News & Blog
-- [Daily AI News](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/ai-news.html) — Curated AI news feed updated regularly
-- [Blog](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/pages/blog.html) — All blog posts — full listing with cards
+- [Daily AI News](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/ai-news.html) — Curated AI news feed updated regularly
+- [Blog](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/pages/blog.html) — All blog posts — full listing with cards
 
 ---
 
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🧬 [Multimodality & The Great Consolidation ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/multimodal-consolidation.html) — Multimodal AI, Architecture, Research · 2026-07-03 · 26 min
-- 🎙️ [Voice & Speech AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/voice-ai-models.html) — Speech AI, Audio, Deep Dive · 2026-07-01 · 24 min
-- 🎨 [Image & Video AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/image-video-ai-models.html) — Generative AI, Computer Vision, Deep Dive · 2026-06-30 · 25 min
-- 🎬 [The Complete Filmmaking Encyclopedia](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/filmmaking-encyclopedia.html) — Filmmaking, Creative Industry, Encyclopedia · 2026-06-27 · 30 min
-- 💰 [Frontier Model Pricing: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/frontier-model-pricing.html) — Economics, Business, Research · 2026-06-23 · 20 min
-- 📰 [AI News Digest — June 22, 2026](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/ai-news-june-22-2026.html) — News, Weekly Digest · 2026-06-22 · 8 min
-- ⚡ [Loop Engineering: The New Meta for AI Agents](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/agentic-loop-explained.html) — Agentic AI, Research · 2026-06-22 · 16 min
+- 🧬 [Multimodality & The Great Consolidation ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/blog/multimodal-consolidation.html) — Multimodal AI, Architecture, Research · 2026-07-03 · 26 min
+- 🎙️ [Voice & Speech AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/blog/voice-ai-models.html) — Speech AI, Audio, Deep Dive · 2026-07-01 · 24 min
+- 🎨 [Image & Video AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/blog/image-video-ai-models.html) — Generative AI, Computer Vision, Deep Dive · 2026-06-30 · 25 min
+- 🎬 [The Complete Filmmaking Encyclopedia](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/blog/filmmaking-encyclopedia.html) — Filmmaking, Creative Industry, Encyclopedia · 2026-06-27 · 30 min
+- 💰 [Frontier Model Pricing: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/blog/frontier-model-pricing.html) — Economics, Business, Research · 2026-06-23 · 20 min
+- 📰 [AI News Digest — June 22, 2026](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/blog/ai-news-june-22-2026.html) — News, Weekly Digest · 2026-06-22 · 8 min
+- ⚡ [Loop Engineering: The New Meta for AI Agents](https://gopalakrbiec-ui.github.io/FrontierAIModels-Academy/blog/agentic-loop-explained.html) — Agentic AI, Research · 2026-06-22 · 16 min
 <!-- BLOG_POSTS_END -->
 
 ---
@@ -62,7 +62,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 🗂 File Structure
 
 ```
-FrontierLLM-Academy/
+FrontierAIModels-Academy/
 ├── index.html              ← Home page
 ├── styles.css              ← All CSS (single file)
 ├── app.js                  ← All JS (single file)

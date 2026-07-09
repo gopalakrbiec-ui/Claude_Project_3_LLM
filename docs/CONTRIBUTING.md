@@ -1,4 +1,4 @@
-# Contributing to FrontierLLM Academy
+# Contributing to FrontierAIModels Academy
 
 ## Adding a Blog Post
 
@@ -86,7 +86,7 @@
 ## File Structure Quick Reference
 
 ```
-FrontierLLM-Academy/
+FrontierAIModels-Academy/
 ├── index.html          ← Home (root only)
 ├── styles.css          ← All CSS
 ├── app.js              ← All JS
