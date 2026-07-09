@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🎙️ [Voice & Speech AI Models: The Complete Guide ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/voice-ai-models.html) — Speech AI, Audio, Deep Dive · 2026-07-01 · 24 min
+- 🧬 [Multimodality & The Great Consolidation ⭐](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/multimodal-consolidation.html) — Multimodal AI, Architecture, Research · 2026-07-03 · 26 min
+- 🎙️ [Voice & Speech AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/voice-ai-models.html) — Speech AI, Audio, Deep Dive · 2026-07-01 · 24 min
 - 🎨 [Image & Video AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/image-video-ai-models.html) — Generative AI, Computer Vision, Deep Dive · 2026-06-30 · 25 min
 - 🎬 [The Complete Filmmaking Encyclopedia](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/filmmaking-encyclopedia.html) — Filmmaking, Creative Industry, Encyclopedia · 2026-06-27 · 30 min
 - 💰 [Frontier Model Pricing: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierLLM-Academy/blog/frontier-model-pricing.html) — Economics, Business, Research · 2026-06-23 · 20 min
