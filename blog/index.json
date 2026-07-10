@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "reasoning-models-test-time-compute",
+      "title": "Reasoning Models & Test-Time Compute: The Second Scaling Law",
+      "excerpt": "Why letting a model think longer before answering became a legitimate second scaling law — o1/o3, DeepSeek-R1's open-weights shock, architecture, benchmarks, and economics.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-07-12",
+      "readTime": "25 min",
+      "tags": ["Reasoning", "Architecture", "Research"],
+      "emoji": "🧠",
+      "featured": true
+    },
+    {
       "slug": "ai-chips-compute-infrastructure",
       "title": "AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence",
       "excerpt": "Why every model in this series traces back to silicon, memory bandwidth, and power — GPUs vs custom ASICs, data center architecture, chip economics, and the energy constraint.",
@@ -10,7 +22,7 @@
       "readTime": "26 min",
       "tags": ["Hardware", "Infrastructure", "Deep Dive"],
       "emoji": "🔌",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "physical-intelligence",
