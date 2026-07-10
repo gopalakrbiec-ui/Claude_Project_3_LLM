@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🔌 [AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-chips-compute-infrastructure.html) — Hardware, Infrastructure, Deep Dive · 2026-07-09 · 26 min
+- 🧠 [Reasoning Models & Test-Time Compute: The Second Scaling Law ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/reasoning-models-test-time-compute.html) — Reasoning, Architecture, Research · 2026-07-12 · 25 min
+- 🔌 [AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-chips-compute-infrastructure.html) — Hardware, Infrastructure, Deep Dive · 2026-07-09 · 26 min
 - 🦾 [Physical Intelligence: Teaching AI to Act in the Real World](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/physical-intelligence.html) — Robotics, Embodied AI, Research · 2026-07-06 · 25 min
 - 🧬 [Multimodality & The Great Consolidation](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/multimodal-consolidation.html) — Multimodal AI, Architecture, Research · 2026-07-03 · 26 min
 - 🎙️ [Voice & Speech AI Models: The Complete Guide](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/voice-ai-models.html) — Speech AI, Audio, Deep Dive · 2026-07-01 · 24 min
