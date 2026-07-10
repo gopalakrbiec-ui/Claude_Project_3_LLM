@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 MANIFEST = ROOT / "blog" / "index.json"
 README = ROOT / "README.md"
-BASE_URL = "https://gopalakrbiec-ui.github.io/FrontierLLM-Academy"
+BASE_URL = "https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy"
 
 MARKER_START = "<!-- BLOG_POSTS_START -->"
 MARKER_END   = "<!-- BLOG_POSTS_END -->"
