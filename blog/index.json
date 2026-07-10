@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "ai-chips-compute-infrastructure",
+      "title": "AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence",
+      "excerpt": "Why every model in this series traces back to silicon, memory bandwidth, and power — GPUs vs custom ASICs, data center architecture, chip economics, and the energy constraint.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-07-09",
+      "readTime": "26 min",
+      "tags": ["Hardware", "Infrastructure", "Deep Dive"],
+      "emoji": "🔌",
+      "featured": true
+    },
+    {
       "slug": "physical-intelligence",
       "title": "Physical Intelligence: Teaching AI to Act in the Real World",
       "excerpt": "Why action is the final modality — VLA model architecture, the humanoid robot race, funding, benchmarks, and how far away general-purpose robots really are.",
@@ -10,7 +22,7 @@
       "readTime": "25 min",
       "tags": ["Robotics", "Embodied AI", "Research"],
       "emoji": "🦾",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "multimodal-consolidation",
