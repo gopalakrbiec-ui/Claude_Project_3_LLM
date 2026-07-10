@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "physical-intelligence",
+      "title": "Physical Intelligence: Teaching AI to Act in the Real World",
+      "excerpt": "Why action is the final modality — VLA model architecture, the humanoid robot race, funding, benchmarks, and how far away general-purpose robots really are.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-07-06",
+      "readTime": "25 min",
+      "tags": ["Robotics", "Embodied AI", "Research"],
+      "emoji": "🦾",
+      "featured": true
+    },
+    {
       "slug": "multimodal-consolidation",
       "title": "Multimodality & The Great Consolidation",
       "excerpt": "Why text, image, video, audio, and action are converging into single any-to-any foundation models — architecture taxonomy, the frontier lab race, and open research frontiers.",
@@ -10,7 +22,7 @@
       "readTime": "26 min",
       "tags": ["Multimodal AI", "Architecture", "Research"],
       "emoji": "🧬",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "voice-ai-models",
