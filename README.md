@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🛡️ [AI Safety, Alignment & Interpretability: Building Trust Into the Machine ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-safety-alignment-interpretability.html) — AI Safety, Alignment, Research · 2026-07-15 · 25 min
+- 🤝 [AI Agents & the Enterprise Agent Economy ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-agents-enterprise-economy.html) — AI Agents, Enterprise, Deep Dive · 2026-07-18 · 25 min
+- 🛡️ [AI Safety, Alignment & Interpretability: Building Trust Into the Machine](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-safety-alignment-interpretability.html) — AI Safety, Alignment, Research · 2026-07-15 · 25 min
 - 🧠 [Reasoning Models & Test-Time Compute: The Second Scaling Law](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/reasoning-models-test-time-compute.html) — Reasoning, Architecture, Research · 2026-07-12 · 25 min
 - 🔌 [AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-chips-compute-infrastructure.html) — Hardware, Infrastructure, Deep Dive · 2026-07-09 · 26 min
 - 🦾 [Physical Intelligence: Teaching AI to Act in the Real World](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/physical-intelligence.html) — Robotics, Embodied AI, Research · 2026-07-06 · 25 min
