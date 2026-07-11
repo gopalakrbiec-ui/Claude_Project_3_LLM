@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "ai-agents-enterprise-economy",
+      "title": "AI Agents & the Enterprise Agent Economy",
+      "excerpt": "What happens when the perceive-think-act loop gets wired into real business systems — orchestration, MCP/A2A standards, multi-agent coordination, and how enterprises measure ROI.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-07-18",
+      "readTime": "25 min",
+      "tags": ["AI Agents", "Enterprise", "Deep Dive"],
+      "emoji": "🤝",
+      "featured": true
+    },
+    {
       "slug": "ai-safety-alignment-interpretability",
       "title": "AI Safety, Alignment & Interpretability: Building Trust Into the Machine",
       "excerpt": "The counterweight to nine posts of pure capability — RLHF, Constitutional AI, mechanistic interpretability, red-teaming, dangerous capability evals, and the agentic safety frontier.",
@@ -10,7 +22,7 @@
       "readTime": "25 min",
       "tags": ["AI Safety", "Alignment", "Research"],
       "emoji": "🛡️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "reasoning-models-test-time-compute",
