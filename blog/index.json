@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "world-models",
+      "title": "World Models: Teaching AI to Understand Reality",
+      "excerpt": "Why video generation, robotic control, and game simulation may all be downstream of the same bet — a model that learns a compressed, predictive representation of physical reality.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-07-24",
+      "readTime": "24 min",
+      "tags": ["World Models", "Research", "Architecture"],
+      "emoji": "🌍",
+      "featured": true
+    },
+    {
       "slug": "rag-retrieval-knowledge-stack",
       "title": "Retrieval, Knowledge & the RAG Stack",
       "excerpt": "How models ground answers beyond training data and context windows — embeddings, vector databases, hybrid search, agentic retrieval, and the RAG-vs-long-context debate.",
@@ -10,7 +22,7 @@
       "readTime": "24 min",
       "tags": ["RAG", "Retrieval", "Deep Dive"],
       "emoji": "🔍",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-agents-enterprise-economy",
