@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "rag-retrieval-knowledge-stack",
+      "title": "Retrieval, Knowledge & the RAG Stack",
+      "excerpt": "How models ground answers beyond training data and context windows — embeddings, vector databases, hybrid search, agentic retrieval, and the RAG-vs-long-context debate.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-07-21",
+      "readTime": "24 min",
+      "tags": ["RAG", "Retrieval", "Deep Dive"],
+      "emoji": "🔍",
+      "featured": true
+    },
+    {
       "slug": "ai-agents-enterprise-economy",
       "title": "AI Agents & the Enterprise Agent Economy",
       "excerpt": "What happens when the perceive-think-act loop gets wired into real business systems — orchestration, MCP/A2A standards, multi-agent coordination, and how enterprises measure ROI.",
@@ -10,7 +22,7 @@
       "readTime": "25 min",
       "tags": ["AI Agents", "Enterprise", "Deep Dive"],
       "emoji": "🤝",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-safety-alignment-interpretability",
