@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "ai-safety-alignment-interpretability",
+      "title": "AI Safety, Alignment & Interpretability: Building Trust Into the Machine",
+      "excerpt": "The counterweight to nine posts of pure capability — RLHF, Constitutional AI, mechanistic interpretability, red-teaming, dangerous capability evals, and the agentic safety frontier.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-07-15",
+      "readTime": "25 min",
+      "tags": ["AI Safety", "Alignment", "Research"],
+      "emoji": "🛡️",
+      "featured": true
+    },
+    {
       "slug": "reasoning-models-test-time-compute",
       "title": "Reasoning Models & Test-Time Compute: The Second Scaling Law",
       "excerpt": "Why letting a model think longer before answering became a legitimate second scaling law — o1/o3, DeepSeek-R1's open-weights shock, architecture, benchmarks, and economics.",
@@ -10,7 +22,7 @@
       "readTime": "25 min",
       "tags": ["Reasoning", "Architecture", "Research"],
       "emoji": "🧠",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-chips-compute-infrastructure",
