@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🌍 [World Models: Teaching AI to Understand Reality ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/world-models.html) — World Models, Research, Architecture · 2026-07-24 · 24 min
+- 📅 [August 2026: The Month in Review ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-news-august-2026.html) — News, Monthly Digest · 2026-08-30 · 16 min
+- 🌍 [World Models: Teaching AI to Understand Reality](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/world-models.html) — World Models, Research, Architecture · 2026-07-24 · 24 min
 - 🔍 [Retrieval, Knowledge & the RAG Stack](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/rag-retrieval-knowledge-stack.html) — RAG, Retrieval, Deep Dive · 2026-07-21 · 24 min
 - 🤝 [AI Agents & the Enterprise Agent Economy](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-agents-enterprise-economy.html) — AI Agents, Enterprise, Deep Dive · 2026-07-18 · 25 min
 - 🛡️ [AI Safety, Alignment & Interpretability: Building Trust Into the Machine](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-safety-alignment-interpretability.html) — AI Safety, Alignment, Research · 2026-07-15 · 25 min
