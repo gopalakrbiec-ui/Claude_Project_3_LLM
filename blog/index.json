@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "ai-news-august-2026",
+      "title": "August 2026: The Month in Review",
+      "excerpt": "A full-month AI news recap across Research, Major Players, Commercial, Markets & Chips, Startups, Sovereign AI, Political & Legal, China AI, Open Source, Labor Market, and Safety.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-08-30",
+      "readTime": "16 min",
+      "tags": ["News", "Monthly Digest"],
+      "emoji": "📅",
+      "featured": true
+    },
+    {
       "slug": "world-models",
       "title": "World Models: Teaching AI to Understand Reality",
       "excerpt": "Why video generation, robotic control, and game simulation may all be downstream of the same bet — a model that learns a compressed, predictive representation of physical reality.",
@@ -10,7 +22,7 @@
       "readTime": "24 min",
       "tags": ["World Models", "Research", "Architecture"],
       "emoji": "🌍",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "rag-retrieval-knowledge-stack",
