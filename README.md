@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- ⚖️ [The AI Productivity Paradox: Adoption, Mass Layoffs & What the Data Actually Shows ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-productivity-paradox-layoffs.html) — Economics, Labor Market, Deep Dive · 2026-09-02 · 24 min
+- 🌐 [The AI Productivity Paradox: When Economic Growth Stops Needing Humans ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-productivity-paradox-civilization.html) — Civilization, Economics, Philosophy · 2026-09-04 · 20 min
+- ⚖️ [The AI Productivity Paradox: Adoption, Mass Layoffs & What the Data Actually Shows](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-productivity-paradox-layoffs.html) — Economics, Labor Market, Deep Dive · 2026-09-02 · 24 min
 - 📅 [August 2026: The Month in Review](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-news-august-2026.html) — News, Monthly Digest · 2026-08-30 · 16 min
 - 🌍 [World Models: Teaching AI to Understand Reality](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/world-models.html) — World Models, Research, Architecture · 2026-07-24 · 24 min
 - 🔍 [Retrieval, Knowledge & the RAG Stack](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/rag-retrieval-knowledge-stack.html) — RAG, Retrieval, Deep Dive · 2026-07-21 · 24 min
