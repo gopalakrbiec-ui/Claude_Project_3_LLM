@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "ai-productivity-paradox-layoffs",
+      "title": "The AI Productivity Paradox: Adoption, Mass Layoffs & What the Data Actually Shows",
+      "excerpt": "Enterprises report soaring AI adoption while major tech firms execute historic layoffs, often citing the same technology. What does the data actually support?",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-02",
+      "readTime": "24 min",
+      "tags": ["Economics", "Labor Market", "Deep Dive"],
+      "emoji": "⚖️",
+      "featured": true
+    },
+    {
       "slug": "ai-news-august-2026",
       "title": "August 2026: The Month in Review",
       "excerpt": "A full-month AI news recap across Research, Major Players, Commercial, Markets & Chips, Startups, Sovereign AI, Political & Legal, China AI, Open Source, Labor Market, and Safety.",
@@ -10,7 +22,7 @@
       "readTime": "16 min",
       "tags": ["News", "Monthly Digest"],
       "emoji": "📅",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "world-models",
