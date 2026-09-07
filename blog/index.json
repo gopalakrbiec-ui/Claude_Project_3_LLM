@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "agi-threshold-capability-stack",
+      "title": "The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?",
+      "excerpt": "AGI isn't a model that gets announced — it's a capability stack filled in unevenly. A 15-part analytical framework mapping reasoning, memory, planning, and safe autonomy against the frontier.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-07",
+      "readTime": "27 min",
+      "tags": ["AGI", "Research", "Analysis"],
+      "emoji": "🧩",
+      "featured": true
+    },
+    {
       "slug": "ai-productivity-paradox-civilization",
       "title": "The AI Productivity Paradox: When Economic Growth Stops Needing Humans",
       "excerpt": "We are entering one of the strangest transitions in history — economies that keep growing while needing fewer humans. A civilizational dilemma, not just an economic one.",
@@ -10,7 +22,7 @@
       "readTime": "20 min",
       "tags": ["Civilization", "Economics", "Philosophy"],
       "emoji": "🌐",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-productivity-paradox-layoffs",
