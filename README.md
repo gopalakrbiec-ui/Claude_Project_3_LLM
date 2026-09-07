@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🧩 [The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close? ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-threshold-capability-stack.html) — AGI, Research, Analysis · 2026-09-07 · 27 min
+- 🔬 [Astra, Claude & Gemini: Naming Names on the AGI Capability Stack ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-models-astra-claude-gemini.html) — AGI, News Analysis, Model Comparison · 2026-09-07 · 26 min
+- 🧩 [The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-threshold-capability-stack.html) — AGI, Research, Analysis · 2026-09-07 · 27 min
 - 🌐 [The AI Productivity Paradox: When Economic Growth Stops Needing Humans](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-productivity-paradox-civilization.html) — Civilization, Economics, Philosophy · 2026-09-04 · 20 min
 - ⚖️ [The AI Productivity Paradox: Adoption, Mass Layoffs & What the Data Actually Shows](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-productivity-paradox-layoffs.html) — Economics, Labor Market, Deep Dive · 2026-09-02 · 24 min
 - 📅 [August 2026: The Month in Review](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-news-august-2026.html) — News, Monthly Digest · 2026-08-30 · 16 min
