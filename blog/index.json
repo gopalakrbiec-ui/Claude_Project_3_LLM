@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "frontier-innovation-levers",
+      "title": "Beyond More Data: The Six Real Levers of Frontier AI's Next Advances",
+      "excerpt": "More data, more thinking time, better extraction of what a model already knows, or a smarter harness wrapped around an unchanged model? A research-grounded look at what actually drives each 'generational leap' — and what's next.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-07",
+      "readTime": "25 min",
+      "tags": ["Research", "Scaling", "Analysis"],
+      "emoji": "🛠️",
+      "featured": true
+    },
+    {
       "slug": "agi-models-astra-claude-gemini",
       "title": "Astra, Claude & Gemini: Naming Names on the AGI Capability Stack",
       "excerpt": "GPT-6 Astra's launch handed the field a live case study of the AGI capability-stack thesis — a single model scoring 62.7% and 99.9%+ on the same benchmark. Real research, named models, sourced claims.",
@@ -10,7 +22,7 @@
       "readTime": "26 min",
       "tags": ["AGI", "News Analysis", "Model Comparison"],
       "emoji": "🔬",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-threshold-capability-stack",
