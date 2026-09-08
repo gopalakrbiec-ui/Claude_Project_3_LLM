@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "gemini-series-agi-stack-timeline",
+      "title": "The Gemini Series on the AGI Stack: Google DeepMind's Long Game",
+      "excerpt": "Bard/PaLM 2 to Gemini 3, Google's catch-up-then-differentiate lineage traced against the AGI capability stack — context-window scale and native multimodality as its distinctive levers, plus a three-lab comparison against GPT and Claude.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-08",
+      "readTime": "27 min",
+      "tags": ["Google DeepMind", "Model History", "AGI"],
+      "emoji": "🔵",
+      "featured": true
+    },
+    {
       "slug": "claude-series-agi-stack-timeline",
       "title": "The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently",
       "excerpt": "Claude 1 to Fable 5.1, three years of Anthropic's releases traced against the AGI capability stack — where its safety-first founding bet shows up as real sequencing differences from OpenAI, and where the two labs converge anyway.",
@@ -10,7 +22,7 @@
       "readTime": "27 min",
       "tags": ["Anthropic", "Model History", "AGI"],
       "emoji": "🟣",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "gpt-series-agi-stack-timeline",
