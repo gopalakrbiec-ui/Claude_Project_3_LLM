@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🗺️ [The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-capability-stack-mapped.html) — AGI, Roadmap, Strategy · 2026-09-08 · 28 min
+- 📜 [The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/gpt-series-agi-stack-timeline.html) — OpenAI, Model History, AGI · 2026-09-08 · 27 min
+- 🗺️ [The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-capability-stack-mapped.html) — AGI, Roadmap, Strategy · 2026-09-08 · 28 min
 - 🛠️ [Beyond More Data: The Six Real Levers of Frontier AI's Next Advances](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/frontier-innovation-levers.html) — Research, Scaling, Analysis · 2026-09-07 · 25 min
 - 🔬 [Astra, Claude & Gemini: Naming Names on the AGI Capability Stack](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-models-astra-claude-gemini.html) — AGI, News Analysis, Model Comparison · 2026-09-07 · 26 min
 - 🧩 [The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-threshold-capability-stack.html) — AGI, Research, Analysis · 2026-09-07 · 27 min

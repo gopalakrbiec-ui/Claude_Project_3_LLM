@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "gpt-series-agi-stack-timeline",
+      "title": "The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next",
+      "excerpt": "GPT-1 to GPT-6 Astra, eight years of one lab's releases traced against the AGI capability stack — the actual sequence of levers OpenAI reached for as each prior one ran into diminishing returns.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-08",
+      "readTime": "27 min",
+      "tags": ["OpenAI", "Model History", "AGI"],
+      "emoji": "📜",
+      "featured": true
+    },
+    {
       "slug": "agi-capability-stack-mapped",
       "title": "The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap",
       "excerpt": "Real models placed on the 9-layer AGI stack, every layer tagged with the lever that actually moves it, and the gaps sorted into near-term, hard problem, and open research — plus the path forward for researchers, builders, and capital.",
@@ -10,7 +22,7 @@
       "readTime": "28 min",
       "tags": ["AGI", "Roadmap", "Strategy"],
       "emoji": "🗺️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "frontier-innovation-levers",
