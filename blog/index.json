@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "memory-continual-learning-agi-race",
+      "title": "Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won",
+      "excerpt": "The most underexplored lever on the AGI stack, finally explained: catastrophic forgetting, three genuinely different research approaches trying to solve it (MemOS, recurrent architectures, weight-level test-time training), and what winning would actually look like.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-08",
+      "readTime": "26 min",
+      "tags": ["Research", "Memory", "AGI"],
+      "emoji": "💾",
+      "featured": true
+    },
+    {
       "slug": "agi-startups-to-watch",
       "title": "AGI Startups to Watch: Who's Actually Building in the Open Lanes",
       "excerpt": "Real companies mapped against the scale-first, scaffolding, RLVR, and underexplored-lever lanes — Mistral, Thinking Machines, Cursor, Cognition, SSI, Goodfire — plus how the incumbent labs are betting on the same levers internally.",
@@ -10,7 +22,7 @@
       "readTime": "28 min",
       "tags": ["Startups", "Venture", "AGI"],
       "emoji": "🔭",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-lever-gaps-new-entrants",
