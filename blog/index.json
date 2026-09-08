@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "grok-deepseek-qwen-agi-stack-timeline",
+      "title": "Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race",
+      "excerpt": "Three lineages that don't fit the Big Three mold: xAI's compute-first sprint, DeepSeek's efficiency shock, and Qwen's open-weight iteration speed — mapped against the same AGI stack, closing with a six-lab comparison.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-08",
+      "readTime": "26 min",
+      "tags": ["xAI", "Open-Weight AI", "AGI"],
+      "emoji": "⚡",
+      "featured": true
+    },
+    {
       "slug": "gemini-series-agi-stack-timeline",
       "title": "The Gemini Series on the AGI Stack: Google DeepMind's Long Game",
       "excerpt": "Bard/PaLM 2 to Gemini 3, Google's catch-up-then-differentiate lineage traced against the AGI capability stack — context-window scale and native multimodality as its distinctive levers, plus a three-lab comparison against GPT and Claude.",
@@ -10,7 +22,7 @@
       "readTime": "27 min",
       "tags": ["Google DeepMind", "Model History", "AGI"],
       "emoji": "🔵",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "claude-series-agi-stack-timeline",

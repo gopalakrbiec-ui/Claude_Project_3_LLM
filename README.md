@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🔵 [The Gemini Series on the AGI Stack: Google DeepMind's Long Game ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/gemini-series-agi-stack-timeline.html) — Google DeepMind, Model History, AGI · 2026-09-08 · 27 min
+- ⚡ [Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/grok-deepseek-qwen-agi-stack-timeline.html) — xAI, Open-Weight AI, AGI · 2026-09-08 · 26 min
+- 🔵 [The Gemini Series on the AGI Stack: Google DeepMind's Long Game](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/gemini-series-agi-stack-timeline.html) — Google DeepMind, Model History, AGI · 2026-09-08 · 27 min
 - 🟣 [The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/claude-series-agi-stack-timeline.html) — Anthropic, Model History, AGI · 2026-09-08 · 27 min
 - 📜 [The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/gpt-series-agi-stack-timeline.html) — OpenAI, Model History, AGI · 2026-09-08 · 27 min
 - 🗺️ [The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-capability-stack-mapped.html) — AGI, Roadmap, Strategy · 2026-09-08 · 28 min
