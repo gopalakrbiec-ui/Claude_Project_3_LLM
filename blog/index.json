@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "agi-lever-gaps-new-entrants",
+      "title": "The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win",
+      "excerpt": "A gap analysis across six lab lineages: which levers are saturated, which are still winnable, what conditions a ground-up AGI startup actually needs, and a real financial model spanning scaffolding-first to scale-first strategies.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-08",
+      "readTime": "30 min",
+      "tags": ["Strategy", "Startups", "AGI"],
+      "emoji": "🚪",
+      "featured": true
+    },
+    {
       "slug": "grok-deepseek-qwen-agi-stack-timeline",
       "title": "Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race",
       "excerpt": "Three lineages that don't fit the Big Three mold: xAI's compute-first sprint, DeepSeek's efficiency shock, and Qwen's open-weight iteration speed — mapped against the same AGI stack, closing with a six-lab comparison.",
@@ -10,7 +22,7 @@
       "readTime": "26 min",
       "tags": ["xAI", "Open-Weight AI", "AGI"],
       "emoji": "⚡",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "gemini-series-agi-stack-timeline",
