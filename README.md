@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 💾 [Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/memory-continual-learning-agi-race.html) — Research, Memory, AGI · 2026-09-08 · 26 min
+- 🔍 [The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/interpretability-gap-reading-model-minds.html) — Interpretability, AI Safety, AGI · 2026-09-08 · 27 min
+- 💾 [Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/memory-continual-learning-agi-race.html) — Research, Memory, AGI · 2026-09-08 · 26 min
 - 🔭 [AGI Startups to Watch: Who's Actually Building in the Open Lanes](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-startups-to-watch.html) — Startups, Venture, AGI · 2026-09-08 · 28 min
 - 🚪 [The Levers Nobody's Pulled Yet: Where a New AGI Lab Could Actually Win](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-lever-gaps-new-entrants.html) — Strategy, Startups, AGI · 2026-09-08 · 30 min
 - ⚡ [Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/grok-deepseek-qwen-agi-stack-timeline.html) — xAI, Open-Weight AI, AGI · 2026-09-08 · 26 min

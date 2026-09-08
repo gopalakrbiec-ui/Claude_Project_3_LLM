@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "interpretability-gap-reading-model-minds",
+      "title": "The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore",
+      "excerpt": "Sparse autoencoders, Golden Gate Claude, and chain-of-thought faithfulness decay, explained — what mechanistic interpretability has actually achieved, and why the GPT-6 Astra safety dissent shows the problem is outrunning the fix.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-08",
+      "readTime": "27 min",
+      "tags": ["Interpretability", "AI Safety", "AGI"],
+      "emoji": "🔍",
+      "featured": true
+    },
+    {
       "slug": "memory-continual-learning-agi-race",
       "title": "Memory Wars: MemOS, Continual Learning, and the Race Nobody's Won",
       "excerpt": "The most underexplored lever on the AGI stack, finally explained: catastrophic forgetting, three genuinely different research approaches trying to solve it (MemOS, recurrent architectures, weight-level test-time training), and what winning would actually look like.",
@@ -10,7 +22,7 @@
       "readTime": "26 min",
       "tags": ["Research", "Memory", "AGI"],
       "emoji": "💾",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-startups-to-watch",
