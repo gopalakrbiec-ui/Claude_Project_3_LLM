@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-04-seed-capital",
+      "title": "Founding an AGI Startup, Part 4: Seed Capital",
+      "excerpt": "Pitching, valuation, and term sheets, run three-lanes-deep with real 2026 fundraising data (median seed valuations, SAFE terms, AI premium) \u2014 plus a Thinking Machines Lab case study on the largest seed round in startup history.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "28 min",
+      "tags": ["Startups", "Fundraising", "Simulation"],
+      "emoji": "\ud83d\udcb0",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-03-founding-team",
       "title": "Founding an AGI Startup, Part 3: The Founding Team",
       "excerpt": "Co-founder selection, early hires, equity splits, and a full role-by-role team structure table for each lane \u2014 plus the Anthropic seven-founder equity case study and guidance on whether you need a board or advisors this early.",
@@ -14,7 +26,7 @@
         "Simulation"
       ],
       "emoji": "\ud83d\udc65",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-02-legal-foundations",
