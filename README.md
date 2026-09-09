@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 📣 [Founding an AGI Startup, Part 8: Go-to-Market & Marketing ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-08-gtm-marketing.html) — Startups, Marketing, Simulation · 2026-09-09 · 27 min
+- 🤝 [Founding an AGI Startup, Part 9: Sales & Early Customers ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-09-sales-early-customers.html) — Startups, Sales, Simulation · 2026-09-09 · 27 min
+- 📣 [Founding an AGI Startup, Part 8: Go-to-Market & Marketing](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-08-gtm-marketing.html) — Startups, Marketing, Simulation · 2026-09-09 · 27 min
 - 🔬 [Founding an AGI Startup, Part 7: The Research Function](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-07-research-function.html) — Startups, R&D Culture, Simulation · 2026-09-09 · 26 min
 - 🏗️ [Founding an AGI Startup, Part 6: Building the Product](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-06-building-product.html) — Startups, Product, Simulation · 2026-09-09 · 27 min
 - 🖥️ [Founding an AGI Startup, Part 5: Office, Ops & Infrastructure](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-05-office-ops-infrastructure.html) — Startups, Infrastructure, Simulation · 2026-09-09 · 26 min

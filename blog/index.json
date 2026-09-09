@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-09-sales-early-customers",
+      "title": "Founding an AGI Startup, Part 9: Sales & Early Customers",
+      "excerpt": "From first deal to repeatable revenue, run three-lanes-deep with real 2026 sales-cycle benchmarks (14-150+ days by ACV band) and a case study on why landing an enterprise pilot has never been easier while staying past it is the actual hard part.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "27 min",
+      "tags": [
+        "Startups",
+        "Sales",
+        "Simulation"
+      ],
+      "emoji": "🤝",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-08-gtm-marketing",
       "title": "Founding an AGI Startup, Part 8: Go-to-Market & Marketing",
       "excerpt": "Positioning in a crowded field, run three-lanes-deep — with a Perplexity case study on the multi-channel growth engine (viral loops, borrowed distribution via SoftBank/Samsung/Motorola, and an API channel) that took it from 10M to 159M monthly users.",
@@ -14,7 +30,7 @@
         "Simulation"
       ],
       "emoji": "📣",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-07-research-function",
