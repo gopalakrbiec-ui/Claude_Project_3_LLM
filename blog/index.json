@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-11-surviving-market",
+      "title": "Founding an AGI Startup, Part 11: Surviving the Market (Series Finale)",
+      "excerpt": "The finale. Real 2026 failure data (70-90% of AI startups fail or get absorbed within 18 months; 40% of the 2024 cohort shut down within two years), what actually kills companies in each lane, and the moat question that ties together all ten prior articles.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "28 min",
+      "tags": [
+        "Startups",
+        "Risk",
+        "Simulation Finale"
+      ],
+      "emoji": "⚔️",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-10-scaling-series-a",
       "title": "Founding an AGI Startup, Part 10: Scaling & Series A",
       "excerpt": "Growth metrics that actually matter, run three-lanes-deep with the real 2026 Series A bar (.5M ARR, sub-1.2x burn multiple, 120%+ NRR) and a case study on Anysphere/Cursor's efficient hyper-growth from B to B ARR.",
@@ -14,7 +30,7 @@
         "Simulation"
       ],
       "emoji": "📈",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-09-sales-early-customers",
