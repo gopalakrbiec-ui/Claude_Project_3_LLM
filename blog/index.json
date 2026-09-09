@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "building-agi-startup-lane1-frontier-scale",
+      "title": "Building an AGI Startup: Frontier Scale-First",
+      "excerpt": "A standalone deep dive into Lane 1 — the frontier scale-first market (Mistral, Reflection AI, DeepSeek, Moonshot), whitespace ideas, and a detailed training pipeline (data curation to eval/safety, roles, tools, milestone-gated PM), anchored by an in-depth Reflection AI case study ($2.5B raise, $1B Nebius compute deal) with sourced videos and links.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "50 min",
+      "tags": [
+        "Startups",
+        "Frontier Labs",
+        "Deep Research"
+      ],
+      "emoji": "🔴",
+      "featured": true
+    },
+    {
       "slug": "building-agi-startup-lane2-applied-agentic",
       "title": "Building an AGI Startup: The Applied & Agentic Layer",
       "excerpt": "A standalone deep dive into Lane 2 — the current market landscape, named players, whitespace ideas, and a detailed real-world build pipeline (roles, tools, eval-driven PM, weekly rhythm), anchored by an in-depth Anysphere/Cursor case study with sourced videos and links.",
@@ -14,7 +30,7 @@
         "Applied AI"
       ],
       "emoji": "🔵",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-series",
