@@ -212,8 +212,10 @@
       <a href="#opening"    class="agi-nav-btn">1. Why Team First</a>
       <a href="#cofounders" class="agi-nav-btn">2. Choosing Co-Founders</a>
       <a href="#earlyhires" class="agi-nav-btn">3. Early Hires</a>
+      <a href="#structure"  class="agi-nav-btn">3b. Team Structure</a>
       <a href="#equity"     class="agi-nav-btn">4. Equity Splits</a>
       <a href="#casestudy"  class="agi-nav-btn">5. Case Study</a>
+      <a href="#board"      class="agi-nav-btn">5b. Board &amp; Mentors</a>
       <a href="#comparison" class="agi-nav-btn">6. Side-by-Side</a>
       <a href="#risks"      class="agi-nav-btn">7. Risk Flags</a>
       <a href="#checklist"  class="agi-nav-btn">8. Team-Building Checklist</a>
@@ -266,6 +268,28 @@
         </div>
       </div>
 
+      <!-- 3b: Team structure table -->
+      <h2 id="structure" class="agi-section">3b. 🗂️ What the Team Actually Looks Like, Role by Role</h2>
+      <p>
+        Putting Sections 2 and 3 into a single reference: here's a realistic team structure at roughly the seed stage (first 12-18 months) for each lane — not a hiring plan to execute mechanically, but a sense of scale, seniority mix, and where headcount actually concentrates.
+      </p>
+      <div class="tradeoff-wrap">
+        <table class="tradeoff-table">
+          <thead><tr><th>Role</th><th>🔴 Lane 1: Scale-First</th><th>🔵 Lane 2: Applied Layer</th><th>⚪ Lane 3: Research Bet</th></tr></thead>
+          <tbody>
+            <tr><td><strong>CEO / Fundraising Lead</strong></td><td>Founder, usually with prior frontier-lab or exec credibility</td><td>Founder, often the commercial/product co-founder</td><td>Founder, usually a senior researcher who also carries the pitch</td></tr>
+            <tr><td><strong>Research / Technical Lead</strong></td><td>Founder or very early hire with published research track record</td><td>Often the same person as CEO, or a technical co-founder</td><td>One or more founders — the entire pitch rests on this credibility</td></tr>
+            <tr><td><strong>Engineering (headcount)</strong></td><td>Heavy — infrastructure/training engineers dominate early hiring</td><td>Light — 1-3 generalist engineers total pre-Series A</td><td>Light — engineering only supports the research, doesn't lead it</td></tr>
+            <tr><td><strong>Research staff (headcount)</strong></td><td>Growing fast, often 10+ within a year if capital allows</td><td>Usually none — no dedicated research function</td><td>Small, senior, deliberately slow-growing (Section 3)</td></tr>
+            <tr><td><strong>Product / Design</strong></td><td>Minimal or absent pre-launch</td><td>Critical — often a founder wears this hat directly</td><td>Absent — no product exists yet by design</td></tr>
+            <tr><td><strong>Sales / Customer Success</strong></td><td>Not needed pre-revenue</td><td>First non-engineering hire, arrives early</td><td>Not applicable — no customers yet</td></tr>
+            <tr><td><strong>Operations / Finance</strong></td><td>Dedicated hire fairly early — capital deployment at this scale needs real financial control</td><td>Founder-handled or outsourced (bookkeeper/fractional CFO) until Series A</td><td>Founder-handled or outsourced, similar to Lane 2</td></tr>
+            <tr><td><strong>Total headcount at $2-5M raised</strong></td><td>Often still under 15 — capital goes to compute, not headcount, at this stage</td><td>3-8 people</td><td>Under 10, senior-weighted</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.78rem;color:#9ca3af;">Illustrative structure for the simulation's assumptions (Part 1, Section 6) — actual team shape varies by specific idea and founder background.</p>
+
       <!-- 4 -->
       <h2 id="equity" class="agi-section">4. 💰 Equity Splits — How They Actually Get Decided</h2>
       <p>
@@ -300,6 +324,27 @@
         <div class="case-lesson">
           <strong>The lesson for this article:</strong> a large founding team is a real risk (more people who need to agree, more equity to divide, more potential for future conflict) but Anthropic's case shows it can work specifically when the founders share deep, pre-existing conviction in one thesis and choose a flat equity structure that avoids a status hierarchy among people who see themselves as peers — the equal split wasn't a failure to negotiate, it was a deliberate signal about how the company intended to make decisions going forward.
         </div>
+      </div>
+
+      <!-- 5b: Board and mentorship -->
+      <h2 id="board" class="agi-section">5b. 🧭 Do You Need a Board, Advisors, or Mentors This Early?</h2>
+      <p>
+        Founders often assume a formal board is either irrelevant at seed stage or mandatory from day one — neither is quite right, and the honest answer differs by lane and by what stage of capital you're at.
+      </p>
+      <div class="lane-band lane-band-1">🔴 Lane 1: Frontier Scale-First</div>
+      <div class="lane-body">
+        <p>A real, active board arrives early and matters immediately, because the capital amounts involved mean investors will require board seats as a condition of funding, not a courtesy. Beyond formal governance, this lane benefits most from senior technical advisors — ideally people with direct frontier-lab research leadership experience — who can pressure-test research direction and compute-allocation decisions the founding team may not have faced before at this scale. A board that includes at least one member with genuine hands-on experience scaling a research organization (not just a generalist VC board seat) is a real, practical asset here, not a formality.</p>
+      </div>
+      <div class="lane-band lane-band-2">🔵 Lane 2: Applied / Agentic Layer</div>
+      <div class="lane-body">
+        <p>A formal board is usually unnecessary before an institutional seed or Series A round — most Lane 2 founders operate with no board at all in the earliest months, just founders making decisions directly. What's genuinely useful this early is a small, informal group of 2-4 advisors: ideally someone who has built and sold a similar product, and someone with domain expertise in your specific customer vertical. This can be structured with small advisor equity grants (commonly 0.1-0.5% each, vested over one to two years) rather than a formal board seat — lower commitment, easier to adjust if the relationship isn't adding value. A formal board typically forms once an institutional investor's term sheet requires one, discussed further in Part 4.</p>
+      </div>
+      <div class="lane-band lane-band-3">⚪ Lane 3: Narrow Research Bet</div>
+      <div class="lane-body">
+        <p>Similar to Lane 1 in that investor-required board seats arrive early given the capital scale, but the more valuable addition here is often a small scientific advisory group distinct from the governing board — respected researchers in the specific subfield who can vouch for the thesis publicly and sanity-check research direction privately, without holding formal governance authority. This matters more in Lane 3 than either other lane because the company's entire credibility rests on a technical bet outsiders (investors, future hires, eventually the public) have to trust before any product exists to prove it.</p>
+      </div>
+      <div class="pull-quote">
+        A board seat is a governance obligation you take on for capital. A mentor or advisor is a relationship you choose because it makes the company better — conflating the two, in either direction, is a common early mistake.
       </div>
 
       <!-- 6 -->
