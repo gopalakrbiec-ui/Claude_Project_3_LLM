@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "building-agi-startup-lane2-applied-agentic",
+      "title": "Building an AGI Startup: The Applied & Agentic Layer",
+      "excerpt": "A standalone deep dive into Lane 2 — the current market landscape, named players, whitespace ideas, and a detailed real-world build pipeline (roles, tools, eval-driven PM, weekly rhythm), anchored by an in-depth Anysphere/Cursor case study with sourced videos and links.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "50 min",
+      "tags": [
+        "Startups",
+        "Product",
+        "Applied AI"
+      ],
+      "emoji": "🔵",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-series",
       "title": "Founding an AGI Startup: The Complete 12-Part Series",
       "excerpt": "The full index for the standalone founder-playbook simulation — idea to legal structure, team, capital, infrastructure, product, research, marketing, sales, scaling, survival, and financial modeling, every step run three-lanes-deep.",
@@ -14,7 +30,7 @@
         "Simulation"
       ],
       "emoji": "🗂️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-12-financial-modeling",

@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🗂️ [Founding an AGI Startup: The Complete 12-Part Series ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-series.html) — Startups, Series Index, Simulation · 2026-09-09 · 5 min
+- 🔵 [Building an AGI Startup: The Applied & Agentic Layer ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/building-agi-startup-lane2-applied-agentic.html) — Startups, Product, Applied AI · 2026-09-09 · 50 min
+- 🗂️ [Founding an AGI Startup: The Complete 12-Part Series](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-series.html) — Startups, Series Index, Simulation · 2026-09-09 · 5 min
 - 🧮 [Founding an AGI Startup, Part 12 (Bonus): Financial Modeling](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-12-financial-modeling.html) — Startups, Financial Modeling, Simulation · 2026-09-09 · 29 min
 - ⚔️ [Founding an AGI Startup, Part 11: Surviving the Market (Series Finale)](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-11-surviving-market.html) — Startups, Risk, Simulation Finale · 2026-09-09 · 28 min
 - 📈 [Founding an AGI Startup, Part 10: Scaling & Series A](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-10-scaling-series-a.html) — Startups, Growth Metrics, Simulation · 2026-09-09 · 27 min
