@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "building-agi-startup-lane3-narrow-research-bet",
+      "title": "Building an AGI Startup: The Narrow Research Bet",
+      "excerpt": "A standalone deep dive into Lane 3 — no product, no revenue plan, just a small team betting on one research thesis. Covers the 2026 neolab landscape (SSI, Goodfire, Thinking Machines, Periodic Labs), whitespace ideas, and a detailed operating rhythm (thesis formation to eventual productization), anchored by an in-depth Safe Superintelligence case study ($32B valuation, zero shipped products) with sourced videos and links.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "50 min",
+      "tags": [
+        "Startups",
+        "Research",
+        "AGI Safety"
+      ],
+      "emoji": "🟢",
+      "featured": true
+    },
+    {
       "slug": "building-agi-startup-lane1-frontier-scale",
       "title": "Building an AGI Startup: Frontier Scale-First",
       "excerpt": "A standalone deep dive into Lane 1 — the frontier scale-first market (Mistral, Reflection AI, DeepSeek, Moonshot), whitespace ideas, and a detailed training pipeline (data curation to eval/safety, roles, tools, milestone-gated PM), anchored by an in-depth Reflection AI case study ($2.5B raise, $1B Nebius compute deal) with sourced videos and links.",
@@ -14,7 +30,7 @@
         "Deep Research"
       ],
       "emoji": "🔴",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "building-agi-startup-lane2-applied-agentic",
