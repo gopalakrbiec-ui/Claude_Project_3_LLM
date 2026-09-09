@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-08-gtm-marketing",
+      "title": "Founding an AGI Startup, Part 8: Go-to-Market & Marketing",
+      "excerpt": "Positioning in a crowded field, run three-lanes-deep — with a Perplexity case study on the multi-channel growth engine (viral loops, borrowed distribution via SoftBank/Samsung/Motorola, and an API channel) that took it from 10M to 159M monthly users.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "27 min",
+      "tags": [
+        "Startups",
+        "Marketing",
+        "Simulation"
+      ],
+      "emoji": "📣",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-07-research-function",
       "title": "Founding an AGI Startup, Part 7: The Research Function",
       "excerpt": "Building an R&D culture on a startup budget, run three-lanes-deep — with a DeepSeek case study on how a ~160-person team produced frontier-competitive research output at roughly a twelfth of an incumbent lab's headcount.",
@@ -14,7 +30,7 @@
         "Simulation"
       ],
       "emoji": "🔬",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-06-building-product",
