@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-10-scaling-series-a",
+      "title": "Founding an AGI Startup, Part 10: Scaling & Series A",
+      "excerpt": "Growth metrics that actually matter, run three-lanes-deep with the real 2026 Series A bar (.5M ARR, sub-1.2x burn multiple, 120%+ NRR) and a case study on Anysphere/Cursor's efficient hyper-growth from B to B ARR.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "27 min",
+      "tags": [
+        "Startups",
+        "Growth Metrics",
+        "Simulation"
+      ],
+      "emoji": "📈",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-09-sales-early-customers",
       "title": "Founding an AGI Startup, Part 9: Sales & Early Customers",
       "excerpt": "From first deal to repeatable revenue, run three-lanes-deep with real 2026 sales-cycle benchmarks (14-150+ days by ACV band) and a case study on why landing an enterprise pilot has never been easier while staying past it is the actual hard part.",
@@ -14,7 +30,7 @@
         "Simulation"
       ],
       "emoji": "🤝",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-08-gtm-marketing",
