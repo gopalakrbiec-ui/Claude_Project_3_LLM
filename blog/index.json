@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-02-legal-foundations",
+      "title": "Founding an AGI Startup, Part 2: Legal Foundations",
+      "excerpt": "Entity structure, IP ownership, jurisdiction, and cap table basics, run three-lanes-deep — plus how Anthropic's PBC-and-Trust structure and OpenAI's restructuring saga teach real lessons for a first-time founder in any lane.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "26 min",
+      "tags": ["Startups", "Legal", "Simulation"],
+      "emoji": "📜",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-01-finding-idea",
       "title": "Founding an AGI Startup, Part 1: Finding the Idea & Choosing Your Lane",
       "excerpt": "A step-by-step simulation of starting an AGI company in 2026. Part 1 lays out the three fundamentally different lanes hiding under one label, a real validation framework, a Thinking Machines Lab case study, and the tradeoff you have to resolve before Part 2.",
@@ -10,7 +22,7 @@
       "readTime": "22 min",
       "tags": ["Startups", "Founder Playbook", "Simulation"],
       "emoji": "💡",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "power-bottleneck-ai-infrastructure-race",

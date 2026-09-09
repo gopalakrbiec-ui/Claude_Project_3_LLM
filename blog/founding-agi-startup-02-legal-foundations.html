@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Founding an AGI Startup, Part 2 — FrontierAIModels Academy Blog</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .agi-hero {
+      background: linear-gradient(135deg, #05040a 0%, #10141f 40%, #0a1030 75%, #04030a 100%);
+      color: #fff; padding: 72px 40px 56px; border-radius: 16px; text-align: center;
+      margin-bottom: 48px; position: relative; overflow: hidden;
+    }
+    .agi-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 20% 30%, rgba(59,130,246,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 85% 25%, rgba(217,119,6,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 90%, rgba(16,185,129,0.14) 0%, transparent 60%);
+    }
+    .agi-hero-icon { font-size: 4rem; display: block; margin-bottom: 16px; position: relative; animation: agiPulse 3s ease-in-out infinite; }
+    @keyframes agiPulse { 0%,100%{filter:drop-shadow(0 0 10px rgba(59,130,246,0.5));transform:scale(1);} 50%{filter:drop-shadow(0 0 26px rgba(217,119,6,0.6));transform:scale(1.05);} }
+    .agi-hero h1 { font-size: 2.15rem; font-weight: 800; margin: 0 0 16px; position: relative; line-height: 1.25; }
+    .agi-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 720px; margin: 0 auto; position: relative; }
+    .series-badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+      background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 999px; margin-bottom: 16px; position: relative;
+    }
+
+    .agi-section-nav {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 40px; position: sticky; top: 94px;
+      background: #fff; z-index: 10; padding: 10px 0; border-bottom: 2px solid #f3f4f6;
+    }
+    .agi-nav-btn {
+      padding: 5px 11px; border: 1.5px solid #e5e7eb; border-radius: 18px; font-size: 0.72rem;
+      font-weight: 600; cursor: pointer; background: #fff; color: #6b7280; transition: all 0.2s;
+      white-space: nowrap; text-decoration: none;
+    }
+    .agi-nav-btn:hover { background: #f3f4f6; color: #374151; border-color: #d1d5db; }
+    .agi-section { scroll-margin-top: 140px; }
+
+    .market-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 28px 0; }
+    .mstat-card { background: linear-gradient(135deg, var(--ms-a), var(--ms-b)); border-radius: 14px; padding: 20px 16px; text-align: center; color: #fff; }
+    .mstat-num { font-size: 1.5rem; font-weight: 800; display: block; line-height: 1.1; }
+    .mstat-label { font-size: 0.76rem; opacity: 0.85; margin-top: 6px; }
+
+    /* Lane section header bands */
+    .lane-band {
+      border-radius: 14px 14px 0 0; padding: 14px 22px; color: #fff; font-weight: 800; font-size: 1.05rem;
+      display: flex; align-items: center; gap: 10px; margin-top: 32px;
+    }
+    .lane-band-1 { background: linear-gradient(120deg,#7c2d12,#c2410c); }
+    .lane-band-2 { background: linear-gradient(120deg,#1e3a8a,#2563eb); }
+    .lane-band-3 { background: linear-gradient(120deg,#065f46,#059669); }
+    .lane-body { border: 1.5px solid #e5e7eb; border-top: none; border-radius: 0 0 14px 14px; padding: 22px; margin-bottom: 8px; }
+    .lane-body p { margin: 0 0 12px; font-size: 0.86rem; color: #374151; line-height: 1.7; }
+    .lane-body p:last-child { margin-bottom: 0; }
+    .lane-body strong { color: #111; }
+
+    .fusion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 28px 0; }
+    .fusion-card { border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 20px; background: #fafafa; }
+    .fusion-title { font-weight: 800; font-size: 0.95rem; color: #111; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .fusion-desc { font-size: 0.8rem; color: #6b7280; line-height: 1.6; }
+
+    /* Comparison table */
+    .tradeoff-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #e5e7eb; margin: 28px 0; }
+    .tradeoff-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .tradeoff-table th { background: #f9fafb; padding: 11px 12px; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; }
+    .tradeoff-table td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    .tradeoff-table tr:last-child td { border-bottom: none; }
+    .tradeoff-table tr:hover td { background: #fafafa; }
+
+    /* Case study card */
+    .case-card {
+      border-radius: 16px; padding: 24px; margin: 22px 0; color: #fff;
+      background: linear-gradient(150deg, var(--cs-a), var(--cs-b));
+    }
+    .case-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .case-name { font-size: 1.1rem; font-weight: 800; }
+    .case-badge { font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 999px; }
+    .case-stats-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .case-stat { font-size: 0.66rem; font-weight: 800; background: rgba(0,0,0,0.25); padding: 3px 10px; border-radius: 999px; }
+    .case-desc { font-size: 0.84rem; line-height: 1.65; opacity: 0.95; }
+    .case-desc strong { color: #fff; }
+
+    .checklist { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+    .check-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; border-radius: 10px; background: #f9fafb; border: 1px solid #e5e7eb; }
+    .check-num { width: 26px; height: 26px; border-radius: 50%; background: #2563eb; color: #fff; font-weight: 800; font-size: 0.78rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .check-text { font-size: 0.83rem; color: #374151; line-height: 1.5; }
+    .check-text strong { color: #111; }
+
+    .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 28px 0; }
+    .research-card { background: linear-gradient(135deg, var(--rc-a), var(--rc-b)); border-radius: 14px; padding: 20px; color: #fff; }
+    .research-icon { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+    .research-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; }
+    .research-body { font-size: 0.77rem; opacity: 0.9; line-height: 1.55; }
+
+    .pull-quote {
+      background: linear-gradient(135deg, #eff6ff, #fffbeb); border-left: 4px solid #2563eb;
+      border-radius: 0 14px 14px 0; padding: 22px 28px; margin: 28px 0;
+      font-size: 1.02rem; font-weight: 700; color: #1e3a8a; line-height: 1.6;
+    }
+
+    .decision-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 16px; padding: 28px; margin: 28px 0; color: #fff;
+    }
+    .decision-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .decision-body { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+    .decision-body strong { color: #93c5fd; }
+
+    .caveat-box {
+      background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 12px;
+      padding: 16px 20px; margin: 22px 0; font-size: 0.8rem; color: #92400e; line-height: 1.6;
+    }
+    .caveat-box strong { color: #78350f; }
+
+    @media (max-width: 768px) {
+      .agi-hero h1 { font-size: 1.4rem; }
+      .agi-section-nav { top: 94px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a href="../index.html" class="brand-logo">
+      <span class="brand-icon">🧠</span>
+      <span class="brand-text">FrontierAIModels <span class="brand-accent">Academy</span></span>
+    </a>
+  </div>
+  <div class="navbar-main">
+    <button class="nav-tab" data-panel="mode">Learning Mode <span class="nav-tab-arrow">▾</span></button>
+    <button class="nav-tab" data-panel="explore">Explore <span class="nav-tab-arrow">▾</span></button>
+    <button class="nav-tab" data-panel="ecosystems">Ecosystems <span class="nav-tab-arrow">▾</span></button>
+    <button class="nav-tab" data-panel="blog">Blog <span class="nav-tab-arrow">▾</span></button>
+    <a href="../index.html#about" class="nav-direct">About</a>
+  </div>
+</nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<div class="nav-panel-wrap" id="navPanelWrap">
+  <div class="nav-panel" id="navPanel-mode">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-title">Choose Your Learning Mode</div>
+      <div class="nav-panel-grid">
+        <a href="../index.html?mode=layman"     class="nav-panel-item">🌱 Layman</a>
+        <a href="../index.html?mode=graduate"   class="nav-panel-item">🎓 Graduate</a>
+        <a href="../index.html?mode=researcher" class="nav-panel-item">🔬 Researcher</a>
+        <a href="../index.html?mode=team"       class="nav-panel-item">👥 Team</a>
+        <a href="../index.html?mode=startup"    class="nav-panel-item">🚀 Startup</a>
+        <a href="../index.html?mode=investor"   class="nav-panel-item">💼 Investor</a>
+        <a href="../index.html?mode=founder"    class="nav-panel-item">🏗️ Founder</a>
+        <a href="../index.html?mode=agentmode"  class="nav-panel-item">🤖 Agent Mode</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-panel" id="navPanel-explore">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-title">Explore Topics</div>
+      <div class="nav-panel-grid">
+        <a href="../pages/frontier-timeline.html" class="nav-panel-item">⏱️ FrontierAI Timeline</a>
+        <a href="../pages/future-frontier.html"   class="nav-panel-item">🔭 Future Frontier</a>
+        <a href="../pages/llm-engineering.html"   class="nav-panel-item">⚙️ LLM Engineering</a>
+        <a href="../pages/ai-news.html"           class="nav-panel-item">📰 Coding Agents</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-panel" id="navPanel-ecosystems">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-title">AI Ecosystems</div>
+      <div class="nav-panel-grid">
+        <a href="../pages/india-ai.html"  class="nav-panel-item">🌐 Sovereign AI</a>
+        <a href="../pages/usa-ai.html"    class="nav-panel-item">🇺🇸 America AI</a>
+        <a href="../pages/china-ai.html"  class="nav-panel-item">🇨🇳 China AI</a>
+        <a href="../pages/india-ai.html"  class="nav-panel-item">🇮🇳 India AI</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-panel" id="navPanel-blog">
+    <div class="nav-panel-inner">
+      <div class="nav-panel-title">Latest Posts</div>
+      <a href="../pages/blog.html" class="nav-panel-all">View all posts →</a>
+      <div id="blogNavMenu" class="nav-blog-list"></div>
+    </div>
+  </div>
+</div>
+
+<main style="padding-top: 94px;">
+  <div class="blog-post-wrap">
+
+    <div class="blog-breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../pages/blog.html">Blog</a>
+      <span>›</span>
+      <span>Founding an AGI Startup, Part 2</span>
+    </div>
+
+    <div class="agi-hero">
+      <span class="series-badge">Founding an AGI Startup · Part 2 of 11</span>
+      <span class="agi-hero-icon">📜</span>
+      <h1>Legal Foundations — Entity Structure, IP, and Jurisdiction</h1>
+      <p>Part 1 laid out three lanes instead of picking one — this article, and every one after it, goes three-lanes-deep instead of forking. Here's how incorporation, IP ownership, and cap table structure actually differ depending on whether you're building a scale-first lab, an applied product, or a research bet.</p>
+    </div>
+
+    <div class="blog-meta-row">
+      <div class="blog-author-chip">
+        <div class="blog-author-avatar">FL</div>
+        <div>
+          <div class="blog-author-name">FrontierAIModels Team</div>
+          <div class="blog-post-date">September 9, 2026 · 26 min read</div>
+        </div>
+      </div>
+      <div class="blog-tags">
+        <span class="blog-tag">Startups</span>
+        <span class="blog-tag">Legal</span>
+        <span class="blog-tag">Simulation</span>
+      </div>
+    </div>
+
+    <div class="caveat-box">
+      <strong>What this series is.</strong> Part 2 of a standalone founder-playbook simulation. Per reader direction, this series now runs all three strategic lanes (frontier scale-first, applied/agentic layer, narrow research bet) in parallel through every step, rather than choosing one — so each article below is organized as three explicit lane sections. This is educational simulation content, not legal advice; consult an actual startup attorney before incorporating anything.
+    </div>
+
+    <nav class="agi-section-nav">
+      <a href="#opening"     class="agi-nav-btn">1. Why Legal First</a>
+      <a href="#entity"      class="agi-nav-btn">2. Entity Structure</a>
+      <a href="#ip"          class="agi-nav-btn">3. IP Ownership</a>
+      <a href="#jurisdiction" class="agi-nav-btn">4. Jurisdiction</a>
+      <a href="#captable"    class="agi-nav-btn">5. Cap Table Basics</a>
+      <a href="#casestudies" class="agi-nav-btn">6. Case Studies</a>
+      <a href="#comparison"  class="agi-nav-btn">7. Side-by-Side</a>
+      <a href="#risks"       class="agi-nav-btn">8. Risk Flags</a>
+      <a href="#checklist"   class="agi-nav-btn">9. Filing Checklist</a>
+      <a href="#next"        class="agi-nav-btn">10. What's Next</a>
+    </nav>
+
+    <div class="blog-post-body">
+
+      <!-- 1 -->
+      <h2 id="opening" class="agi-section">1. 🧭 Why Legal Structure Comes Before Anything Else</h2>
+      <p>
+        Every later step in this series — who owns equity, how you raise money, whether a research breakthrough belongs to the company or to an individual researcher who leaves — traces back to decisions made in the first weeks of incorporation. Fixing a bad entity structure later is expensive, slow, and sometimes impossible without giving up leverage in a fundraise. This article covers the four decisions that matter most: what kind of entity to form, who owns the IP, where to incorporate, and how the cap table starts out — for all three lanes, since the right answer genuinely differs by lane in ways that surprise most first-time founders.
+      </p>
+      <div class="market-stats">
+        <div class="mstat-card" style="--ms-a:#2563eb;--ms-b:#1d4ed8;"><span class="mstat-num">Delaware C-Corp</span><div class="mstat-label">The default entity for any lane expecting US venture capital — the starting point, not the whole decision</div></div>
+        <div class="mstat-card" style="--ms-a:#059669;--ms-b:#10b981;"><span class="mstat-num">PBC</span><div class="mstat-label">Public Benefit Corporation — now the standard for-profit structure for AGI-mission labs, used by Anthropic and xAI</div></div>
+        <div class="mstat-card" style="--ms-a:#d97706;--ms-b:#b45309;"><span class="mstat-num">Trust + Board</span><div class="mstat-label">Anthropic's added layer — a Long-Term Benefit Trust with disinterested trustees holding voting stock</div></div>
+        <div class="mstat-card" style="--ms-a:#dc2626;--ms-b:#ef4444;"><span class="mstat-num">1 Bad Clause</span><div class="mstat-label">The realistic number of IP-assignment mistakes needed to blow up a future acquisition or fundraise</div></div>
+      </div>
+
+      <!-- 2: Entity Structure -->
+      <h2 id="entity" class="agi-section">2. 🏛️ Entity Structure</h2>
+      <div class="lane-band lane-band-1">🔴 Lane 1: Frontier Scale-First</div>
+      <div class="lane-body">
+        <p>A standard Delaware C-Corp is the baseline, but the mission-driven framing that helps attract long-horizon capital and top research talent increasingly points toward a <strong>Public Benefit Corporation (PBC)</strong> — a for-profit structure with a legal mandate to pursue a stated mission alongside shareholder returns. This has become the standard structure for AGI-labeled labs specifically: both Anthropic and xAI operate as PBCs. Anthropic went further, layering a <strong>Long-Term Benefit Trust</strong> on top — five disinterested trustees holding voting stock that can influence board composition, explicitly designed to keep mission prioritized over pure shareholder return even as outside investment scales. The tradeoff: a PBC's expanded fiduciary duty (considering stakeholders beyond shareholders) can complicate a straightforward acquisition or maximize-return exit later, and it requires real governance discipline to be more than words on an incorporation filing.</p>
+        <p>OpenAI's experience is the cautionary tale worth knowing here: its original nonprofit-plus-capped-profit structure made sense when it looked like there might be one dominant AGI effort, but became a genuine legal and governance liability once the field turned out to have many well-funded competitors — OpenAI has since been restructuring away from that original model. <strong>Lesson: don't build your entity structure around an assumption about the competitive landscape that might not hold in three years.</strong></p>
+      </div>
+      <div class="lane-band lane-band-2">🔵 Lane 2: Applied / Agentic Layer</div>
+      <div class="lane-body">
+        <p>A plain Delaware C-Corp is almost always the right answer, full stop. Standard venture investors expect it, it's well understood by every lawyer and accountant you'll work with, and there's no mission-framing benefit to a PBC that outweighs the added governance complexity for a product company competing on execution speed, not a stated AGI-safety mission. Unless your specific product has a genuine public-benefit angle investors and customers would actually value (e.g., an AI-safety-adjacent auditing tool), keep this simple — a plain-vanilla C-Corp is one less thing to explain in every future fundraising conversation.</p>
+      </div>
+      <div class="lane-band lane-band-3">⚪ Lane 3: Narrow Research Bet</div>
+      <div class="lane-body">
+        <p>This is where the PBC-plus-trust model matters most, because the entire pitch to investors is "trust us to spend years on unproven research" — a structure that visibly, legally constrains you to the stated mission is itself a credibility signal to patient, thesis-driven capital, not just a compliance formality. SSI's own structure follows this logic; a research-bet company with a plain C-Corp and no mission-lock mechanism has a harder time explaining why investors should tolerate years of zero revenue without the safety net of "this is legally what we said we'd do."</p>
+      </div>
+
+      <!-- 3: IP Ownership -->
+      <h2 id="ip" class="agi-section">3. 🔐 IP Ownership — The Mistake That Costs You Later</h2>
+      <div class="lane-band lane-band-1">🔴 Lane 1: Frontier Scale-First</div>
+      <div class="lane-body">
+        <p>Every researcher and engineer needs an ironclad IP assignment agreement from day one — signed before they touch any code or research, not retroactively. A frontier lab's entire value is the model weights and training methodology; a single ambiguous IP clause with an early researcher who later becomes a competitor's key hire (a very real pattern in this industry, per the founder-alumni thread covered elsewhere in this series) can create years of legal exposure. Data licensing agreements for training data also need airtight provenance documentation from the start — retroactively proving you had rights to use training data is far harder than establishing it upfront.</p>
+      </div>
+      <div class="lane-band lane-band-2">🔵 Lane 2: Applied / Agentic Layer</div>
+      <div class="lane-body">
+        <p>Your actual IP is usually the product, the workflow integration, and any proprietary fine-tuning data or prompt/orchestration logic you develop — not a foundation model. Standard invention-assignment agreements for all employees and contractors are still essential (a surprising number of early-stage disputes come from a contractor who built a "quick prototype" without a signed agreement), but the bigger IP risk in this lane is usually the reverse: over-relying on a frontier lab's API under terms that could change, rather than under-protecting your own output.</p>
+      </div>
+      <div class="lane-band lane-band-3">⚪ Lane 3: Narrow Research Bet</div>
+      <div class="lane-body">
+        <p>IP assignment here needs to account for academic-style researcher expectations — many top researchers you'll want to hire come from academia or open-research labs where publication norms and IP ownership work differently than standard corporate employment. Being explicit early about what can be published, what stays proprietary, and how that balance might shift as the research matures avoids a painful renegotiation later when a genuine breakthrough happens and the stakes suddenly get much higher.</p>
+      </div>
+
+      <!-- 4: Jurisdiction -->
+      <h2 id="jurisdiction" class="agi-section">4. 🌍 Jurisdiction — Where You Incorporate and Why</h2>
+      <div class="fusion-grid">
+        <div class="fusion-card">
+          <div class="fusion-title">🇺🇸 Delaware (Default for All Three Lanes)</div>
+          <div class="fusion-desc">Well-established corporate case law, investor familiarity, and predictable governance rules make Delaware the default for any lane expecting US venture or growth capital — this is true regardless of which lane you're in, and deviating from it needs a specific, strong reason.</div>
+        </div>
+        <div class="fusion-card">
+          <div class="fusion-title">🇪🇺 EU / Sovereign Alternative</div>
+          <div class="fusion-desc">Relevant mainly for Lane 1 founders explicitly pursuing a sovereign-compute or non-US-dependent narrative (echoing Mistral's European positioning) — a real strategic choice, not just a tax or convenience decision, since it shapes your entire investor base and regulatory environment.</div>
+        </div>
+        <div class="fusion-card">
+          <div class="fusion-title">🏝️ Offshore Holding Structures</div>
+          <div class="fusion-desc">Occasionally relevant for later-stage tax optimization, but a genuine trap for an early-stage company in any lane — adds complexity and investor skepticism at exactly the stage when you need fundraising to be simple and legible.</div>
+        </div>
+      </div>
+
+      <!-- 5: Cap table -->
+      <h2 id="captable" class="agi-section">5. 📊 Cap Table Basics — Founders, Early Employees, and Advisors</h2>
+      <div class="lane-band lane-band-1">🔴 Lane 1: Frontier Scale-First</div>
+      <div class="lane-body">
+        <p>Expect founder equity to dilute fast and early — a $1B+ capital requirement means multiple large funding rounds close together, and founders in this lane typically retain meaningfully less ownership by Series B than their Lane 2 counterparts, in exchange for capital access most companies never get at all. Standard four-year vesting with a one-year cliff still applies, but option pools for research talent tend to run larger than typical Lane 2 pools, since competing for the same researchers as well-funded incumbent labs requires genuinely competitive equity offers.</p>
+      </div>
+      <div class="lane-band lane-band-2">🔵 Lane 2: Applied / Agentic Layer</div>
+      <div class="lane-body">
+        <p>Standard startup cap table norms apply cleanly here: founders typically retain 70-85% post-seed, standard four-year vesting with a one-year cliff, a 10-15% employee option pool. This is the lane where "standard startup playbook" advice actually transfers directly, because the funding path (seed, Series A, Series B) matches the standard venture pattern much more closely than the other two lanes.</p>
+      </div>
+      <div class="lane-band lane-band-3">⚪ Lane 3: Narrow Research Bet</div>
+      <div class="lane-body">
+        <p>Founder credibility substitutes for revenue traction in these fundraising conversations, which shows up directly in the cap table: a founder with strong enough personal credibility (a departed frontier-lab executive, for instance) can often retain more favorable early-round terms than the capital amount alone would suggest, precisely because investors are underwriting the person and thesis, not a product metric. This lane also sees larger research-staff option pools relative to headcount than either other lane, reflecting how much of the company's value is concentrated in a small number of senior researchers.</p>
+      </div>
+
+      <!-- 6: Case studies -->
+      <h2 id="casestudies" class="agi-section">6. 🏛️ Case Studies: Real Structures, Real Lanes</h2>
+      <div class="case-card" style="--cs-a:#7c2d12;--cs-b:#c2410c;">
+        <div class="case-top"><div class="case-name">Anthropic — PBC + Long-Term Benefit Trust</div><div class="case-badge">Lane 1 Structure</div></div>
+        <div class="case-stats-row"><span class="case-stat">Public Benefit Corporation</span><span class="case-stat">5 disinterested trustees</span><span class="case-stat">Voting stock held by Trust</span></div>
+        <div class="case-desc">Structured as a PBC from the outset, layered with a Long-Term Benefit Trust holding voting stock — a governance model explicitly designed to be resistant to the kind of structural transformation pressure OpenAI later faced. <strong>The lesson:</strong> building the mission-lock into the legal structure from day one, rather than retrofitting it after outside investment scales, avoided a whole category of governance dispute that OpenAI had to work through publicly and expensively.</div>
+      </div>
+      <div class="case-card" style="--cs-a:#065f46;--cs-b:#059669;">
+        <div class="case-top"><div class="case-name">OpenAI — The Cautionary Restructuring Tale</div><div class="case-badge">Lane 1/3 Structure</div></div>
+        <div class="case-stats-row"><span class="case-stat">Nonprofit + capped-profit → restructured</span></div>
+        <div class="case-desc">OpenAI's original nonprofit-plus-capped-profit structure was designed around an assumption — that there might be one dominant AGI effort — that stopped holding as soon as a genuinely competitive multi-lab field emerged. The company has since undertaken a significant structural evolution as a result. <strong>The lesson directly relevant to this article:</strong> don't encode a competitive-landscape assumption into your legal structure that a few years of market evolution could invalidate — build in flexibility deliberately, or accept that restructuring later will be public, slow, and costly.</div>
+      </div>
+
+      <!-- 7: Comparison -->
+      <h2 id="comparison" class="agi-section">7. 📋 Side-by-Side: Legal Foundations by Lane</h2>
+      <div class="tradeoff-wrap">
+        <table class="tradeoff-table">
+          <thead><tr><th>Factor</th><th>🔴 Lane 1: Scale-First</th><th>🔵 Lane 2: Applied Layer</th><th>⚪ Lane 3: Research Bet</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Entity type</strong></td><td>PBC (+ Trust layer common)</td><td>Plain Delaware C-Corp</td><td>PBC (+ Trust layer common)</td></tr>
+            <tr><td><strong>IP priority</strong></td><td>Model weights, training methodology, data provenance</td><td>Product, workflow integration, orchestration logic</td><td>Research output, publication norms</td></tr>
+            <tr><td><strong>Jurisdiction default</strong></td><td>Delaware, or sovereign alternative if EU/regional strategy</td><td>Delaware</td><td>Delaware</td></tr>
+            <tr><td><strong>Founder dilution by Series B</strong></td><td>Fast, often steep</td><td>Standard venture pace</td><td>Often slower — credibility substitutes for capital-driven dilution</td></tr>
+            <tr><td><strong>Option pool size</strong></td><td>Large, competitive with incumbent labs</td><td>Standard 10-15%</td><td>Large, concentrated in senior researchers</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 8: Risks -->
+      <h2 id="risks" class="agi-section">8. ⚠️ Risk Flags</h2>
+      <div class="research-grid">
+        <div class="research-card" style="--rc-a:#dc2626;--rc-b:#ef4444;">
+          <span class="research-icon">✍️</span>
+          <div class="research-title">Unsigned or Late IP Assignments</div>
+          <div class="research-body">The single most common early-stage legal defect across all three lanes — a contractor or early collaborator who did real work before signing an assignment agreement creates an ownership cloud that surfaces, predictably, during due diligence for your next round.</div>
+        </div>
+        <div class="research-card" style="--rc-a:#f59e0b;--rc-b:#f97316;">
+          <span class="research-icon">🏛️</span>
+          <div class="research-title">Over-Engineering Structure Too Early</div>
+          <div class="research-body">A Lane 2 founder adopting a PBC-plus-trust structure because it "sounds more serious" adds real governance overhead with no corresponding benefit — match the structure to the actual lane, not to how the biggest labs in the news look.</div>
+        </div>
+        <div class="research-card" style="--rc-a:#7c3aed;--rc-b:#8b5cf6;">
+          <span class="research-icon">🔓</span>
+          <div class="research-title">Mission-Lock Without Governance Discipline</div>
+          <div class="research-body">A PBC structure is only as good as the board's actual practice — OpenAI's experience shows that legal structure alone doesn't resolve mission-vs-capital tension if the underlying incentives and competitive pressure are strong enough.</div>
+        </div>
+        <div class="research-card" style="--rc-a:#1d4ed8;--rc-b:#3b82f6;">
+          <span class="research-icon">🌐</span>
+          <div class="research-title">Jurisdiction Decisions Made for the Wrong Reason</div>
+          <div class="research-body">Choosing a non-Delaware jurisdiction for tax reasons alone, without weighing the investor-familiarity cost, is a common early mistake that creates friction in every subsequent fundraising conversation.</div>
+        </div>
+      </div>
+      <div class="pull-quote">
+        The legal structure you choose in week one is a structural bet about what kind of company you're going to become — get it wrong and every later step in this series gets harder, not just this one.
+      </div>
+
+      <!-- 9: Checklist -->
+      <h2 id="checklist" class="agi-section">9. 🧪 Filing Checklist (All Three Lanes)</h2>
+      <div class="checklist">
+        <div class="check-row"><div class="check-num">1</div><div class="check-text"><strong>Incorporate in Delaware</strong> as a C-Corp or PBC depending on your lane's mission-framing needs, before any funding conversation, not after a term sheet arrives.</div></div>
+        <div class="check-row"><div class="check-num">2</div><div class="check-text"><strong>Get signed IP assignment agreements</strong> from every founder, employee, and contractor before they do any substantive work — no exceptions, no "we'll paper it later."</div></div>
+        <div class="check-row"><div class="check-num">3</div><div class="check-text"><strong>Set up standard four-year vesting with a one-year cliff</strong> for all founders and early employees, sized appropriately for your lane's dilution pattern (Section 5).</div></div>
+        <div class="check-row"><div class="check-num">4</div><div class="check-text"><strong>Document data/training provenance</strong> from day one if you're anywhere near Lane 1 — retroactive documentation is far harder and a real diligence risk in any future fundraise or acquisition.</div></div>
+        <div class="check-row"><div class="check-num">5</div><div class="check-text"><strong>Decide your governance philosophy explicitly</strong> — mission-locked (PBC + Trust) versus standard shareholder-primacy — before your first outside investor, not after, since it's much harder to add mission-lock provisions once outside capital already has a seat at the table.</div></div>
+      </div>
+
+      <!-- 10 -->
+      <h2 id="next" class="agi-section">10. 🧭 What's Next in the Series</h2>
+      <p>
+        <strong>Part 3</strong> covers The Founding Team — co-founder selection, early hires, and equity splits, again across all three lanes: who you actually need on day one differs sharply depending on whether you're racing to a product MVP, building a research org, or trying to attract top ML talent away from incumbent labs.
+      </p>
+
+    </div>
+  </div>
+</main>
+
+<script src="../app.js"></script>
+</body>
+</html>
