@@ -48,7 +48,7 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 📜 [Founding an AGI Startup, Part 2: Legal Foundations ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-02-legal-foundations.html) — Startups, Legal, Simulation · 2026-09-09 · 28 min
+- 📜 [Founding an AGI Startup, Part 2: Legal Foundations ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-02-legal-foundations.html) — Startups, Legal, Simulation · 2026-09-09 · 30 min
 - 💡 [Founding an AGI Startup, Part 1: Finding the Idea & Choosing Your Lane](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-01-finding-idea.html) — Startups, Founder Playbook, Simulation · 2026-09-09 · 22 min
 - 🔌 [The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/power-bottleneck-ai-infrastructure-race.html) — Infrastructure, Energy, AGI · 2026-09-08 · 26 min
 - 🔍 [The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/interpretability-gap-reading-model-minds.html) — Interpretability, AI Safety, AGI · 2026-09-08 · 27 min
