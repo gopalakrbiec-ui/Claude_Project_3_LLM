@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-07-research-function",
+      "title": "Founding an AGI Startup, Part 7: The Research Function",
+      "excerpt": "Building an R&D culture on a startup budget, run three-lanes-deep — with a DeepSeek case study on how a ~160-person team produced frontier-competitive research output at roughly a twelfth of an incumbent lab's headcount.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "26 min",
+      "tags": [
+        "Startups",
+        "R&D Culture",
+        "Simulation"
+      ],
+      "emoji": "🔬",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-06-building-product",
       "title": "Founding an AGI Startup, Part 6: Building the Product",
       "excerpt": "The implementation roadmap, run three-lanes-deep — the prompt-then-RAG-then-fine-tune-then-distill escalation ladder, real 2026 MVP cost benchmarks ($15K-$60K), and why RAG alone solves 80-90% of what founders assume needs a custom model.",
@@ -14,7 +30,7 @@
         "Simulation"
       ],
       "emoji": "🏗️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-05-office-ops-infrastructure",
