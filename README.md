@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 💰 [Founding an AGI Startup, Part 4: Seed Capital ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-04-seed-capital.html) — Startups, Fundraising, Simulation · 2026-09-09 · 28 min
+- 🖥️ [Founding an AGI Startup, Part 5: Office, Ops & Infrastructure ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-05-office-ops-infrastructure.html) — Startups, Infrastructure, Simulation · 2026-09-09 · 26 min
+- 💰 [Founding an AGI Startup, Part 4: Seed Capital](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-04-seed-capital.html) — Startups, Fundraising, Simulation · 2026-09-09 · 28 min
 - 👥 [Founding an AGI Startup, Part 3: The Founding Team](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-03-founding-team.html) — Startups, Team Building, Simulation · 2026-09-09 · 29 min
 - 📜 [Founding an AGI Startup, Part 2: Legal Foundations](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-02-legal-foundations.html) — Startups, Legal, Simulation · 2026-09-09 · 30 min
 - 💡 [Founding an AGI Startup, Part 1: Finding the Idea & Choosing Your Lane](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/founding-agi-startup-01-finding-idea.html) — Startups, Founder Playbook, Simulation · 2026-09-09 · 22 min

@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-05-office-ops-infrastructure",
+      "title": "Founding an AGI Startup, Part 5: Office, Ops & Infrastructure",
+      "excerpt": "Compute procurement, startup credit programs, tooling, and the remote-vs-in-person question, run three-lanes-deep \u2014 with real September 2026 GPU pricing (a ~10x spread across providers for identical hardware) and a case study on why that spread matters.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "26 min",
+      "tags": ["Startups", "Infrastructure", "Simulation"],
+      "emoji": "\ud83d\udda5\ufe0f",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-04-seed-capital",
       "title": "Founding an AGI Startup, Part 4: Seed Capital",
       "excerpt": "Pitching, valuation, and term sheets, run three-lanes-deep with real 2026 fundraising data (median seed valuations, SAFE terms, AI premium) \u2014 plus a Thinking Machines Lab case study on the largest seed round in startup history.",
@@ -10,7 +22,7 @@
       "readTime": "28 min",
       "tags": ["Startups", "Fundraising", "Simulation"],
       "emoji": "\ud83d\udcb0",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-03-founding-team",
