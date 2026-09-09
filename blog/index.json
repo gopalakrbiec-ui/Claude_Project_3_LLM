@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-01-finding-idea",
+      "title": "Founding an AGI Startup, Part 1: Finding the Idea & Choosing Your Lane",
+      "excerpt": "A step-by-step simulation of starting an AGI company in 2026. Part 1 lays out the three fundamentally different lanes hiding under one label, a real validation framework, a Thinking Machines Lab case study, and the tradeoff you have to resolve before Part 2.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "22 min",
+      "tags": ["Startups", "Founder Playbook", "Simulation"],
+      "emoji": "💡",
+      "featured": true
+    },
+    {
       "slug": "power-bottleneck-ai-infrastructure-race",
       "title": "The Power Bottleneck, Mapped: Who Actually Wins the Gigawatt Race",
       "excerpt": "The 49GW shortfall stat this whole series kept citing, finally unpacked: nuclear restarts, SMR deals, natural gas turbines booked through 2029, and the 5-year transformer backlog that's the real chokepoint underneath every AGI lever.",
@@ -10,7 +22,7 @@
       "readTime": "26 min",
       "tags": ["Infrastructure", "Energy", "AGI"],
       "emoji": "🔌",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "interpretability-gap-reading-model-minds",
