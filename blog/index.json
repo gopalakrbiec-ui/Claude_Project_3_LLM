@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-series",
+      "title": "Founding an AGI Startup: The Complete 12-Part Series",
+      "excerpt": "The full index for the standalone founder-playbook simulation — idea to legal structure, team, capital, infrastructure, product, research, marketing, sales, scaling, survival, and financial modeling, every step run three-lanes-deep.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "5 min",
+      "tags": [
+        "Startups",
+        "Series Index",
+        "Simulation"
+      ],
+      "emoji": "🗂️",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-12-financial-modeling",
       "title": "Founding an AGI Startup, Part 12 (Bonus): Financial Modeling",
       "excerpt": "Balance sheets, real pricing decisions, and 1/3/5-year forecasts by lane — with real 2026 unit-economics data (inference now eats ~23% of revenue, AI gross margins run 50-60% vs. traditional SaaS’s 80-90%) and a case study reverse-engineering Anysphere/Cursor’s real trajectory.",
@@ -14,7 +30,7 @@
         "Simulation"
       ],
       "emoji": "🧮",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-11-surviving-market",
