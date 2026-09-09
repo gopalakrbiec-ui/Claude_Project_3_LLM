@@ -227,6 +227,7 @@
       <a href="#entity"      class="agi-nav-btn">2. Entity Structure</a>
       <a href="#ip"          class="agi-nav-btn">3. IP Ownership</a>
       <a href="#jurisdiction" class="agi-nav-btn">4. Jurisdiction</a>
+      <a href="#india"       class="agi-nav-btn">4b. Building From India</a>
       <a href="#captable"    class="agi-nav-btn">5. Cap Table Basics</a>
       <a href="#casestudies" class="agi-nav-btn">6. Case Studies</a>
       <a href="#comparison"  class="agi-nav-btn">7. Side-by-Side</a>
@@ -297,6 +298,26 @@
         </div>
       </div>
 
+      <!-- 4b: India-specific -->
+      <h2 id="india" class="agi-section">4b. 🇮🇳 Building From India — A Separate, Real Path</h2>
+      <p>
+        Everything above assumes a Delaware-first default, which is correct for a founder targeting primarily US venture capital. But a growing share of applied-layer and even some research-bet founders are building from India first, and the legal path there has matured enough by 2026 that it deserves its own treatment rather than a footnote.
+      </p>
+      <div class="lane-band lane-band-2">🔵 Lane 2: Applied / Agentic Layer — The Realistic India-First Path</div>
+      <div class="lane-body">
+        <p>A <strong>Private Limited Company under the Companies Act, 2013</strong> is the standard entity — minimum two directors, two shareholders, a registered office address, with MCA (Ministry of Corporate Affairs) approval typically taking 7-10 working days in normal conditions. This is the direct Indian equivalent of the Delaware C-Corp default in Section 2, and it's the right starting point if your investor base, customers, and team are primarily India-based.</p>
+        <p><strong>DPIIT recognition</strong> (Department for Promotion of Industry and Internal Trade, under the Startup India scheme) is worth pursuing early and is not automatic — it requires meeting eligibility criteria (entity age under 10 years, or 20 years for Deep Tech classification; annual turnover under ₹200 crore, or ₹300 crore for Deep Tech) but unlocks real, concrete benefits: an 80% patent filing fee reduction, a three-year income tax holiday under Section 80-IAC, angel tax exemption, self-certification under nine labour and three environmental laws, access to the Startup India Seed Fund Scheme, and preferential access to government e-marketplace (GeM) procurement. For an AI company specifically, the "Deep Tech" classification's extended 20-year age window and higher turnover ceiling is worth confirming eligibility for explicitly, since it changes your compliance runway substantially.</p>
+        <p>An AI-specific compliance layer sits on top of the standard registration: <strong>DPDP Act</strong> (Digital Personal Data Protection Act) compliance for any personal-data handling, plus standard IP protection (trademark and provisional patent filings) — sector-specific add-ons to an otherwise standard registration flow, not a fundamentally different process.</p>
+      </div>
+      <div class="lane-band lane-band-1">🔴 / ⚪ Lanes 1 &amp; 3 — The Flip Structure Question</div>
+      <div class="lane-body">
+        <p>If you're building a compute-intensive Lane 1 company or a research-bet Lane 3 company and need access to US-scale venture and growth capital, you'll almost certainly face the <strong>flip structure</strong> decision: incorporating a Delaware C-Corp as the parent, with your existing (or newly formed) Indian entity converted into a wholly-owned subsidiary. This is a genuinely consequential decision, not a formality — it permanently changes the tax profile of every founder and investor on the cap table, your compliance obligations across two jurisdictions simultaneously, your ESOP structure and its US tax treatment (ISOs, 83(b) elections, QSBS eligibility), and your eventual exit mechanics. It's also a proven, well-trodden path — Freshworks, Chargebee, and BrowserStack are among the many Indian-founded companies that flipped to a Delaware parent specifically to access US VC financing, standard stock option frameworks, and US enterprise procurement processes.</p>
+        <p><strong>The counter-trend worth knowing about:</strong> a "reverse flip" — moving the parent entity back to India — has become increasingly common among more mature companies (Razorpay, Pine Labs, and others have pursued this) as Indian public markets matured, angel tax was abolished, and the domestic VC ecosystem deepened enough that US domicile stopped being a prerequisite for a strong exit. <strong>GIFT City IFSC</strong> (India's International Financial Services Centre, in Ahmedabad) has emerged specifically as a structure competing with a full Delaware flip: it offers a 10-year tax holiday, exemptions on capital gains, securities transaction tax, and stamp duty under Section 80LA, plus FEMA non-resident status — global capital access without full US domicile. For a Lane 1 or Lane 3 founder in 2026, GIFT City is now a real third option worth evaluating alongside "flip to Delaware" and "stay India-only," not just a niche alternative.</p>
+      </div>
+      <div class="pull-quote">
+        The flip-vs-stay decision isn't really about where to file paperwork — it's about which capital pool, which talent pool, and which exit market you're building toward for the next decade.
+      </div>
+
       <!-- 5: Cap table -->
       <h2 id="captable" class="agi-section">5. 📊 Cap Table Basics — Founders, Early Employees, and Advisors</h2>
       <div class="lane-band lane-band-1">🔴 Lane 1: Frontier Scale-First</div>
@@ -336,6 +357,7 @@
             <tr><td><strong>Jurisdiction default</strong></td><td>Delaware, or sovereign alternative if EU/regional strategy</td><td>Delaware</td><td>Delaware</td></tr>
             <tr><td><strong>Founder dilution by Series B</strong></td><td>Fast, often steep</td><td>Standard venture pace</td><td>Often slower — credibility substitutes for capital-driven dilution</td></tr>
             <tr><td><strong>Option pool size</strong></td><td>Large, competitive with incumbent labs</td><td>Standard 10-15%</td><td>Large, concentrated in senior researchers</td></tr>
+            <tr><td><strong>India-first path</strong></td><td>Flip to Delaware almost always needed for compute-scale capital</td><td>Private Limited Company + DPIIT recognition often sufficient</td><td>Flip to Delaware, or GIFT City IFSC as an emerging middle path</td></tr>
           </tbody>
         </table>
       </div>
