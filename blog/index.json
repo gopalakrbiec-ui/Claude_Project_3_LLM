@@ -1,16 +1,36 @@
 {
   "posts": [
     {
+      "slug": "founding-agi-startup-03-founding-team",
+      "title": "Founding an AGI Startup, Part 3: The Founding Team",
+      "excerpt": "Co-founder selection, early hires, and equity splits, run three-lanes-deep \u2014 plus a case study on Anthropic's seven-founder near-equal equity split and what it reveals about shared conviction versus negotiated ownership.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-09",
+      "readTime": "27 min",
+      "tags": [
+        "Startups",
+        "Team Building",
+        "Simulation"
+      ],
+      "emoji": "\ud83d\udc65",
+      "featured": true
+    },
+    {
       "slug": "founding-agi-startup-02-legal-foundations",
       "title": "Founding an AGI Startup, Part 2: Legal Foundations",
-      "excerpt": "Entity structure, IP ownership, jurisdiction, and cap table basics, run three-lanes-deep — plus an India-specific path, and a reality check on whether you need any of this before raising money, with Zoho, Zerodha, and Mailchimp as real bootstrapped counter-examples.",
+      "excerpt": "Entity structure, IP ownership, jurisdiction, and cap table basics, run three-lanes-deep \u2014 plus an India-specific path, and a reality check on whether you need any of this before raising money, with Zoho, Zerodha, and Mailchimp as real bootstrapped counter-examples.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-09",
       "readTime": "30 min",
-      "tags": ["Startups", "Legal", "Simulation"],
-      "emoji": "📜",
-      "featured": true
+      "tags": [
+        "Startups",
+        "Legal",
+        "Simulation"
+      ],
+      "emoji": "\ud83d\udcdc",
+      "featured": false
     },
     {
       "slug": "founding-agi-startup-01-finding-idea",
@@ -20,8 +40,12 @@
       "authorInitials": "FL",
       "date": "2026-09-09",
       "readTime": "22 min",
-      "tags": ["Startups", "Founder Playbook", "Simulation"],
-      "emoji": "💡",
+      "tags": [
+        "Startups",
+        "Founder Playbook",
+        "Simulation"
+      ],
+      "emoji": "\ud83d\udca1",
       "featured": false
     },
     {
@@ -32,20 +56,28 @@
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "26 min",
-      "tags": ["Infrastructure", "Energy", "AGI"],
-      "emoji": "🔌",
+      "tags": [
+        "Infrastructure",
+        "Energy",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udd0c",
       "featured": false
     },
     {
       "slug": "interpretability-gap-reading-model-minds",
       "title": "The Interpretability Gap: Why Nobody Can Read a Frontier Model's Mind Anymore",
-      "excerpt": "Sparse autoencoders, Golden Gate Claude, and chain-of-thought faithfulness decay, explained — what mechanistic interpretability has actually achieved, and why the GPT-6 Astra safety dissent shows the problem is outrunning the fix.",
+      "excerpt": "Sparse autoencoders, Golden Gate Claude, and chain-of-thought faithfulness decay, explained \u2014 what mechanistic interpretability has actually achieved, and why the GPT-6 Astra safety dissent shows the problem is outrunning the fix.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "27 min",
-      "tags": ["Interpretability", "AI Safety", "AGI"],
-      "emoji": "🔍",
+      "tags": [
+        "Interpretability",
+        "AI Safety",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udd0d",
       "featured": false
     },
     {
@@ -56,20 +88,28 @@
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "26 min",
-      "tags": ["Research", "Memory", "AGI"],
-      "emoji": "💾",
+      "tags": [
+        "Research",
+        "Memory",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udcbe",
       "featured": false
     },
     {
       "slug": "agi-startups-to-watch",
       "title": "AGI Startups to Watch: Who's Actually Building in the Open Lanes",
-      "excerpt": "Real companies mapped against the scale-first, scaffolding, RLVR, and underexplored-lever lanes — Mistral, Thinking Machines, Cursor, Cognition, SSI, Goodfire — plus how the incumbent labs are betting on the same levers internally.",
+      "excerpt": "Real companies mapped against the scale-first, scaffolding, RLVR, and underexplored-lever lanes \u2014 Mistral, Thinking Machines, Cursor, Cognition, SSI, Goodfire \u2014 plus how the incumbent labs are betting on the same levers internally.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "28 min",
-      "tags": ["Startups", "Venture", "AGI"],
-      "emoji": "🔭",
+      "tags": [
+        "Startups",
+        "Venture",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udd2d",
       "featured": false
     },
     {
@@ -80,116 +120,156 @@
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "30 min",
-      "tags": ["Strategy", "Startups", "AGI"],
-      "emoji": "🚪",
+      "tags": [
+        "Strategy",
+        "Startups",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udeaa",
       "featured": false
     },
     {
       "slug": "grok-deepseek-qwen-agi-stack-timeline",
       "title": "Grok, DeepSeek & Qwen on the AGI Stack: Brute Compute, Efficiency Shock, and the Open-Weight Race",
-      "excerpt": "Three lineages that don't fit the Big Three mold: xAI's compute-first sprint, DeepSeek's efficiency shock, and Qwen's open-weight iteration speed — mapped against the same AGI stack, closing with a six-lab comparison.",
+      "excerpt": "Three lineages that don't fit the Big Three mold: xAI's compute-first sprint, DeepSeek's efficiency shock, and Qwen's open-weight iteration speed \u2014 mapped against the same AGI stack, closing with a six-lab comparison.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "26 min",
-      "tags": ["xAI", "Open-Weight AI", "AGI"],
-      "emoji": "⚡",
+      "tags": [
+        "xAI",
+        "Open-Weight AI",
+        "AGI"
+      ],
+      "emoji": "\u26a1",
       "featured": false
     },
     {
       "slug": "gemini-series-agi-stack-timeline",
       "title": "The Gemini Series on the AGI Stack: Google DeepMind's Long Game",
-      "excerpt": "Bard/PaLM 2 to Gemini 3, Google's catch-up-then-differentiate lineage traced against the AGI capability stack — context-window scale and native multimodality as its distinctive levers, plus a three-lab comparison against GPT and Claude.",
+      "excerpt": "Bard/PaLM 2 to Gemini 3, Google's catch-up-then-differentiate lineage traced against the AGI capability stack \u2014 context-window scale and native multimodality as its distinctive levers, plus a three-lab comparison against GPT and Claude.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "27 min",
-      "tags": ["Google DeepMind", "Model History", "AGI"],
-      "emoji": "🔵",
+      "tags": [
+        "Google DeepMind",
+        "Model History",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udd35",
       "featured": false
     },
     {
       "slug": "claude-series-agi-stack-timeline",
       "title": "The Claude Series on the AGI Stack: How Anthropic Pulled Its Levers Differently",
-      "excerpt": "Claude 1 to Fable 5.1, three years of Anthropic's releases traced against the AGI capability stack — where its safety-first founding bet shows up as real sequencing differences from OpenAI, and where the two labs converge anyway.",
+      "excerpt": "Claude 1 to Fable 5.1, three years of Anthropic's releases traced against the AGI capability stack \u2014 where its safety-first founding bet shows up as real sequencing differences from OpenAI, and where the two labs converge anyway.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "27 min",
-      "tags": ["Anthropic", "Model History", "AGI"],
-      "emoji": "🟣",
+      "tags": [
+        "Anthropic",
+        "Model History",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udfe3",
       "featured": false
     },
     {
       "slug": "gpt-series-agi-stack-timeline",
       "title": "The GPT Series on the AGI Stack: A Release-by-Release History of Which Lever OpenAI Pulled Next",
-      "excerpt": "GPT-1 to GPT-6 Astra, eight years of one lab's releases traced against the AGI capability stack — the actual sequence of levers OpenAI reached for as each prior one ran into diminishing returns.",
+      "excerpt": "GPT-1 to GPT-6 Astra, eight years of one lab's releases traced against the AGI capability stack \u2014 the actual sequence of levers OpenAI reached for as each prior one ran into diminishing returns.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "27 min",
-      "tags": ["OpenAI", "Model History", "AGI"],
-      "emoji": "📜",
+      "tags": [
+        "OpenAI",
+        "Model History",
+        "AGI"
+      ],
+      "emoji": "\ud83d\udcdc",
       "featured": false
     },
     {
       "slug": "agi-capability-stack-mapped",
       "title": "The AGI Capability Stack, Mapped: Where Frontier Models Stand and What It Takes to Close the Gap",
-      "excerpt": "Real models placed on the 9-layer AGI stack, every layer tagged with the lever that actually moves it, and the gaps sorted into near-term, hard problem, and open research — plus the path forward for researchers, builders, and capital.",
+      "excerpt": "Real models placed on the 9-layer AGI stack, every layer tagged with the lever that actually moves it, and the gaps sorted into near-term, hard problem, and open research \u2014 plus the path forward for researchers, builders, and capital.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-08",
       "readTime": "28 min",
-      "tags": ["AGI", "Roadmap", "Strategy"],
-      "emoji": "🗺️",
+      "tags": [
+        "AGI",
+        "Roadmap",
+        "Strategy"
+      ],
+      "emoji": "\ud83d\uddfa\ufe0f",
       "featured": false
     },
     {
       "slug": "frontier-innovation-levers",
       "title": "Beyond More Data: The Six Real Levers of Frontier AI's Next Advances",
-      "excerpt": "More data, more thinking time, better extraction of what a model already knows, or a smarter harness wrapped around an unchanged model? A research-grounded look at what actually drives each 'generational leap' — and what's next.",
+      "excerpt": "More data, more thinking time, better extraction of what a model already knows, or a smarter harness wrapped around an unchanged model? A research-grounded look at what actually drives each 'generational leap' \u2014 and what's next.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-07",
       "readTime": "25 min",
-      "tags": ["Research", "Scaling", "Analysis"],
-      "emoji": "🛠️",
+      "tags": [
+        "Research",
+        "Scaling",
+        "Analysis"
+      ],
+      "emoji": "\ud83d\udee0\ufe0f",
       "featured": false
     },
     {
       "slug": "agi-models-astra-claude-gemini",
       "title": "Astra, Claude & Gemini: Naming Names on the AGI Capability Stack",
-      "excerpt": "GPT-6 Astra's launch handed the field a live case study of the AGI capability-stack thesis — a single model scoring 62.7% and 99.9%+ on the same benchmark. Real research, named models, sourced claims.",
+      "excerpt": "GPT-6 Astra's launch handed the field a live case study of the AGI capability-stack thesis \u2014 a single model scoring 62.7% and 99.9%+ on the same benchmark. Real research, named models, sourced claims.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-07",
       "readTime": "26 min",
-      "tags": ["AGI", "News Analysis", "Model Comparison"],
-      "emoji": "🔬",
+      "tags": [
+        "AGI",
+        "News Analysis",
+        "Model Comparison"
+      ],
+      "emoji": "\ud83d\udd2c",
       "featured": false
     },
     {
       "slug": "agi-threshold-capability-stack",
       "title": "The AGI Threshold: Are We Building AGI, or Just Getting Remarkably Close?",
-      "excerpt": "AGI isn't a model that gets announced — it's a capability stack filled in unevenly. A 15-part analytical framework mapping reasoning, memory, planning, and safe autonomy against the frontier.",
+      "excerpt": "AGI isn't a model that gets announced \u2014 it's a capability stack filled in unevenly. A 15-part analytical framework mapping reasoning, memory, planning, and safe autonomy against the frontier.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-07",
       "readTime": "27 min",
-      "tags": ["AGI", "Research", "Analysis"],
-      "emoji": "🧩",
+      "tags": [
+        "AGI",
+        "Research",
+        "Analysis"
+      ],
+      "emoji": "\ud83e\udde9",
       "featured": false
     },
     {
       "slug": "ai-productivity-paradox-civilization",
       "title": "The AI Productivity Paradox: When Economic Growth Stops Needing Humans",
-      "excerpt": "We are entering one of the strangest transitions in history — economies that keep growing while needing fewer humans. A civilizational dilemma, not just an economic one.",
+      "excerpt": "We are entering one of the strangest transitions in history \u2014 economies that keep growing while needing fewer humans. A civilizational dilemma, not just an economic one.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-09-04",
       "readTime": "20 min",
-      "tags": ["Civilization", "Economics", "Philosophy"],
-      "emoji": "🌐",
+      "tags": [
+        "Civilization",
+        "Economics",
+        "Philosophy"
+      ],
+      "emoji": "\ud83c\udf10",
       "featured": false
     },
     {
@@ -200,8 +280,12 @@
       "authorInitials": "FL",
       "date": "2026-09-02",
       "readTime": "24 min",
-      "tags": ["Economics", "Labor Market", "Deep Dive"],
-      "emoji": "⚖️",
+      "tags": [
+        "Economics",
+        "Labor Market",
+        "Deep Dive"
+      ],
+      "emoji": "\u2696\ufe0f",
       "featured": false
     },
     {
@@ -212,104 +296,139 @@
       "authorInitials": "FL",
       "date": "2026-08-30",
       "readTime": "16 min",
-      "tags": ["News", "Monthly Digest"],
-      "emoji": "📅",
+      "tags": [
+        "News",
+        "Monthly Digest"
+      ],
+      "emoji": "\ud83d\udcc5",
       "featured": false
     },
     {
       "slug": "world-models",
       "title": "World Models: Teaching AI to Understand Reality",
-      "excerpt": "Why video generation, robotic control, and game simulation may all be downstream of the same bet — a model that learns a compressed, predictive representation of physical reality.",
+      "excerpt": "Why video generation, robotic control, and game simulation may all be downstream of the same bet \u2014 a model that learns a compressed, predictive representation of physical reality.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-24",
       "readTime": "24 min",
-      "tags": ["World Models", "Research", "Architecture"],
-      "emoji": "🌍",
+      "tags": [
+        "World Models",
+        "Research",
+        "Architecture"
+      ],
+      "emoji": "\ud83c\udf0d",
       "featured": false
     },
     {
       "slug": "rag-retrieval-knowledge-stack",
       "title": "Retrieval, Knowledge & the RAG Stack",
-      "excerpt": "How models ground answers beyond training data and context windows — embeddings, vector databases, hybrid search, agentic retrieval, and the RAG-vs-long-context debate.",
+      "excerpt": "How models ground answers beyond training data and context windows \u2014 embeddings, vector databases, hybrid search, agentic retrieval, and the RAG-vs-long-context debate.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-21",
       "readTime": "24 min",
-      "tags": ["RAG", "Retrieval", "Deep Dive"],
-      "emoji": "🔍",
+      "tags": [
+        "RAG",
+        "Retrieval",
+        "Deep Dive"
+      ],
+      "emoji": "\ud83d\udd0d",
       "featured": false
     },
     {
       "slug": "ai-agents-enterprise-economy",
       "title": "AI Agents & the Enterprise Agent Economy",
-      "excerpt": "What happens when the perceive-think-act loop gets wired into real business systems — orchestration, MCP/A2A standards, multi-agent coordination, and how enterprises measure ROI.",
+      "excerpt": "What happens when the perceive-think-act loop gets wired into real business systems \u2014 orchestration, MCP/A2A standards, multi-agent coordination, and how enterprises measure ROI.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-18",
       "readTime": "25 min",
-      "tags": ["AI Agents", "Enterprise", "Deep Dive"],
-      "emoji": "🤝",
+      "tags": [
+        "AI Agents",
+        "Enterprise",
+        "Deep Dive"
+      ],
+      "emoji": "\ud83e\udd1d",
       "featured": false
     },
     {
       "slug": "ai-safety-alignment-interpretability",
       "title": "AI Safety, Alignment & Interpretability: Building Trust Into the Machine",
-      "excerpt": "The counterweight to nine posts of pure capability — RLHF, Constitutional AI, mechanistic interpretability, red-teaming, dangerous capability evals, and the agentic safety frontier.",
+      "excerpt": "The counterweight to nine posts of pure capability \u2014 RLHF, Constitutional AI, mechanistic interpretability, red-teaming, dangerous capability evals, and the agentic safety frontier.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-15",
       "readTime": "25 min",
-      "tags": ["AI Safety", "Alignment", "Research"],
-      "emoji": "🛡️",
+      "tags": [
+        "AI Safety",
+        "Alignment",
+        "Research"
+      ],
+      "emoji": "\ud83d\udee1\ufe0f",
       "featured": false
     },
     {
       "slug": "reasoning-models-test-time-compute",
       "title": "Reasoning Models & Test-Time Compute: The Second Scaling Law",
-      "excerpt": "Why letting a model think longer before answering became a legitimate second scaling law — o1/o3, DeepSeek-R1's open-weights shock, architecture, benchmarks, and economics.",
+      "excerpt": "Why letting a model think longer before answering became a legitimate second scaling law \u2014 o1/o3, DeepSeek-R1's open-weights shock, architecture, benchmarks, and economics.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-12",
       "readTime": "25 min",
-      "tags": ["Reasoning", "Architecture", "Research"],
-      "emoji": "🧠",
+      "tags": [
+        "Reasoning",
+        "Architecture",
+        "Research"
+      ],
+      "emoji": "\ud83e\udde0",
       "featured": false
     },
     {
       "slug": "ai-chips-compute-infrastructure",
       "title": "AI Chips & Compute Infrastructure: The Physical Foundation of Intelligence",
-      "excerpt": "Why every model in this series traces back to silicon, memory bandwidth, and power — GPUs vs custom ASICs, data center architecture, chip economics, and the energy constraint.",
+      "excerpt": "Why every model in this series traces back to silicon, memory bandwidth, and power \u2014 GPUs vs custom ASICs, data center architecture, chip economics, and the energy constraint.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-09",
       "readTime": "26 min",
-      "tags": ["Hardware", "Infrastructure", "Deep Dive"],
-      "emoji": "🔌",
+      "tags": [
+        "Hardware",
+        "Infrastructure",
+        "Deep Dive"
+      ],
+      "emoji": "\ud83d\udd0c",
       "featured": false
     },
     {
       "slug": "physical-intelligence",
       "title": "Physical Intelligence: Teaching AI to Act in the Real World",
-      "excerpt": "Why action is the final modality — VLA model architecture, the humanoid robot race, funding, benchmarks, and how far away general-purpose robots really are.",
+      "excerpt": "Why action is the final modality \u2014 VLA model architecture, the humanoid robot race, funding, benchmarks, and how far away general-purpose robots really are.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-06",
       "readTime": "25 min",
-      "tags": ["Robotics", "Embodied AI", "Research"],
-      "emoji": "🦾",
+      "tags": [
+        "Robotics",
+        "Embodied AI",
+        "Research"
+      ],
+      "emoji": "\ud83e\uddbe",
       "featured": false
     },
     {
       "slug": "multimodal-consolidation",
       "title": "Multimodality & The Great Consolidation",
-      "excerpt": "Why text, image, video, audio, and action are converging into single any-to-any foundation models — architecture taxonomy, the frontier lab race, and open research frontiers.",
+      "excerpt": "Why text, image, video, audio, and action are converging into single any-to-any foundation models \u2014 architecture taxonomy, the frontier lab race, and open research frontiers.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-07-03",
       "readTime": "26 min",
-      "tags": ["Multimodal AI", "Architecture", "Research"],
-      "emoji": "🧬",
+      "tags": [
+        "Multimodal AI",
+        "Architecture",
+        "Research"
+      ],
+      "emoji": "\ud83e\uddec",
       "featured": false
     },
     {
@@ -320,8 +439,12 @@
       "authorInitials": "FL",
       "date": "2026-07-01",
       "readTime": "24 min",
-      "tags": ["Speech AI", "Audio", "Deep Dive"],
-      "emoji": "🎙️",
+      "tags": [
+        "Speech AI",
+        "Audio",
+        "Deep Dive"
+      ],
+      "emoji": "\ud83c\udf99\ufe0f",
       "featured": false
     },
     {
@@ -332,20 +455,28 @@
       "authorInitials": "FL",
       "date": "2026-06-30",
       "readTime": "25 min",
-      "tags": ["Generative AI", "Computer Vision", "Deep Dive"],
-      "emoji": "🎨",
+      "tags": [
+        "Generative AI",
+        "Computer Vision",
+        "Deep Dive"
+      ],
+      "emoji": "\ud83c\udfa8",
       "featured": false
     },
     {
       "slug": "filmmaking-encyclopedia",
       "title": "The Complete Filmmaking Encyclopedia",
-      "excerpt": "Every phase, role, and activity in the filmmaking pipeline — from a single idea to a global audience. 7 phases, 200+ roles, all the craft explained with animations and infographics.",
+      "excerpt": "Every phase, role, and activity in the filmmaking pipeline \u2014 from a single idea to a global audience. 7 phases, 200+ roles, all the craft explained with animations and infographics.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-06-27",
       "readTime": "30 min",
-      "tags": ["Filmmaking", "Creative Industry", "Encyclopedia"],
-      "emoji": "🎬",
+      "tags": [
+        "Filmmaking",
+        "Creative Industry",
+        "Encyclopedia"
+      ],
+      "emoji": "\ud83c\udfac",
       "featured": false
     },
     {
@@ -356,32 +487,42 @@
       "authorInitials": "FL",
       "date": "2026-06-23",
       "readTime": "20 min",
-      "tags": ["Economics", "Business", "Research"],
-      "emoji": "💰",
+      "tags": [
+        "Economics",
+        "Business",
+        "Research"
+      ],
+      "emoji": "\ud83d\udcb0",
       "featured": false
     },
     {
       "slug": "ai-news-june-22-2026",
-      "title": "AI News Digest — June 22, 2026",
-      "excerpt": "Today's biggest stories across Research, Investments, LLMs, Open Source, India, China, AGI, and the Future — 11 categories, real sources, curated in 5 bullets each.",
+      "title": "AI News Digest \u2014 June 22, 2026",
+      "excerpt": "Today's biggest stories across Research, Investments, LLMs, Open Source, India, China, AGI, and the Future \u2014 11 categories, real sources, curated in 5 bullets each.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-06-22",
       "readTime": "8 min",
-      "tags": ["News", "Weekly Digest"],
-      "emoji": "📰",
+      "tags": [
+        "News",
+        "Weekly Digest"
+      ],
+      "emoji": "\ud83d\udcf0",
       "featured": false
     },
     {
       "slug": "agentic-loop-explained",
       "title": "Loop Engineering: The New Meta for AI Agents",
-      "excerpt": "The shift from prompt engineering to loop engineering — how Boris Cherny, Peter Steinberger, and Addy Osmani crystallized a new paradigm for building AI systems in 2026.",
+      "excerpt": "The shift from prompt engineering to loop engineering \u2014 how Boris Cherny, Peter Steinberger, and Addy Osmani crystallized a new paradigm for building AI systems in 2026.",
       "author": "FrontierAIModels Team",
       "authorInitials": "FL",
       "date": "2026-06-22",
       "readTime": "16 min",
-      "tags": ["Agentic AI", "Research"],
-      "emoji": "⚡",
+      "tags": [
+        "Agentic AI",
+        "Research"
+      ],
+      "emoji": "\u26a1",
       "featured": false
     }
   ]
