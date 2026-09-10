@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "building-agi-startup-team-profiles-resumes",
+      "title": "Building an AGI Startup: Who You'd Actually Hire",
+      "excerpt": "Sample team profiles and detailed composite resumes for every key role across all three lanes — Applied & Agentic, Frontier Scale-First, and Narrow Research Bet — each paired with a real, named, sourced example (Cursor, Mistral, Reflection AI, SSI, Goodfire, Thinking Machines) plus a cross-lane hiring comparison table.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-10",
+      "readTime": "45 min",
+      "tags": [
+        "Startups",
+        "Hiring",
+        "Team Building"
+      ],
+      "emoji": "🧑‍💼",
+      "featured": true
+    },
+    {
       "slug": "building-agi-startup-lane3-narrow-research-bet",
       "title": "Building an AGI Startup: The Narrow Research Bet",
       "excerpt": "A standalone deep dive into Lane 3 — no product, no revenue plan, just a small team betting on one research thesis. Covers the 2026 neolab landscape (SSI, Goodfire, Thinking Machines, Periodic Labs), whitespace ideas, and a detailed operating rhythm (thesis formation to eventual productization), anchored by an in-depth Safe Superintelligence case study ($32B valuation, zero shipped products) with sourced videos and links.",
@@ -14,7 +30,7 @@
         "AGI Safety"
       ],
       "emoji": "🟢",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "building-agi-startup-lane1-frontier-scale",
