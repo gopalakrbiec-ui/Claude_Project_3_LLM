@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "inside-agi-team-lane1-frontier-scale",
+      "title": "Inside an AGI Startup Team: Frontier Scale-First",
+      "excerpt": "An end-to-end deep dive into how a Lane 1 team actually works — structure, experience profiles, skills matrix, cross-team coordination, training-run-driven cadence, a model-shipping walk-through, sourced 2026 compensation by role, the distributed-training tool & hardware stack, culture & hierarchy, founder involvement, upskilling, and how researchers use AI tools daily — anchored by a detailed look at Reflection AI and Mistral's real team dynamics.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-10",
+      "readTime": "55 min",
+      "tags": [
+        "Startups",
+        "Team Building",
+        "Frontier Labs"
+      ],
+      "emoji": "🔴",
+      "featured": true
+    },
+    {
       "slug": "inside-agi-team-lane2-applied-agentic",
       "title": "Inside an AGI Startup Team: The Applied & Agentic Layer",
       "excerpt": "An end-to-end deep dive into how a Lane 2 team actually works — structure, experience profiles, skills matrix, cross-team coordination, daily/weekly/monthly/release cadence, a feature-shipping walk-through, compensation by role, tools & logistics, culture & hierarchy, founder involvement, upskilling, and exactly how the team uses Claude Code and other AI tools daily — anchored by a detailed look at Cursor/Anysphere's real team dynamics.",
@@ -14,7 +30,7 @@
         "Culture"
       ],
       "emoji": "🔵",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "building-agi-startup-team-profiles-resumes",
