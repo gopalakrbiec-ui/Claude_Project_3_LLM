@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🧑‍💼 [Building an AGI Startup: Who You'd Actually Hire ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/building-agi-startup-team-profiles-resumes.html) — Startups, Hiring, Team Building · 2026-09-10 · 45 min
+- 🔵 [Inside an AGI Startup Team: The Applied & Agentic Layer ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/inside-agi-team-lane2-applied-agentic.html) — Startups, Team Building, Culture · 2026-09-10 · 55 min
+- 🧑‍💼 [Building an AGI Startup: Who You'd Actually Hire](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/building-agi-startup-team-profiles-resumes.html) — Startups, Hiring, Team Building · 2026-09-10 · 45 min
 - 🟢 [Building an AGI Startup: The Narrow Research Bet](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/building-agi-startup-lane3-narrow-research-bet.html) — Startups, Research, AGI Safety · 2026-09-09 · 50 min
 - 🔴 [Building an AGI Startup: Frontier Scale-First](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/building-agi-startup-lane1-frontier-scale.html) — Startups, Frontier Labs, Deep Research · 2026-09-09 · 50 min
 - 🔵 [Building an AGI Startup: The Applied & Agentic Layer](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/building-agi-startup-lane2-applied-agentic.html) — Startups, Product, Applied AI · 2026-09-09 · 50 min

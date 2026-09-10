@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "inside-agi-team-lane2-applied-agentic",
+      "title": "Inside an AGI Startup Team: The Applied & Agentic Layer",
+      "excerpt": "An end-to-end deep dive into how a Lane 2 team actually works — structure, experience profiles, skills matrix, cross-team coordination, daily/weekly/monthly/release cadence, a feature-shipping walk-through, compensation by role, tools & logistics, culture & hierarchy, founder involvement, upskilling, and exactly how the team uses Claude Code and other AI tools daily — anchored by a detailed look at Cursor/Anysphere's real team dynamics.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-10",
+      "readTime": "55 min",
+      "tags": [
+        "Startups",
+        "Team Building",
+        "Culture"
+      ],
+      "emoji": "🔵",
+      "featured": true
+    },
+    {
       "slug": "building-agi-startup-team-profiles-resumes",
       "title": "Building an AGI Startup: Who You'd Actually Hire",
       "excerpt": "Sample team profiles and detailed composite resumes for every key role across all three lanes — Applied & Agentic, Frontier Scale-First, and Narrow Research Bet — each paired with a real, named, sourced example (Cursor, Mistral, Reflection AI, SSI, Goodfire, Thinking Machines) plus a cross-lane hiring comparison table.",
@@ -14,7 +30,7 @@
         "Team Building"
       ],
       "emoji": "🧑‍💼",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "building-agi-startup-lane3-narrow-research-bet",
