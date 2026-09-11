@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-day-in-life",
+      "title": "A Day in the Life of an AGI Researcher: The Complete Operating Manual",
+      "excerpt": "The practical follow-up to the Field Guide — an hour-by-hour walkthrough of a real research day, daily reading sources and tool stack, a sample experiment from hypothesis to write-up, weekly rhythms, interview questions to prepare at each stage, success criteria by career level, core concepts every researcher should know, a research-conference calendar, and an honest, sourced look at burnout and sustainability.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-11",
+      "readTime": "85 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "☀️",
+      "featured": true
+    },
+    {
       "slug": "ai-researcher-field-guide",
       "title": "The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired",
       "excerpt": "A companion to the Research Frontier Map — core papers, survey papers, and top university labs for 7 research directions (foundations, generalization, interpretability, world models, alignment, domain science, human-AI interaction), real career-path profiles of researchers like Sutskever, Neel Nanda, Yann LeCun, Jan Leike, and John Jumper, and how frontier labs actually recruit and interview.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "🎓",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-research-frontier-map-labs-compared",

@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🎓 [The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-researcher-field-guide.html) — Deep Research, Careers, AI Research · 2026-09-11 · 80 min
+- ☀️ [A Day in the Life of an AGI Researcher: The Complete Operating Manual ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/agi-researcher-day-in-life.html) — Deep Research, Careers, AI Research · 2026-09-11 · 85 min
+- 🎓 [The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-researcher-field-guide.html) — Deep Research, Careers, AI Research · 2026-09-11 · 80 min
 - 🗺️ [The Research Frontier Map: What Every Major AI Lab Is Actually Betting On](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-research-frontier-map-labs-compared.html) — Deep Research, AI Labs, Research Strategy · 2026-09-11 · 75 min
 - 🕵️ [Safe Superintelligence: The Complete Investigation](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ssi-complete-investigation.html) — Investigation, AGI Safety, Deep Research · 2026-09-11 · 110 min
 - 🟢 [Inside an AGI Startup Team: The Narrow Research Bet](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/inside-agi-team-lane3-narrow-research-bet.html) — Startups, Team Building, AGI Safety · 2026-09-10 · 55 min
