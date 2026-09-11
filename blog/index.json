@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "ai-researcher-field-guide",
+      "title": "The Researcher's Field Guide: Papers, Labs, People, and How to Get Hired",
+      "excerpt": "A companion to the Research Frontier Map — core papers, survey papers, and top university labs for 7 research directions (foundations, generalization, interpretability, world models, alignment, domain science, human-AI interaction), real career-path profiles of researchers like Sutskever, Neel Nanda, Yann LeCun, Jan Leike, and John Jumper, and how frontier labs actually recruit and interview.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-11",
+      "readTime": "80 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🎓",
+      "featured": true
+    },
+    {
       "slug": "ai-research-frontier-map-labs-compared",
       "title": "The Research Frontier Map: What Every Major AI Lab Is Actually Betting On",
       "excerpt": "A comparative study of where SSI, Thinking Machines, Goodfire, Periodic Labs, and Ricursive Intelligence are actually spending their research time — set against the broader portfolios of Anthropic, Google DeepMind, Mistral, and Reflection AI — mapping what's being pursued, what's quietly avoided, genuine unclaimed research territory, and where the field's convergent signals point next.",
@@ -14,7 +30,7 @@
         "Research Strategy"
       ],
       "emoji": "🗺️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ssi-complete-investigation",
