@@ -16,18 +16,33 @@ BASE_URL = "https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy"
 MARKER_START = "<!-- BLOG_POSTS_START -->"
 MARKER_END   = "<!-- BLOG_POSTS_END -->"
 
+def _escape_cell(text):
+    # Keep markdown table rows intact: escape pipes and collapse newlines.
+    return text.replace("|", "\\|").replace("\n", " ").strip()
+
+def _one_line_summary(excerpt, max_len=140):
+    # Excerpts run multiple sentences; keep just the first sentence (or a
+    # clean truncation) so the table stays scannable in one line per row.
+    text = _escape_cell(excerpt)
+    first_sentence_end = text.find(". ")
+    candidate = text[:first_sentence_end + 1] if first_sentence_end != -1 else text
+    if len(candidate) > max_len:
+        candidate = candidate[:max_len].rsplit(" ", 1)[0] + "…"
+    return candidate
+
 def build_table(posts):
-    lines = []
+    # Newest first, consistent with the manifest's own top-to-bottom order.
+    header = "| Article | Summary | Date |\n|---|---|---|"
+    lines = [header]
     for p in posts:
         emoji    = p.get("emoji", "📝")
-        title    = p.get("title", "Untitled")
+        title    = _escape_cell(p.get("title", "Untitled"))
         slug     = p.get("slug", "")
-        tags     = ", ".join(p.get("tags", []))
+        summary  = _one_line_summary(p.get("excerpt", ""))
         date     = p.get("date", "")
-        rt       = p.get("readTime", "")
-        url      = f"{BASE_URL}/blog/{slug}.html"
         featured = " ⭐" if p.get("featured") else ""
-        lines.append(f"- {emoji} [{title}{featured}]({url}) — {tags} · {date} · {rt}")
+        url      = f"{BASE_URL}/blog/{slug}.html"
+        lines.append(f"| {emoji} [{title}]({url}){featured} | {summary} | {date} |")
     return "\n".join(lines)
 
 def update_readme():
