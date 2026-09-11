@@ -242,7 +242,7 @@
         <div class="blog-author-avatar">FL</div>
         <div>
           <div class="blog-author-name">FrontierAIModels Team</div>
-          <div class="blog-post-date">September 11, 2026 · 95 min read</div>
+          <div class="blog-post-date">September 11, 2026 · 110 min read (updated)</div>
         </div>
       </div>
     </div>
@@ -254,12 +254,19 @@
       <a href="#financials"   class="agi-nav-btn">Funding &amp; Financials</a>
       <a href="#compute"      class="agi-nav-btn">Compute Clues</a>
       <a href="#research"     class="agi-nav-btn">Research Signals</a>
+      <a href="#jagged"       class="agi-nav-btn">Jagged Intelligence</a>
       <a href="#interviews"   class="agi-nav-btn">Interview Analysis</a>
+      <a href="#alignment"    class="agi-nav-btn">Alignment Philosophy</a>
+      <a href="#debate"       class="agi-nav-btn">LeCun vs. Sutskever</a>
+      <a href="#strategy"     class="agi-nav-btn">3-Stage Strategy</a>
       <a href="#hiring"       class="agi-nav-btn">Hiring Patterns</a>
       <a href="#timeline"     class="agi-nav-btn">Full Timeline</a>
       <a href="#context"      class="agi-nav-btn">Industry Context</a>
+      <a href="#significance" class="agi-nav-btn">Strategic Significance</a>
+      <a href="#evidence"     class="agi-nav-btn">Evidence vs. Speculation</a>
       <a href="#synthesis"    class="agi-nav-btn">What Are They Building?</a>
       <a href="#forecast"     class="agi-nav-btn">Forecast Scenarios</a>
+      <a href="#risks"        class="agi-nav-btn">Risks &amp; Uncertainties</a>
       <a href="#videos"       class="agi-nav-btn">Videos</a>
       <a href="#references"   class="agi-nav-btn">Full References</a>
       <a href="#verdict"      class="agi-nav-btn">Verdict</a>
@@ -350,9 +357,19 @@
     </div>
     <div class="direct-quote">
       "We have research that is worthy of scaling up, and having access to a big Nvidia computer will let us do so."
-      <cite>— Ilya Sutskever, on the Nvidia partnership, July 2026</cite>
+      <cite>— Ilya Sutskever, on the Nvidia partnership, July 2026 — confirmed via Nvidia's own official announcement, not just secondary reporting (<a href="https://nvidianews.nvidia.com/news/ilya-sutskevers-safe-superintelligence-inc-and-nvidia-announce-long-term-strategic-partnership" target="_blank" rel="noopener">NVIDIA Newsroom</a>)</cite>
     </div>
+    <p>Nvidia's own press release adds a detail no secondary source had previously surfaced: it describes SSI as having been <strong>"quietly pursuing a new research direction for roughly two years"</strong> before the partnership was announced — meaning Nvidia's framing dates the origin of SSI's current research bet to somewhere around mid-to-late 2024, not long after the company's founding, rather than a pivot that happened later in its history. <a href="https://nvidianews.nvidia.com/news/ilya-sutskevers-safe-superintelligence-inc-and-nvidia-announce-long-term-strategic-partnership" target="_blank" rel="noopener">(Source: NVIDIA Newsroom, official announcement)</a></p>
     <p>Sutskever has also directly named what he considers the field's central unsolved problem: generalization. Per reporting on his November 2025 Dwarkesh interview, he called LLMs' generalization ability "inadequate" and their generalization profile "unstable across tasks" — describing this as the single most fundamental weakness in modern AI. He drew a specific human comparison: a teenager learns to drive safely in about 10 hours of practice, while current AI systems require the equivalent of billions of simulated miles to reach comparable reliability. His proposed missing piece is <strong>continual learning driven by an internal "value function"</strong> — a mechanism that would let a deployed system learn from its own mistakes in real time rather than needing to be retrained from scratch, and which he has explicitly tied to SSI's own long-term product vision: a system that "can be deployed into a job, learn from its mistakes in real-time, and become net productive in a few months, like a human employee." <a href="https://forum.effectivealtruism.org/posts/iuKa2iPg7vD9BdZna/highlights-from-ilya-sutskever-s-november-2025-interview" target="_blank" rel="noopener">(Source: EA Forum, summarizing the Dwarkesh interview)</a></p>
+
+    <h2 id="jagged" class="agi-section">"Jagged Intelligence": Naming the Generalization Gap</h2>
+    <p>A specific term sharpens Sutskever's generalization critique: <strong>jagged intelligence</strong> — the observation that a model's capability profile is not a smooth curve but a jagged one, excelling unpredictably in some areas while failing at tasks that look, to a human, far simpler than what the model just succeeded at.</p>
+    <div class="checklist">
+      <div class="check-row"><span class="check-num">1</span><div class="check-text"><strong>A model may top thousands of benchmarks</strong> yet make elementary errors on a novel task structured just differently enough from its training distribution.</div></div>
+      <div class="check-row"><span class="check-num">2</span><div class="check-text"><strong>A model may generate sophisticated, working software</strong> while failing to identify a relatively simple bug in a related piece of code.</div></div>
+      <div class="check-row"><span class="check-num">3</span><div class="check-text"><strong>A model may solve a difficult mathematical problem</strong> while failing an easier one whose surface structure it hasn't specifically encountered before.</div></div>
+    </div>
+    <p>The analytical significance of "jagged intelligence" is that it reframes the entire scaling debate: if a model's weaknesses were simply a matter of not having seen enough examples yet, more data and compute would resolve them in a fairly predictable way. Jaggedness instead suggests the weaknesses are structural — a symptom of <em>how</em> the model learns, not just <em>how much</em> it has learned — which is precisely the distinction Sutskever draws when he asks not "how much can we scale?" but "what exactly are we scaling?"</p>
 
     <h2 id="interviews" class="agi-section">Interview Analysis: Reading Between the Lines</h2>
     <p>Sutskever's public statements form a coherent, repeated narrative arc across nearly two years, which this section reconstructs chronologically by theme rather than by individual interview.</p>
@@ -379,6 +396,39 @@
       </div>
     </div>
     <p>The "research that is worthy of scaling up" quote from July 2026 is the single most information-dense statement SSI has made publicly. Investor commentary referenced in earlier reporting suggests that "months" before that point, in 2025, an outside technical review process changed SSI's own internal framing from "not yet ready to scale" to "worthy of scaling" — implying a real technical inflection point occurred sometime in late 2025 or early 2026, one SSI has never described in any further detail.</p>
+
+    <h2 id="alignment" class="agi-section">Alignment Philosophy: Safety as an Architectural Requirement</h2>
+    <p>SSI's official mission statement treats capability and safety as advancing together rather than sequentially — safety is not a layer added after a capable model already exists, but a property the system must be engineered to have from the start. <a href="https://ssi.inc/" target="_blank" rel="noopener">(Source: SSI's own site)</a> This is commonly illustrated by comparison to nuclear safety: in a technology whose failure modes may be catastrophic and irreversible, safety cannot be retrofitted after deployment — it has to be architectural.</p>
+    <p>This framing has a direct technical consequence tied back to the generalization thesis above: if a system is expected to keep learning and improving its own reasoning after deployment (the continual-learning/value-function vision), then any safety property built into it has to generalize along with the system's capabilities — it isn't enough for a model to behave safely only in situations represented in its training data, because a continually-learning system will, by design, keep encountering situations its designers never anticipated.</p>
+    <div class="direct-quote">
+      "[An aligned superintelligence might need] some combination of caring about sentient life, caring about people, and supporting democratic principles."
+      <cite>— Ilya Sutskever, on Dwarkesh Podcast, Nov 2025 — while acknowledging considerable uncertainty about the exact criterion</cite>
+    </div>
+    <p>This "caring about sentient life" framing is a meaningfully more ambitious alignment target than a conventional rules-based approach ("do not perform action X"). A rule constrains specific actions; a generalized value system would instead need to shape how the system interprets circumstances, weighs outcomes, and selects its own objectives — which matters precisely because a genuine superintelligence would, by definition, encounter strategies and situations no human designer enumerated in advance. Sutskever's own acknowledged uncertainty about "the exact criterion" is itself a notable data point: even the person setting SSI's research agenda has not claimed to have solved this problem, only to have identified it as the one that matters most.</p>
+
+    <h2 id="debate" class="agi-section">Sutskever vs. LeCun: Where SSI Sits in the Broader Architecture Debate</h2>
+    <p>Sutskever's thesis is one voice in a wider 2025-2026 industry argument about whether the dominant autoregressive/pretraining paradigm can reach human-level or superhuman intelligence at all. Yann LeCun (formerly Meta's Chief AI Scientist) has separately and publicly argued that current large language models are insufficient foundations for this goal, and that progress requires new approaches — in his case, centered on stronger internal world-models that let a system simulate and reason about the consequences of actions before taking them, rather than purely predicting the next token in a sequence.</p>
+    <div class="tradeoff-wrap">
+      <table class="tradeoff-table">
+        <thead><tr><th>Dimension</th><th>Sutskever / SSI</th><th>LeCun (formerly Meta)</th></tr></thead>
+        <tbody>
+          <tr><td>Core diagnosis</td><td>Generalization is the bottleneck — models learn dramatically worse than humans from limited experience</td><td>Autoregressive next-token prediction is architecturally insufficient — models lack a real world-model to reason within</td></tr>
+          <tr><td>Proposed direction</td><td>Continual learning driven by an internal "value function," inspired abstractly by human self-evaluation</td><td>Joint-embedding predictive architectures (JEPA-style) that learn world-models rather than token sequences</td></tr>
+          <tr><td>Framing of scaling</td><td>Not opposed to scale — believes the right learning principle, once found, still needs massive compute to realize</td><td>More skeptical that scaling the current paradigm, regardless of compute, gets to the goal at all</td></tr>
+          <tr><td>Organizational vehicle</td><td>SSI — a small, secretive, product-free lab insulated from commercial pressure</td><td>Independent research post-Meta, with a more publicly argued research program</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The important point isn't that these two views are identical — they clearly aren't, differing specifically on whether the current autoregressive paradigm itself is salvageable — but that two of the field's most credentialed researchers have independently concluded, from different technical starting points, that the current dominant recipe is not sufficient on its own. That convergence is itself a meaningful industry signal: the frontier debate has genuinely shifted from "how large should the next model be?" toward "what learning principle should the next generation of models actually possess?" — the exact reframing this entire investigation's evidence supports.</p>
+
+    <h2 id="strategy" class="agi-section">SSI's Three-Stage Research Strategy</h2>
+    <p>Synthesizing the evidence above into a single operating model, SSI's strategy can be read as having three deliberate stages:</p>
+    <div class="checklist">
+      <div class="check-row"><span class="check-num">1</span><div class="check-text"><strong>Organizational isolation:</strong> Removing conventional product cycles, revenue targets, and commercial pressure creates an environment where researchers can pursue open-ended questions that may take years to resolve — the entire rationale behind the "one product, one goal" founding structure covered earlier in this investigation.</div></div>
+      <div class="check-row"><span class="check-num">2</span><div class="check-text"><strong>Scientific discovery:</strong> The actual research object is understanding generalization, continual learning, internal self-evaluation, and alignment — not incrementally improving an existing model line.</div></div>
+      <div class="check-row"><span class="check-num">3</span><div class="check-text"><strong>Large-scale amplification:</strong> Once internal confidence in a research direction crosses a threshold, massive compute becomes necessary to test how far the new learning principle can be pushed — the stage the Nvidia partnership's 10x compute increase and "research worthy of scaling" quote both point to SSI having now reached, at least in part.</div></div>
+    </div>
+    <p>This produces a genuinely different growth curve than the conventional scaling playbook. The conventional recipe runs: <em>known training recipe → more data + more parameters + more compute → better model.</em> SSI's apparent hypothesis instead runs: <em>fundamental research → better learning principle → verification → massive scaling.</em> The distinction matters economically as well as scientifically — an algorithmic improvement can multiply the value of every unit of compute applied to it, meaning a smaller, better-targeted breakthrough could in principle produce a larger capability jump than simply scaling an older approach further, which is the logic that would explain why a company skeptical of pure scaling would still seek an order-of-magnitude compute increase.</p>
 
     <h2 id="hiring" class="agi-section">Hiring Pattern Analysis</h2>
     <p>SSI's hiring is reported to recruit "almost exclusively senior researchers and engineers" — a pattern consistent with the flat, no-management-layer culture documented in this series' companion "Inside an AGI Startup Team" article on Lane 3. Two specific hiring signals are worth isolating:</p>
@@ -477,6 +527,52 @@
     </div>
     <p>The Meta acquisition attempt is the sharpest piece of competitive-context evidence available: Meta reportedly tried to buy SSI outright at its full $32B valuation and was refused, settling instead for hiring away its CEO. That a company with zero revenue and no shipped product could refuse a $32B acquisition offer — and that its own CEO would leave for a competitor rather than push for the sale — is a strong signal that SSI's own leadership (at least Sutskever) genuinely believes the underlying research is worth more independent than any near-term acquisition price, a belief the Nvidia deal's terms (compute access over cash-out) appear to reinforce a year later.</p>
 
+    <h2 id="significance" class="agi-section">Strategic Significance: Algorithmic Advantage vs. Compute Advantage</h2>
+    <p>If Sutskever's thesis proves correct, it implies a structural change in how competitive advantage works in frontier AI. During the 2020-2025 scaling era, the company with the most capital and the most GPUs held a fairly predictable advantage — more compute reliably bought more capability along a known curve. An "age of research," by contrast, is inherently less predictable: breakthroughs can come from small teams, progress can be discontinuous rather than smooth, and algorithmic insight can matter more than raw infrastructure size, at least until a genuine breakthrough is found and needs to be scaled.</p>
+    <div class="research-grid">
+      <div class="research-card" style="--rc-a:#0f172a;--rc-b:#1e293b;">
+        <span class="research-icon">🐢</span>
+        <div class="research-title">Scaling-Era Advantage: Predictable, Capital-Driven</div>
+        <div class="research-body">More GPUs and more data reliably bought more capability along a fairly known curve — the largest checkbook had a durable structural edge.</div>
+      </div>
+      <div class="research-card" style="--rc-a:#0f766e;--rc-b:#0d9488;">
+        <span class="research-icon">⚡</span>
+        <div class="research-title">Research-Era Advantage: Discontinuous, Idea-Driven</div>
+        <div class="research-body">A small group with the right algorithmic insight could, in principle, leapfrog a much larger competitor — but only once, and only if the insight is real, which is unverifiable from outside until it's demonstrated.</div>
+      </div>
+      <div class="research-card" style="--rc-a:#1d4ed8;--rc-b:#2563eb;">
+        <span class="research-icon">🔀</span>
+        <div class="research-title">The Combined, Non-Obvious Outcome</div>
+        <div class="research-body">The future this evidence points toward isn't purely one or the other — it's both at once: a return to fundamental research <em>and</em> an acceleration in demand for massive compute the moment a research breakthrough needs scaling, which is exactly the SSI/Nvidia partnership's own shape.</div>
+      </div>
+    </div>
+    <p>This is the most important industry-level stake in SSI's story, independent of whether SSI itself ultimately succeeds: if the "idea matters more than infrastructure, until the idea needs infrastructure" pattern generalizes across the field, the economics of frontier AI investment shift meaningfully — capital allocators would need to price in the possibility that a small, secretive team with the right insight could suddenly require, and deserve, the kind of compute commitment only a handful of infrastructure players can supply on short notice, which is precisely the dynamic Nvidia's own $5B bet on a 50-person, product-free company represents.</p>
+
+    <h2 id="evidence" class="agi-section">Evidence vs. Speculation: A Structured Accounting</h2>
+    <p>Given how much of this investigation necessarily involves inference, the table below separates every major claim into what is independently verifiable, what is reported but not officially confirmed, and what remains genuinely unknown.</p>
+    <div class="tradeoff-wrap">
+      <table class="tradeoff-table">
+        <thead><tr><th>Claim</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>SSI's sole stated mission is safe superintelligence, pursued as "one product, one goal"</td><td><strong>Verified</strong> — SSI's own official statement</td></tr>
+          <tr><td>SSI deliberately avoids conventional product-cycle and revenue pressure</td><td><strong>Verified</strong> — consistent across founding statements and reporting</td></tr>
+          <tr><td>Sutskever believes AI is moving from an "age of scaling" back to an "age of research"</td><td><strong>Verified</strong> — direct quotes, Nov 2025 Dwarkesh interview</td></tr>
+          <tr><td>Generalization is Sutskever's named central research problem</td><td><strong>Verified</strong> — consistent across multiple interviews, 2024-2026</td></tr>
+          <tr><td>Nvidia obtained unusual, "rare" access to SSI's guarded research before investing</td><td><strong>Verified</strong> — stated directly in Nvidia's own official announcement</td></tr>
+          <tr><td>SSI will receive roughly a 10x compute increase via the Vera Rubin platform</td><td><strong>Verified</strong> — stated directly by Nvidia</td></tr>
+          <tr><td>Nvidia's investment was approximately $5 billion</td><td><strong>Reported</strong> — Reuters, citing a source briefed on the transaction; not stated in the companies' own joint announcement</td></tr>
+          <tr><td>SSI had been "quietly pursuing a new research direction for roughly two years" before the Nvidia deal</td><td><strong>Verified</strong> — stated directly in Nvidia's own official announcement</td></tr>
+          <tr><td>Daniel Gross departed for Meta after a refused acquisition attempt</td><td><strong>Verified</strong> — multiple independent outlets (SiliconANGLE, Bloomberg, TechCrunch)</td></tr>
+          <tr><td>SSI has discovered a completely new AI architecture or training paradigm</td><td><strong>Not established</strong> — no technical disclosure exists either way</td></tr>
+          <tr><td>SSI has solved generalization</td><td><strong>Not established</strong></td></tr>
+          <tr><td>SSI has solved alignment, including the "caring about sentient life" framing</td><td><strong>Not established</strong> — Sutskever himself has stated uncertainty about the exact criterion</td></tr>
+          <tr><td>SSI's core technical bet centers on an internal "value function" mechanism</td><td><strong>Plausible interpretation</strong> — directly consistent with Sutskever's own language, but not confirmed as SSI's literal implementation</td></tr>
+          <tr><td>SSI is close to achieving superintelligence</td><td><strong>Unknown</strong> — no evidence either supports or rules this out</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="comp-note" style="font-size:0.74rem;color:#6b7280;font-style:italic;margin-top:8px;">The analytical discipline this table enforces: strong signals (Nvidia's capital commitment, the compute increase, Sutskever's consistent public thesis) are real and verifiable — but none of them, individually or together, constitute proof that SSI has actually solved the problem it was founded to solve.</p>
+
     <h2 id="synthesis" class="agi-section">Synthesis: What Is SSI Actually Building?</h2>
     <div class="caveat-box">
       <strong>This section is explicitly analytical judgment, not confirmed fact.</strong> SSI has not disclosed its product, architecture, or roadmap. What follows synthesizes the public evidence above into the most defensible readings available, deliberately presented as multiple roughly equal-weight possibilities rather than a single confident claim.
@@ -514,6 +610,16 @@
       The most honest summary of SSI's current state: a company has convinced some of the most sophisticated capital allocators in the world (Sequoia, a16z, Alphabet, Nvidia) to commit roughly $8B on the strength of a founder's reputation and a consistent, credible-sounding research thesis — without a single public artifact anyone outside the company has been able to independently verify.
     </div>
 
+    <h2 id="risks" class="agi-section">Major Risks &amp; Uncertainties</h2>
+    <p>Beyond the scenario forecasts above, several structural uncertainties apply regardless of which scenario plays out:</p>
+    <div class="checklist">
+      <div class="check-row"><span class="check-num">1</span><div class="check-text"><strong>Secrecy prevents independent verification.</strong> Every technical claim in this investigation is necessarily inferred from public statements and financial signals — outsiders have no way to independently evaluate SSI's actual research progress, and won't until the company chooses to disclose something.</div></div>
+      <div class="check-row"><span class="check-num">2</span><div class="check-text"><strong>Enormous investment does not guarantee scientific success.</strong> AI and technology history more broadly contain many heavily financed research bets that failed to deliver their anticipated breakthrough — capital commitment is a signal of belief, not proof of a result.</div></div>
+      <div class="check-row"><span class="check-num">3</span><div class="check-text"><strong>Human cognition remains poorly understood.</strong> Drawing high-level inspiration from concepts like intuition, emotion, or internal value estimation is a reasonable research direction, but translating those concepts into working, reliable machine-learning algorithms has historically proven extraordinarily difficult — abstraction from biology has worked before (the artificial neuron itself), but is far from guaranteed to work again for this specific problem.</div></div>
+      <div class="check-row"><span class="check-num">4</span><div class="check-text"><strong>Capability and alignment may not advance at the same speed.</strong> If SSI's continual-learning approach genuinely improves generalization faster than researchers can verify its safety properties generalize alongside it, the company would face exactly the capability-outpacing-safety problem its own founding thesis was designed to prevent.</div></div>
+      <div class="check-row"><span class="check-num">5</span><div class="check-text"><strong>Even a technically aligned superintelligence would raise unresolved societal questions</strong> — concentration of power, control, democratic legitimacy, and international competition — that a machine-learning solution alone does not resolve. Solving the technical alignment problem, if SSI manages it, would not automatically solve the political and institutional one.</div></div>
+    </div>
+
     <!-- VIDEOS -->
     <h2 id="videos" class="agi-section">🎥 Recommended Videos for This Investigation</h2>
     <div class="video-grid">
@@ -534,6 +640,11 @@
     <div class="ref-box">
       <div class="ref-box-title">📚 All Sources Used in This Investigation</div>
       <ul class="ref-list">
+        <li><a href="https://nvidianews.nvidia.com/news/ilya-sutskevers-safe-superintelligence-inc-and-nvidia-announce-long-term-strategic-partnership" target="_blank" rel="noopener"><strong>NVIDIA Newsroom — Official Partnership Announcement (primary source)</strong></a></li>
+        <li><a href="https://www.reuters.com/legal/transactional/nvidia-invest-5-billion-ilya-sutskevers-ai-startup-source-says-2026-07-27/" target="_blank" rel="noopener"><strong>Reuters — Nvidia to Invest $5 Billion in SSI, Source Says (primary source)</strong></a></li>
+        <li><a href="https://www.reuters.com/technology/artificial-intelligence/ilya-sutskever-how-ai-will-change-his-new-startup-safe-superintelligence-2024-09-05/" target="_blank" rel="noopener"><strong>Reuters — Ilya Sutskever on How AI Will Change, Sep 2024 (primary source)</strong></a></li>
+        <li><a href="https://transcripts.wiki/transcripts/dwarkesh-sutskever-age-research-script" target="_blank" rel="noopener">Transcripts Wiki — Dwarkesh/Sutskever Full Transcript, "Age of Research, Continual Learning, and Alignment"</a></li>
+        <li><a href="https://ssi.inc/" target="_blank" rel="noopener">Safe Superintelligence Inc. — Official Site</a></li>
         <li><a href="https://en.wikipedia.org/wiki/Safe_Superintelligence_Inc." target="_blank" rel="noopener">Wikipedia — Safe Superintelligence Inc.</a></li>
         <li><a href="https://www.cnbc.com/2024/06/19/openai-co-founder-ilya-sutskever-announces-safe-superintelligence.html" target="_blank" rel="noopener">CNBC — Sutskever Announces Safe Superintelligence</a></li>
         <li><a href="https://www.axios.com/2024/06/19/ilya-sutskever-openai-co-founder-safe-superintelligence" target="_blank" rel="noopener">Axios — Ilya Sutskever, OpenAI Co-Founder</a></li>
