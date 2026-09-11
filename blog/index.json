@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-technical-stack",
+      "title": "AGI Researcher Foundations: The Technical Stack",
+      "excerpt": "The first article in a new deep-dive series — the end-to-end technical stack every AGI researcher needs before touching a paper: programming and Linux fluency, PyTorch vs JAX, the research-engineering toolchain (DeepSpeed, Megatron-LM, FSDP2, vLLM), compute options and real 2026 pricing, evaluation tooling, 10 key papers, 8 real courses to complete, and four real-world scenarios from reproducing nanoGPT to debugging distributed training failures.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-12",
+      "readTime": "100+ min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "🧰",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-day-in-life",
       "title": "A Day in the Life of an AGI Researcher: The Complete Operating Manual",
       "excerpt": "The practical follow-up to the Field Guide — an hour-by-hour walkthrough of a real research day, daily reading sources and tool stack, a sample experiment from hypothesis to write-up, weekly rhythms, interview questions to prepare at each stage, success criteria by career level, core concepts every researcher should know, a research-conference calendar, and an honest, sourced look at burnout and sustainability.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "☀️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "ai-researcher-field-guide",
