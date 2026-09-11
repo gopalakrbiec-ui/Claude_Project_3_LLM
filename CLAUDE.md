@@ -6,7 +6,7 @@ All pages are plain HTML/CSS/JS served as files.
 
 ## File Structure
 ```
-FrontierAIModel-Academy/
+FrontierAGI-Academy/
 ├── index.html              ← Home page (stays in root, always) — AGI research/progress hub
 ├── styles.css              ← All CSS (single file)
 ├── app.js                  ← All JS (single file)
@@ -106,4 +106,4 @@ Only one post should have `"featured": true` at a time.
 
 ## Git Branch
 Active development branch: `claude/trusting-mendel-u9s1oh`
-Remote: `gopalakrbiec-ui/Claude_Project_3_LLM` (also mirrors to `gopalakrbiec-ui/FrontierAIModel-Academy`)
+Remote: `gopalakrbiec-ui/Claude_Project_3_LLM` (also mirrors to `gopalakrbiec-ui/FrontierAGI-Academy`)
