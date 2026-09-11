@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "ai-research-frontier-map-labs-compared",
+      "title": "The Research Frontier Map: What Every Major AI Lab Is Actually Betting On",
+      "excerpt": "A comparative study of where SSI, Thinking Machines, Goodfire, Periodic Labs, and Ricursive Intelligence are actually spending their research time — set against the broader portfolios of Anthropic, Google DeepMind, Mistral, and Reflection AI — mapping what's being pursued, what's quietly avoided, genuine unclaimed research territory, and where the field's convergent signals point next.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-11",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "AI Labs",
+        "Research Strategy"
+      ],
+      "emoji": "🗺️",
+      "featured": true
+    },
+    {
       "slug": "ssi-complete-investigation",
       "title": "Safe Superintelligence: The Complete Investigation",
       "excerpt": "Every publicly available clue about the most secretive, best-funded, least-shipping company in AI — founding story, full funding timeline, every known hire and departure, the Nvidia compute deal (with primary-source citations), \"jagged intelligence,\" the Sutskever-vs-LeCun architecture debate, SSI's alignment philosophy, a 3-stage research-strategy model, a structured evidence-vs-speculation table, a full visual timeline, and a heavily-hedged forecast of what SSI is building.",
@@ -14,7 +30,7 @@
         "Deep Research"
       ],
       "emoji": "🕵️",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "inside-agi-team-lane3-narrow-research-bet",

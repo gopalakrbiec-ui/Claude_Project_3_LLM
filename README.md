@@ -48,7 +48,8 @@ Everything is served as static files. No login, no tracking, no paywall.
 ## 📝 Blog Posts
 
 <!-- BLOG_POSTS_START -->
-- 🕵️ [Safe Superintelligence: The Complete Investigation ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ssi-complete-investigation.html) — Investigation, AGI Safety, Deep Research · 2026-09-11 · 110 min
+- 🗺️ [The Research Frontier Map: What Every Major AI Lab Is Actually Betting On ⭐](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ai-research-frontier-map-labs-compared.html) — Deep Research, AI Labs, Research Strategy · 2026-09-11 · 75 min
+- 🕵️ [Safe Superintelligence: The Complete Investigation](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/ssi-complete-investigation.html) — Investigation, AGI Safety, Deep Research · 2026-09-11 · 110 min
 - 🟢 [Inside an AGI Startup Team: The Narrow Research Bet](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/inside-agi-team-lane3-narrow-research-bet.html) — Startups, Team Building, AGI Safety · 2026-09-10 · 55 min
 - 🔴 [Inside an AGI Startup Team: Frontier Scale-First](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/inside-agi-team-lane1-frontier-scale.html) — Startups, Team Building, Frontier Labs · 2026-09-10 · 55 min
 - 🔵 [Inside an AGI Startup Team: The Applied & Agentic Layer](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy/blog/inside-agi-team-lane2-applied-agentic.html) — Startups, Team Building, Culture · 2026-09-10 · 55 min
