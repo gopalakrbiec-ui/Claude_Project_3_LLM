@@ -60,7 +60,7 @@
         <a href="future-frontier.html" class="panel-btn">🔮 Future Frontier</a>
         <a href="llm-engineering.html" class="panel-btn">⚙️ LLM Engineering</a>
         <a href="coding-agents.html" class="panel-btn">🤖 Coding Agents</a>
-      
+
         <a href="../blog/founding-agi-startup-series.html" class="panel-btn">🚀 Founding an AGI Startup</a>
       </div>
     </div>
@@ -109,16 +109,36 @@
 <!-- Main content -->
 <div class="container">
 
-  <!-- Tag filter bar -->
-  <div class="blog-filters" id="filterBar">
-    <button class="blog-filter-btn active" data-tag="all" onclick="filterPosts('all', this)">All</button>
-  </div>
+  <div class="blog-layout">
 
-  <!-- Post grid -->
-  <div class="blog-grid" id="blogGrid">
-    <div class="blog-empty">
-      <div class="blog-empty-icon">⏳</div>
-      <p>Loading posts…</p>
+    <!-- Sidebar -->
+    <aside class="blog-sidebar" id="blogSidebar">
+      <div class="blog-sidebar-title">Browse</div>
+      <div class="blog-sidebar-group" id="sidebarGroups"><!-- populated by JS --></div>
+    </aside>
+
+    <!-- Main -->
+    <div class="blog-main">
+
+      <div class="blog-toolbar">
+        <div class="blog-toolbar-left">
+          <button class="blog-sidebar-collapse-btn" id="sidebarToggleBtn" onclick="toggleSidebar()">☰ Categories</button>
+          <span class="blog-active-category" id="activeCategoryLabel">All Posts</span>
+        </div>
+        <div class="blog-density-toggle">
+          <button class="blog-density-btn" data-density="detailed" onclick="setDensity('detailed')">▤ Rows</button>
+          <button class="blog-density-btn" data-density="compact" onclick="setDensity('compact')">▦ Grid</button>
+        </div>
+      </div>
+
+      <!-- Post grid -->
+      <div class="blog-grid" id="blogGrid">
+        <div class="blog-empty">
+          <div class="blog-empty-icon">⏳</div>
+          <p>Loading posts…</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -126,13 +146,28 @@
 
 <script>
   let allPosts = [];
+  let currentCategory = 'all';
+  let currentDensity = localStorage.getItem('blogDensity') || 'detailed';
+
+  // Curated sidebar taxonomy — maps a category to the raw tags it covers
+  const CATEGORIES = [
+    { id: 'series',    label: 'Series & Playbooks',     icon: '🚀', tags: ['Founder Playbook','Series Index','Simulation','Simulation Finale','Roadmap','Financial Modeling','Legal','Fundraising'] },
+    { id: 'labs',      label: 'AI Labs & Investigations', icon: '🕵️', tags: ['Investigation','AI Labs','Frontier Labs','OpenAI','Anthropic','Google DeepMind','xAI','Deep Research','Research Strategy'] },
+    { id: 'safety',    label: 'Safety &amp; Alignment',      icon: '🛡️', tags: ['AGI Safety','AGI','AI Safety','Alignment','Interpretability','Scaling','World Models','Risk'] },
+    { id: 'business',  label: 'Startups &amp; Business',     icon: '🏢', tags: ['Startups','Business','Venture','Growth Metrics','Economics','Enterprise','Product','Strategy','Sales','Marketing','Energy'] },
+    { id: 'team',      label: 'Team &amp; Careers',          icon: '👥', tags: ['Careers','Team Building','Hiring','R&D Culture','Labor Market'] },
+    { id: 'research',  label: 'Research &amp; Technical',    icon: '🔬', tags: ['AI Research','Research','Architecture','Reasoning','Multimodal AI','Computer Vision','Speech AI','Audio','RAG','Retrieval','Memory','Robotics','Embodied AI','Generative AI','Model Comparison','Model History','Hardware','Infrastructure','Agentic AI','AI Agents','Applied AI','Open-Weight AI'] },
+    { id: 'news',      label: 'News &amp; Digests',          icon: '📰', tags: ['News','News Analysis','Monthly Digest','Weekly Digest','Analysis','Deep Dive'] },
+    { id: 'culture',   label: 'Culture &amp; Society',       icon: '🎭', tags: ['Culture','Civilization','Philosophy','Creative Industry','Filmmaking','Encyclopedia'] }
+  ];
 
   async function loadPosts() {
     try {
       const r = await fetch('../blog/index.json');
       const data = await r.json();
       allPosts = data.posts || [];
-      buildFilterBar(allPosts);
+      buildSidebar(allPosts);
+      applyDensityUI();
       renderGrid(allPosts);
     } catch (e) {
       document.getElementById('blogGrid').innerHTML =
@@ -140,25 +175,59 @@
     }
   }
 
-  function buildFilterBar(posts) {
-    const tags = new Set();
-    posts.forEach(p => (p.tags || []).forEach(t => tags.add(t)));
-    const bar = document.getElementById('filterBar');
-    tags.forEach(tag => {
-      const btn = document.createElement('button');
-      btn.className = 'blog-filter-btn';
-      btn.dataset.tag = tag;
-      btn.textContent = tag;
-      btn.onclick = () => filterPosts(tag, btn);
-      bar.appendChild(btn);
-    });
+  function postsForCategory(cat) {
+    if (cat === 'all') return allPosts;
+    const group = CATEGORIES.find(c => c.id === cat);
+    if (!group) return allPosts;
+    return allPosts.filter(p => (p.tags || []).some(t => group.tags.includes(t)));
   }
 
-  function filterPosts(tag, btn) {
-    document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
+  function buildSidebar(posts) {
+    const wrap = document.getElementById('sidebarGroups');
+    const allCount = posts.length;
+    let html = `
+      <button class="blog-sidebar-btn active" data-cat="all" onclick="selectCategory('all', this)">
+        <span>📋 All Posts</span><span class="blog-sidebar-count">${allCount}</span>
+      </button>
+      <div class="blog-sidebar-divider"></div>`;
+    CATEGORIES.forEach(cat => {
+      const count = postsForCategory(cat.id).length;
+      if (count === 0) return;
+      html += `
+        <button class="blog-sidebar-btn" data-cat="${cat.id}" onclick="selectCategory('${cat.id}', this)">
+          <span>${cat.icon} ${cat.label}</span><span class="blog-sidebar-count">${count}</span>
+        </button>`;
+    });
+    wrap.innerHTML = html;
+  }
+
+  function selectCategory(cat, btn) {
+    currentCategory = cat;
+    document.querySelectorAll('.blog-sidebar-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filtered = tag === 'all' ? allPosts : allPosts.filter(p => (p.tags || []).includes(tag));
-    renderGrid(filtered);
+    document.getElementById('activeCategoryLabel').textContent = btn.textContent.trim().replace(/\d+$/, '').trim();
+    renderGrid(postsForCategory(cat));
+    // Auto-collapse sidebar on mobile after picking a category
+    if (window.innerWidth <= 900) {
+      document.getElementById('blogSidebar').classList.add('is-collapsed');
+    }
+  }
+
+  function toggleSidebar() {
+    document.getElementById('blogSidebar').classList.toggle('is-collapsed');
+  }
+
+  function setDensity(density) {
+    currentDensity = density;
+    localStorage.setItem('blogDensity', density);
+    applyDensityUI();
+    renderGrid(postsForCategory(currentCategory));
+  }
+
+  function applyDensityUI() {
+    document.querySelectorAll('.blog-density-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.density === currentDensity);
+    });
   }
 
   function formatDate(iso) {
@@ -168,14 +237,30 @@
 
   function renderGrid(posts) {
     const grid = document.getElementById('blogGrid');
+    grid.classList.toggle('is-compact', currentDensity === 'compact');
+
     if (!posts.length) {
       grid.innerHTML = '<div class="blog-empty"><div class="blog-empty-icon">🔍</div><p>No posts found.</p></div>';
       return;
     }
 
-    grid.innerHTML = posts.map((p, i) => {
+    if (currentDensity === 'compact') {
+      grid.innerHTML = posts.map(p => {
+        const href = `../blog/${p.slug}.html`;
+        return `
+          <a href="${href}" class="blog-card is-compact">
+            <div class="blog-card-compact-emoji">${p.emoji || '📝'}</div>
+            <div class="blog-card-title">${p.title}</div>
+            <span class="blog-card-compact-time">⏱ ${p.readTime}</span>
+          </a>`;
+      }).join('');
+      return;
+    }
+
+    // Detailed / rows view
+    grid.innerHTML = posts.map((p) => {
       const href = `../blog/${p.slug}.html`;
-      const tagHtml = (p.tags || []).map(t => t).join(' · ');
+      const tagHtml = (p.tags || []).join(' · ');
 
       if (p.featured) {
         return `
