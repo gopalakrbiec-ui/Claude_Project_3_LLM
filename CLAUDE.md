@@ -7,11 +7,12 @@ All pages are plain HTML/CSS/JS served as files.
 ## File Structure
 ```
 FrontierAIModel-Academy/
-├── index.html              ← Home page (stays in root, always)
+├── index.html              ← Home page (stays in root, always) — AGI research/progress hub
 ├── styles.css              ← All CSS (single file)
 ├── app.js                  ← All JS (single file)
 ├── pages/                  ← All sub-pages live here
 │   ├── blog.html
+│   ├── frontier-model-learning.html  ← the interactive mode-based LLM course (formerly index.html)
 │   ├── frontier-timeline.html
 │   ├── future-frontier.html
 │   ├── llm-engineering.html
@@ -27,12 +28,18 @@ FrontierAIModel-Academy/
     └── CONTRIBUTING.md     ← How to add pages and posts
 ```
 
+**Note (Sep 2026 restructure):** `index.html` used to BE the interactive mode-based LLM course.
+That entire experience moved to `pages/frontier-model-learning.html` unchanged, and `index.html` is
+now a separate AGI-research/progress homepage (hero, latest blog signal, the 3 startup lanes, deep
+investigations, researcher's path, explore links). The navbar's "Learning Mode" panel and every
+`?mode=X` link across the site point at `pages/frontier-model-learning.html`, not `index.html`.
+
 ## Path Rules (critical)
-| File location | styles.css | app.js | index.html | Other pages |
-|---|---|---|---|---|
-| `index.html` (root) | `styles.css` | `app.js` | — | `pages/foo.html` |
-| `pages/*.html` | `../styles.css` | `../app.js` | `../index.html` | `foo.html` (same dir) |
-| `blog/*.html` | `../styles.css` | `../app.js` | `../index.html` | `../pages/foo.html` |
+| File location | styles.css | app.js | index.html (homepage) | frontier-model-learning.html | Other pages |
+|---|---|---|---|---|---|
+| `index.html` (root) | `styles.css` | `app.js` | — | `pages/frontier-model-learning.html` | `pages/foo.html` |
+| `pages/*.html` | `../styles.css` | `../app.js` | `../index.html` | `frontier-model-learning.html` (same dir) | `foo.html` (same dir) |
+| `blog/*.html` | `../styles.css` | `../app.js` | `../index.html` | `../pages/frontier-model-learning.html` | `../pages/foo.html` |
 
 ## Navbar Architecture
 Two-ribbon fixed navbar:
@@ -57,8 +64,8 @@ Backdrop (`#navBackdrop`) closes panels on click.
 
 ## Learning Modes
 8 modes: layman, graduate, researcher, team, startup, investor, founder, agentmode.
-- On `index.html`: mode buttons use `onclick="setMode('mode')"` with `id="modeBtn_mode"`
-- On `pages/*.html` and `blog/*.html`: mode links use `href="../index.html?mode=X"` or `href="index.html?mode=X"`
+- Live on `pages/frontier-model-learning.html`: mode buttons use `onclick="setMode('mode')"` with `id="modeBtn_mode"`
+- Everywhere else, mode links point AT that file: `href="../pages/frontier-model-learning.html?mode=X"` (from `blog/*.html`) or `href="frontier-model-learning.html?mode=X"` (from `pages/*.html`)
 - Mode state persisted via `sessionStorage('llm-mode')`
 - URL param `?mode=X` read on load in `app.js`
 
