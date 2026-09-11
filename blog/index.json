@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "ssi-complete-investigation",
+      "title": "Safe Superintelligence: The Complete Investigation",
+      "excerpt": "Every publicly available clue about the most secretive, best-funded, least-shipping company in AI — founding story, full funding and financial timeline, every known hire and departure, the Nvidia compute deal, a close reading of Ilya Sutskever's own public statements, a full visual timeline, and a heavily-hedged analytical forecast of what SSI is actually building.",
+      "author": "FrontierAIModels Team",
+      "authorInitials": "FL",
+      "date": "2026-09-11",
+      "readTime": "95 min",
+      "tags": [
+        "Investigation",
+        "AGI Safety",
+        "Deep Research"
+      ],
+      "emoji": "🕵️",
+      "featured": true
+    },
+    {
       "slug": "inside-agi-team-lane3-narrow-research-bet",
       "title": "Inside an AGI Startup Team: The Narrow Research Bet",
       "excerpt": "An end-to-end deep dive into how the smallest, most senior team in AI actually works — structure, experience profiles, skills matrix, coordination, cadence, a research-result delivery walk-through, sourced 2026 compensation by role, tools & logistics, culture & hierarchy, founder involvement, upskilling, and how researchers use AI research agents like Goodfire's Silico daily — anchored by SSI's flat, secretive ~50-person structure and Goodfire's research-plus-product model.",
@@ -14,7 +30,7 @@
         "AGI Safety"
       ],
       "emoji": "🟢",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "inside-agi-team-lane1-frontier-scale",
