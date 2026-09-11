@@ -1,4 +1,4 @@
-# FrontierAIModels Academy — Claude Agent Context
+# FrontierAGI Academy — Claude Agent Context
 
 ## Project Type
 Static educational website. No build step, no framework, no backend.

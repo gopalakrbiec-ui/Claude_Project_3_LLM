@@ -1,4 +1,4 @@
-# Contributing to FrontierAIModels Academy
+# Contributing to FrontierAGI Academy
 
 ## Adding a Blog Post
 

@@ -1,8 +1,8 @@
-# 🚀 FrontierAIModels Academy
+# 🚀 FrontierAGI Academy
 
 **A free, interactive educational website about frontier AI and large language models.**
 
-FrontierAIModels Academy helps learners at every level — from curious beginners to ML researchers — explore how modern LLMs work, what's happening at the AI frontier, and how to think about the field from multiple professional perspectives.
+FrontierAGI Academy helps learners at every level — from curious beginners to ML researchers — explore how modern LLMs work, what's happening at the AI frontier, and how to think about the field from multiple professional perspectives.
 
 🌐 **Live site:** [gopalakrbiec-ui.github.io/FrontierAIModel-Academy](https://gopalakrbiec-ui.github.io/FrontierAIModel-Academy)
 
