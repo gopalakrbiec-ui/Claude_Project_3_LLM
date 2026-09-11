@@ -6594,3 +6594,84 @@ body {
   .blog-sidebar-divider { display: none; }
   .blog-sidebar-btn { width: auto; border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; }
 }
+
+/* ══════════════════════════════════════════════════════
+   ARTICLE ON-PAGE NAV — LEFT SIDEBAR (JS-converted from
+   the horizontal .agi-section-nav pill bar in blog articles)
+   ══════════════════════════════════════════════════════ */
+
+.blog-article-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin: 0 0 20px;
+}
+.blog-article-toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.blog-article-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.blog-article-sidebar {
+  width: 230px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 110px;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.blog-article-sidebar.is-collapsed { display: none; }
+
+.blog-article-sidebar-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 0 4px 8px;
+}
+
+.blog-article-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.blog-article-sidebar-nav a {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.blog-article-sidebar-nav a:hover { background: var(--bg-card); color: var(--text); }
+.blog-article-sidebar-nav a.is-active {
+  background: rgba(79,70,229,.1);
+  color: var(--accent);
+}
+
+.blog-article-main { flex: 1; min-width: 0; }
+
+@media (max-width: 900px) {
+  .blog-article-layout { display: block; }
+  .blog-article-sidebar {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin-bottom: 20px;
+    padding-right: 0;
+  }
+}

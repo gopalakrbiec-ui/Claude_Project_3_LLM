@@ -493,6 +493,74 @@ async function loadBlogNavPosts() {
   } catch (_) {}
 }
 
+/* ── Article on-page nav: convert the horizontal pill bar into a left sidebar ── */
+function initArticleSidebarNav() {
+  const secNav = document.querySelector('.agi-section-nav');
+  const wrap = document.querySelector('.blog-post-wrap');
+  if (!secNav || !wrap) return;
+
+  const links = Array.from(secNav.querySelectorAll('a[href^="#"]'));
+  if (links.length < 3) return; // not worth a sidebar for a very short nav
+
+  // Mark where the old nav sat so we can splice the new layout in at the same spot
+  const placeholder = document.createElement('div');
+  secNav.parentNode.insertBefore(placeholder, secNav);
+
+  // Everything that came after the nav is the article body — move it under the sidebar
+  const main = document.createElement('div');
+  main.className = 'blog-article-main';
+  let node = secNav.nextSibling;
+  while (node) {
+    const next = node.nextSibling;
+    main.appendChild(node);
+    node = next;
+  }
+
+  const sidebar = document.createElement('aside');
+  sidebar.className = 'blog-article-sidebar';
+  sidebar.innerHTML = '<div class="blog-article-sidebar-title">📑 On This Page</div><nav class="blog-article-sidebar-nav"></nav>';
+  const navEl = sidebar.querySelector('.blog-article-sidebar-nav');
+  links.forEach(a => {
+    const link = document.createElement('a');
+    link.href = a.getAttribute('href');
+    link.textContent = a.textContent.trim();
+    navEl.appendChild(link);
+  });
+
+  const toggleBtn = document.createElement('button');
+  toggleBtn.type = 'button';
+  toggleBtn.className = 'blog-article-toggle-btn';
+  toggleBtn.textContent = '☰ Contents';
+  toggleBtn.onclick = () => sidebar.classList.toggle('is-collapsed');
+
+  const layout = document.createElement('div');
+  layout.className = 'blog-article-layout';
+  layout.appendChild(sidebar);
+  layout.appendChild(main);
+
+  placeholder.replaceWith(toggleBtn, layout);
+  secNav.remove();
+
+  // Highlight the section currently in view
+  const navLinks = Array.from(navEl.querySelectorAll('a'));
+  const targets = links.map(a => {
+    try { return document.querySelector(a.getAttribute('href')); } catch (_) { return null; }
+  });
+  function onScroll() {
+    let idx = 0;
+    const pos = window.scrollY + 160;
+    targets.forEach((t, i) => { if (t && t.offsetTop <= pos) idx = i; });
+    navLinks.forEach((l, i) => l.classList.toggle('is-active', i === idx));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // On small screens, collapse the sidebar automatically after a jump
+  navLinks.forEach(l => l.addEventListener('click', () => {
+    if (window.matchMedia('(max-width: 900px)').matches) sidebar.classList.add('is-collapsed');
+  }));
+}
+
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   createStars();
@@ -519,4 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Populate blog nav dropdown
   loadBlogNavPosts();
+
+  // Convert an article's on-page section nav into a left sidebar, if present
+  initArticleSidebarNav();
 });
