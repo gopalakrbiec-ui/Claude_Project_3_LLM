@@ -640,7 +640,7 @@
 
       bursts = bursts.filter(b => now - b.start < b.duration);
       for (const b of bursts) {
-        const t = Math.min(1, (now - b.start) / b.duration);
+        const t = Math.min(1, Math.max(0, (now - b.start) / b.duration));
         const eased = 1 - Math.pow(1 - t, 3);
         const ringR = eased * 90 * DPR;
         ctx.beginPath();
@@ -681,19 +681,24 @@
       return { x: (evt.clientX - rect.left) * DPR, y: (evt.clientY - rect.top) * DPR };
     }
 
-    canvas.addEventListener('mousemove', (evt) => {
+    /* Listeners live on the whole hero, not just the canvas, so hovering or
+       clicking over the heading, buttons, or capability panel still reacts —
+       the canvas is visually behind that content but should feel "live"
+       across the entire section. */
+    hero.addEventListener('mousemove', (evt) => {
       const p = toCanvasCoords(evt);
       mouse.x = p.x; mouse.y = p.y; mouse.active = true;
-      glow.style.left = (evt.clientX - hero.getBoundingClientRect().left) + 'px';
-      glow.style.top = (evt.clientY - hero.getBoundingClientRect().top) + 'px';
+      const heroRect = hero.getBoundingClientRect();
+      glow.style.left = (evt.clientX - heroRect.left) + 'px';
+      glow.style.top = (evt.clientY - heroRect.top) + 'px';
       glow.classList.add('is-active');
     });
-    canvas.addEventListener('mouseleave', () => { mouse.active = false; glow.classList.remove('is-active'); });
-    canvas.addEventListener('click', (evt) => {
+    hero.addEventListener('mouseleave', () => { mouse.active = false; glow.classList.remove('is-active'); });
+    hero.addEventListener('click', (evt) => {
       const p = toCanvasCoords(evt);
       fireBurst(p.x, p.y);
     });
-    canvas.addEventListener('touchstart', (evt) => {
+    hero.addEventListener('touchstart', (evt) => {
       const t = evt.touches[0];
       const rect = canvas.getBoundingClientRect();
       fireBurst((t.clientX - rect.left) * DPR, (t.clientY - rect.top) * DPR);
