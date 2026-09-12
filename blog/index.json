@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "after-transformers-current-methods-and-dead-ends",
+      "title": "After Transformers: What's Working, What's a Dead End, What's Next",
+      "excerpt": "The sequel to The Evolution of Neural Networks — a live status report on today's dominant methods and their real limitations (Transformers' quadratic attention, RLHF's reward hacking, MoE routing instability, RAG's retrieval ceiling, reasoning models' cost), honest dead ends (Neural Turing Machines, Capsule Networks), where research is actively betting (world models, interpretability, continual learning, long-horizon agents), and a concrete framework for judging any new idea yourself.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-12",
+      "readTime": "90 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🔭",
+      "featured": true
+    },
+    {
       "slug": "evolution-of-neural-networks",
       "title": "The Evolution of Neural Networks: From a 1943 Toy Model to Transformers",
       "excerpt": "A layman-friendly, chronological walk through 83 years of neural network history — from McCulloch & Pitts' 1943 artificial neuron through the Perceptron, the First AI Winter, backpropagation, CNNs, LSTMs, AlexNet, attention, the 2017 Transformer, and RLHF to today — with a hand-drawn diagram for every era and a repeating pattern: a real limitation, math that already existed, and the compute or data that finally arrived to unlock it.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🧬",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-core-deep-learning-concepts",
