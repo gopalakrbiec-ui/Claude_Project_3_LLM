@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "evolution-of-neural-networks",
+      "title": "The Evolution of Neural Networks: From a 1943 Toy Model to Transformers",
+      "excerpt": "A layman-friendly, chronological walk through 83 years of neural network history — from McCulloch & Pitts' 1943 artificial neuron through the Perceptron, the First AI Winter, backpropagation, CNNs, LSTMs, AlexNet, attention, the 2017 Transformer, and RLHF to today — with a hand-drawn diagram for every era and a repeating pattern: a real limitation, math that already existed, and the compute or data that finally arrived to unlock it.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-12",
+      "readTime": "95 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🧬",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-core-deep-learning-concepts",
       "title": "AGI Researcher Foundations: Core Deep Learning Concepts",
       "excerpt": "The fourth article in the AGI Researcher Foundations series — the architectural and training-dynamics concepts built on top of the math from Article 3: what came before the Transformer (LSTMs) and why it changed, normalization and initialization (BatchNorm, LayerNorm, RMSNorm, He init), generalization and deep double descent, and regularization, each tied to real scenarios like why LLaMA uses RMSNorm.",
@@ -14,7 +29,7 @@
         "AI Research"
       ],
       "emoji": "🧠",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-mathematical-foundations",
