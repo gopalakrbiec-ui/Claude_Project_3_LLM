@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-mathematical-foundations",
+      "title": "AGI Researcher Foundations: The Mathematical Foundations",
+      "excerpt": "The third article in the AGI Researcher Foundations series — scopes the math that actually matters for AI research: linear algebra, probability and statistics, calculus and optimization, and information theory, each split explicitly into what's used daily (matrix rank in LoRA, KL divergence in RLHF, the chain rule in backprop, entropy in perplexity) versus what's genuinely textbook-only.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-12",
+      "readTime": "75 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "📐",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-self-assessment-deep-dive",
       "title": "AGI Researcher Foundations: The Self-Assessment Deep Dive",
       "excerpt": "The second article in the AGI Researcher Foundations series — opens up all eight items from Article 1's Self-Assessment Checklist, one by one: why each is a real signal frontier and research labs actually care about, a concrete how-to path with sourced tutorials and repos (nanoGPT, the Annotated Transformer, Megatron-LM, Chinchilla, and more), and videos to work through for each.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "✅",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-foundations-technical-stack",
