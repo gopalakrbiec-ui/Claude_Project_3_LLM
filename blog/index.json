@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "agi-researcher-foundations-self-assessment-deep-dive",
+      "title": "AGI Researcher Foundations: The Self-Assessment Deep Dive",
+      "excerpt": "The second article in the AGI Researcher Foundations series — opens up all eight items from Article 1's Self-Assessment Checklist, one by one: why each is a real signal frontier and research labs actually care about, a concrete how-to path with sourced tutorials and repos (nanoGPT, the Annotated Transformer, Megatron-LM, Chinchilla, and more), and videos to work through for each.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-12",
+      "readTime": "65 min",
+      "tags": [
+        "Deep Research",
+        "Careers",
+        "AI Research"
+      ],
+      "emoji": "✅",
+      "featured": true
+    },
+    {
       "slug": "agi-researcher-foundations-technical-stack",
       "title": "AGI Researcher Foundations: The Technical Stack",
       "excerpt": "The first article in a new deep-dive series — the end-to-end technical stack every AGI researcher needs before touching a paper: programming and Linux fluency, PyTorch vs JAX, the research-engineering toolchain (DeepSpeed, Megatron-LM, FSDP2, vLLM), compute options and real 2026 pricing, evaluation tooling, 10 key papers, 8 real courses to complete, and four real-world scenarios from reproducing nanoGPT to debugging distributed training failures.",
@@ -14,7 +30,7 @@
         "AI Research"
       ],
       "emoji": "🧰",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "agi-researcher-day-in-life",
