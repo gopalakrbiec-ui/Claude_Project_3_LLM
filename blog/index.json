@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "how-to-read-a-paper-like-a-researcher",
+      "title": "How to Read a Paper Like a Researcher",
+      "excerpt": "The practical companion to After Transformers' six-question framework — three fully worked examples showing exactly how to apply it: Chinchilla (a clean pass), InstructGPT/RLHF (strong impact, honest falsifiability weakness), and a live, still-unsettled reasoning-model paper, plus a reading-order guide, common failure modes, and an unanswered exercise to practice the skill yourself.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-12",
+      "readTime": "60 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "🔎",
+      "featured": true
+    },
+    {
       "slug": "after-transformers-current-methods-and-dead-ends",
       "title": "After Transformers: What's Working, What's a Dead End, What's Next",
       "excerpt": "The sequel to The Evolution of Neural Networks — a live status report on today's dominant methods and their real limitations (Transformers' quadratic attention, RLHF's reward hacking, MoE routing instability, RAG's retrieval ceiling, reasoning models' cost), honest dead ends (Neural Turing Machines, Capsule Networks), where research is actively betting (world models, interpretability, continual learning, long-horizon agents), and a concrete framework for judging any new idea yourself.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🔭",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "evolution-of-neural-networks",
