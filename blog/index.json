@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "slug": "agi-debate-scaling-vs-new-architectures",
+      "title": "The AGI Debate: Scaling vs. New Architectures",
+      "excerpt": "The fourth in the Evolution / After Transformers arc — a full steelman of both sides of AI's most consequential live disagreement: the scaling camp's unbroken empirical track record and Sutton's 'Bitter Lesson,' the new-architecture camp's case (LeCun's world-model argument, Sutskever's own reassessment per the SSI investigation), where both camps actually agree, and what it would take to prove either one right, without declaring a premature winner.",
+      "author": "FrontierAGI Team",
+      "authorInitials": "FL",
+      "date": "2026-09-12",
+      "readTime": "65 min",
+      "tags": [
+        "Deep Research",
+        "AI Research"
+      ],
+      "emoji": "⚖️",
+      "featured": true
+    },
+    {
       "slug": "how-to-read-a-paper-like-a-researcher",
       "title": "How to Read a Paper Like a Researcher",
       "excerpt": "The practical companion to After Transformers' six-question framework — three fully worked examples showing exactly how to apply it: Chinchilla (a clean pass), InstructGPT/RLHF (strong impact, honest falsifiability weakness), and a live, still-unsettled reasoning-model paper, plus a reading-order guide, common failure modes, and an unanswered exercise to practice the skill yourself.",
@@ -13,7 +28,7 @@
         "AI Research"
       ],
       "emoji": "🔎",
-      "featured": true
+      "featured": false
     },
     {
       "slug": "after-transformers-current-methods-and-dead-ends",
